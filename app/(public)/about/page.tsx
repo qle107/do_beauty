@@ -174,11 +174,11 @@ export default function AboutPage() {
             </div>
             <div>
               <p className="text-dark/40 tracking-wider uppercase text-xs mb-2">Adresse</p>
-              <p className="text-dark font-medium">2 Place du 11 Novembre 1918</p>
+              <p className="text-dark font-medium">12 Avenue Jean Jaurès</p>
               <p className="text-charcoal-500">94250 Gentilly</p>
               <p className="text-dark/40 text-xs mt-1 flex items-center justify-center gap-1.5">
                 <TrainIcon className="h-3.5 w-3.5 shrink-0" />
-                RER Noisy-Champs (5 min)
+                RER B — Gentilly
               </p>
             </div>
             <div>

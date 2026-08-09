@@ -8,10 +8,10 @@
 // the Turnstile anti-spam challenge, and the first-party device UUID used only
 // to curb booking abuse (security/fraud-prevention purpose).
 
-export const CONSENT_KEY = 'vynails_consent'
+export const CONSENT_KEY = 'dobeauty_consent'
 // Dispatched on window to re-open the banner (withdrawal must be as easy as
 // consent), and again whenever the choice changes so listeners can react.
-export const CONSENT_EVENT = 'vynails:consent'
+export const CONSENT_EVENT = 'dobeauty:consent'
 
 export type ConsentValue = 'granted' | 'denied'
 

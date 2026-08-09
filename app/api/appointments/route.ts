@@ -4,7 +4,7 @@ import { appointmentSchema } from '@/lib/validations'
 import { createCalendarEvent, listCalendarEvents, findActiveAppointmentForPhone, deleteCalendarEvent, parisDayBounds, getDayABusy } from '@/lib/google-calendar'
 import { freeInPool, freeCount } from '@/lib/booking/capacity'
 import { getPlanityDayFree } from '@/lib/planity/public-availability'
-import { artistById, artistsForCategories } from '@/lib/staff'
+import { artistById, artistsForCategories, poolKey } from '@/lib/staff'
 import { createPlanityBooking } from '@/lib/planity/booking'
 import { getAllServicesAdmin } from '@/lib/services-store'
 import { sendBookingAlert } from '@/lib/mail'
@@ -169,6 +169,12 @@ export async function POST(request: NextRequest): Promise<NextResponse> {
     // Resolve the optional preferred artist (practitioner or cabine). Unknown id ignored.
     const employee = preferredEmployeeId ? artistById(preferredEmployeeId) : undefined
 
+    // Resource pool this cart maps to (practitioners / cils cabines / esthétique).
+    // Used for the capacity re-check AND stored on the event so it only ever
+    // decrements its OWN pool (a nail booking never blocks a cabine).
+    const cartCats = [...new Set(services.map((s) => s.category))]
+    const pk = poolKey(cartCats)
+
     // ── Server-side slot re-check: client-side availability can go stale between
     //    fetch and submit. Skip only when replacing the caller's own booking in
     //    the identical slot (the just-deleted event may still show for a moment).
@@ -185,9 +191,9 @@ export async function POST(request: NextRequest): Promise<NextResponse> {
       const [dayFree, aBusy] = await Promise.all([getPlanityDayFree(date), getDayABusy(date)])
       // Pool = artists that can perform this cart (practitioners for nail services,
       // the matching cabine for cils/esthetics).
-      const pool = artistsForCategories([...new Set(services.map((s) => s.category))])
+      const pool = artistsForCategories(cartCats)
       const freePool = freeInPool(pool, dayFree, slotStart, slotEnd)
-      if (freeCount(freePool, aBusy, slotStart, slotEnd) <= 0) {
+      if (freeCount(freePool, aBusy, slotStart, slotEnd, pk) <= 0) {
         return NextResponse.json(
           { error: 'Ce créneau vient d\'être réservé. Merci d\'en choisir un autre.' },
           { status: 409 }
@@ -225,6 +231,7 @@ export async function POST(request: NextRequest): Promise<NextResponse> {
           deviceId,
           fingerprint,
           employeeName: employee?.name,
+          pool: pk,
         }),
         10_000
       )

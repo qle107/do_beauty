@@ -1,4 +1,5 @@
 import type { Artist } from '@/lib/staff'
+import { GENERAL_POOL_KEY } from '@/lib/staff'
 
 /**
  * Capacity math for the multi-employee model, sourced from Planity's live public
@@ -13,6 +14,8 @@ import type { Artist } from '@/lib/staff'
  */
 
 export interface Interval { start: number; end: number } // minutes-of-day
+/** A Calendar-A booking tagged with the resource pool it belongs to. */
+export interface BusyEvent { start: number; end: number; pool: string }
 
 const hhmm = (m: number): string =>
   `${String(Math.floor(m / 60)).padStart(2, '0')}:${String(m % 60).padStart(2, '0')}`
@@ -33,8 +36,21 @@ export function freeInPool(
   })
 }
 
-/** Remaining capacity in [s,e): free pool artists minus website bookings overlapping. */
-export function freeCount(freePool: Artist[], aBusy: Interval[], s: number, e: number): number {
-  const aOverlap = aBusy.filter((b) => s < b.end && e > b.start).length
-  return freePool.length - aOverlap
+/**
+ * Remaining capacity in [s,e): free pool artists minus SAME-POOL bookings.
+ * A booking only decrements the pool it belongs to (`poolKey`), so a nail booking
+ * never eats a cabine slot and an owner block on one pool never blocks another.
+ * Untagged legacy bookings (pool '') default to the practitioner pool. Clamped ≥0.
+ */
+export function freeCount(
+  freePool: Artist[],
+  aBusy: BusyEvent[],
+  s: number,
+  e: number,
+  poolKey: string,
+): number {
+  const aOverlap = aBusy.filter(
+    (b) => s < b.end && e > b.start && (b.pool || GENERAL_POOL_KEY) === poolKey,
+  ).length
+  return Math.max(0, freePool.length - aOverlap)
 }

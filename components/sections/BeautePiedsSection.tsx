@@ -38,7 +38,7 @@ export default function BeautePiedsSection() {
             Réserver une beauté des pieds
           </Link>
           <Link
-            href="/beaute-des-pieds-noisy-le-grand"
+            href="/beaute-des-pieds-gentilly"
             className="rounded-md border border-dark/25 text-dark text-sm px-8 py-4 tracking-[0.18em] font-sans text-center transition-colors duration-300 hover:border-dark hover:bg-blush/50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-coral focus-visible:ring-offset-2 focus-visible:ring-offset-blush"
           >
             En savoir plus

@@ -64,3 +64,15 @@ export function artistsForCategories(cats: ServiceCategory[]): Artist[] {
   if (!cats.length) return STAFF
   return ARTISTS.filter((a) => cats.every((c) => a.categories.includes(c)))
 }
+
+/**
+ * Stable id for the resource POOL a cart maps to (same artist set → same key).
+ * Used to attribute a booking to its pool so a nail booking can never decrement a
+ * cabine's capacity (and vice-versa). See lib/booking/capacity.ts:freeCount.
+ */
+export function poolKey(cats: ServiceCategory[]): string {
+  return artistsForCategories(cats).map((a) => a.id).sort().join(',')
+}
+
+/** The practitioners' pool key — legacy/untagged bookings default to this. */
+export const GENERAL_POOL_KEY = poolKey([])

@@ -123,7 +123,7 @@ export default function MessagesPage() {
         </button>
       </div>
 
-      <Modal open={composeOpen} onOpenChange={setComposeOpen} title="Tin nhắn mới" description="Gửi email từ contact@vynails.fr">
+      <Modal open={composeOpen} onOpenChange={setComposeOpen} title="Tin nhắn mới" description="Gửi email từ dobeauty94@gmail.com">
         <ComposeEmailForm
           contactEmails={contactEmails}
           onSuccess={() => setComposeOpen(false)}
