@@ -1,5 +1,6 @@
 import zlib from 'node:zlib'
 import { ARTISTS } from '@/lib/staff'
+import { busyIntervalsFromFree, type Interval } from './busy'
 
 /**
  * Planity PUBLIC availability — the officially-served, tokenless data source.
@@ -117,4 +118,23 @@ export async function getPlanityDayFree(date: string): Promise<Map<string, Set<s
   if (a.knownDates.has(date)) return a.freeByDate.get(date) ?? new Map()
   if (!a.maxDate || date > a.maxDate) return null // beyond published horizon → fail open
   return new Map() // inside the published range but absent ⇒ closed
+}
+
+/**
+ * Per-EMPLOYEE busy intervals for a date, keyed by our artist id (for the admin
+ * calendar). `null` ⇒ no authoritative Planity data for the day (fetch failed or
+ * beyond the published horizon) → caller fails open (shows an "indisponible" note,
+ * no blocks). A non-null map with an empty array for an employee ⇒ free all day.
+ */
+export async function getPlanityBusyByEmployee(
+  date: string,
+  openMin: number,
+  closeMin: number,
+): Promise<Record<string, Interval[]> | null> {
+  const free = await getPlanityDayFree(date)
+  if (free === null) return null
+  const byCal = busyIntervalsFromFree(free, ARTISTS.map((a) => a.planityCalendarId), openMin, closeMin)
+  const out: Record<string, Interval[]> = {}
+  for (const a of ARTISTS) out[a.id] = byCal[a.planityCalendarId] ?? []
+  return out
 }
