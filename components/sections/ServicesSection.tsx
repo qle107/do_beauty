@@ -89,7 +89,7 @@ export default async function ServicesSection() {
       images: shots.map((s) => ({ id: s.id, url: s.url, alt: s.alt, title: s.title })),
       services: svc,
     }
-  })
+  }).filter((d) => d.featured) // hide a category with no image yet (Beauté des pieds, until a pieds photo is published)
 
   return (
     <section

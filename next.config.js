@@ -1,4 +1,7 @@
 /** @type {import('next').NextConfig} */
+// Dev mode (Next/React/Turbopack HMR) needs 'unsafe-eval'; production never does.
+const isDev = process.env.NODE_ENV !== 'production'
+
 const nextConfig = {
   // Don't advertise the framework via the X-Powered-By response header
   poweredByHeader: false,
@@ -44,7 +47,7 @@ const nextConfig = {
             key: 'Content-Security-Policy',
             value: [
               "default-src 'self'",
-              "script-src 'self' 'unsafe-inline' https://challenges.cloudflare.com https://www.googletagmanager.com https://www.google-analytics.com",
+              `script-src 'self' 'unsafe-inline'${isDev ? " 'unsafe-eval'" : ''} https://challenges.cloudflare.com https://www.googletagmanager.com https://www.google-analytics.com`,
               "style-src 'self' 'unsafe-inline'",
               "img-src 'self' data: https:",
               "font-src 'self' data:",
