@@ -1,4 +1,5 @@
 import nodemailer from 'nodemailer'
+import { site } from '@/lib/site'
 
 const transporter = nodemailer.createTransport({
   host: process.env.SMTP_HOST,
@@ -93,8 +94,8 @@ function baseTemplate(content: string): string {
           <!-- Pied de page -->
           <tr>
             <td style="background-color:#171614;padding:24px 40px;text-align:center;">
-              <p style="color:#A89882;font-size:12px;margin:0;">© ${new Date().getFullYear()} Do Beauty - 16 Avenue Jean Jaurès, 94250 Gentilly</p>
-              <p style="color:#A89882;font-size:12px;margin:8px 0 0;">📞 +84 522 089 970 &nbsp;|&nbsp; <a href="mailto:contact@dobeauty.fr" style="color:#C8A66A;text-decoration:none;">contact@dobeauty.fr</a></p>
+              <p style="color:#A89882;font-size:12px;margin:0;">© ${new Date().getFullYear()} ${site.name} - ${site.address.street}, ${site.address.city}</p>
+              <p style="color:#A89882;font-size:12px;margin:8px 0 0;">📞 ${site.phone.display} &nbsp;|&nbsp; <a href="mailto:${site.email}" style="color:#C8A66A;text-decoration:none;">${site.email}</a></p>
               <p style="color:#666;font-size:11px;margin:8px 0 0;font-style:italic;">Paiement en espèces ou par virement</p>
             </td>
           </tr>

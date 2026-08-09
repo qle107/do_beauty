@@ -58,6 +58,8 @@ do-beauty-calendar-*.json
 *-key.json
 *service_account*.json
 *service-account*.json
+client_secret*.json
+*.apps.googleusercontent.com*.json
 *.pem
 *.p12
 *.pfx
@@ -66,10 +68,11 @@ do-beauty-calendar-*.json
 # image_for_claude/ holds owner-supplied source images + (previously) a key copy.
 image_for_claude/
 .playwright-mcp/
-# stray screenshots at the repo root (real image assets live in public/)
+# stray screenshots / docs at the repo root (real assets live in public/)
 /*.png
 /*.jpg
 /*.jpeg
+/*.pdf
 
 # ─── Misc ─────────────────────────────────────────────────────────────────
 .vercel

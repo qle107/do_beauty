@@ -38,6 +38,7 @@ export default function ClientDetails({ booking, onBack, onConfirmed }: ClientDe
   const [pendingData, setPendingData]           = useState<ClientDetailsInput | null>(null)
   const [photos, setPhotos]                     = useState<string[]>([])   // compressed data URLs
   const [compressing, setCompressing]           = useState(false)
+  const [policyAccepted, setPolicyAccepted]     = useState(false)         // guarantee policy
 
   // Funnel: user reached the final details step (consent-gated, no PII pushed).
   useEffect(() => {
@@ -157,6 +158,10 @@ export default function ClientDetails({ booking, onBack, onConfirmed }: ClientDe
   }
 
   const onSubmit = async (data: ClientDetailsInput) => {
+    if (!policyAccepted) {
+      toast.error('Veuillez accepter la politique de garantie pour confirmer.')
+      return
+    }
     if (process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY && !turnstileToken) {
       toast.error('Veuillez compléter la vérification de sécurité.')
       return
@@ -317,6 +322,38 @@ export default function ClientDetails({ booking, onBack, onConfirmed }: ClientDe
           </div>
         )}
 
+        {/* Politique de garantie — à accepter avant de confirmer */}
+        <div className="bg-blush border border-dark/10 p-5">
+          <div className="flex items-baseline justify-between gap-3 mb-3">
+            <p className="font-sans text-xs tracking-[0.2em] uppercase text-dark/40">Politique de garantie</p>
+            <a
+              href="/politique-garantie.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="font-sans text-xs text-coral hover:underline shrink-0"
+            >
+              Lire en entier (PDF)
+            </a>
+          </div>
+          <ul className="font-sans text-xs text-charcoal-500 leading-relaxed space-y-1 mb-4 list-disc pl-4">
+            <li>Semi-permanent garanti <strong>5 jours</strong> · extensions &amp; gainage <strong>7 jours</strong>.</li>
+            <li>Cils : nouvelle pose <strong>5 jours</strong> · remplissage <strong>3 jours</strong>.</li>
+            <li>Défaut couvert = <strong>retouche gratuite</strong> au salon dans le délai (aucun remboursement).</li>
+            <li>Autres prestations : vérifiez le résultat avant de partir.</li>
+          </ul>
+          <label className="flex items-start gap-3 cursor-pointer">
+            <input
+              type="checkbox"
+              checked={policyAccepted}
+              onChange={(e) => setPolicyAccepted(e.target.checked)}
+              className="mt-0.5 w-4 h-4 accent-coral-dark shrink-0"
+            />
+            <span className="font-sans text-xs text-dark leading-relaxed">
+              J&apos;ai lu et j&apos;accepte la politique de garantie.
+            </span>
+          </label>
+        </div>
+
         {/* Cloudflare Turnstile anti-spam widget */}
         <TurnstileWidget onVerify={handleTurnstileVerify} onExpire={handleTurnstileExpire} />
 
@@ -326,7 +363,7 @@ export default function ClientDetails({ booking, onBack, onConfirmed }: ClientDe
             type="submit"
             size="lg"
             isLoading={isSubmitting}
-            disabled={!!process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY && !turnstileToken}
+            disabled={!policyAccepted || (!!process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY && !turnstileToken)}
           >
             Confirmer le rendez-vous
           </Button>
