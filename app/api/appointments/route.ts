@@ -2,9 +2,9 @@ import { NextRequest, NextResponse } from 'next/server'
 import { auth } from '@/lib/auth'
 import { appointmentSchema } from '@/lib/validations'
 import { createCalendarEvent, listCalendarEvents, findActiveAppointmentForPhone, deleteCalendarEvent, parisDayBounds, getDayABusy } from '@/lib/google-calendar'
-import { freeStaffForWindow, freeArtistsForWindow, freeCount } from '@/lib/booking/capacity'
+import { freeInPool, freeCount } from '@/lib/booking/capacity'
 import { getPlanityDayFree } from '@/lib/planity/public-availability'
-import { artistById } from '@/lib/staff'
+import { artistById, artistsForCategories } from '@/lib/staff'
 import { createPlanityBooking } from '@/lib/planity/booking'
 import { getServiceById, getAllServicesAdmin } from '@/lib/services-store'
 import { sendBookingAlert } from '@/lib/mail'
@@ -176,14 +176,17 @@ export async function POST(request: NextRequest): Promise<NextResponse> {
       // live availability + our Calendar-A bookings), or the chosen practitioner
       // is no longer free. Fails open if Planity data is unavailable (dayFree null).
       const [dayFree, aBusy] = await Promise.all([getPlanityDayFree(date), getDayABusy(date)])
-      const freeStaff = freeStaffForWindow(dayFree, slotStart, slotEnd)
-      if (freeCount(freeStaff, aBusy, slotStart, slotEnd) <= 0) {
+      // Pool = artists that can perform this cart (practitioners for nail services,
+      // the matching cabine for cils/esthetics).
+      const pool = artistsForCategories([...new Set(services.map((s) => s.category))])
+      const freePool = freeInPool(pool, dayFree, slotStart, slotEnd)
+      if (freeCount(freePool, aBusy, slotStart, slotEnd) <= 0) {
         return NextResponse.json(
           { error: 'Ce créneau vient d\'être réservé. Merci d\'en choisir un autre.' },
           { status: 409 }
         )
       }
-      if (employee && !freeArtistsForWindow(dayFree, slotStart, slotEnd).some((a) => a.id === employee.id)) {
+      if (employee && !freePool.some((a) => a.id === employee.id)) {
         return NextResponse.json(
           { error: `${employee.name} n'est plus disponible sur ce créneau. Choisissez une autre praticienne ou « sans préférence ».` },
           { status: 409 }

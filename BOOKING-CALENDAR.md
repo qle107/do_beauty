@@ -42,7 +42,7 @@ A slot is offered while **at least one practitioner is free** for the whole serv
 | File | Role |
 |---|---|
 | `lib/planity/public-availability.ts` | **The Planity read.** Fetches the public Firebase availability DB, gunzips the records, and exposes `getPlanityDayFree(date)` → free practitioners per 15-min slot (or `null` = no data → fail open). Cached in-process (180 s). |
-| `lib/staff.ts` | `ARTISTS` (9 pickable agendas: 6 practitioners + 3 cabines) ↔ Planity agenda ids; `STAFF` (the 6 practitioners) is the capacity pool. |
+| `lib/staff.ts` | `ARTISTS` (6 practitioners + 3 cabines) ↔ Planity agenda ids, each scoped to the service **categories** they perform; `artistsForCategories(cart)` returns the pool that can serve a cart. |
 | `lib/booking/capacity.ts` | Pure capacity math: `freeStaffForWindow(dayFree, s, e)` and `freeCount(freeStaff, aBusy, s, e)`. |
 | `lib/google-calendar.ts` | Google Calendar A I/O: `createCalendarEvent` (write a booking) and `getDayABusy(date)` (read the day's website bookings as busy intervals). Service-account auth. |
 | `app/api/availability/route.ts` | `GET` — builds bookable slots + `staffBySlot` from Planity free staff − Calendar-A bookings. |
@@ -108,13 +108,16 @@ Only `NEXT_PUBLIC_TURNSTILE_SITE_KEY` reaches the browser. There are **no** Plan
    - `freeCount = freeStaff.length − (Calendar-A bookings overlapping the window)`.
    - Offer the slot while `freeCount > 0` **and** `t + duration ≤ closing`.
 4. Today only: drop slots starting within the next **15 min**.
-5. The response includes `staffBySlot` — the free **artists** per open slot (all 9: the 6
-   practitioners **and** the 3 cabines). This powers the up-front **"Praticienne"** selector on
-   the Date & Heure step (default *Sans préférence*): picking an artist filters the times to that
-   artist's free slots; picking a cabine works the same way. "Sans préférence" capacity counts
-   **practitioners only** (a cabine is a room a person works in, not extra capacity). The choice
-   rides along to the Google event + staff alert; staff finalise the assignment in Planity. See
-   `lib/staff.ts` (`ARTISTS` = 6 staff + 3 cabines; `STAFF` = the capacity pool) and
+5. Availability is **catalog-specific**. Each artist serves certain service categories
+   (`lib/staff.ts`): the 6 practitioners do nail services; **Cils 1 / Cils 2** do only eyelash
+   services (CILS); **Esthétique** only face/body/waxing (VISAGE / CORPS / EPILATION). The cart's
+   categories pick the **pool** (`artistsForCategories`): a manicure cart is offered/counted
+   against practitioners, a cils cart against the cils cabines, an esthetics cart against
+   Esthétique. `staffBySlot` lists the free artists **from that pool**, powering the up-front
+   **"Praticienne"** selector on the Date & Heure step (default *Sans préférence*); picking one
+   filters the times to that artist's free slots. So a customer booking a manicure only sees
+   employees; booking cils only sees the cils cabines. The choice rides along to the Google event
+   + staff alert; staff finalise the assignment in Planity. See `lib/staff.ts` and
    `lib/booking/capacity.ts`.
 
 **Fail-safe (important):** if Planity's public data can't be read (network error) **or** the date

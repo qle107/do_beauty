@@ -62,9 +62,14 @@ do-beauty-calendar-*.json
 *.p12
 *.pfx
 
-# ─── Local working material (not app assets — those live in public/) ──────
+# ─── Local working material & tool artifacts (not app assets) ─────────────
 # image_for_claude/ holds owner-supplied source images + (previously) a key copy.
 image_for_claude/
+.playwright-mcp/
+# stray screenshots at the repo root (real image assets live in public/)
+/*.png
+/*.jpg
+/*.jpeg
 
 # ─── Misc ─────────────────────────────────────────────────────────────────
 .vercel

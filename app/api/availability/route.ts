@@ -1,8 +1,10 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { availabilityQuerySchema } from '@/lib/validations'
 import { getDayABusy } from '@/lib/google-calendar'
-import { freeStaffForWindow, freeArtistsForWindow, freeCount } from '@/lib/booking/capacity'
+import { freeInPool, freeCount } from '@/lib/booking/capacity'
 import { getPlanityDayFree } from '@/lib/planity/public-availability'
+import { artistsForCategories } from '@/lib/staff'
+import type { ServiceCategory } from '@/lib/types'
 import { generateTimeSlots, timeToMinutes } from '@/lib/utils'
 import { isRateLimited, getClientIp } from '@/lib/rate-limit'
 import { site } from '@/lib/site'
@@ -36,8 +38,12 @@ export async function GET(request: NextRequest): Promise<NextResponse> {
     }
 
     const { date, duration } = parsed.data
+    // Cart categories → the pool of artists that can perform it (practitioners for
+    // nail services, the matching cabine for cils/esthetics). No cats → practitioners.
+    const cats = (searchParams.get('cats') ?? '').split(',').map((c) => c.trim()).filter(Boolean) as ServiceCategory[]
+    const pool = artistsForCategories(cats)
 
-    const cacheKey = `${date}:${duration}`
+    const cacheKey = `${date}:${duration}:${cats.slice().sort().join(',')}`
     const cached = cache.get(cacheKey)
     if (cached && cached.expires > Date.now()) {
       return NextResponse.json(cached.body)
@@ -71,8 +77,8 @@ export async function GET(request: NextRequest): Promise<NextResponse> {
 
     const available: string[] = []
     const booked: string[] = []
-    // For each available slot, the practitioners free at that time (for the
-    // optional end-of-flow picker). { "14:00": [{id,name}, …] }
+    // For each available slot, the artists in the cart's pool free at that time
+    // (powers the picker). { "14:00": [{id,name}, …] }
     const staffBySlot: Record<string, { id: string; name: string }[]> = {}
 
     for (const slot of futureSlots) {
@@ -81,11 +87,10 @@ export async function GET(request: NextRequest): Promise<NextResponse> {
       // Don't offer slots whose full service window runs past closing.
       if (slotEnd > CLOSE_MINUTES) continue
 
-      const freeStaff = freeStaffForWindow(dayFree, slotStart, slotEnd)
-      if (freeCount(freeStaff, aBusy, slotStart, slotEnd) > 0) {
+      const freePool = freeInPool(pool, dayFree, slotStart, slotEnd)
+      if (freeCount(freePool, aBusy, slotStart, slotEnd) > 0) {
         available.push(slot)
-        // Picker options = every free artist (practitioners + cabines) at this slot.
-        staffBySlot[slot] = freeArtistsForWindow(dayFree, slotStart, slotEnd).map((a) => ({ id: a.id, name: a.name }))
+        staffBySlot[slot] = freePool.map((a) => ({ id: a.id, name: a.name }))
       } else {
         booked.push(slot)
       }

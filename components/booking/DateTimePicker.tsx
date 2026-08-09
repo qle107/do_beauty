@@ -6,7 +6,8 @@ import { fr } from 'date-fns/locale'
 import { format, isBefore, startOfDay } from 'date-fns'
 import { cn, formatDuration } from '@/lib/utils'
 import Button from '@/components/ui/Button'
-import { ARTISTS } from '@/lib/staff'
+import { artistsForCategories } from '@/lib/staff'
+import type { ServiceCategory } from '@/lib/types'
 import type { SelectedService } from './BookingForm'
 
 interface AvailabilityResponse {
@@ -40,6 +41,11 @@ export default function DateTimePicker({
   const totalDuration = services.reduce((sum, s) => sum + s.duration, 0)
   const totalPrice    = services.reduce((sum, s) => sum + s.price, 0)
 
+  // Which artists can perform this cart (practitioners for nail services, the
+  // matching cabine for cils/esthetics) — drives the picker + the availability query.
+  const cartCats = [...new Set(services.map((s) => s.category))] as ServiceCategory[]
+  const poolArtists = artistsForCategories(cartCats)
+
   const selectedDayObj = selectedDate ? new Date(selectedDate + 'T00:00:00') : undefined
 
   useEffect(() => {
@@ -51,7 +57,7 @@ export default function DateTimePicker({
     setAvailability(null)
     setSlotsError(null)
 
-    void fetch(`/api/availability?date=${selectedDate}&duration=${totalDuration}`)
+    void fetch(`/api/availability?date=${selectedDate}&duration=${totalDuration}&cats=${cartCats.join(',')}`)
       .then(async (r) => {
         const data = await r.json() as AvailabilityResponse
         if (!r.ok || data.error) {
@@ -123,7 +129,7 @@ export default function DateTimePicker({
           Optionnel — « Sans préférence » vous attribue une praticienne disponible.
         </p>
         <div className="flex flex-wrap gap-2">
-          {[{ id: '', name: 'Sans préférence' }, ...ARTISTS.map((a) => ({ id: a.id, name: a.name }))].map((a) => {
+          {[{ id: '', name: 'Sans préférence' }, ...poolArtists.map((a) => ({ id: a.id, name: a.name }))].map((a) => {
             const active = selectedEmployeeId === a.id
             const disabled = a.id !== '' && !!availability && !artistsWithSlots.has(a.id)
             return (
