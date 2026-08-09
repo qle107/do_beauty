@@ -39,6 +39,13 @@ function spreadsheetId(): string {
   return id
 }
 
+// A1 notation REQUIRES single-quoting a sheet name that contains spaces or special
+// characters (e.g. the hyphen in "Rendez-vous"); internal quotes are doubled.
+// Unquoted, the Sheets API rejects the range with 400 "Unable to parse range".
+function a1(tab: string, cells: string): string {
+  return `'${tab.replace(/'/g, "''")}'!${cells}`
+}
+
 let _client: ReturnType<typeof google.sheets> | null = null
 function client() {
   if (_client) return _client
@@ -46,13 +53,18 @@ function client() {
     credentials: credentials(),
     scopes: ['https://www.googleapis.com/auth/spreadsheets'],
   })
-  _client = google.sheets({ version: 'v4', auth, timeout: 10_000 })
+  // 5s ceiling so a slow/hung Sheets fails fast and the store falls back to
+  // MySQL/JSON instead of stalling the request (the booking path awaits stores).
+  _client = google.sheets({ version: 'v4', auth, timeout: 5_000 })
   return _client
 }
 
 // Cache which tabs we've confirmed exist, so we don't call spreadsheets.get on
 // every read/write.
 const knownTabs = new Set<string>()
+// Tabs this process CREATED (didn't exist before). Consumed once by a store so it
+// can seed a brand-new tab from JSON WITHOUT re-seeding a tab the owner emptied.
+const freshlyCreatedTabs = new Set<string>()
 
 async function ensureTab(tab: string, headers: string[]): Promise<void> {
   if (knownTabs.has(tab)) return
@@ -68,10 +80,11 @@ async function ensureTab(tab: string, headers: string[]): Promise<void> {
     })
     await client().spreadsheets.values.update({
       spreadsheetId: spreadsheetId(),
-      range: `${tab}!A1`,
+      range: a1(tab, 'A1'),
       valueInputOption: 'RAW',
       requestBody: { values: [headers] },
     })
+    freshlyCreatedTabs.add(tab)
   }
   knownTabs.add(tab)
 }
@@ -87,6 +100,8 @@ export interface Column<T> {
   key: keyof T
   kind?: ColumnKind // default 'string'
 }
+
+type Cell = string | number | boolean
 
 /**
  * A tab-backed store for one object type. Mirrors the JSON store's whole-array
@@ -105,12 +120,23 @@ export class SheetTable<T extends object> {
     return this.columns.map((c) => c.header)
   }
 
-  private toCell(item: T, c: Column<T>): string {
+  private toCell(item: T, c: Column<T>): Cell {
     const v = item[c.key]
     if (v === undefined || v === null) return ''
     if ((c.kind ?? 'string') === 'json') return JSON.stringify(v)
-    if (c.kind === 'boolean') return v ? 'TRUE' : 'FALSE'
-    return String(v)
+    // Store numbers/booleans as NATIVE cell types under RAW so in-sheet SUM/filters
+    // work; strings stay strings (RAW never re-parses them, so leading-zero phones
+    // and ids are preserved verbatim — USER_ENTERED would mangle them).
+    if (c.kind === 'boolean') return v === true || /^(true|1|oui|vrai)$/i.test(String(v))
+    if (c.kind === 'number') {
+      const n = Number(v)
+      return Number.isFinite(n) ? n : ''
+    }
+    const s = String(v)
+    // CSV/formula-injection guard: a cell starting with = + - @ (or tab/CR) becomes
+    // a live formula/DDE payload when the owner exports the tab to CSV/XLSX. Prefix
+    // with a single quote to force it to plain text.
+    return /^[=+\-@\t\r]/.test(s) ? `'${s}` : s
   }
 
   private fromCell(raw: string | undefined, c: Column<T>): unknown {
@@ -132,6 +158,19 @@ export class SheetTable<T extends object> {
     }
   }
 
+  /**
+   * True exactly once, right after readAll() first created the tab this process —
+   * lets a store seed a brand-new tab from JSON without ever resurrecting rows the
+   * owner intentionally deleted from an existing tab. Consuming clears the flag.
+   */
+  consumeFreshlyCreated(): boolean {
+    if (freshlyCreatedTabs.has(this.tab)) {
+      freshlyCreatedTabs.delete(this.tab)
+      return true
+    }
+    return false
+  }
+
   async readAll(): Promise<T[]> {
     if (this.cacheTtlMs > 0 && this.cache && Date.now() - this.cache.at < this.cacheTtlMs) {
       return this.cache.rows.slice()
@@ -139,7 +178,7 @@ export class SheetTable<T extends object> {
     await ensureTab(this.tab, this.headers())
     const res = await client().spreadsheets.values.get({
       spreadsheetId: spreadsheetId(),
-      range: `${this.tab}!A2:ZZ`,
+      range: a1(this.tab, 'A2:ZZ'),
     })
     const rows = (res.data.values ?? [])
       .filter((r) => r[0] !== undefined && r[0] !== '') // require a key in column A
@@ -159,21 +198,26 @@ export class SheetTable<T extends object> {
 
   async writeAll(items: T[]): Promise<void> {
     await ensureTab(this.tab, this.headers())
-    const values = [this.headers(), ...items.map((it) => this.columns.map((c) => this.toCell(it, c)))]
+    const values: Cell[][] = [this.headers(), ...items.map((it) => this.columns.map((c) => this.toCell(it, c)))]
     await client().spreadsheets.values.update({
       spreadsheetId: spreadsheetId(),
-      range: `${this.tab}!A1`,
+      range: a1(this.tab, 'A1'),
       valueInputOption: 'RAW',
       requestBody: { values },
     })
-    // Clear any leftover rows below the new data (e.g. after a delete).
-    await client()
-      .spreadsheets.values.clear({
+    // Clear any leftover rows below the new data (e.g. after a delete). If this
+    // fails, the tab may keep ghost rows, so invalidate the cache rather than
+    // caching the (now-inaccurate) shorter array — the next read re-fetches truth.
+    let cleared = true
+    try {
+      await client().spreadsheets.values.clear({
         spreadsheetId: spreadsheetId(),
-        range: `${this.tab}!A${values.length + 1}:ZZ`,
+        range: a1(this.tab, `A${values.length + 1}:ZZ`),
       })
-      .catch(() => {})
-    if (this.cacheTtlMs > 0) this.cache = { at: Date.now(), rows: items.slice() }
+    } catch {
+      cleared = false
+    }
+    if (this.cacheTtlMs > 0) this.cache = cleared ? { at: Date.now(), rows: items.slice() } : null
   }
 
   /** Append a single row without rewriting the tab — for append-only logs. */
@@ -181,7 +225,7 @@ export class SheetTable<T extends object> {
     await ensureTab(this.tab, this.headers())
     await client().spreadsheets.values.append({
       spreadsheetId: spreadsheetId(),
-      range: `${this.tab}!A1`,
+      range: a1(this.tab, 'A1'),
       valueInputOption: 'RAW',
       insertDataOption: 'INSERT_ROWS',
       requestBody: { values: [this.columns.map((c) => this.toCell(item, c))] },

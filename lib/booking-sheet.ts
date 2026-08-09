@@ -1,4 +1,6 @@
 import { sheetsConfigured, SheetTable } from '@/lib/sheets'
+import { normalisePhone } from '@/lib/blocklist'
+import { anonymiseIp } from '@/lib/consent-log'
 
 /**
  * Booking → management-sheet auto-sync. On each successful booking we append a
@@ -81,16 +83,27 @@ export interface BookingSyncInput {
   deviceId?: string
 }
 
-export async function syncBookingToSheet(b: BookingSyncInput): Promise<void> {
-  if (!sheetsConfigured()) return
+// Serialise mirrors so two concurrent bookings can't interleave the Clients
+// read-modify-write and lose an update (whole-tab writeAll is not an atomic
+// upsert). Low volume at a salon, so a simple in-process promise chain suffices.
+let syncChain: Promise<void> = Promise.resolve()
+
+export function syncBookingToSheet(b: BookingSyncInput): Promise<void> {
+  if (!sheetsConfigured()) return Promise.resolve()
+  syncChain = syncChain.then(() => doSync(b), () => doSync(b))
+  return syncChain
+}
+
+async function doSync(b: BookingSyncInput): Promise<void> {
   const now = new Date().toISOString()
+  const phone = normalisePhone(b.clientPhone) // canonical identity, matches the app
 
   await rdvSheet.append({
     id: b.id,
     date: b.date,
     heure: b.timeSlot,
     client: b.clientName,
-    telephone: b.clientPhone,
+    telephone: phone,
     prestation: b.serviceNames.join(', '),
     duree: b.totalDuration,
     prix: b.totalPrice,
@@ -98,16 +111,16 @@ export async function syncBookingToSheet(b: BookingSyncInput): Promise<void> {
     source: 'Site web',
     creeLe: now,
     notes: b.notes ?? '',
-    ip: b.clientIp ?? '',
+    ip: b.clientIp ? anonymiseIp(b.clientIp) : '', // RGPD: store anonymised IP only
     device: b.deviceId ?? '',
   })
 
-  // Upsert the client by phone.
+  // Upsert the client by NORMALISED phone (so '06 12…' and '+3361…' don't split).
   const all = await clientSheet.readAll()
-  const idx = all.findIndex((c) => c.telephone === b.clientPhone)
+  const idx = all.findIndex((c) => normalisePhone(c.telephone) === phone)
   if (idx === -1) {
     all.push({
-      telephone: b.clientPhone,
+      telephone: phone,
       nom: b.clientName,
       email: '',
       nbVisites: 1,
@@ -121,6 +134,7 @@ export async function syncBookingToSheet(b: BookingSyncInput): Promise<void> {
     const c = all[idx]!
     all[idx] = {
       ...c,
+      telephone: phone,
       nom: b.clientName,
       nbVisites: (c.nbVisites || 0) + 1,
       derniereVisite: b.date,

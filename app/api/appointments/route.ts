@@ -6,7 +6,7 @@ import { freeInPool, freeCount } from '@/lib/booking/capacity'
 import { getPlanityDayFree } from '@/lib/planity/public-availability'
 import { artistById, artistsForCategories } from '@/lib/staff'
 import { createPlanityBooking } from '@/lib/planity/booking'
-import { getServiceById, getAllServicesAdmin } from '@/lib/services-store'
+import { getAllServicesAdmin } from '@/lib/services-store'
 import { sendBookingAlert } from '@/lib/mail'
 import { sendWhatsAppAlert } from '@/lib/whatsapp'
 import { syncBookingToSheet } from '@/lib/booking-sheet'
@@ -149,10 +149,14 @@ export async function POST(request: NextRequest): Promise<NextResponse> {
     // secret), so the replaced RDV is surfaced in the owner alert: a malicious
     // replace is never silent and can always be restored from the calendar.
 
-    // Verify every service exists and is active
+    // Verify every service exists and is active. Fetch the catalogue ONCE (a single
+    // backend read) and look up by id, rather than one store call per cart item —
+    // so a slow/failing store can't be retried N× on the booking's critical path.
+    const catalogue = await getAllServicesAdmin()
+    const serviceById = new Map(catalogue.map((s) => [s.id, s]))
     const services: Service[] = []
     for (const id of serviceIds) {
-      const svc = await getServiceById(id)
+      const svc = serviceById.get(id)
       if (!svc || !svc.isActive) {
         return NextResponse.json(
           { error: `Prestation introuvable : ${id}` },
@@ -314,7 +318,7 @@ export async function POST(request: NextRequest): Promise<NextResponse> {
       notes,
       clientIp,
       deviceId,
-    }).catch((err) => console.error('Failed to sync booking to sheet:', err))
+    }).catch((err) => console.error('Failed to sync booking to sheet:', (err as Error)?.message ?? 'unknown error'))
 
     return NextResponse.json(
       { id: eventId, message: 'Rendez-vous créé avec succès.' },

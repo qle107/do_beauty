@@ -66,7 +66,10 @@ async function readAllServices(): Promise<Service[]> {
   if (sheetsConfigured()) {
     try {
       let rows = await sheet.readAll()
-      if (rows.length === 0) {
+      // Seed from the committed JSON ONLY when we just created the tab — never
+      // re-seed a tab the owner intentionally emptied (that would resurrect
+      // deleted services).
+      if (rows.length === 0 && sheet.consumeFreshlyCreated()) {
         const seed = readJson<Service[]>(JSON_FILE, [])
         if (seed.length) { await sheet.writeAll(seed); rows = seed }
       }

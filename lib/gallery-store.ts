@@ -104,7 +104,9 @@ async function readAll(): Promise<GalleryImage[]> {
   if (sheetsConfigured()) {
     try {
       let rows = await sheet.readAll()
-      if (rows.length === 0) {
+      // Seed from committed JSON ONLY on a freshly-created tab — never re-seed a
+      // tab the owner intentionally emptied (that would resurrect deleted images).
+      if (rows.length === 0 && sheet.consumeFreshlyCreated()) {
         const seed = readJson<GalleryImage[]>(JSON_FILE, [])
         if (seed.length) { await sheet.writeAll(seed); rows = seed }
       }
