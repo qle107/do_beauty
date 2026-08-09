@@ -7,7 +7,7 @@
  * them below. The 3 most recent in the array are rendered.
  *
  * No external API is called - costs nothing, works offline, full editorial
- * control. The live AggregateRating (4,9 / 109) on the page comes from
+ * control. The live AggregateRating (4,6 / 99) on the page comes from
  * `site.rating` in `lib/site.ts` - update that file when the GBP totals shift.
  */
 

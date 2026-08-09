@@ -111,7 +111,7 @@ export const page: LandingPage = {
           kind: "pricing",
           rows: [
             { label: "Beauté des pieds (soin complet)", price: "à partir de 25 €" },
-            { label: "Vernis semi-permanent sur les orteils", price: "à partir de 20 €" },
+            { label: "Vernis semi-permanent sur les orteils", price: "à partir de 25 €" },
             { label: "Beauté des pieds + semi-permanent", price: "à partir de 40 €" },
             { label: "Nail art (par ongle)", price: "à partir de 5 €" },
           ],

@@ -36,7 +36,7 @@ export const metadata: Metadata = {
   metadataBase: new URL(site.url),
   title: 'Do Beauty — Institut de beauté à Gentilly',
   description:
-    'Do Beauty, institut de beauté à Gentilly. Manucure, nail art, beauté du regard et soins dans un écrin élégant au cœur du Val-de-Marne.',
+    'Institut de beauté et onglerie à Gentilly (94250) : manucure, vernis semi-permanent, pose gel, nail art et beauté du regard. Ouvert 7j/7, 4,6★ sur 99 avis Google. Réservation en ligne.',
   keywords: [
     'institut de beauté Gentilly',
     'manucure Gentilly',
@@ -51,7 +51,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'Do Beauty — Institut de beauté à Gentilly',
     description:
-      'Manucure, nail art, beauté du regard et soins, dans un écrin discret à Gentilly.',
+      'Institut de beauté et onglerie à Gentilly. Manucure, semi-permanent, gel, nail art et beauté du regard. Ouvert 7j/7, réservation en ligne.',
     url: site.url,
     siteName: site.name,
     locale: 'fr_FR',

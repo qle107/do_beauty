@@ -13,7 +13,7 @@ export const cityData: City = {
   driveMinutes: 4,
   distanceKm: 1.6,
   publicTransport:
-    "Arcueil compte elle-même deux gares sur la ligne B du RER, ce qui rend le trajet vers Gentilly particulièrement direct. Depuis la gare Laplace, au centre d'Arcueil, Gentilly est la station suivante : un seul arrêt, puis quelques minutes à pied le long de l'avenue Jean Jaurès jusqu'au 16. Depuis la gare Arcueil-Cachan, comptez deux arrêts vers le nord (Laplace, puis Gentilly). Et si vous habitez le quartier de la Vache Noire ou du Chaperon-Vert, au nord de la commune, vous êtes déjà à la frontière de Gentilly : l'institut se rejoint alors en quelques minutes à pied.",
+    "Arcueil compte elle-même deux gares sur la ligne B du RER, ce qui rend le trajet vers Gentilly particulièrement direct. Depuis la gare Laplace, au centre d'Arcueil, Gentilly est la station suivante : un seul arrêt, puis quelques minutes à pied le long de l'avenue Jean Jaurès jusqu'au 12. Depuis la gare Arcueil-Cachan, comptez deux arrêts vers le nord (Laplace, puis Gentilly). Et si vous habitez le quartier de la Vache Noire ou du Chaperon-Vert, au nord de la commune, vous êtes déjà à la frontière de Gentilly : l'institut se rejoint alors en quelques minutes à pied.",
   drivingHint:
     "En voiture, comptez environ 4 minutes depuis le nord d'Arcueil, soit à peine 1,6 km : les quartiers de la Vache Noire et du Chaperon-Vert touchent directement Gentilly, et l'avenue Jean Jaurès se rejoint sans détour. Depuis le centre-ville ou les abords de la gare Arcueil-Cachan, prévoyez quelques minutes de plus selon la circulation. Le stationnement se trouve dans les rues voisines de l'institut.",
   lead:
@@ -37,7 +37,7 @@ export const cityData: City = {
       h2: "Ongles, regard et pieds : le soin du détail",
       paragraphs: [
         "Côté mains, nos prothésistes travaillent la manucure, le vernis semi-permanent et la pose en gel, du nude discret au nail art plus graphique, en soignant la forme et la finition. Pour le regard, le rehaussement et les extensions de cils ouvrent l'œil avec naturel, cil à cil, pour un rendu que l'on porte aussi bien au quotidien que pour une occasion. La beauté des pieds complète volontiers le rendez-vous, surtout aux beaux jours.",
-        "Nous accordons la même attention à l'hygiène et à la précision du geste sur chaque prestation, avec des produits professionnels. À titre indicatif, la manucure démarre autour de 15 à 20 €, le vernis semi-permanent dès 20 €, la pose en gel dès 35 €, le rehaussement de cils dès 45 € et la beauté des pieds dès 25 €. Tarifs indicatifs, confirmés lors de la réservation. Avec une note de 4,6 sur 5 pour près de 99 avis Google, Do Beauty est devenu une adresse de confiance pour les habitantes d'Arcueil.",
+        "Nous accordons la même attention à l'hygiène et à la précision du geste sur chaque prestation, avec des produits professionnels. À titre indicatif, la manucure démarre autour de 15 à 20 €, le vernis semi-permanent dès 25 €, la pose en gel dès 35 €, le rehaussement de cils dès 45 € et la beauté des pieds dès 25 €. Tarifs indicatifs, confirmés lors de la réservation. Avec une note de 4,6 sur 5 pour près de 99 avis Google, Do Beauty est devenu une adresse de confiance pour les habitantes d'Arcueil.",
       ],
     },
   ],

@@ -22,7 +22,7 @@ export const page: LandingPage = {
     serviceType: "Pose de vernis semi-permanent",
     description:
       "Pose de vernis semi-permanent à Gentilly : couleur longue tenue d'environ trois semaines sur ongle naturel, séchage LED et dépose en douceur, dans un institut ouvert 7 jours sur 7.",
-    fromPrice: 20,
+    fromPrice: 25,
   },
   sections: [
     {
@@ -120,7 +120,7 @@ export const page: LandingPage = {
         {
           kind: "pricing",
           rows: [
-            { label: "Vernis semi-permanent (mains)", price: "à partir de 20 €" },
+            { label: "Vernis semi-permanent (mains)", price: "à partir de 25 €" },
             { label: "Semi-permanent avec french", price: "à partir de 25 €" },
             { label: "Dépose seule", price: "à partir de 10 €" },
             { label: "Nail art (par ongle)", price: "à partir de 5 €" },

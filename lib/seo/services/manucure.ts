@@ -106,7 +106,7 @@ export const page: LandingPage = {
           kind: "pricing",
           rows: [
             { label: "Manucure (mise en beauté des mains)", price: "à partir de 15 €" },
-            { label: "Manucure + vernis semi-permanent", price: "à partir de 20 €" },
+            { label: "Manucure + vernis semi-permanent", price: "à partir de 33 €" },
             { label: "French / baby-boomer", price: "à partir de 25 €" },
             { label: "Nail art (par ongle)", price: "à partir de 5 €" },
             { label: "Beauté des pieds", price: "à partir de 25 €" },

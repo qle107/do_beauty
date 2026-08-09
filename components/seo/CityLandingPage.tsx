@@ -7,7 +7,7 @@ import TelLink from '@/components/analytics/TelLink'
 
 const SERVICES = [
   { label: 'Manucure', href: '/manucure-gentilly', from: '15 €' },
-  { label: 'Vernis semi-permanent', href: '/semi-permanent-gentilly', from: '20 €' },
+  { label: 'Vernis semi-permanent', href: '/semi-permanent-gentilly', from: '25 €' },
   { label: 'Ongles en gel', href: '/ongles-gel-gentilly', from: '35 €' },
   { label: 'Nail art', href: '/nail-art-gentilly', from: '5 €' },
   { label: 'Beauté du regard', href: '/beaute-du-regard-gentilly', from: '45 €' },

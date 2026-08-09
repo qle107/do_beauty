@@ -113,7 +113,7 @@ export const page: LandingPage = {
             { label: "Nail art simple (par ongle)", price: "à partir de 5 €" },
             { label: "Effet chrome ou cat eye (par ongle)", price: "à partir de 5 €" },
             { label: "Pose de strass (par ongle)", price: "à partir de 5 €" },
-            { label: "Vernis semi-permanent (base)", price: "à partir de 20 €" },
+            { label: "Vernis semi-permanent (base)", price: "à partir de 25 €" },
             { label: "Pose d'ongles en gel (base)", price: "à partir de 35 €" },
           ],
         },
@@ -154,7 +154,7 @@ export const page: LandingPage = {
     {
       question: "Combien coûte un nail art à Gentilly ?",
       answer:
-        "Le nail art se facture le plus souvent à l'ongle, à partir d'environ 5 € par ongle, en supplément de la base (semi-permanent dès 20 €, pose gel dès 35 €). Le prix final dépend de la complexité du motif et du nombre d'ongles décorés. Ces tarifs sont indicatifs et confirmés lors de la réservation.",
+        "Le nail art se facture le plus souvent à l'ongle, à partir d'environ 5 € par ongle, en supplément de la base (semi-permanent dès 25 €, pose gel dès 35 €). Le prix final dépend de la complexité du motif et du nombre d'ongles décorés. Ces tarifs sont indicatifs et confirmés lors de la réservation.",
     },
     {
       question: "Où se situe l'institut et comment y accéder ?",
