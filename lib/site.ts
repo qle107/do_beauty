@@ -85,12 +85,12 @@ export const site = {
     planity: 'https://www.planity.com/do-beauty-nails-94250-gentilly',
     facebook: '',
     googleBusiness:
-      'https://www.google.com/maps/search/?api=1&query=Do%20Beauty%2016%20Avenue%20Jean%20Jaur%C3%A8s%2094250%20Gentilly',
+      'https://www.google.com/maps/search/?api=1&query=Do%20Beauty%2012%20Avenue%20Jean%20Jaur%C3%A8s%2094250%20Gentilly',
   },
   directionsUrl:
-    'https://www.google.com/maps/dir/?api=1&destination=16%20Avenue%20Jean%20Jaur%C3%A8s%2C%2094250%20Gentilly',
+    'https://www.google.com/maps/dir/?api=1&destination=12%20Avenue%20Jean%20Jaur%C3%A8s%2C%2094250%20Gentilly',
   reviewUrl:
-    'https://www.google.com/maps/search/?api=1&query=Do%20Beauty%2016%20Avenue%20Jean%20Jaur%C3%A8s%2094250%20Gentilly',
+    'https://www.google.com/maps/search/?api=1&query=Do%20Beauty%2012%20Avenue%20Jean%20Jaur%C3%A8s%2094250%20Gentilly',
   mapsEmbed:
-    'https://www.google.com/maps?q=16%20Avenue%20Jean%20Jaur%C3%A8s%2C%2094250%20Gentilly&output=embed',
+    'https://www.google.com/maps?q=12%20Avenue%20Jean%20Jaur%C3%A8s%2C%2094250%20Gentilly&output=embed',
 } as const

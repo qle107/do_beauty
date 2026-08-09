@@ -168,12 +168,12 @@ export default function PrivacyPage() {
             </thead>
             <tbody className="align-top">
               <tr className="border-b border-dark/5">
-                <td className="py-2 pr-4">vynails_consent</td>
+                <td className="py-2 pr-4">dobeauty_consent</td>
                 <td className="py-2 pr-4">Mémoriser votre choix sur les cookies (nécessaire)</td>
                 <td className="py-2">6 mois</td>
               </tr>
               <tr className="border-b border-dark/5">
-                <td className="py-2 pr-4">vynails_device_id</td>
+                <td className="py-2 pr-4">dobeauty_device_id</td>
                 <td className="py-2 pr-4">Prévenir les abus de réservation (nécessaire)</td>
                 <td className="py-2">Jusqu&apos;à effacement</td>
               </tr>

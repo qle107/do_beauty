@@ -14,9 +14,9 @@ type Point = { text: string; href?: string }
 
 const POINTS: Point[] = [
   { text: 'Produits professionnels Diamond & OPI' },
-  { text: 'Vy, votre prothésiste ongulaire dédiée', href: linkFor('Prothésiste ongulaire') },
+  { text: 'Prothésistes ongulaires expérimentées', href: linkFor('Prothésiste ongulaire') },
   { text: 'Formules douces, ongles sans HEMA sur demande', href: linkFor('Ongles sans HEMA') },
-  { text: 'À 5 minutes du RER A Noisy-Champs' },
+  { text: 'À proximité du RER B (Gentilly)' },
   { text: 'Ouvert 7j/7, dimanche compris, de 10h à 20h', href: linkFor('Ouvert le dimanche') },
 ]
 
@@ -58,7 +58,7 @@ export default function PourquoiNousChoisirSection() {
           loading="lazy"
           className="object-cover object-center"
         />
-        <span className="absolute bottom-6 right-7 z-20 font-script text-cream/85 text-4xl drop-shadow-lg">Vy</span>
+        <span className="absolute bottom-6 right-7 z-20 font-script text-cream/85 text-4xl drop-shadow-lg">Do Beauty</span>
       </div>
 
       {/* Texte */}

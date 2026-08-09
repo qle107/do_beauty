@@ -135,35 +135,6 @@ export function serviceSchema(s: ServiceSchemaInput) {
   }
 }
 
-type ArticleSchemaInput = {
-  headline: string
-  description: string
-  slug: string
-  datePublished: string
-  dateModified: string
-}
-
-export function articleSchema(a: ArticleSchemaInput) {
-  const url = `${site.url}/conseils/${a.slug}`
-  return {
-    '@context': 'https://schema.org',
-    '@type': 'BlogPosting',
-    headline: a.headline,
-    description: a.description,
-    datePublished: a.datePublished,
-    dateModified: a.dateModified,
-    mainEntityOfPage: { '@type': 'WebPage', '@id': url },
-    url,
-    author: { '@type': 'Organization', '@id': BUSINESS_ID, name: site.name },
-    publisher: {
-      '@type': 'Organization',
-      name: site.name,
-      logo: { '@type': 'ImageObject', url: `${site.url}/icon.svg` },
-    },
-    image: [`${site.url}/images/dob/g1.jpg`],
-  }
-}
-
 /**
  * Serialize JSON-LD for embedding in a <script> tag.
  * Escapes `<` and `&` so any field can't break out of the tag → XSS.

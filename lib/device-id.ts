@@ -7,7 +7,7 @@
 // clears site data or uses a different browser/device. That's acceptable — it
 // only needs to raise the cost of evading the phone blocklist, not be perfect.
 
-const STORAGE_KEY = 'vynails_device_id'
+const STORAGE_KEY = 'dobeauty_device_id'
 
 /**
  * Return this browser's persistent device id, creating one on first call.

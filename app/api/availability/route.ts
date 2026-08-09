@@ -3,7 +3,7 @@ import { availabilityQuerySchema } from '@/lib/validations'
 import { getDayABusy } from '@/lib/google-calendar'
 import { freeInPool, freeCount } from '@/lib/booking/capacity'
 import { getPlanityDayFree } from '@/lib/planity/public-availability'
-import { artistsForCategories } from '@/lib/staff'
+import { artistsForCategories, poolKey } from '@/lib/staff'
 import type { ServiceCategory } from '@/lib/types'
 import { generateTimeSlots, timeToMinutes } from '@/lib/utils'
 import { isRateLimited, getClientIp } from '@/lib/rate-limit'
@@ -49,6 +49,7 @@ export async function GET(request: NextRequest): Promise<NextResponse> {
     // nail services, the matching cabine for cils/esthetics). No cats → practitioners.
     const cats = (searchParams.get('cats') ?? '').split(',').map((c) => c.trim()).filter((c) => VALID_CATS.has(c)) as ServiceCategory[]
     const pool = artistsForCategories(cats)
+    const pk = poolKey(cats)
 
     const cacheKey = `${date}:${duration}:${cats.slice().sort().join(',')}`
     const cached = cache.get(cacheKey)
@@ -95,7 +96,7 @@ export async function GET(request: NextRequest): Promise<NextResponse> {
       if (slotEnd > CLOSE_MINUTES) continue
 
       const freePool = freeInPool(pool, dayFree, slotStart, slotEnd)
-      if (freeCount(freePool, aBusy, slotStart, slotEnd) > 0) {
+      if (freeCount(freePool, aBusy, slotStart, slotEnd, pk) > 0) {
         available.push(slot)
         staffBySlot[slot] = freePool.map((a) => ({ id: a.id, name: a.name }))
       } else {

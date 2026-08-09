@@ -60,6 +60,7 @@ export interface CalendarEventData {
   deviceId?: string                 // persistent browser id, for no-show tracking
   fingerprint?: string              // browser fingerprint, fallback no-show identifier
   employeeName?: string             // optional preferred staff (client's choice, a hint)
+  pool?: string                     // resource-pool key (poolKey) — for same-pool capacity math
 }
 
 // ─── Helpers ──────────────────────────────────────────────────────────────
@@ -294,6 +295,7 @@ export async function createCalendarEvent(data: CalendarEventData): Promise<stri
           deviceId:       data.deviceId ?? '',
           fingerprint:    data.fingerprint ?? '',
           employee:       data.employeeName ?? '',
+          pool:           data.pool ?? '',
         },
       },
     },
@@ -303,7 +305,7 @@ export async function createCalendarEvent(data: CalendarEventData): Promise<stri
 }
 
 /**
- * List all VyNails93 booking events, optionally filtered by date range.
+ * List all Do Beauty booking events, optionally filtered by date range.
  */
 export async function listCalendarEvents(params: {
   timeMin?: string
@@ -378,6 +380,7 @@ type CalEvent = {
   end?: { dateTime?: string | null } | null
   status?: string | null
   transparency?: string | null
+  extendedProperties?: { private?: Record<string, string> | null } | null
 }
 
 /**
@@ -388,7 +391,7 @@ type CalEvent = {
  * individual events (not merged freebusy) so simultaneous bookings are counted.
  * Fails soft to [] on missing creds or any error.
  */
-export async function getDayABusy(date: string): Promise<{ start: number; end: number }[]> {
+export async function getDayABusy(date: string): Promise<{ start: number; end: number; pool: string }[]> {
   if (!process.env.GOOGLE_SERVICE_ACCOUNT_KEY || !process.env.GOOGLE_CALENDAR_ID) return []
   try {
     const calendar = getCalendarClient()
@@ -409,7 +412,11 @@ export async function getDayABusy(date: string): Promise<{ start: number; end: n
     return (res.data.items ?? [])
       .filter((e: CalEvent) =>
         !!e.start?.dateTime && !!e.end?.dateTime && e.status !== 'cancelled' && e.transparency !== 'transparent')
-      .map((e: CalEvent) => ({ start: toMin(e.start?.dateTime), end: toMin(e.end?.dateTime) }))
+      .map((e: CalEvent) => ({
+        start: toMin(e.start?.dateTime),
+        end: toMin(e.end?.dateTime),
+        pool: e.extendedProperties?.private?.pool ?? '',
+      }))
   } catch (err) {
     console.error('[google-calendar] getDayABusy failed - returning []:', err)
     return []
