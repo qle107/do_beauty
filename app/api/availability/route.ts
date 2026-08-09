@@ -13,7 +13,14 @@ import { site } from '@/lib/site'
 // hit Google Calendar every time (and to blunt scripted quota-exhaustion). Keyed
 // by date+duration; 30s TTL. Per-process (fine at this scale).
 const CACHE_TTL_MS = 30_000
+const MAX_CACHE_ENTRIES = 500
 const cache = new Map<string, { body: unknown; expires: number }>()
+
+// Only these real service categories may enter the cache key / artist pool, so a
+// crafted ?cats= value can't mint unbounded distinct cache entries (memory DoS).
+const VALID_CATS = new Set<string>([
+  'FORFAIT', 'MAINS', 'PIEDS', 'CAPSULE', 'NAIL_ART', 'CILS', 'VISAGE', 'CORPS', 'EPILATION',
+])
 
 // GET /api/availability?date=YYYY-MM-DD&duration=<totalMinutes>
 // Horaires : 10h00 – 19h30, ouvert 7j/7 (source : site.hours)
@@ -40,7 +47,7 @@ export async function GET(request: NextRequest): Promise<NextResponse> {
     const { date, duration } = parsed.data
     // Cart categories → the pool of artists that can perform it (practitioners for
     // nail services, the matching cabine for cils/esthetics). No cats → practitioners.
-    const cats = (searchParams.get('cats') ?? '').split(',').map((c) => c.trim()).filter(Boolean) as ServiceCategory[]
+    const cats = (searchParams.get('cats') ?? '').split(',').map((c) => c.trim()).filter((c) => VALID_CATS.has(c)) as ServiceCategory[]
     const pool = artistsForCategories(cats)
 
     const cacheKey = `${date}:${duration}:${cats.slice().sort().join(',')}`
@@ -97,6 +104,13 @@ export async function GET(request: NextRequest): Promise<NextResponse> {
     }
 
     const body = { date, totalDuration: duration, available, booked, staffBySlot }
+    // Bound the cache: sweep expired entries once it grows, then hard-cap the total
+    // so no query pattern can grow it without limit.
+    if (cache.size >= MAX_CACHE_ENTRIES) {
+      const now = Date.now()
+      for (const [k, v] of cache) if (v.expires <= now) cache.delete(k)
+      if (cache.size >= MAX_CACHE_ENTRIES) cache.clear()
+    }
     cache.set(cacheKey, { body, expires: Date.now() + CACHE_TTL_MS })
     return NextResponse.json(body)
   } catch (error) {

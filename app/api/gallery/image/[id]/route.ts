@@ -1,4 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server'
+import { requireAdmin } from '@/lib/auth'
 import { getImageById } from '@/lib/gallery-store'
 import { getGalleryStorage } from '@/lib/gallery-storage'
 
@@ -16,6 +17,8 @@ export async function GET(_request: NextRequest, { params }: RouteContext): Prom
     const { id } = await params
     const img = await getImageById(id)
     if (!img) return new NextResponse(null, { status: 404 })
+    // Unpublished/draft images are visible only to the authenticated admin.
+    if (!img.published && !(await requireAdmin())) return new NextResponse(null, { status: 404 })
 
     const bytes = await getGalleryStorage().read(img)
     if (!bytes) return new NextResponse(null, { status: 404 })

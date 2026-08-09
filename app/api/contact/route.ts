@@ -10,6 +10,23 @@ import { verifyTurnstile } from '@/lib/turnstile'
 // subject, message, client IP) for the admin inbox
 export async function POST(request: NextRequest): Promise<NextResponse> {
   try {
+    const clientIp = getClientIp(request)
+
+    // Reject oversized bodies before request.json() allocates them — contact
+    // payloads are tiny (name / email / subject / message).
+    if (Number(request.headers.get('content-length') ?? 0) > 32 * 1024) {
+      return NextResponse.json({ error: 'Payload too large.' }, { status: 413 })
+    }
+
+    // ── Anti-abuse check 0: IP rate limit (max 5 messages / IP / hour) ────
+    // Runs before request.json() so a sprayer is throttled without buffering the body.
+    if (isRateLimited(`contact:${clientIp}`, 5, 60 * 60 * 1000)) {
+      return NextResponse.json(
+        { error: 'Trop de messages. Veuillez réessayer plus tard.' },
+        { status: 429 }
+      )
+    }
+
     const body: unknown = await request.json()
     const parsed = contactSchema.safeParse(body)
 
@@ -21,15 +38,6 @@ export async function POST(request: NextRequest): Promise<NextResponse> {
     }
 
     const { name, email, subject, message, turnstileToken } = parsed.data
-    const clientIp = getClientIp(request)
-
-    // ── Anti-abuse check 0: IP rate limit (max 5 messages / IP / hour) ────
-    if (isRateLimited(`contact:${clientIp}`, 5, 60 * 60 * 1000)) {
-      return NextResponse.json(
-        { error: 'Trop de messages. Veuillez réessayer plus tard.' },
-        { status: 429 }
-      )
-    }
 
     // ── Anti-abuse check 0b: Cloudflare Turnstile token ───────────────────
     const turnstileOk = await verifyTurnstile(turnstileToken ?? '', clientIp)

@@ -34,6 +34,29 @@ const nextConfig = {
           { key: 'Referrer-Policy', value: 'strict-origin-when-cross-origin' },
           { key: 'X-Frame-Options', value: 'SAMEORIGIN' },
           { key: 'Strict-Transport-Security', value: 'max-age=63072000; includeSubDomains; preload' },
+          // Content-Security-Policy: a backstop that contains the blast radius of any
+          // future markup-injection. 'unsafe-inline' on script-src is required by
+          // Next.js's inline bootstrap + the inline JSON-LD; external scripts are
+          // limited to Cloudflare Turnstile + Google Tag Manager / Analytics.
+          // NOTE: after deploy, verify booking (Turnstile) + analytics still fire; if
+          // a tag is blocked, add its host here (or ship as -Report-Only first).
+          {
+            key: 'Content-Security-Policy',
+            value: [
+              "default-src 'self'",
+              "script-src 'self' 'unsafe-inline' https://challenges.cloudflare.com https://www.googletagmanager.com https://www.google-analytics.com",
+              "style-src 'self' 'unsafe-inline'",
+              "img-src 'self' data: https:",
+              "font-src 'self' data:",
+              "connect-src 'self' https://challenges.cloudflare.com https://www.googletagmanager.com https://www.google-analytics.com https://region1.google-analytics.com",
+              "frame-src https://challenges.cloudflare.com",
+              "frame-ancestors 'self'",
+              "base-uri 'self'",
+              "form-action 'self'",
+              "object-src 'none'",
+            ].join('; '),
+          },
+          { key: 'Permissions-Policy', value: 'camera=(), microphone=(), geolocation=(), interest-cohort=()' },
         ],
       },
     ]

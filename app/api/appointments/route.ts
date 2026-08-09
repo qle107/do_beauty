@@ -75,6 +75,25 @@ export async function GET(request: NextRequest): Promise<NextResponse> {
 
 export async function POST(request: NextRequest): Promise<NextResponse> {
   try {
+    // ── Cheap guards BEFORE buffering/parsing the body (headers only) ─────
+    const clientIp = getClientIp(request)
+
+    // Reject oversized payloads before request.json() allocates them. The booking
+    // form legitimately sends up to ~22 MB (3 base64 reference photos); cap above.
+    if (Number(request.headers.get('content-length') ?? 0) > 25 * 1024 * 1024) {
+      return NextResponse.json({ error: 'Payload too large.' }, { status: 413 })
+    }
+
+    // ── Anti-spam check 0: IP rate limit (max 3 bookings / IP / 24 h) ────
+    // Runs before request.json() so a sprayer is throttled without the body ever
+    // being buffered into memory.
+    if (isRateLimited(`booking:${clientIp}`)) {
+      return NextResponse.json(
+        { error: 'Trop de tentatives depuis votre adresse. Veuillez réessayer dans 24 heures ou nous contacter directement.' },
+        { status: 429 }
+      )
+    }
+
     const body: unknown = await request.json()
     const parsed = appointmentSchema.safeParse(body)
 
@@ -86,15 +105,6 @@ export async function POST(request: NextRequest): Promise<NextResponse> {
     }
 
     const { clientName, clientPhone, serviceIds, date, timeSlot, notes, deviceId, fingerprint, turnstileToken, confirmReplace, images, preferredEmployeeId } = parsed.data
-    const clientIp = getClientIp(request)
-
-    // ── Anti-spam check 0: IP rate limit (max 3 bookings / IP / 24 h) ────
-    if (isRateLimited(`booking:${clientIp}`)) {
-      return NextResponse.json(
-        { error: 'Trop de tentatives depuis votre adresse. Veuillez réessayer dans 24 heures ou nous contacter directement.' },
-        { status: 429 }
-      )
-    }
 
     // ── Anti-spam check 0b: Cloudflare Turnstile token ────────────────────
     const turnstileOk = await verifyTurnstile(turnstileToken ?? '', clientIp)
@@ -127,24 +137,16 @@ export async function POST(request: NextRequest): Promise<NextResponse> {
 
     // ── Anti-spam check 2: already has an active upcoming appointment ─────
     const existing = await findActiveAppointmentForPhone(clientPhone)
-    if (existing) {
-      if (confirmReplace) {
-        // A returning customer using the same phone number may replace their
-        // existing booking with the new one (business decision: keep this easy
-        // for real clients, even from a different device). Authorisation is on
-        // phone alone - see the security note in the review; the owner receives a
-        // booking alert either way, so a replaced RDV is always visible.
-        await deleteCalendarEvent(existing.id)
-        void deleteImages(existing.id)   // drop the replaced booking's photos too
-      } else {
-        // Signal the conflict without leaking the existing appointment's id or details
-        // to an unauthenticated caller who only knows the phone number.
-        return NextResponse.json(
-          { error: 'existing_appointment' },
-          { status: 409 }
-        )
-      }
+    if (existing && !confirmReplace) {
+      // Signal the conflict without leaking the existing appointment's id or details
+      // to an unauthenticated caller who only knows the phone number.
+      return NextResponse.json({ error: 'existing_appointment' }, { status: 409 })
     }
+    // When confirmReplace is set, DEFER deleting `existing` until the new event is
+    // safely created (below) — so a failed create can never leave the customer with
+    // no booking at all. Authorisation here is phone-only (a phone number is not a
+    // secret), so the replaced RDV is surfaced in the owner alert: a malicious
+    // replace is never silent and can always be restored from the calendar.
 
     // Verify every service exists and is active
     const services: Service[] = []
@@ -229,6 +231,15 @@ export async function POST(request: NextRequest): Promise<NextResponse> {
       )
     }
 
+    // New event is safely in the calendar — only NOW remove the replaced booking
+    // (deferred from the confirmReplace check above so a failed create can never
+    // destroy the customer's existing RDV and leave them with nothing).
+    if (existing && confirmReplace) {
+      await deleteCalendarEvent(existing.id).catch((e) =>
+        console.error('[POST /api/appointments] failed to delete replaced event:', e))
+      void deleteImages(existing.id)
+    }
+
     // Link this device to the phone it booked with, so no-shows can be tracked
     // per-device (see PATCH .../[id]). Returns the record (with any prior
     // no-shows), or null when neither deviceId nor fingerprint is available.
@@ -274,7 +285,9 @@ export async function POST(request: NextRequest): Promise<NextResponse> {
       totalDuration,
       date: formatDate(date),
       timeSlot,
-      notes,
+      notes: existing && confirmReplace
+        ? `⚠️ Remplace le RDV existant du ${formatDate(existing.date.slice(0, 10))} à ${existing.timeSlot} (même numéro de téléphone).${notes ? '\n' + notes : ''}`
+        : notes,
       employee: employee?.name ?? '',
       clientIp,
       deviceId: deviceId ?? '',

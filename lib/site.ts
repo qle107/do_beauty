@@ -11,11 +11,11 @@
 
 export const site = {
   name: 'DO BEAUTY',
-  legalName: 'Do Beauty',
+  legalName: 'DODO & BEAUTE',
   tagline: 'Institut de beauté · Gentilly',
   description:
     'Institut de beauté à Gentilly — manucure, nail art, beauté du regard et soins, dans un écrin discret.',
-  url: process.env.NEXT_PUBLIC_SITE_URL ?? 'https://dobeauty.fr', // ⚠️ placeholder domain
+  url: process.env.NEXT_PUBLIC_SITE_URL ?? 'https://dobeauty.fr',
   address: {
     street: '12 Avenue Jean Jaurès',
     city: '94250 Gentilly',
@@ -45,19 +45,18 @@ export const site = {
     display: '07 56 94 88 88', // from the Do Beauty & Nails Planity listing
     tel: '+33756948888',
   },
-  email: 'contact@dobeauty.fr', // ⚠️ placeholder — confirm the real address
+  email: 'dobeauty94@gmail.com',
   legal: {
-    // ⚠️ ALL placeholders — obtain the real legal identity before publishing
-    // mentions légales (LCEN). Do not go live with these values.
-    editorName: 'Do Beauty',
-    entrepreneur: 'À compléter',
-    legalForm: 'À compléter',
-    siren: 'À compléter',
-    siret: 'À compléter',
-    ape: 'À compléter',
-    registration: 'À compléter',
-    vat: 'À compléter',
-    publicationDirector: 'À compléter',
+    // Legal identity (INSEE/RNE, updated 07/08/2026). SAS « DODO & BEAUTE ».
+    editorName: 'DODO & BEAUTE',
+    entrepreneur: 'Huu NGUYEN',
+    legalForm: 'Société par actions simplifiée (SAS)',
+    siren: '948 622 360',
+    siret: '948 622 360 00048',
+    ape: '9602B — Soins de beauté',
+    registration: 'RCS Créteil 948 622 360',
+    vat: 'FR00948622360',
+    publicationDirector: 'Huu NGUYEN',
     host: {
       name: 'Hostinger International Ltd',
       address: '61 Lordou Vironos Street, 6023 Larnaca, Chypre',

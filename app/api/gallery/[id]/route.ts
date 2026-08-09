@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server'
-import { auth } from '@/lib/auth'
+import { auth, requireAdmin } from '@/lib/auth'
 import { galleryUpdateSchema } from '@/lib/validations'
 import { getImageById, updateImage, deleteImage } from '@/lib/gallery-store'
 import { getGalleryStorage } from '@/lib/gallery-storage'
@@ -13,6 +13,10 @@ export async function GET(_request: NextRequest, { params }: RouteContext): Prom
     const { id } = await params
     const img = await getImageById(id)
     if (!img) return NextResponse.json({ error: 'Image not found' }, { status: 404 })
+    // Unpublished/draft images are visible only to the authenticated admin.
+    if (!img.published && !(await requireAdmin())) {
+      return NextResponse.json({ error: 'Image not found' }, { status: 404 })
+    }
     return NextResponse.json({ ...img, url: getGalleryStorage().publicUrl(img) })
   } catch (error) {
     console.error('[GET /api/gallery/[id]]', error)
