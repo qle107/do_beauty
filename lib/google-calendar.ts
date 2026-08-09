@@ -172,6 +172,7 @@ function eventToAppointment(
     timeSlot,
     status: (p['status'] as AppointmentStatus) ?? 'PENDING',
     notes: p['notes'] || undefined,
+    employeeName: p['employee'] || undefined,
     createdAt: event.created ?? startIso,
     updatedAt: event.updated ?? startIso,
   }

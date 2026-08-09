@@ -99,6 +99,7 @@ export interface Appointment {
   timeSlot: string        // "HH:MM"
   status: AppointmentStatus
   notes?: string
+  employeeName?: string   // chosen praticienne (from event extendedProperties.private.employee)
   createdAt: string       // ISO string (event creation time)
   updatedAt: string       // ISO string (event updated time)
 }
