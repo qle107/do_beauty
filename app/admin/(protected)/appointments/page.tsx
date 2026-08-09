@@ -27,12 +27,12 @@ interface Appointment {
 }
 
 const STATUS_FILTERS = [
-  { label: 'Tout', value: '' },
-  { label: 'En attente', value: 'PENDING' },
-  { label: 'Confirmé', value: 'CONFIRMED' },
-  { label: 'Terminé', value: 'COMPLETED' },
-  { label: 'Annulé', value: 'CANCELLED' },
-  { label: 'Absent', value: 'NO_SHOW' },
+  { label: 'Tất cả', value: '' },
+  { label: 'Chờ xác nhận', value: 'PENDING' },
+  { label: 'Đã xác nhận', value: 'CONFIRMED' },
+  { label: 'Đã hoàn thành', value: 'COMPLETED' },
+  { label: 'Đã hủy', value: 'CANCELLED' },
+  { label: 'Vắng mặt', value: 'NO_SHOW' },
 ]
 
 export default function AppointmentsPage() {
@@ -47,7 +47,7 @@ export default function AppointmentsPage() {
       const data = await res.json() as Appointment[]
       setAllAppointments(data)
     } catch {
-      toast.error('Impossible de charger les rendez-vous. Réessayez ou rechargez la page.')
+      toast.error('Không thể tải lịch hẹn. Vui lòng thử lại hoặc tải lại trang.')
     } finally {
       setLoading(false)
     }
@@ -70,8 +70,8 @@ export default function AppointmentsPage() {
   return (
     <div>
       <div className="mb-10">
-        <h1 className="font-serif text-4xl font-light text-dark">Rendez-vous</h1>
-        <p className="font-sans text-sm text-dark/40 mt-1">Gérez toutes les réservations clients.</p>
+        <h1 className="font-serif text-4xl font-light text-dark">Lịch hẹn</h1>
+        <p className="font-sans text-sm text-dark/40 mt-1">Quản lý tất cả lịch đặt của khách hàng.</p>
       </div>
 
       <div className="flex gap-2 mb-8 flex-wrap">

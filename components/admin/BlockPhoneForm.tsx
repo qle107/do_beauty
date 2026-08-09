@@ -8,8 +8,8 @@ import Button from '@/components/ui/Button'
 import toast from 'react-hot-toast'
 
 const blockPhoneSchema = z.object({
-  clientName: z.string().min(2, 'Le nom doit comporter au moins 2 caractères'),
-  phone: z.string().min(1, 'Le numéro de téléphone est requis'),
+  clientName: z.string().min(2, 'Tên phải có ít nhất 2 ký tự'),
+  phone: z.string().min(1, 'Cần nhập số điện thoại'),
   reason: z.string().optional(),
 })
 
@@ -38,24 +38,24 @@ export default function BlockPhoneForm({ onSuccess, onCancel }: BlockPhoneFormPr
         body: JSON.stringify(data),
       })
       if (!res.ok) throw new Error()
-      toast.success('Numéro bloqué')
+      toast.success('Đã chặn số')
       onSuccess()
     } catch {
-      toast.error('Impossible de bloquer ce numéro')
+      toast.error('Không thể chặn số này')
     }
   }
 
   return (
     <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col gap-6">
-      <Input label="Nom du client" id="clientName" placeholder="Nom" error={errors.clientName?.message} {...register('clientName')} />
+      <Input label="Tên khách hàng" id="clientName" placeholder="Tên" error={errors.clientName?.message} {...register('clientName')} />
 
-      <Input label="Téléphone" id="phone" placeholder="06 12 34 56 78" error={errors.phone?.message} {...register('phone')} />
+      <Input label="Số điện thoại" id="phone" placeholder="06 12 34 56 78" error={errors.phone?.message} {...register('phone')} />
 
-      <Input label="Motif (optionnel)" id="reason" placeholder="Ex : comportement abusif" error={errors.reason?.message} {...register('reason')} />
+      <Input label="Lý do (không bắt buộc)" id="reason" placeholder="Ví dụ: hành vi thô lỗ" error={errors.reason?.message} {...register('reason')} />
 
       <div className="flex gap-3 pt-2">
-        <Button variant="outline" type="button" onClick={onCancel}>Annuler</Button>
-        <Button type="submit" isLoading={isSubmitting}>Bloquer le numéro</Button>
+        <Button variant="outline" type="button" onClick={onCancel}>Hủy</Button>
+        <Button type="submit" isLoading={isSubmitting}>Chặn số</Button>
       </div>
     </form>
   )

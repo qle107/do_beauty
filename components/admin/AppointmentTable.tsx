@@ -28,8 +28,8 @@ interface AppointmentTableProps {
 }
 
 const STATUS_ACTIONS: Record<AppointmentStatus, { label: string; next: AppointmentStatus }[]> = {
-  PENDING:   [{ label: 'Confirmer', next: 'CONFIRMED' }, { label: 'Annuler', next: 'CANCELLED' }, { label: 'Absent', next: 'NO_SHOW' }],
-  CONFIRMED: [{ label: 'Terminer',  next: 'COMPLETED' }, { label: 'Annuler', next: 'CANCELLED' }, { label: 'Absent', next: 'NO_SHOW' }],
+  PENDING:   [{ label: 'Xác nhận', next: 'CONFIRMED' }, { label: 'Hủy', next: 'CANCELLED' }, { label: 'Vắng mặt', next: 'NO_SHOW' }],
+  CONFIRMED: [{ label: 'Hoàn thành',  next: 'COMPLETED' }, { label: 'Hủy', next: 'CANCELLED' }, { label: 'Vắng mặt', next: 'NO_SHOW' }],
   CANCELLED: [],
   COMPLETED: [],
   NO_SHOW:   [],
@@ -44,7 +44,7 @@ export default function AppointmentTable({
   const updateStatus = async (id: string, status: AppointmentStatus, appt?: Appointment) => {
     if (status === 'NO_SHOW') {
       const confirm = window.confirm(
-        `Marquer ce rendez-vous comme "Absent" ?\n\nCela enregistrera ${appt?.clientName ?? 'ce client'} comme no-show. Après 2 absences, leur numéro sera automatiquement bloqué.`
+        `Đánh dấu lịch hẹn này là "Vắng mặt"?\n\nHệ thống sẽ ghi nhận ${appt?.clientName ?? 'khách này'} vắng mặt (không đến). Sau 2 lần vắng mặt, số điện thoại sẽ tự động bị chặn.`
       )
       if (!confirm) return
     }
@@ -65,37 +65,37 @@ export default function AppointmentTable({
       if (!res.ok) throw new Error()
       setAppointments((prev) => prev.map((a) => a.id === id ? { ...a, status } : a))
       toast.success(
-        status === 'CONFIRMED' ? 'Rendez-vous confirmé'
-          : status === 'CANCELLED' ? 'Rendez-vous annulé'
-          : status === 'NO_SHOW'  ? 'Absence enregistrée'
-          : 'Rendez-vous terminé'
+        status === 'CONFIRMED' ? 'Đã xác nhận lịch hẹn'
+          : status === 'CANCELLED' ? 'Đã hủy lịch hẹn'
+          : status === 'NO_SHOW'  ? 'Đã ghi nhận vắng mặt'
+          : 'Đã hoàn thành lịch hẹn'
       )
       onRefresh?.()
     } catch {
-      toast.error('Impossible de mettre à jour le rendez-vous')
+      toast.error('Không thể cập nhật lịch hẹn')
     } finally {
       setLoading(null)
     }
   }
 
   const deleteAppointment = async (id: string) => {
-    if (!confirm('Supprimer ce rendez-vous ? Cette action est irréversible.')) return
+    if (!confirm('Xóa lịch hẹn này? Hành động này không thể hoàn tác.')) return
     setLoading(id)
     try {
       const res = await fetch(`/api/appointments/${id}`, { method: 'DELETE' })
       if (!res.ok) throw new Error()
       setAppointments((prev) => prev.filter((a) => a.id !== id))
-      toast.success('Rendez-vous supprimé')
+      toast.success('Đã xóa lịch hẹn')
       onRefresh?.()
     } catch {
-      toast.error('Impossible de supprimer le rendez-vous')
+      toast.error('Không thể xóa lịch hẹn')
     } finally {
       setLoading(null)
     }
   }
 
   if (appointments.length === 0) {
-    return <p className="text-sm font-sans text-dark/30 italic py-6">Aucun rendez-vous trouvé.</p>
+    return <p className="text-sm font-sans text-dark/30 italic py-6">Không có lịch hẹn nào.</p>
   }
 
   return (
@@ -103,7 +103,7 @@ export default function AppointmentTable({
       <table className="w-full text-sm font-sans">
         <thead>
           <tr className="border-b border-dark/10">
-            {['Client', 'Téléphone', 'Prestations', 'Date & Heure', !compact && 'Total', 'Statut', 'Actions']
+            {['Khách hàng', 'SĐT', 'Dịch vụ', 'Ngày & Giờ', !compact && 'Tổng', 'Trạng thái', 'Thao tác']
               .filter(Boolean)
               .map((h) => (
                 <th key={String(h)} className="text-left py-3 px-4 text-xs tracking-[0.2em] uppercase text-dark/30 font-normal">
@@ -126,9 +126,9 @@ export default function AppointmentTable({
                       {appt.images.map((img) => {
                         const url = `/api/appointments/${appt.id}/images/${img.name}`
                         return (
-                          <a key={img.name} href={url} target="_blank" rel="noopener noreferrer" title="Photo de référence">
+                          <a key={img.name} href={url} target="_blank" rel="noopener noreferrer" title="Ảnh tham khảo">
                             {/* eslint-disable-next-line @next/next/no-img-element */}
-                            <img src={url} alt="Réf." className="w-9 h-9 object-cover rounded border border-dark/10 hover:border-coral transition-colors" />
+                            <img src={url} alt="Tham khảo" className="w-9 h-9 object-cover rounded border border-dark/10 hover:border-coral transition-colors" />
                           </a>
                         )
                       })}
@@ -138,7 +138,7 @@ export default function AppointmentTable({
                 <td className="py-4 px-4 text-charcoal-500 text-xs">{appt.clientPhone}</td>
                 <td className="py-4 px-4 text-charcoal-500 max-w-[200px]">
                   <p className="truncate" title={serviceLabel}>{serviceLabel}</p>
-                  <p className="text-xs text-dark/30 mt-0.5">{appt.totalDuration} min</p>
+                  <p className="text-xs text-dark/30 mt-0.5">{appt.totalDuration} phút</p>
                 </td>
                 <td className="py-4 px-4 text-charcoal-500">
                   {formatDateShort(appt.date)} · {appt.timeSlot}
@@ -169,7 +169,7 @@ export default function AppointmentTable({
                         disabled={isLoading}
                         className="text-xs text-red-600 hover:text-red-800 px-2 py-1.5 transition-colors disabled:opacity-40"
                       >
-                        Supprimer
+                        Xóa
                       </button>
                     )}
                   </div>

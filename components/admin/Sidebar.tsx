@@ -69,14 +69,14 @@ const CloseIcon = () => (
 )
 
 const NAV_ITEMS: NavItem[] = [
-  { href: '/admin/dashboard',    label: 'Tableau de bord', icon: <GridIcon /> },
-  { href: '/admin/appointments', label: 'Rendez-vous',     icon: <CalendarIcon /> },
-  { href: '/admin/calendar',     label: 'Planning',        icon: <ColumnsIcon /> },
-  { href: '/admin/services',     label: 'Prestations',     icon: <ScissorsIcon /> },
-  { href: '/admin/gallery',      label: 'Galerie',         icon: <ImageIcon /> },
-  { href: '/admin/messages',     label: 'Messages',        icon: <MailIcon /> },
-  { href: '/admin/blocklist',    label: 'Liste noire',     icon: <ShieldIcon /> },
-  { href: '/admin/devices',      label: 'Appareils',       icon: <DeviceIcon /> },
+  { href: '/admin/dashboard',    label: 'Bảng điều khiển', icon: <GridIcon /> },
+  { href: '/admin/appointments', label: 'Lịch hẹn',        icon: <CalendarIcon /> },
+  { href: '/admin/calendar',     label: 'Lịch làm việc',   icon: <ColumnsIcon /> },
+  { href: '/admin/services',     label: 'Dịch vụ',         icon: <ScissorsIcon /> },
+  { href: '/admin/gallery',      label: 'Thư viện ảnh',    icon: <ImageIcon /> },
+  { href: '/admin/messages',     label: 'Tin nhắn',        icon: <MailIcon /> },
+  { href: '/admin/blocklist',    label: 'Danh sách chặn',  icon: <ShieldIcon /> },
+  { href: '/admin/devices',      label: 'Thiết bị',        icon: <DeviceIcon /> },
 ]
 
 export default function Sidebar() {
@@ -119,7 +119,7 @@ export default function Sidebar() {
         <button
           ref={hamburgerRef}
           onClick={() => setOpen((v) => !v)}
-          aria-label={open ? 'Fermer le menu' : 'Ouvrir le menu'}
+          aria-label={open ? 'Đóng menu' : 'Mở menu'}
           aria-expanded={open}
           aria-controls="admin-sidebar"
           className="text-cream p-1"
@@ -154,7 +154,7 @@ export default function Sidebar() {
           <Link href="/" className="font-serif text-xl tracking-[0.2em] text-cream">
             Do Beauty<span className="text-coral ml-1">94</span>
           </Link>
-          <p className="text-xs text-cream/30 font-sans mt-1 tracking-wider">Espace admin</p>
+          <p className="text-xs text-cream/30 font-sans mt-1 tracking-wider">Khu vực quản trị</p>
         </div>
 
         {/* Navigation */}
@@ -184,7 +184,7 @@ export default function Sidebar() {
             className="w-full flex items-center gap-3 px-4 py-3 text-sm font-sans text-cream/40 hover:text-cream transition-colors"
           >
             <LogOutIcon />
-            Déconnexion
+            Đăng xuất
           </button>
         </div>
       </aside>

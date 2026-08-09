@@ -9,16 +9,16 @@ import type { GalleryCategory, GalleryImage } from '@/lib/types'
 type AdminImage = GalleryImage & { url: string }
 
 const CATEGORIES: { value: GalleryCategory; label: string }[] = [
-  { value: 'nails', label: 'Ongles' },
-  { value: 'eyes', label: 'Cils & regard' },
-  { value: 'pedicure', label: 'Pédicure' },
-  { value: 'studio', label: 'Institut' },
-  { value: 'other', label: 'Autre' },
+  { value: 'nails', label: 'Móng' },
+  { value: 'eyes', label: 'Mi & mắt' },
+  { value: 'pedicure', label: 'Móng chân' },
+  { value: 'studio', label: 'Không gian' },
+  { value: 'other', label: 'Khác' },
 ]
 
 // Filter tabs: "Tout" + every category.
 const TABS: { value: 'all' | GalleryCategory; label: string }[] = [
-  { value: 'all', label: 'Tout' },
+  { value: 'all', label: 'Tất cả' },
   ...CATEGORIES,
 ]
 
@@ -76,7 +76,7 @@ export default function GalleryManager() {
       if (!res.ok) throw new Error()
       setImages(await res.json())
     } catch {
-      toast.error('Impossible de charger la galerie.')
+      toast.error('Không thể tải thư viện ảnh.')
     } finally {
       setLoading(false)
     }
@@ -99,7 +99,7 @@ export default function GalleryManager() {
   // Shared compress → set-preview flow used by the file input and the dropzone.
   async function processFile(file: File) {
     if (!/^image\/(jpeg|png|webp)$/.test(file.type)) {
-      toast.error('Format non supporté (JPEG, PNG ou WebP).')
+      toast.error('Định dạng không được hỗ trợ (JPEG, PNG hoặc WebP).')
       return
     }
     try {
@@ -113,7 +113,7 @@ export default function GalleryManager() {
       setImageData(dataUrl)
       setPreview(dataUrl)
     } catch {
-      toast.error('Échec du traitement de l’image.')
+      toast.error('Xử lý ảnh thất bại.')
     }
   }
 
@@ -158,11 +158,11 @@ export default function GalleryManager() {
   async function submit(e: React.FormEvent) {
     e.preventDefault()
     if (!form.alt.trim()) {
-      toast.error('Le texte alternatif est requis.')
+      toast.error('Bắt buộc nhập văn bản thay thế.')
       return
     }
     if (!editingId && !imageData) {
-      toast.error('Choisissez une image à téléverser.')
+      toast.error('Hãy chọn ảnh để tải lên.')
       return
     }
     setSubmitting(true)
@@ -181,7 +181,7 @@ export default function GalleryManager() {
           }),
         })
         if (!res.ok) throw new Error()
-        toast.success('Réalisation mise à jour.')
+        toast.success('Đã cập nhật tác phẩm.')
       } else {
         const res = await fetch('/api/gallery', {
           method: 'POST',
@@ -189,12 +189,12 @@ export default function GalleryManager() {
           body: JSON.stringify({ ...form, image: imageData }),
         })
         if (!res.ok) throw new Error()
-        toast.success('Image ajoutée à la galerie Do Beauty.')
+        toast.success('Đã thêm ảnh vào thư viện Do Beauty.')
       }
       resetForm()
       await load()
     } catch {
-      toast.error('Une erreur est survenue.')
+      toast.error('Đã xảy ra lỗi.')
     } finally {
       setSubmitting(false)
     }
@@ -210,7 +210,7 @@ export default function GalleryManager() {
       if (!res.ok) throw new Error()
       setImages((list) => list.map((i) => (i.id === img.id ? { ...i, published: !i.published } : i)))
     } catch {
-      toast.error('Impossible de modifier la visibilité.')
+      toast.error('Không thể thay đổi hiển thị.')
     }
   }
 
@@ -224,7 +224,7 @@ export default function GalleryManager() {
       if (!res.ok) throw new Error()
       setImages((list) => list.map((i) => (i.id === img.id ? { ...i, featured: !i.featured } : i)))
     } catch {
-      toast.error('Impossible de modifier la vitrine.')
+      toast.error('Không thể thay đổi mục nổi bật.')
     }
   }
 
@@ -242,9 +242,9 @@ export default function GalleryManager() {
       setImages((list) =>
         list.map((i) => (i.id === img.id ? { ...i, category, tags: mergedTags, catalogStatus: 'approved' } : i)),
       )
-      toast.success('Suggestion appliquée.')
+      toast.success('Đã áp dụng gợi ý.')
     } catch {
-      toast.error('Impossible d’appliquer la suggestion.')
+      toast.error('Không thể áp dụng gợi ý.')
     }
   }
 
@@ -258,7 +258,7 @@ export default function GalleryManager() {
       if (!res.ok) throw new Error()
       setImages((list) => list.map((i) => (i.id === img.id ? { ...i, catalogStatus: 'approved' } : i)))
     } catch {
-      toast.error('Action impossible.')
+      toast.error('Không thể thực hiện.')
     }
   }
 
@@ -274,9 +274,9 @@ export default function GalleryManager() {
         return next
       })
       if (editingId === id) resetForm()
-      toast.success('Réalisation supprimée.')
+      toast.success('Đã xóa tác phẩm.')
     } catch {
-      toast.error('Échec de la suppression.')
+      toast.error('Xóa thất bại.')
     } finally {
       setConfirmId(null)
     }
@@ -338,7 +338,7 @@ export default function GalleryManager() {
       body.published === undefined &&
       body.featured === undefined
     ) {
-      toast.error('Choisissez au moins une action à appliquer.')
+      toast.error('Hãy chọn ít nhất một hành động để áp dụng.')
       return
     }
 
@@ -351,12 +351,12 @@ export default function GalleryManager() {
       })
       if (!res.ok) throw new Error()
       const { updated } = (await res.json()) as { updated: number }
-      toast.success(`${updated} image(s) mise(s) à jour.`)
+      toast.success(`Đã cập nhật ${updated} ảnh.`)
       setBulk({ category: '', addTag: '', published: '', featured: '' })
       clearSelection()
       await load()
     } catch {
-      toast.error('Échec de l’action groupée.')
+      toast.error('Thao tác hàng loạt thất bại.')
     } finally {
       setBulkSubmitting(false)
     }
@@ -375,7 +375,7 @@ export default function GalleryManager() {
       {/* ── Add / edit form ── */}
       <div ref={formRef} className="rounded-sm border border-[color:var(--db-line)] bg-[color:var(--db-ivory)] p-5 md:p-6">
         <h2 className="db-serif text-2xl text-[color:var(--db-ink)]">
-          {editingId ? 'Modifier la réalisation' : 'Ajouter à la galerie'}
+          {editingId ? 'Sửa tác phẩm' : 'Thêm vào thư viện'}
         </h2>
 
         <form onSubmit={submit} className="mt-5 grid gap-5 md:grid-cols-[220px_1fr]">
@@ -384,10 +384,10 @@ export default function GalleryManager() {
             {editingId ? (
               <div className="relative aspect-[4/5] w-full overflow-hidden border border-[color:var(--db-line)] bg-[color:var(--db-stone)]">
                 {preview ? (
-                  <Image src={preview} alt="Aperçu" fill sizes="220px" className="object-cover" unoptimized />
+                  <Image src={preview} alt="Xem trước" fill sizes="220px" className="object-cover" unoptimized />
                 ) : (
                   <div className="flex h-full items-center justify-center px-4 text-center text-xs text-[color:var(--db-taupe)]">
-                    Aperçu de l’image
+                    Xem trước ảnh
                   </div>
                 )}
               </div>
@@ -401,21 +401,21 @@ export default function GalleryManager() {
                 }}
                 onDragLeave={() => setDragOver(false)}
                 onDrop={onDrop}
-                aria-label="Téléverser une image (cliquez ou glissez-déposez)"
+                aria-label="Tải ảnh lên (nhấp hoặc kéo thả)"
                 className={`relative block aspect-[4/5] w-full cursor-pointer overflow-hidden border bg-[color:var(--db-stone)] transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-[color:var(--db-champagne)] ${
                   dragOver ? 'border-dashed border-[color:var(--db-champagne)]' : 'border-[color:var(--db-line)]'
                 }`}
               >
                 {preview ? (
-                  <Image src={preview} alt="Aperçu" fill sizes="220px" className="object-cover" unoptimized />
+                  <Image src={preview} alt="Xem trước" fill sizes="220px" className="object-cover" unoptimized />
                 ) : (
                   <span className="flex h-full items-center justify-center px-4 text-center text-xs text-[color:var(--db-taupe)]">
-                    Glissez une image ici ou cliquez pour téléverser
+                    Kéo ảnh vào đây hoặc nhấp để tải lên
                   </span>
                 )}
                 {dragOver && (
                   <span className="absolute inset-0 flex items-center justify-center bg-[color:var(--db-ivory)]/80 text-xs uppercase tracking-[0.16em] text-[color:var(--db-champagne)]">
-                    Déposez l’image
+                    Thả ảnh vào đây
                   </span>
                 )}
               </button>
@@ -435,12 +435,12 @@ export default function GalleryManager() {
                 onClick={() => fileRef.current?.click()}
                 className="db-btn db-btn--ghost mt-3 w-full cursor-pointer text-center"
               >
-                {preview ? 'Changer l’image' : 'Téléverser une image'}
+                {preview ? 'Đổi ảnh' : 'Tải ảnh lên'}
               </button>
             )}
             {editingId && (
               <p className="mt-2 text-[11px] text-[color:var(--db-taupe)]">
-                L’image ne peut pas être remplacée&nbsp;; modifiez le classement ci-contre.
+                Không thể thay ảnh&nbsp;; hãy chỉnh phân loại bên cạnh.
               </p>
             )}
           </div>
@@ -448,7 +448,7 @@ export default function GalleryManager() {
           {/* Fields */}
           <div className="space-y-4">
             <div>
-              <label className={labelCls} htmlFor="g-title">Titre</label>
+              <label className={labelCls} htmlFor="g-title">Tiêu đề</label>
               <input
                 id="g-title"
                 className={inputCls}
@@ -459,7 +459,7 @@ export default function GalleryManager() {
             </div>
 
             <div>
-              <label className={labelCls} htmlFor="g-cat">Catégorie</label>
+              <label className={labelCls} htmlFor="g-cat">Danh mục</label>
               <select
                 id="g-cat"
                 className={`${inputCls} cursor-pointer`}
@@ -473,7 +473,7 @@ export default function GalleryManager() {
             </div>
 
             <div>
-              <label className={labelCls}>Tags</label>
+              <label className={labelCls}>Thẻ</label>
               <div className="mb-2 flex flex-wrap gap-1.5">
                 {form.tags.map((t) => (
                   <button
@@ -481,7 +481,7 @@ export default function GalleryManager() {
                     type="button"
                     onClick={() => removeTag(t)}
                     className="cursor-pointer rounded-full border border-[color:var(--db-champagne)] px-2.5 py-0.5 text-[11px] text-[color:var(--db-ink-soft)]"
-                    title="Retirer"
+                    title="Bỏ"
                   >
                     {t} ✕
                   </button>
@@ -497,8 +497,8 @@ export default function GalleryManager() {
                     addTag(tagInput)
                   }
                 }}
-                placeholder="Tapez un tag puis Entrée"
-                aria-label="Ajouter un tag"
+                placeholder="Nhập thẻ rồi nhấn Enter"
+                aria-label="Thêm thẻ"
               />
               <div className="mt-2 flex flex-wrap gap-1.5">
                 {SUGGESTED[form.category]
@@ -517,13 +517,13 @@ export default function GalleryManager() {
             </div>
 
             <div>
-              <label className={labelCls} htmlFor="g-alt">Texte alternatif (accessibilité / SEO)</label>
+              <label className={labelCls} htmlFor="g-alt">Văn bản thay thế (trợ năng / SEO)</label>
               <input
                 id="g-alt"
                 className={inputCls}
                 value={form.alt}
                 onChange={(e) => setForm((f) => ({ ...f, alt: e.target.value }))}
-                placeholder="Manucure nude réalisée chez Do Beauty"
+                placeholder="Manucure nude thực hiện tại Do Beauty"
                 required
               />
             </div>
@@ -536,7 +536,7 @@ export default function GalleryManager() {
                   checked={form.published}
                   onChange={(e) => setForm((f) => ({ ...f, published: e.target.checked }))}
                 />
-                Publier dans la galerie publique
+                Đăng lên thư viện công khai
               </label>
               <label className="flex cursor-pointer items-center gap-2 text-sm text-[color:var(--db-ink)]">
                 <input
@@ -545,17 +545,17 @@ export default function GalleryManager() {
                   checked={form.featured}
                   onChange={(e) => setForm((f) => ({ ...f, featured: e.target.checked }))}
                 />
-                Mettre en vitrine (page d’accueil)
+                Đưa vào mục nổi bật (trang chủ)
               </label>
             </div>
 
             <div className="flex flex-wrap gap-3 pt-1">
               <button type="submit" disabled={submitting} className="db-btn db-btn--solid cursor-pointer disabled:opacity-60">
-                {submitting ? 'Enregistrement…' : editingId ? 'Enregistrer' : 'Publier'}
+                {submitting ? 'Đang lưu…' : editingId ? 'Lưu' : 'Đăng'}
               </button>
               {editingId && (
                 <button type="button" onClick={resetForm} className="db-btn db-btn--ghost cursor-pointer">
-                  Annuler
+                  Hủy
                 </button>
               )}
             </div>
@@ -566,32 +566,32 @@ export default function GalleryManager() {
       {/* ── Existing images ── */}
       <div>
         <div className="mb-4 flex items-baseline justify-between">
-          <h2 className="db-serif text-2xl text-[color:var(--db-ink)]">Réalisations</h2>
+          <h2 className="db-serif text-2xl text-[color:var(--db-ink)]">Tác phẩm</h2>
           <p className="text-[11px] uppercase tracking-[0.16em] text-[color:var(--db-taupe)]">
-            {images.length} images · {publishedCount} publiées
+            {images.length} ảnh · {publishedCount} đã đăng
           </p>
         </div>
 
         {loading ? (
-          <p className="text-sm text-[color:var(--db-taupe)]">Chargement…</p>
+          <p className="text-sm text-[color:var(--db-taupe)]">Đang tải…</p>
         ) : images.length === 0 ? (
-          <p className="text-sm text-[color:var(--db-taupe)]">Aucune image pour le moment.</p>
+          <p className="text-sm text-[color:var(--db-taupe)]">Chưa có ảnh nào.</p>
         ) : (
           <>
             {/* Search + category tabs */}
             <div className="mb-4 space-y-3">
               <div>
-                <label htmlFor="g-search" className="sr-only">Rechercher une réalisation</label>
+                <label htmlFor="g-search" className="sr-only">Tìm kiếm tác phẩm</label>
                 <input
                   id="g-search"
                   type="search"
                   value={search}
                   onChange={(e) => setSearch(e.target.value)}
-                  placeholder="Rechercher (titre, alt, tag, fichier)…"
+                  placeholder="Tìm kiếm (tiêu đề, alt, thẻ, tệp)…"
                   className={inputCls}
                 />
               </div>
-              <div role="group" aria-label="Filtrer par catégorie" className="flex flex-wrap gap-1.5">
+              <div role="group" aria-label="Lọc theo danh mục" className="flex flex-wrap gap-1.5">
                 {TABS.map((t) => {
                   const on = activeCat === t.value
                   return (
@@ -614,7 +614,7 @@ export default function GalleryManager() {
             </div>
 
             {filtered.length === 0 ? (
-              <p className="text-sm text-[color:var(--db-taupe)]">Aucune image ne correspond à votre recherche.</p>
+              <p className="text-sm text-[color:var(--db-taupe)]">Không có ảnh nào khớp với tìm kiếm.</p>
             ) : (
               <ul className="grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-4">
                 {filtered.map((img) => {
@@ -637,7 +637,7 @@ export default function GalleryManager() {
                             checked={isSelected}
                             onChange={() => toggleSelect(img.id)}
                             className="h-4 w-4 cursor-pointer accent-[color:var(--db-champagne)]"
-                            aria-label={`Sélectionner ${img.title || img.alt}`}
+                            aria-label={`Chọn ${img.title || img.alt}`}
                           />
                         </label>
 
@@ -646,8 +646,8 @@ export default function GalleryManager() {
                           type="button"
                           onClick={() => toggleFeatured(img)}
                           aria-pressed={!!img.featured}
-                          aria-label={img.featured ? 'Retirer de la vitrine' : 'Mettre en vitrine'}
-                          title={img.featured ? 'En vitrine' : 'Mettre en vitrine'}
+                          aria-label={img.featured ? 'Bỏ khỏi mục nổi bật' : 'Đưa vào mục nổi bật'}
+                          title={img.featured ? 'Đang nổi bật' : 'Đưa vào mục nổi bật'}
                           className="absolute right-2 top-2 flex h-7 w-7 cursor-pointer items-center justify-center rounded-full bg-white/85 text-base leading-none backdrop-blur focus:outline-none focus-visible:ring-2 focus-visible:ring-[color:var(--db-champagne)]"
                         >
                           <span className={img.featured ? 'text-[color:var(--db-champagne)]' : 'text-[color:var(--db-taupe)]'}>
@@ -657,7 +657,7 @@ export default function GalleryManager() {
 
                         {!img.published && (
                           <span className="absolute bottom-2 left-2 bg-[color:var(--db-ink)] px-2 py-0.5 text-[10px] uppercase tracking-wide text-[color:var(--db-ivory)]">
-                            Brouillon
+                            Bản nháp
                           </span>
                         )}
                       </div>
@@ -673,15 +673,15 @@ export default function GalleryManager() {
                         {/* AI suggestion review */}
                         {suggested && (
                           <div className="mt-2 rounded-sm border border-[color:var(--db-champagne)] bg-[color:var(--db-ivory)] p-2">
-                            <p className="text-[10px] uppercase tracking-[0.14em] text-[color:var(--db-champagne)]">Suggestion</p>
+                            <p className="text-[10px] uppercase tracking-[0.14em] text-[color:var(--db-champagne)]">Gợi ý</p>
                             {img.suggestedCategory && (
                               <p className="mt-1 text-[11px] text-[color:var(--db-ink-soft)]">
-                                Catégorie&nbsp;: {CATEGORIES.find((c) => c.value === img.suggestedCategory)?.label ?? img.suggestedCategory}
+                                Danh mục: {CATEGORIES.find((c) => c.value === img.suggestedCategory)?.label ?? img.suggestedCategory}
                               </p>
                             )}
                             {img.suggestedTags && img.suggestedTags.length > 0 && (
                               <p className="mt-0.5 text-[11px] text-[color:var(--db-ink-soft)]">
-                                Tags&nbsp;: {img.suggestedTags.join(', ')}
+                                Thẻ: {img.suggestedTags.join(', ')}
                               </p>
                             )}
                             <div className="mt-1.5 flex gap-3 text-[11px]">
@@ -690,14 +690,14 @@ export default function GalleryManager() {
                                 onClick={() => approveSuggestion(img)}
                                 className="cursor-pointer font-medium text-[color:var(--db-champagne)] underline underline-offset-2"
                               >
-                                Approuver
+                                Duyệt
                               </button>
                               <button
                                 type="button"
                                 onClick={() => ignoreSuggestion(img)}
                                 className="cursor-pointer text-[color:var(--db-taupe)] underline underline-offset-2"
                               >
-                                Ignorer
+                                Bỏ qua
                               </button>
                             </div>
                           </div>
@@ -705,22 +705,22 @@ export default function GalleryManager() {
 
                         {confirmId === img.id ? (
                           <div className="mt-2 text-[11px]">
-                            <span className="text-[color:var(--db-ink-soft)]">Supprimer&nbsp;?</span>
+                            <span className="text-[color:var(--db-ink-soft)]">Xóa?</span>
                             <div className="mt-1 flex gap-2">
-                              <button onClick={() => doDelete(img.id)} className="cursor-pointer text-red-600 underline">Oui</button>
-                              <button onClick={() => setConfirmId(null)} className="cursor-pointer text-[color:var(--db-taupe)] underline">Non</button>
+                              <button onClick={() => doDelete(img.id)} className="cursor-pointer text-red-600 underline">Có</button>
+                              <button onClick={() => setConfirmId(null)} className="cursor-pointer text-[color:var(--db-taupe)] underline">Không</button>
                             </div>
                           </div>
                         ) : (
                           <div className="mt-2 flex flex-wrap gap-x-3 gap-y-1 text-[11px]">
                             <button onClick={() => startEdit(img)} className="cursor-pointer text-[color:var(--db-ink-soft)] underline underline-offset-2 hover:text-[color:var(--db-champagne)]">
-                              Modifier
+                              Sửa
                             </button>
                             <button onClick={() => togglePublish(img)} className="cursor-pointer text-[color:var(--db-ink-soft)] underline underline-offset-2 hover:text-[color:var(--db-champagne)]">
-                              {img.published ? 'Masquer' : 'Publier'}
+                              {img.published ? 'Ẩn' : 'Đăng'}
                             </button>
                             <button onClick={() => setConfirmId(img.id)} className="cursor-pointer text-red-600/80 underline underline-offset-2 hover:text-red-600">
-                              Supprimer
+                              Xóa
                             </button>
                           </div>
                         )}
@@ -736,64 +736,64 @@ export default function GalleryManager() {
               <div className="sticky bottom-4 z-20 mt-4 rounded-sm border border-[color:var(--db-champagne)] bg-[color:var(--db-ink)] p-3 text-[color:var(--db-ivory)] shadow-lg">
                 <div className="flex flex-wrap items-center gap-2">
                   <span className="text-xs uppercase tracking-[0.16em] text-[color:var(--db-ivory)]">
-                    Sélection&nbsp;: {selected.size}
+                    Đã chọn: {selected.size}
                   </span>
 
                   <div className="mx-1 flex gap-2 text-[11px]">
                     <button type="button" onClick={selectAllVisible} className="cursor-pointer underline underline-offset-2 hover:text-[color:var(--db-champagne)]">
-                      Tout sélectionner
+                      Chọn tất cả
                     </button>
                     <button type="button" onClick={clearSelection} className="cursor-pointer underline underline-offset-2 hover:text-[color:var(--db-champagne)]">
-                      Effacer
+                      Bỏ chọn
                     </button>
                   </div>
 
                   <span className="mx-1 hidden h-4 w-px bg-white/20 sm:inline-block" aria-hidden />
 
-                  <label className="sr-only" htmlFor="bulk-cat">Catégorie groupée</label>
+                  <label className="sr-only" htmlFor="bulk-cat">Danh mục hàng loạt</label>
                   <select
                     id="bulk-cat"
                     value={bulk.category}
                     onChange={(e) => setBulk((b) => ({ ...b, category: e.target.value as '' | GalleryCategory }))}
                     className={bulkInputCls}
                   >
-                    <option value="">Catégorie —</option>
+                    <option value="">Danh mục —</option>
                     {CATEGORIES.map((c) => (
                       <option key={c.value} value={c.value}>{c.label}</option>
                     ))}
                   </select>
 
-                  <label className="sr-only" htmlFor="bulk-tags">Tags à ajouter</label>
+                  <label className="sr-only" htmlFor="bulk-tags">Thẻ cần thêm</label>
                   <input
                     id="bulk-tags"
                     value={bulk.addTag}
                     onChange={(e) => setBulk((b) => ({ ...b, addTag: e.target.value }))}
-                    placeholder="Ajouter des tags (séparés par ,)"
+                    placeholder="Thêm thẻ (phân tách bằng ,)"
                     className={`${bulkInputCls} min-w-[12rem] flex-1`}
                   />
 
-                  <label className="sr-only" htmlFor="bulk-pub">Visibilité groupée</label>
+                  <label className="sr-only" htmlFor="bulk-pub">Hiển thị hàng loạt</label>
                   <select
                     id="bulk-pub"
                     value={bulk.published}
                     onChange={(e) => setBulk((b) => ({ ...b, published: e.target.value as Tri }))}
                     className={bulkInputCls}
                   >
-                    <option value="">Visibilité —</option>
-                    <option value="yes">Publier</option>
-                    <option value="no">Masquer</option>
+                    <option value="">Hiển thị —</option>
+                    <option value="yes">Đăng</option>
+                    <option value="no">Ẩn</option>
                   </select>
 
-                  <label className="sr-only" htmlFor="bulk-feat">Vitrine groupée</label>
+                  <label className="sr-only" htmlFor="bulk-feat">Mục nổi bật hàng loạt</label>
                   <select
                     id="bulk-feat"
                     value={bulk.featured}
                     onChange={(e) => setBulk((b) => ({ ...b, featured: e.target.value as Tri }))}
                     className={bulkInputCls}
                   >
-                    <option value="">Vitrine —</option>
-                    <option value="yes">Mettre en avant</option>
-                    <option value="no">Retirer</option>
+                    <option value="">Nổi bật —</option>
+                    <option value="yes">Đưa lên nổi bật</option>
+                    <option value="no">Bỏ nổi bật</option>
                   </select>
 
                   <button
@@ -802,7 +802,7 @@ export default function GalleryManager() {
                     disabled={bulkSubmitting}
                     className="cursor-pointer border border-[color:var(--db-champagne)] bg-[color:var(--db-champagne)] px-4 py-1.5 text-xs uppercase tracking-[0.14em] text-white transition-opacity hover:opacity-90 disabled:opacity-60"
                   >
-                    {bulkSubmitting ? 'Application…' : 'Appliquer'}
+                    {bulkSubmitting ? 'Đang áp dụng…' : 'Áp dụng'}
                   </button>
                 </div>
               </div>

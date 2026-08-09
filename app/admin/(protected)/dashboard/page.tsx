@@ -6,7 +6,7 @@ import { countTodayEvents, countPendingEvents } from '@/lib/google-calendar'
 import type { Metadata } from 'next'
 import type { Service, Appointment } from '@/lib/types'
 
-export const metadata: Metadata = { title: 'Tableau de bord' }
+export const metadata: Metadata = { title: 'Bảng điều khiển' }
 export const dynamic = 'force-dynamic'
 
 async function getStats() {
@@ -47,43 +47,43 @@ export default async function DashboardPage() {
   return (
     <div>
       <div className="mb-10">
-        <h1 className="font-serif text-4xl font-light text-dark">Tableau de bord</h1>
-        <p className="font-sans text-sm text-dark/40 mt-1">Bienvenue, Do Beauty.</p>
+        <h1 className="font-serif text-4xl font-light text-dark">Bảng điều khiển</h1>
+        <p className="font-sans text-sm text-dark/40 mt-1">Chào mừng, Do Beauty.</p>
       </div>
 
       <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-12">
         <StatsCard
-          label="Rendez-vous aujourd'hui"
+          label="Lịch hẹn hôm nay"
           value={stats.appointmentsToday}
-          description="Réservations du jour"
+          description="Lịch đặt trong ngày"
           highlight={stats.appointmentsToday > 0}
         />
         <StatsCard
-          label="En attente"
+          label="Chờ xác nhận"
           value={stats.pendingCount}
-          description="À confirmer"
+          description="Cần xác nhận"
           highlight={stats.pendingCount > 0}
         />
         <StatsCard
-          label="Prestations actives"
+          label="Dịch vụ đang hoạt động"
           value={stats.totalServices}
-          description="Services publiés"
+          description="Dịch vụ đã đăng"
         />
         <StatsCard
-          label="Messages"
+          label="Tin nhắn"
           value="Gmail"
-          description="Reçus dans votre boîte mail"
+          description="Nhận trong hộp thư của bạn"
         />
       </div>
 
       <div className="bg-cream border border-dark/10 p-8">
         <div className="flex justify-between items-center mb-6">
-          <h2 className="font-serif text-xl font-light text-dark">Prochains rendez-vous</h2>
+          <h2 className="font-serif text-xl font-light text-dark">Lịch hẹn sắp tới</h2>
           <a
             href="/admin/appointments"
             className="text-xs font-sans text-coral underline underline-offset-4"
           >
-            Voir tout
+            Xem tất cả
           </a>
         </div>
         <AppointmentTable

@@ -8,8 +8,8 @@ import Button from '@/components/ui/Button'
 import toast from 'react-hot-toast'
 
 const ghostReportSchema = z.object({
-  clientName: z.string().min(2, 'Le nom doit comporter au moins 2 caractères'),
-  phone: z.string().min(1, 'Le numéro de téléphone est requis'),
+  clientName: z.string().min(2, 'Tên phải có ít nhất 2 ký tự'),
+  phone: z.string().min(1, 'Vui lòng nhập số điện thoại'),
   ip: z.string().optional(),
 })
 
@@ -35,24 +35,24 @@ export default function ReportGhostForm({ onSuccess, onCancel }: ReportGhostForm
         body: JSON.stringify(data),
       })
       if (!res.ok) throw new Error()
-      toast.success('Absence enregistrée')
+      toast.success('Đã ghi nhận vắng mặt')
       onSuccess()
     } catch {
-      toast.error('Impossible d\'enregistrer cette absence')
+      toast.error('Không thể ghi nhận vắng mặt này')
     }
   }
 
   return (
     <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col gap-6">
-      <Input label="Nom du client" id="clientName" placeholder="Nom" error={errors.clientName?.message} {...register('clientName')} />
+      <Input label="Tên khách hàng" id="clientName" placeholder="Tên" error={errors.clientName?.message} {...register('clientName')} />
 
-      <Input label="Téléphone" id="phone" placeholder="06 12 34 56 78" error={errors.phone?.message} {...register('phone')} />
+      <Input label="Số điện thoại" id="phone" placeholder="06 12 34 56 78" error={errors.phone?.message} {...register('phone')} />
 
-      <Input label="Adresse IP (optionnel)" id="ip" placeholder="Depuis l'e-mail d'alerte de réservation" error={errors.ip?.message} {...register('ip')} />
+      <Input label="Địa chỉ IP (tùy chọn)" id="ip" placeholder="Lấy từ email cảnh báo đặt lịch" error={errors.ip?.message} {...register('ip')} />
 
       <div className="flex gap-3 pt-2">
-        <Button variant="outline" type="button" onClick={onCancel}>Annuler</Button>
-        <Button type="submit" isLoading={isSubmitting}>Enregistrer l&apos;absence</Button>
+        <Button variant="outline" type="button" onClick={onCancel}>Hủy</Button>
+        <Button type="submit" isLoading={isSubmitting}>Ghi nhận vắng mặt</Button>
       </div>
     </form>
   )

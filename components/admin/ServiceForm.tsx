@@ -15,15 +15,15 @@ interface ServiceFormProps {
 }
 
 const CATEGORY_OPTIONS = [
-  { value: 'FORFAIT',   label: 'Forfaits spa' },
-  { value: 'MAINS',     label: 'Mains & manucure' },
-  { value: 'PIEDS',     label: 'Beauté des pieds' },
-  { value: 'CAPSULE',   label: 'Pose & extensions' },
-  { value: 'NAIL_ART',  label: 'Nail art & finitions' },
-  { value: 'CILS',      label: 'Cils & regard' },
-  { value: 'VISAGE',    label: 'Soins du visage' },
-  { value: 'CORPS',     label: 'Massages & corps' },
-  { value: 'EPILATION', label: 'Épilation' },
+  { value: 'FORFAIT',   label: 'Gói spa' },
+  { value: 'MAINS',     label: 'Tay & Manucure' },
+  { value: 'PIEDS',     label: 'Chăm sóc chân' },
+  { value: 'CAPSULE',   label: 'Đắp & nối móng' },
+  { value: 'NAIL_ART',  label: 'Nail art & hoàn thiện' },
+  { value: 'CILS',      label: 'Mi & ánh mắt' },
+  { value: 'VISAGE',    label: 'Chăm sóc da mặt' },
+  { value: 'CORPS',     label: 'Massage & cơ thể' },
+  { value: 'EPILATION', label: 'Tẩy lông' },
 ]
 
 export default function ServiceForm({ service, onSuccess, onCancel }: ServiceFormProps) {
@@ -57,26 +57,26 @@ export default function ServiceForm({ service, onSuccess, onCancel }: ServiceFor
         body: JSON.stringify(data),
       })
       if (!res.ok) throw new Error()
-      toast.success(isEditing ? 'Prestation mise à jour' : 'Prestation créée')
+      toast.success(isEditing ? 'Đã cập nhật dịch vụ' : 'Đã tạo dịch vụ')
       onSuccess()
     } catch {
-      toast.error('Impossible d\'enregistrer la prestation')
+      toast.error('Không thể lưu dịch vụ')
     }
   }
 
   return (
     <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col gap-6">
-      <Input label="Nom de la prestation" id="name" placeholder="Pose de vernis semi-permanent" error={errors.name?.message} {...register('name')} />
+      <Input label="Tên dịch vụ" id="name" placeholder="Pose de vernis semi-permanent" error={errors.name?.message} {...register('name')} />
 
-      <Textarea label="Description" id="description" placeholder="Description de la prestation…" error={errors.description?.message} {...register('description')} />
+      <Textarea label="Mô tả" id="description" placeholder="Mô tả dịch vụ…" error={errors.description?.message} {...register('description')} />
 
       <div className="grid grid-cols-2 gap-4">
-        <Input label="Prix (€)" id="price" type="number" step="0.01" min="0" placeholder="17" error={errors.price?.message} {...register('price', { valueAsNumber: true })} />
-        <Input label="Durée (min)" id="duration" type="number" min="0" placeholder="30" error={errors.duration?.message} {...register('duration', { valueAsNumber: true })} />
+        <Input label="Giá (€)" id="price" type="number" step="0.01" min="0" placeholder="17" error={errors.price?.message} {...register('price', { valueAsNumber: true })} />
+        <Input label="Thời lượng (phút)" id="duration" type="number" min="0" placeholder="30" error={errors.duration?.message} {...register('duration', { valueAsNumber: true })} />
       </div>
 
       <div className="flex flex-col gap-1.5">
-        <label className="text-xs tracking-[0.2em] uppercase text-charcoal-500 font-sans">Catégorie</label>
+        <label className="text-xs tracking-[0.2em] uppercase text-charcoal-500 font-sans">Danh mục</label>
         <select className="w-full border-b border-dark/30 bg-transparent py-2.5 text-sm font-sans text-dark focus:border-coral focus:outline-none" {...register('category')}>
           {CATEGORY_OPTIONS.map((o) => (
             <option key={o.value} value={o.value}>{o.label}</option>
@@ -87,12 +87,12 @@ export default function ServiceForm({ service, onSuccess, onCancel }: ServiceFor
 
       <div className="flex items-center gap-3">
         <input type="checkbox" id="isActive" className="accent-coral" {...register('isActive')} />
-        <label htmlFor="isActive" className="text-sm font-sans text-charcoal-500">Actif (visible sur le site)</label>
+        <label htmlFor="isActive" className="text-sm font-sans text-charcoal-500">Đang hoạt động (hiển thị trên trang web)</label>
       </div>
 
       <div className="flex gap-3 pt-2">
-        <Button variant="outline" type="button" onClick={onCancel}>Annuler</Button>
-        <Button type="submit" isLoading={isSubmitting}>{isEditing ? 'Enregistrer' : 'Créer la prestation'}</Button>
+        <Button variant="outline" type="button" onClick={onCancel}>Hủy</Button>
+        <Button type="submit" isLoading={isSubmitting}>{isEditing ? 'Lưu' : 'Tạo dịch vụ'}</Button>
       </div>
     </form>
   )

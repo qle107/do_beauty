@@ -10,9 +10,9 @@ function LoginContent() {
 
   const errorMessage =
     error === 'AccessDenied'
-      ? 'Accès refusé. Ce compte Google n\'est pas autorisé.'
+      ? 'Truy cập bị từ chối. Tài khoản Google này không được phép.'
       : error
-      ? 'Une erreur est survenue. Veuillez réessayer.'
+      ? 'Đã xảy ra lỗi. Vui lòng thử lại.'
       : null
 
   return (
@@ -24,7 +24,7 @@ function LoginContent() {
             Do Beauty<span className="text-coral ml-1">94</span>
           </p>
           <p className="text-xs text-cream/30 font-sans tracking-[0.3em] uppercase mt-2">
-            Espace Admin
+            Khu vực quản trị
           </p>
         </div>
 
@@ -36,7 +36,7 @@ function LoginContent() {
           )}
 
           <p className="text-center text-cream/40 font-sans text-sm">
-            Connectez-vous avec votre compte Google administrateur.
+            Đăng nhập bằng tài khoản Google quản trị của bạn.
           </p>
 
           <button
@@ -62,7 +62,7 @@ function LoginContent() {
                 fill="#EA4335"
               />
             </svg>
-            Se connecter avec Google
+            Đăng nhập bằng Google
           </button>
         </div>
       </div>

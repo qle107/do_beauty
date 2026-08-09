@@ -28,17 +28,17 @@ export default function ComposeEmailForm({ contactEmails, onSuccess, onCancel }:
         body: JSON.stringify(data),
       })
       if (!res.ok) throw new Error()
-      toast.success('Email envoyé')
+      toast.success('Đã gửi email')
       onSuccess()
     } catch {
-      toast.error("L'envoi a échoué")
+      toast.error('Gửi thất bại')
     }
   }
 
   return (
     <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col gap-6">
       <Input
-        label="Destinataire"
+        label="Người nhận"
         id="to"
         type="email"
         list="contact-emails"
@@ -50,13 +50,13 @@ export default function ComposeEmailForm({ contactEmails, onSuccess, onCancel }:
         {contactEmails.map((e) => <option key={e} value={e} />)}
       </datalist>
 
-      <Input label="Objet" id="subject" placeholder="Objet du message" error={errors.subject?.message} {...register('subject')} />
+      <Input label="Tiêu đề" id="subject" placeholder="Tiêu đề tin nhắn" error={errors.subject?.message} {...register('subject')} />
 
-      <Textarea label="Message" id="body" rows={6} placeholder="Votre message…" error={errors.body?.message} {...register('body')} />
+      <Textarea label="Tin nhắn" id="body" rows={6} placeholder="Tin nhắn của bạn…" error={errors.body?.message} {...register('body')} />
 
       <div className="flex gap-3 pt-2">
-        <Button variant="outline" type="button" onClick={onCancel}>Annuler</Button>
-        <Button type="submit" isLoading={isSubmitting}>Envoyer</Button>
+        <Button variant="outline" type="button" onClick={onCancel}>Hủy</Button>
+        <Button type="submit" isLoading={isSubmitting}>Gửi</Button>
       </div>
     </form>
   )
