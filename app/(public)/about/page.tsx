@@ -182,7 +182,7 @@ export default function AboutPage() {
             </div>
             <div>
               <p className="text-dark/40 tracking-wider uppercase text-xs mb-2">Paiement</p>
-              <p className="text-dark font-medium">Espèces et virement bancaire</p>
+              <p className="text-dark font-medium">Carte bancaire et espèces</p>
               <p className="text-charcoal-500 text-xs mt-1">Nous n&apos;acceptons pas les cartes bancaires</p>
             </div>
           </div>

@@ -96,7 +96,7 @@ function baseTemplate(content: string): string {
             <td style="background-color:#171614;padding:24px 40px;text-align:center;">
               <p style="color:#A89882;font-size:12px;margin:0;">© ${new Date().getFullYear()} ${site.name} - ${site.address.street}, ${site.address.city}</p>
               <p style="color:#A89882;font-size:12px;margin:8px 0 0;">📞 ${site.phone.display} &nbsp;|&nbsp; <a href="mailto:${site.email}" style="color:#C8A66A;text-decoration:none;">${site.email}</a></p>
-              <p style="color:#666;font-size:11px;margin:8px 0 0;font-style:italic;">Paiement en espèces ou par virement</p>
+              <p style="color:#666;font-size:11px;margin:8px 0 0;font-style:italic;">Paiement par carte ou en espèces</p>
             </td>
           </tr>
         </table>

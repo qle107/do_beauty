@@ -76,7 +76,7 @@ function eventDescription(b: BookingForCalendar): string {
     `Prestation(s) : ${b.serviceNames}.`,
     `Durée : ${b.durationMinutes} min.`,
     `Total : ${b.totalPrice} €.`,
-    `Paiement en espèces ou par virement.`,
+    `Paiement par carte ou en espèces.`,
     `Adresse : ${site.address.street}, ${site.address.city}.`,
     `Téléphone : ${site.phone.display}.`,
   ].join('\\n')

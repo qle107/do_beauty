@@ -289,7 +289,7 @@ export default function ClientDetails({ booking, onBack, onConfirmed }: ClientDe
         </div>
 
         <p className="text-xs font-sans text-dark/40 italic">
-          Paiement en espèces ou par virement lors de votre visite.
+          Paiement par carte ou en espèces lors de votre visite.
         </p>
 
         {/* ── Existing appointment conflict ───────────────────────── */}
@@ -429,7 +429,7 @@ function ConfirmedView({
         <br /><br />
         Pour toute modification, appelez-nous : <strong>{site.phone.display}</strong>.
         <br /><br />
-        <strong>Paiement en espèces ou par virement</strong> lors de votre venue.
+        <strong>Paiement par carte ou en espèces</strong> lors de votre venue.
       </p>
 
       {/* Récapitulatif */}

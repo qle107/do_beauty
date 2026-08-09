@@ -63,7 +63,7 @@ export const site = {
       phone: '+33 1 76 60 41 43',
     },
   },
-  paymentAccepted: ['Cash', 'Bank transfer'],
+  paymentAccepted: ['Carte bancaire', 'Espèces'],
   rating: {
     // From the Google Business Profile provided by the owner.
     value: 4.6,

@@ -45,7 +45,7 @@ export default async function MenusPage() {
         <div className="h-px bg-coral/40 w-24 mx-auto mt-8" />
         <p className="font-sans text-sm text-charcoal-500 mt-6 tracking-wide leading-relaxed">
           Manucure, semi-permanent, nail art, beauté des pieds, cils &amp; regard, soins et
-          massages — notre institut à Gentilly. Paiement en espèces ou par virement.
+          massages — notre institut à Gentilly. Paiement par carte ou en espèces.
         </p>
       </div>
 
@@ -85,7 +85,7 @@ export default async function MenusPage() {
       <div className="mx-auto max-w-4xl px-6 mt-16 pt-10 border-t border-dark/10 text-center">
         <p className="font-sans text-xs text-charcoal-500 mb-6">
           Les tarifs affichés sont à titre indicatif. Les prestations &quot;à partir de&quot; peuvent varier selon la complexité.
-          Paiement en espèces ou par virement.
+          Paiement par carte ou en espèces.
         </p>
         <Link
           href="/booking"

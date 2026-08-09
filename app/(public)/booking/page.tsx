@@ -36,7 +36,7 @@ export default async function BookingPage({ searchParams }: { searchParams: Sear
           <h1 className="font-serif text-5xl font-light text-dark">Prendre rendez-vous</h1>
           <div className="h-px bg-coral/40 w-16 mx-auto mt-8" />
           <p className="font-sans text-sm text-dark/40 mt-4">
-            Ouvert 7j/7 de 10h à 20h · Paiement en espèces ou par virement
+            Ouvert 7j/7 de 10h à 20h · Paiement par carte ou en espèces
           </p>
         </div>
 

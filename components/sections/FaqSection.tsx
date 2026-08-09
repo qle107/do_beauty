@@ -27,7 +27,7 @@ const list = [
   },
   {
     q: 'Quels moyens de paiement acceptez-vous ?',
-    a: 'Espèces et virement.',
+    a: 'Le règlement se fait sur place, par carte bancaire ou en espèces, le jour de votre rendez-vous. La réservation en ligne ne demande aucun acompte.',
   },
 ] as const
 

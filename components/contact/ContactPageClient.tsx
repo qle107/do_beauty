@@ -93,7 +93,7 @@ export default function ContactPageClient() {
             <div className="mb-10">
               <h3 className="text-xs tracking-[0.3em] uppercase text-charcoal-500 font-sans mb-5">Paiement</h3>
               <p className="font-sans text-sm text-charcoal-500">
-                💵 <strong className="text-dark">Espèces et virement bancaire</strong><br/>
+                💵 <strong className="text-dark">Carte bancaire et espèces</strong><br/>
                 <span className="text-xs text-charcoal-500">Nous n&apos;acceptons pas les cartes bancaires.</span>
               </p>
             </div>

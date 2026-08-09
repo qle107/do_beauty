@@ -134,7 +134,7 @@ export const page: LandingPage = {
     {
       question: "Quels moyens de paiement acceptez-vous ?",
       answer:
-        "Le règlement se fait en espèces ou par virement. Le montant vous est indiqué clairement avant de commencer la prestation, en fonction de ce que vous choisissez.",
+        "Le règlement se fait sur place, par carte bancaire ou en espèces, une fois la prestation terminée. Le montant vous est indiqué clairement avant de commencer, selon les soins que vous choisissez.",
     },
     {
       question: "Faut-il réserver ou puis-je venir sans rendez-vous ?",

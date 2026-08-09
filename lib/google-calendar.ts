@@ -253,7 +253,7 @@ export async function createCalendarEvent(data: CalendarEventData): Promise<stri
     '',
     sep,
     `💵 Total        : ${totalPrice} €`,
-    `💳 Paiement     : Espèces ou virement`,
+    `💳 Paiement     : Carte ou espèces`,
     `🌐 Provenance   : dobeauty.fr`,
     sep,
     '',

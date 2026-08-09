@@ -30,7 +30,7 @@ export const homepageFaqs: readonly FaqEntry[] = [
   {
     question: 'Quels moyens de paiement acceptez-vous ?',
     answer:
-      "Do Beauty accepte les paiements en espèces et par virement bancaire. Nous n'acceptons pas la carte bancaire sur place.",
+      "Do Beauty accepte les règlements par carte bancaire et en espèces, sur place le jour de votre rendez-vous. La réservation en ligne ne demande aucun acompte : vous réglez uniquement à l'institut, une fois la prestation terminée.",
   },
   {
     question: 'Où vous situez-vous exactement à Gentilly ?',
