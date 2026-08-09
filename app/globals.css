@@ -1,0 +1,214 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* react-day-picker reset (booking calendar) — neutralised to the DO BEAUTY palette */
+.rdp { --rdp-accent-color: #B99555; --rdp-background-color: #F4F0E8; }
+
+/* ─── Fonts loaded via next/font (see app/layout.tsx) ────────────────────── */
+
+@layer base {
+  :root {
+    /* Legacy font vars (still used by inner pages until they are re-themed) */
+    --font-playfair: 'Playfair Display', Georgia, serif;
+    --font-inter: 'Inter', system-ui, sans-serif;
+    --font-dancing-script: 'Dancing Script', cursive;
+
+    /* ── DO BEAUTY · warm quiet-luxury palette (restrained gold) ──────────── */
+    --db-bg:            #F4F0E8;   /* primary background */
+    --db-ivory:         #FBF8F2;   /* warm ivory surfaces */
+    --db-white:         #FFFFFF;
+    --db-ink:           #171615;   /* deep near-black (dark sections, headings) */
+    --db-ink-soft:      #24211E;   /* body text */
+    --db-taupe:         #9B9489;   /* muted / secondary */
+    --db-stone:         #E4DCCF;   /* soft stone */
+    --db-champagne:     #B99555;   /* gold — accent only */
+    --db-champagne-dim: #A6844A;
+    --db-line:          rgba(23, 22, 21, 0.12);   /* hairline borders */
+    --db-line-soft:     rgba(23, 22, 21, 0.07);
+    --db-champ-line:    rgba(185, 149, 85, 0.42);
+
+    /* Typography */
+    --font-cormorant: 'Cormorant Garamond', Georgia, serif;
+    --font-manrope:   'Manrope', system-ui, -apple-system, sans-serif;
+
+    /* Rhythm — compact, content-first */
+    --db-gutter: clamp(20px, 5.5vw, 88px);
+    --db-ease:   cubic-bezier(0.22, 1, 0.36, 1);
+    --db-nav-h:  64px;
+  }
+  @media (min-width: 1024px) {
+    :root { --db-nav-h: 76px; }
+  }
+
+  html {
+    scroll-behavior: smooth;
+    overflow-x: clip;
+  }
+
+  body {
+    background: var(--db-bg);
+    color: var(--db-ink-soft);
+    font-family: var(--font-manrope);
+    font-weight: 400;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+    overflow-x: clip;
+    max-width: 100%;
+  }
+
+  * { @apply box-border; }
+
+  ::selection { background: var(--db-champagne); color: var(--db-ink); }
+
+  input, select, textarea { font-size: 16px; }
+
+  :focus-visible {
+    outline: 2px solid var(--db-champagne);
+    outline-offset: 3px;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    *, *::before, *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+}
+
+@layer components {
+  /* ══════════════════════════════════════════════════════════════════════
+     DO BEAUTY — shared primitives (mobile-first). Use across all sections.
+     ══════════════════════════════════════════════════════════════════════ */
+
+  .db-serif { font-family: var(--font-cormorant); }
+  .db-sans  { font-family: var(--font-manrope); }
+
+  /* Gutter container */
+  .db-shell {
+    width: 100%;
+    max-width: 1320px;
+    margin-inline: auto;
+    padding-inline: var(--db-gutter);
+  }
+
+  /* Editorial vertical rhythm — generous but intentional (≈72px mobile → 148px desktop) */
+  .db-section { padding-block: clamp(72px, 10vw, 148px); }
+
+  /* Small uppercase eyebrow label */
+  .db-eyebrow {
+    font-family: var(--font-manrope);
+    font-weight: 600;
+    font-size: 11px;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    color: var(--db-champagne);
+  }
+  .db-eyebrow--muted { color: var(--db-taupe); }
+
+  /* Hero display serif (use ONCE, in the hero) */
+  .db-display {
+    font-family: var(--font-cormorant);
+    font-weight: 500;
+    line-height: 0.98;
+    letter-spacing: -0.01em;
+    color: var(--db-ink);
+  }
+  /* Section title serif — significantly smaller than the display */
+  .db-title {
+    font-family: var(--font-cormorant);
+    font-weight: 500;
+    font-size: clamp(24px, 4.4vw, 34px);
+    line-height: 1.06;
+    letter-spacing: -0.005em;
+    color: var(--db-ink);
+  }
+  .db-italic { font-style: italic; }
+  .db-champ  { color: var(--db-champagne); }
+
+  /* Buttons — rectangular, never pill. 48px min touch target. */
+  .db-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    min-height: 50px;
+    padding-inline: 28px;
+    font-family: var(--font-manrope);
+    font-weight: 600;
+    font-size: 12px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    text-decoration: none;
+    border: 1px solid transparent;
+    cursor: pointer;
+    transition: background 0.35s var(--db-ease), color 0.35s var(--db-ease),
+                border-color 0.35s var(--db-ease);
+  }
+  .db-btn--solid { background: var(--db-ink); color: var(--db-ivory); }
+  .db-btn--solid:hover { background: var(--db-champagne); color: var(--db-ink); }
+  .db-btn--ghost { background: transparent; color: var(--db-ink); border-color: var(--db-line); }
+  .db-btn--ghost:hover { border-color: var(--db-ink); }
+  .db-btn--onDark { background: var(--db-ivory); color: var(--db-ink); }
+  .db-btn--onDark:hover { background: var(--db-champagne); }
+
+  /* Uppercase text link with a quiet underline */
+  .db-linkline {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-family: var(--font-manrope);
+    font-weight: 600;
+    font-size: 11px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--db-ink);
+    text-decoration: none;
+    padding-bottom: 5px;
+    border-bottom: 1px solid var(--db-line);
+    transition: border-color 0.35s var(--db-ease), color 0.35s var(--db-ease);
+  }
+  .db-linkline:hover { border-color: var(--db-champagne); color: var(--db-champagne); }
+
+  .db-rule { height: 1px; background: var(--db-champ-line); }
+
+  /* Scroll-reveal (paired with <Reveal/>) — subtle */
+  .db-reveal {
+    opacity: 0;
+    transform: translateY(16px);
+    transition: opacity 0.7s var(--db-ease), transform 0.7s var(--db-ease);
+  }
+  .db-reveal.is-in { opacity: 1; transform: none; }
+  @media (prefers-reduced-motion: reduce) {
+    .db-reveal { opacity: 1; transform: none; transition: none; }
+  }
+
+  /* ─── Legacy classes kept for not-yet-re-themed inner pages ────────────── */
+  .list-cure li::before { content: '✳'; @apply text-coral mr-3; }
+  .list-cure { @apply list-none pl-0; }
+  .text-script { font-family: var(--font-dancing-script); }
+  .text-serif { font-family: var(--font-playfair); }
+  .tab-fade { animation: tabFadeIn 0.25s ease-out forwards; }
+  @keyframes tabFadeIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
+  @keyframes dbfade { from { opacity: 0; } to { opacity: 1; } }
+}
+
+@layer utilities {
+  .writing-vertical { writing-mode: vertical-rl; }
+  .no-scrollbar::-webkit-scrollbar { display: none; }
+  .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+
+  /* Horizontal swipe carousel (mobile-first) */
+  .db-hscroll {
+    display: flex;
+    gap: 12px;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    scroll-padding-inline: var(--db-gutter);
+  }
+  .db-snap { scroll-snap-align: start; flex: 0 0 auto; }
+}

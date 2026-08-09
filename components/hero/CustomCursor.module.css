@@ -1,0 +1,46 @@
+/* Luxury VIEW cursor. Hidden by default; only shows/expands over the hero image.
+   pointer-events:none so it never blocks clicks. Disabled on touch + reduced-motion. */
+
+.cursor {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--db-ink);
+  pointer-events: none;
+  z-index: 9999;
+  opacity: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition:
+    width 0.45s cubic-bezier(0.22, 1, 0.36, 1),
+    height 0.45s cubic-bezier(0.22, 1, 0.36, 1),
+    background 0.35s ease,
+    opacity 0.25s ease;
+}
+
+.active {
+  opacity: 1;
+  width: 76px;
+  height: 76px;
+  background: var(--db-ivory);
+}
+
+.label {
+  font-family: var(--font-inter);
+  font-size: 9px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--db-ink);
+  opacity: 0;
+  transition: opacity 0.3s ease 0.1s;
+}
+.active .label { opacity: 1; }
+
+/* Never render on touch devices or for reduced-motion users. */
+@media (hover: none), (pointer: coarse), (prefers-reduced-motion: reduce) {
+  .cursor { display: none; }
+}

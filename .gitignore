@@ -1,0 +1,71 @@
+# ─── Dependencies ─────────────────────────────────────────────────────────
+node_modules/
+.pnp
+.pnp.*
+.yarn/install-state.gz
+
+# ─── Next.js build output ─────────────────────────────────────────────────
+.next/
+out/
+build/
+
+# ─── Environment & secrets ────────────────────────────────────────────────
+# Never commit these - they contain:
+#   GOOGLE_SERVICE_ACCOUNT_KEY, GOOGLE_CLIENT_SECRET,
+#   NEXTAUTH_SECRET / AUTH_SECRET, SMTP_PASS, CALLMEBOT_APIKEY
+.env
+.env.local
+.env*.local
+.env.development.local
+.env.production.local
+.env.test.local
+
+# ─── Logs & runtime ───────────────────────────────────────────────────────
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# ─── Editors / IDE ────────────────────────────────────────────────────────
+.idea/
+.vscode/
+*.swp
+*.swo
+.DS_Store
+Thumbs.db
+
+# ─── TypeScript / build artifacts ─────────────────────────────────────────
+*.tsbuildinfo
+next-env.d.ts
+
+# ─── Local-only runtime data (written at runtime; keep out of git so a ────
+#     redeploy doesn't overwrite live no-show / device history) ────────────
+data/blocklist.json
+data/devices.json
+data/contacts.json
+data/consent-log.json
+# data/services.json
+# data/gallery.json is the committed seed (like services.json); admin-uploaded
+# image bytes are written to data/gallery/ at runtime — keep those out of git.
+data/gallery/
+
+# ─── Service-account keys / credentials (NEVER commit) ────────────────────
+# The Google service-account JSON grants calendar access — keep every copy out
+# of git, wherever it lands. Also any other private key/cert format.
+*.iam.gserviceaccount.com.json
+do-beauty-calendar-*.json
+*-key.json
+*service_account*.json
+*service-account*.json
+*.pem
+*.p12
+*.pfx
+
+# ─── Local working material (not app assets — those live in public/) ──────
+# image_for_claude/ holds owner-supplied source images + (previously) a key copy.
+image_for_claude/
+
+# ─── Misc ─────────────────────────────────────────────────────────────────
+.vercel
+.claude/

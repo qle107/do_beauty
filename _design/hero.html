@@ -1,0 +1,238 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Do Beauty — Hero</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<style>
+  :root{
+    --ivory:#F7F3EC;
+    --white:#FAF8F3;
+    --ink:#211E1B;
+    --ink-2:#81766B;
+    --sub:#7E7164;
+    --body:#82786F;
+    --gold:#B89A63;
+    --gold-soft:#D4BE98;
+    --gold-line:#C7A875;
+    --beaute:#B8955A;
+    --border:rgba(184,154,99,.35);
+    --btn:#1D1A17;
+    --serif:'Cormorant Garamond', Georgia, serif;
+    --sans:'Inter', system-ui, -apple-system, sans-serif;
+    --gutter:clamp(24px, 7vw, 116px);
+    --ease:cubic-bezier(.22,1,.36,1);
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html,body{overflow-x:hidden}
+  body{background:var(--ivory);color:var(--ink);font-family:var(--sans);font-weight:300;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+  a{color:inherit;text-decoration:none}
+  ::selection{background:var(--gold-soft);color:var(--ink)}
+
+  /* ── HEADER ─────────────────────────────────────────── */
+  header{position:sticky;top:0;z-index:50;height:86px;display:flex;align-items:center;justify-content:space-between;
+    padding-inline:var(--gutter);background:var(--ivory);border-bottom:1px solid var(--border)}
+  .logo{display:flex;align-items:center;gap:11px}
+  .logo b{font-family:var(--serif);font-weight:600;font-size:23px;letter-spacing:.30em;text-transform:uppercase;padding-left:.30em;color:var(--ink)}
+  .logo .dept{font-family:var(--sans);font-weight:400;font-size:10px;letter-spacing:.05em;color:var(--gold);border:1px solid var(--border);padding:3px 5px;line-height:1}
+  nav ul{list-style:none;display:flex;gap:34px}
+  nav a{font-family:var(--sans);font-weight:400;font-size:11.5px;text-transform:uppercase;letter-spacing:.22em;color:var(--ink-2);transition:color .35s var(--ease)}
+  nav a:hover{color:var(--ink)}
+  .btn-reserve{display:inline-flex;align-items:center;justify-content:center;width:136px;height:48px;background:var(--btn);color:var(--white);
+    font-family:var(--sans);font-size:11px;letter-spacing:.2em;text-transform:uppercase;border:0;cursor:pointer;transition:background .4s var(--ease),letter-spacing .4s var(--ease)}
+  .btn-reserve:hover{background:#2b2723;letter-spacing:.26em}
+  .hamburger{display:none;flex-direction:column;gap:5px;background:none;border:0;cursor:pointer;padding:6px}
+  .hamburger span{width:24px;height:1.5px;background:var(--ink);transition:.3s var(--ease)}
+
+  /* ── HERO ───────────────────────────────────────────── */
+  .hero{display:grid;grid-template-columns:43fr 57fr;min-height:clamp(700px,84vh,850px);align-items:center;position:relative}
+  @media (hover:hover) and (pointer:fine){ .hero{cursor:none} }
+  .hero-left{padding-left:var(--gutter);padding-right:clamp(28px,4vw,72px);padding-block:56px}
+
+  .ornament{display:flex;align-items:center;gap:10px;margin-bottom:24px;color:var(--gold-line)}
+  .ornament .ln{width:52px;height:1px;background:var(--gold-line)}
+  .ornament .di{font-size:8px;line-height:1}
+
+  .eyebrow{font-family:var(--sans);font-weight:400;font-size:10.5px;letter-spacing:.32em;text-transform:uppercase;color:var(--gold)}
+
+  .headline{font-family:var(--serif);font-weight:400;font-size:clamp(58px,7.1vw,100px);line-height:.86;letter-spacing:-.005em;color:var(--ink);margin-top:26px}
+  .headline .line{display:block;overflow:hidden}
+  .headline .line-i{display:block;padding-bottom:.03em}
+  .headline .beaute{font-style:italic;color:var(--beaute)}
+
+  .subtitle{font-family:var(--serif);font-style:italic;font-weight:400;font-size:clamp(18px,1.55vw,20px);color:var(--sub);margin-top:30px}
+
+  .body-copy{font-family:var(--sans);font-weight:300;font-size:14.5px;line-height:1.82;color:var(--body);max-width:450px;margin-top:26px}
+
+  .cta-row{display:flex;align-items:center;gap:32px;margin-top:42px;flex-wrap:wrap}
+  .btn-primary{display:inline-flex;align-items:center;justify-content:center;width:215px;height:52px;background:var(--btn);color:var(--white);
+    font-family:var(--sans);font-size:10.5px;letter-spacing:.2em;text-transform:uppercase;border:0;cursor:inherit;
+    transition:transform .35s var(--ease),background .35s var(--ease)}
+  .btn-primary:hover{transform:translateY(-3px);background:var(--gold);color:var(--white)}
+  .textlink{font-family:var(--sans);font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--ink);position:relative;padding-bottom:7px}
+  .textlink::after{content:"";position:absolute;left:0;bottom:0;height:1px;width:100%;background:var(--ink);transform:scaleX(1);transform-origin:right;transition:transform .45s var(--ease)}
+  .textlink:hover::after{transform:scaleX(0);transform-origin:right}
+  .textlink::before{content:"";position:absolute;left:0;bottom:0;height:1px;width:100%;background:var(--gold);transform:scaleX(0);transform-origin:left;transition:transform .45s var(--ease) .05s}
+  .textlink:hover::before{transform:scaleX(1)}
+
+  /* ── HERO IMAGE ─────────────────────────────────────── */
+  .hero-right{position:relative;height:100%}
+  .hero-img-wrap{position:relative;height:100%;min-height:clamp(560px,72vh,780px);border-radius:180px 0 0 0;overflow:hidden;border:1px solid rgba(183,145,87,.45)}
+  .hero-img-wrap .parallax{position:absolute;inset:-18px;}
+  .hero-img-wrap img{width:100%;height:100%;object-fit:cover;object-position:60% center;display:block}
+  .hero-img-wrap::after{content:"";position:absolute;inset:14px;border:1px solid rgba(199,168,117,.4);border-radius:168px 0 0 0;pointer-events:none;z-index:2}
+  /* graceful fallback if the photo is missing */
+  .hero-img-wrap.img-missing{background:radial-gradient(120% 100% at 70% 25%,#F3ECE0,#E4D7C3 60%,#DBCBB2)}
+  .hero-img-wrap.img-missing img{display:none}
+  .hero-img-wrap.img-missing::before{content:"DO BEAUTY";position:absolute;inset:0;display:flex;align-items:center;justify-content:center;
+    font-family:var(--serif);font-size:46px;letter-spacing:.14em;color:rgba(35,32,28,.5)}
+
+  /* ── CUSTOM CURSOR ──────────────────────────────────── */
+  .cursor{position:fixed;top:0;left:0;width:10px;height:10px;border-radius:50%;background:var(--ink);pointer-events:none;z-index:9999;
+    transform:translate(-50%,-50%);display:none;align-items:center;justify-content:center;
+    transition:left .16s var(--ease),top .16s var(--ease),width .45s var(--ease),height .45s var(--ease),background .35s ease}
+  .cursor .c-label{font-family:var(--sans);font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--ink);opacity:0;transition:opacity .3s ease}
+  .cursor.on-image{width:84px;height:84px;background:var(--ivory)}
+  .cursor.on-image .c-label{opacity:1}
+  body.cursor-on .cursor{display:flex}
+
+  /* ── RESPONSIVE ─────────────────────────────────────── */
+  @media (max-width:980px){
+    nav ul{display:none}
+    .hamburger{display:flex}
+    .hero{grid-template-columns:1fr}
+    .hero-left{padding:44px var(--gutter) 0}
+    .hero-right{order:2;margin-top:44px;height:auto;padding-left:var(--gutter)}
+    .hero-img-wrap{height:560px;min-height:0;border-radius:130px 0 0 0}
+    .cursor{display:none!important}
+  }
+  @media (max-width:520px){
+    .hero-img-wrap{height:480px;border-radius:96px 0 0 0}
+    .cta-row{gap:22px}
+    .btn-primary{width:100%}
+  }
+
+  @media (prefers-reduced-motion:reduce){
+    *{animation:none!important;transition:none!important}
+    .cursor{display:none!important}
+  }
+
+  /* mobile menu */
+  .mobile-menu{position:fixed;inset:0;background:var(--ivory);z-index:60;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:30px;
+    opacity:0;pointer-events:none;transition:opacity .4s var(--ease)}
+  .mobile-menu.open{opacity:1;pointer-events:auto}
+  .mobile-menu a{font-family:var(--serif);font-size:30px;color:var(--ink)}
+  .mobile-menu .close{position:absolute;top:30px;right:30px;font-size:26px;background:none;border:0;cursor:pointer;color:var(--ink)}
+</style>
+</head>
+<body>
+
+<div class="cursor" aria-hidden="true"><span class="c-label">View</span></div>
+
+<header>
+  <a class="logo" href="#" aria-label="Do Beauty, accueil">
+    <b>Do Beauty</b><span class="dept">94</span>
+  </a>
+  <nav aria-label="Navigation principale">
+    <ul>
+      <li><a href="#">Prestations</a></li>
+      <li><a href="#">Galerie</a></li>
+      <li><a href="#">L'équipe</a></li>
+      <li><a href="#">Avis</a></li>
+      <li><a href="#">Contact</a></li>
+    </ul>
+  </nav>
+  <a class="btn-reserve" href="#">Réserver</a>
+  <button class="hamburger" aria-label="Ouvrir le menu" id="burger"><span></span><span></span><span></span></button>
+</header>
+
+<nav class="mobile-menu" id="mobileMenu" aria-label="Menu mobile">
+  <button class="close" id="closeMenu" aria-label="Fermer le menu">✕</button>
+  <a href="#">Prestations</a><a href="#">Galerie</a><a href="#">L'équipe</a><a href="#">Avis</a><a href="#">Contact</a>
+  <a class="btn-reserve" href="#" style="margin-top:10px">Réserver</a>
+</nav>
+
+<main>
+  <section class="hero" id="hero">
+    <div class="hero-left">
+      <div class="ornament" aria-hidden="true"><span class="di">◆</span><span class="ln"></span><span class="di">◆</span></div>
+      <p class="eyebrow">Onglerie · Institut de beauté · Val-de-Marne</p>
+      <h1 class="headline">
+        <span class="line"><span class="line-i">L'art de la</span></span>
+        <span class="line"><span class="line-i beaute">beauté</span></span>
+        <span class="line"><span class="line-i">soignée</span></span>
+      </h1>
+      <p class="subtitle">Manucure, cils &amp; soins, dans un écrin discret.</p>
+      <p class="body-copy">Un institut où chaque geste est précis et chaque détail pensé. Prenez rendez-vous avec l'artiste de votre choix, ou laissez-nous vous confier à la première disponibilité.</p>
+      <div class="cta-row">
+        <a class="btn-primary" href="#">Réserver en ligne</a>
+        <a class="textlink" href="#">Découvrir les prestations</a>
+      </div>
+    </div>
+
+    <div class="hero-right">
+      <div class="hero-img-wrap" id="imgWrap">
+        <div class="parallax" id="parallax">
+          <img src="/image_for_claude/image_hero_section.png" alt="Intérieur de l'institut Do Beauty — accueil en marbre, cannelures crème et accents dorés"
+               onerror="document.getElementById('imgWrap').classList.add('img-missing')">
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<script>
+  const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const fine = window.matchMedia('(hover:hover) and (pointer:fine)').matches;
+
+  /* ── Entrance timeline ── */
+  if (window.gsap && !reduce) {
+    const e = 'power3.out';
+    const tl = gsap.timeline({ defaults:{ duration:.9, ease:e } });
+    tl.from('header', { y:-10, opacity:0, duration:.7 })
+      .from('.ornament', { y:10, opacity:0, duration:.6 }, '-=.3')
+      .from('.eyebrow', { y:10, opacity:0, duration:.6 }, '-=.4')
+      .from('.headline .line-i', { yPercent:100, opacity:0, stagger:.1 }, '-=.3')
+      .from('.subtitle', { y:14, opacity:0 }, '-=.5')
+      .from('.body-copy', { y:14, opacity:0 }, '-=.6')
+      .from('.cta-row', { y:14, opacity:0 }, '-=.6')
+      .from('.hero-img-wrap', { opacity:0, scale:1.04, transformOrigin:'center', duration:1.1 }, '-=1.2');
+  }
+
+  /* ── Custom cursor + parallax (desktop only) ── */
+  if (fine && !reduce) {
+    document.body.classList.add('cursor-on');
+    const cursor = document.querySelector('.cursor');
+    const imgWrap = document.getElementById('imgWrap');
+    const parallax = document.getElementById('parallax');
+
+    window.addEventListener('mousemove', (ev) => {
+      // CSS transition on left/top gives the smooth trailing follow — no perpetual RAF
+      cursor.style.left = ev.clientX+'px';
+      cursor.style.top = ev.clientY+'px';
+      const r = imgWrap.getBoundingClientRect();
+      if (ev.clientX>=r.left && ev.clientX<=r.right && ev.clientY>=r.top && ev.clientY<=r.bottom){
+        const dx = ((ev.clientX - (r.left+r.width/2))/r.width)*10;
+        const dy = ((ev.clientY - (r.top+r.height/2))/r.height)*10;
+        gsap.to(parallax, { x:dx, y:dy, duration:.9, ease:'power3.out' });
+      }
+    });
+
+    imgWrap.addEventListener('mouseenter', () => cursor.classList.add('on-image'));
+    imgWrap.addEventListener('mouseleave', () => { cursor.classList.remove('on-image'); gsap.to(parallax,{x:0,y:0,duration:.9,ease:'power3.out'}); });
+  }
+
+  /* ── Mobile menu ── */
+  const burger = document.getElementById('burger');
+  const menu = document.getElementById('mobileMenu');
+  const closeM = document.getElementById('closeMenu');
+  burger && burger.addEventListener('click', ()=> menu.classList.add('open'));
+  closeM && closeM.addEventListener('click', ()=> menu.classList.remove('open'));
+  menu && menu.querySelectorAll('a').forEach(a=> a.addEventListener('click', ()=> menu.classList.remove('open')));
+</script>
+</body>
+</html>

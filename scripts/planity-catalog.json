@@ -1,0 +1,140 @@
+{
+  "source": "https://www.planity.com/do-beauty-nails-94250-gentilly",
+  "scrapedAt": "2026-08-09",
+  "categories": [
+    { "name": "Offres spéciales", "services": [
+      { "name": "Manucure & Beauté des pieds Spa classique (sans vernis)", "priceValue": 44, "duration": "45 min" },
+      { "name": "Manucure & Beauté des pieds Spa + Vernis Classique", "priceValue": 54, "duration": "1h" },
+      { "name": "Manucure & Beauté des pieds Spa + Vernis semi-permanent", "priceValue": 77, "duration": "1h 15 min" },
+      { "name": "Manucure & Beauté des pieds Spa Américain VIPP", "priceValue": 60, "duration": "55 min" },
+      { "name": "Manucure & Beauté des pieds Spa Américain VIPP + Vernis Classique", "priceValue": 75, "duration": "1h 10 min" },
+      { "name": "Manucure & Beauté des pieds Spa Américain VIPP + Vernis semi-permanent", "priceValue": 95, "duration": "1h 25 min" }
+    ]},
+    { "name": "Soin des mains", "services": [
+      { "name": "Manucure complète sans vernis", "priceValue": 15, "duration": "15 min" },
+      { "name": "Manucure simple + Vernis Classique", "priceValue": 20, "duration": "25 min" },
+      { "name": "Manucure simple + Vernis semi-permanent", "priceValue": 33, "duration": "35 min" },
+      { "name": "Coupe / limage + Pose Vernis Classique simple", "priceValue": 15, "duration": "10 min" },
+      { "name": "Pose Vernis semi-permanent", "priceValue": 25, "duration": "25 min" },
+      { "name": "Pose Baby Boomer (par vernis)", "priceValue": 35, "duration": "35 min" },
+      { "name": "Pose Vernis semi-permanent avec French", "priceValue": 30, "duration": "35 min" }
+    ]},
+    { "name": "Soin des pieds", "services": [
+      { "name": "Beauté des Pieds spa classique sans vernis", "priceValue": 30, "duration": "35 min" },
+      { "name": "Beauté des pieds Spa + Vernis Classique", "priceValue": 35, "duration": "45 min" },
+      { "name": "Beauté des pieds Spa + Vernis semi-permanent", "priceValue": 45, "duration": "50 min" },
+      { "name": "Beauté des pieds Spa + French", "priceValue": 50, "duration": "55 min" },
+      { "name": "Coupe / limage + Pose Vernis Classique simple (pieds)", "priceValue": 15, "duration": "15 min" },
+      { "name": "Pose Vernis semi-permanent (pieds)", "priceValue": 25, "duration": "25 min" },
+      { "name": "Pose Vernis semi-permanent avec French (pieds)", "priceValue": 30, "duration": "35 min" }
+    ]},
+    { "name": "Pose de capsule", "services": [
+      { "name": "Capsule Résine + Vernis Semi-Permanent", "priceValue": 45, "duration": "50 min" },
+      { "name": "Remplissage Résine + vernis semi-permanent", "priceValue": 40, "duration": "50 min" },
+      { "name": "Capsule Gel + Vernis semi-permanent", "priceValue": 50, "duration": "1h 15 min" },
+      { "name": "Remplissage Gel + Vernis semi-permanent", "priceValue": 45, "duration": "50 min" },
+      { "name": "Gel X Américaine + Vernis semi-permanent", "priceValue": 40, "duration": "50 min" },
+      { "name": "Pose capsule sur les pieds en résine + semi-permanent", "priceValue": 45, "duration": "1h" },
+      { "name": "Pose Capsule Baby Boomer en Résine", "priceValue": 55, "duration": "1h 10 min" },
+      { "name": "Pose Capsule Baby Boomer en Gel", "priceValue": 60, "duration": "1h 20 min" }
+    ]},
+    { "name": "Gainage & renforcement", "services": [
+      { "name": "Gainage builder gel + Vernis semi-permanent", "priceValue": 35, "duration": "30 min" },
+      { "name": "Gainage en résine + semi-permanent", "priceValue": 40, "duration": "50 min" }
+    ]},
+    { "name": "Spa VIPP américain", "services": [
+      { "name": "Manucure Américaine VIPP", "priceValue": 25, "duration": "20 min" },
+      { "name": "Manucure Américaine VIPP + Vernis Classique", "priceValue": 35, "duration": "30 min" },
+      { "name": "Manucure Américaine VIPP + vernis semi-permanent", "priceValue": 45, "duration": "35 min" },
+      { "name": "Beauté des pieds Spa Américaine VIPP", "priceValue": 40, "duration": "40 min" },
+      { "name": "Beauté des pieds Spa Américaine VIPP + Vernis Classique", "priceValue": 45, "duration": "50 min" },
+      { "name": "Beauté des pieds Spa Américaine VIPP + vernis semi-permanent", "priceValue": 60, "duration": "1h" }
+    ]},
+    { "name": "Nail art & suppléments", "services": [
+      { "name": "Cat Eyes", "priceValue": 5, "duration": "5 min" },
+      { "name": "Effet chrome - Miroir", "priceValue": 10, "duration": "5 min" },
+      { "name": "French sur les ongles naturels", "priceValue": 5, "duration": "10 min" }
+    ]},
+    { "name": "Nails pour hommes", "services": [
+      { "name": "Beauté des Mains (homme)", "priceValue": 20, "duration": "20 min" },
+      { "name": "Beauté des Pieds (homme)", "priceValue": 38, "duration": "35 min" },
+      { "name": "Forfait Beauté des Mains & Pieds (homme)", "priceValue": 55, "duration": "1h" }
+    ]},
+    { "name": "Dépose - réparation", "services": [
+      { "name": "Dépose semi-permanent (faite chez nous) + Nouvelle Pose", "priceValue": 0, "duration": "35 min", "note": "Dépose offerte pour toute nouvelle pose" },
+      { "name": "Dépose semi-permanent", "priceValue": 5, "duration": "10 min" },
+      { "name": "Dépose Capsule / Gainage suivie d'une pose", "priceValue": 10, "duration": "20 min" },
+      { "name": "Dépose Capsule / Gainage simple (sans repose)", "priceValue": 15, "duration": "20 min" },
+      { "name": "Réparation d'un ongle en gel / résine", "priceValue": 5, "duration": "30 min" }
+    ]},
+    { "name": "Extension de cils en soie", "services": [
+      { "name": "Pose Cil à Cil", "priceValue": 55, "duration": "1h 20 min", "note": "à partir de" },
+      { "name": "Pose mixte naturel", "priceValue": 60, "duration": "1h 20 min" },
+      { "name": "Remplissage 2 semaines (cil à cil / mixte naturel)", "priceValue": 40, "duration": "1h 20 min" },
+      { "name": "Remplissage 3 semaines (cil à cil / mixte naturel)", "priceValue": 45, "duration": "1h 20 min" },
+      { "name": "Remplissage 4 semaines (cil à cil / mixte naturel)", "priceValue": 50, "duration": "1h 20 min" },
+      { "name": "Pose Mixte Intense", "priceValue": 68, "duration": "1h 20 min" },
+      { "name": "Remplissage 2 semaines (mixte intense)", "priceValue": 40, "duration": "1h 20 min" },
+      { "name": "Remplissage 3 semaines (mixte intense)", "priceValue": 50, "duration": "1h 20 min" },
+      { "name": "Remplissage 4 semaines (mixte intense)", "priceValue": 55, "duration": "1h 20 min" },
+      { "name": "Pose Volume Russe Légère", "priceValue": 68, "duration": "1h 20 min" },
+      { "name": "Pose Volume Russe Intense", "priceValue": 79, "duration": "1h 20 min" },
+      { "name": "Remplissage 2 semaines (volume russe)", "priceValue": 45, "duration": "1h 20 min" },
+      { "name": "Remplissage 3 semaines (volume russe)", "priceValue": 55, "duration": "1h 20 min" },
+      { "name": "Remplissage 4 semaines (volume russe)", "priceValue": 60, "duration": "1h 20 min" },
+      { "name": "Pose Whispy / Kim K / Hybride", "priceValue": 85, "duration": "1h 20 min" },
+      { "name": "Remplissage 2 semaines (whispy / hybride / Kim K)", "priceValue": 45, "duration": "1h 20 min" },
+      { "name": "Remplissage 3 semaines (whispy / hybride / Kim K)", "priceValue": 55, "duration": "1h 20 min" },
+      { "name": "Remplissage 4 semaines (whispy / hybride / Kim K)", "priceValue": 65, "duration": "1h 20 min" },
+      { "name": "Dépose simple", "priceValue": 10, "duration": "10 min" },
+      { "name": "Dépose simple d'une pose faite ailleurs", "priceValue": 15, "duration": "20 min" },
+      { "name": "Dépose suivie d'une pose", "priceValue": 5, "duration": "10 min" },
+      { "name": "Supplément couleur de cils", "priceValue": 5, "duration": "10 min", "note": "de 5 à 10 €" }
+    ]},
+    { "name": "Rehaussement de cils", "services": [
+      { "name": "Soin botox collagène + teinture (complet)", "priceValue": 45, "duration": "1h 20 min" },
+      { "name": "Soin botox collagène sans teinture", "priceValue": 38, "duration": "1h 20 min" },
+      { "name": "Teinture de cils", "priceValue": 15, "duration": "20 min" },
+      { "name": "Teinture des sourcils", "priceValue": 15, "duration": "20 min" }
+    ]},
+    { "name": "Soins du visage", "services": [
+      { "name": "Nettoyage de peau simple", "priceValue": 30, "duration": "30 min" },
+      { "name": "Soin Hydrafacial", "priceValue": 39, "duration": "45 min" },
+      { "name": "Soin Détoxifiant", "priceValue": 49, "duration": "45 min" },
+      { "name": "Soin du visage Spécialiste 9 étapes (hydratant, détoxifiant, collagène)", "priceValue": 59, "duration": "1h" },
+      { "name": "Soin du visage Jeunesse d'exception", "priceValue": 69, "duration": "1h" },
+      { "name": "Lifting au collagène", "priceValue": 75, "duration": "1h 15 min" }
+    ]},
+    { "name": "Soins du corps", "services": [
+      { "name": "Massage Thaï Aroma Therapy — 1h30", "priceValue": 75, "duration": "1h 30 min" },
+      { "name": "Massage Thaï Aroma Therapy — 1h", "priceValue": 60, "duration": "1h" },
+      { "name": "Massage Thaï Aroma Therapy — 45 min", "priceValue": 45, "duration": "45 min" },
+      { "name": "Massage Thaï Aroma Therapy — 30 min", "priceValue": 35, "duration": "30 min" },
+      { "name": "Massage California", "priceValue": 70, "duration": "1h" },
+      { "name": "Massage du dos", "priceValue": 35, "duration": "30 min" },
+      { "name": "Massage du corps relaxant", "priceValue": 60, "duration": "1h" },
+      { "name": "Massage des pieds relaxant", "priceValue": 35, "duration": "30 min" },
+      { "name": "Massage du dos, cou et épaules", "priceValue": 35, "duration": "30 min" },
+      { "name": "Massage des bras", "priceValue": 35, "duration": "30 min" },
+      { "name": "Massage des jambes", "priceValue": 35, "duration": "30 min" },
+      { "name": "Massage du ventre — 30 min", "priceValue": 40, "duration": "30 min" },
+      { "name": "Massage du ventre — 1h", "priceValue": 65, "duration": "1h" }
+    ]},
+    { "name": "Épilation à la cire", "services": [
+      { "name": "Aisselles", "priceValue": 10, "duration": "5 min" },
+      { "name": "Demi-bras", "priceValue": 13, "duration": "10 min" },
+      { "name": "Bras complets", "priceValue": 20, "duration": "15 min" },
+      { "name": "Demi-jambes", "priceValue": 15, "duration": "10 min" },
+      { "name": "Jambes complètes", "priceValue": 25, "duration": "15 min" },
+      { "name": "Sourcils", "priceValue": 10, "duration": "10 min" },
+      { "name": "Lèvres", "priceValue": 6, "duration": "10 min" },
+      { "name": "Menton", "priceValue": 6, "duration": "10 min" },
+      { "name": "Maillot simple", "priceValue": 15, "duration": "20 min" },
+      { "name": "Maillot intégral", "priceValue": 25, "duration": "25 min" },
+      { "name": "Visage + cou", "priceValue": 25, "duration": "25 min" }
+    ]},
+    { "name": "Browlift sourcils", "services": [
+      { "name": "Browlift + teinture soin Botox sourcils", "priceValue": 70, "duration": "1h 30 min" }
+    ]}
+  ]
+}
