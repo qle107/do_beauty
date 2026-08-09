@@ -15,7 +15,7 @@ export const page: LandingPage = {
   breadcrumbLabel: "Manucure Gentilly",
   h1: "Manucure à Gentilly",
   lead:
-    "Au 16 avenue Jean Jaurès, Do Beauty prend soin de vos mains avec des manucures réalisées à la main par une petite équipe d'expertes : mise en forme des ongles, soin des cuticules et finition au choix, du plus naturel au plus travaillé, 7 jours sur 7.",
+    "Au 12 Avenue Jean Jaurès, Do Beauty prend soin de vos mains 7 jours sur 7 : mise en forme des ongles, soin des cuticules et finition au choix, du plus naturel au plus travaillé. Une petite équipe qui ne bâcle rien.",
   ctaCategory: "MAINS",
   service: {
     name: "Manucure",
@@ -174,7 +174,7 @@ export const page: LandingPage = {
     {
       question: "Où se situe l'institut et comment y accéder ?",
       answer:
-        "Do Beauty se trouve au 16 avenue Jean Jaurès, 94250 Gentilly, aux portes de Paris. On y vient par la gare RER B « Gentilly », par le tramway T3a, ou en voiture depuis Le Kremlin-Bicêtre, Arcueil et Montrouge, à quelques minutes seulement.",
+        "Do Beauty se trouve au 12 Avenue Jean Jaurès, 94250 Gentilly, aux portes de Paris. On y vient par la gare RER B « Gentilly », par le tramway T3a, ou en voiture depuis Le Kremlin-Bicêtre, Arcueil et Montrouge, à quelques minutes seulement.",
     },
   ],
   related: [

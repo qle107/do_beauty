@@ -19,7 +19,7 @@ const STEPS = [
   {
     n: '04',
     title: 'Profitez',
-    body: 'Des ongles impeccables, pensés sur mesure. Garantie satisfaction.',
+    body: 'Des ongles nets, une finition qui tient. On peaufine ensemble avant que vous repartiez.',
   },
 ] as const
 

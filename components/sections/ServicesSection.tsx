@@ -33,7 +33,7 @@ const CATEGORIES: {
     n: '02',
     key: 'nail-art',
     title: 'Nail Art',
-    desc: 'Créations sur mesure, détails graphiques et finitions précises.',
+    desc: 'Motifs dessinés à la main, du plus discret au plus travaillé.',
     bookingCat: 'NAIL_ART',
     fallback: serviceImages.nailart,
     match: (img) => img.tags.map((t) => t.toLowerCase()).includes('nail-art'),
@@ -51,7 +51,7 @@ const CATEGORIES: {
     n: '04',
     key: 'pieds',
     title: 'Beauté des pieds',
-    desc: 'Soin complet et mise en beauté des pieds, du soin au vernis.',
+    desc: 'Soin complet des pieds, du gommage à la pose du vernis.',
     bookingCat: 'PIEDS',
     fallback: null,
     match: (img) =>
@@ -105,7 +105,7 @@ export default async function ServicesSection() {
               La beauté, pensée dans les moindres détails.
             </h2>
             <p className="mt-6 max-w-[60ch] text-[15px] leading-relaxed text-[color:var(--db-ink-soft)]">
-              Manucure, nail art, regard et beauté des pieds : découvrez l’univers Do Beauty.
+              Manucure, nail art, beauté du regard et des pieds : voilà ce qu’on fait chez Do Beauty, à Gentilly.
             </p>
           </header>
         </Reveal>

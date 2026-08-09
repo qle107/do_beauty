@@ -35,9 +35,9 @@ const TABS: TabDef[] = [
 ]
 
 const TAB_DESCRIPTIONS: Record<string, string> = {
-  MAINS: 'Manucure, pose de vernis classique et semi-permanent réalisés avec précision et délicatesse.',
-  PIEDS: 'Beauté des pieds complète : cuticules, soin et pose de vernis longue tenue pour des orteils impeccables.',
-  CILS: 'Extensions cil à cil, volume russe et rehaussement pour un regard intense, du plus naturel au plus intense.',
+  MAINS: 'Manucure, pose de vernis classique et semi-permanent. Cuticules soignées, pose nette qui tient.',
+  PIEDS: 'Beauté des pieds complète : cuticules, soin et pose de vernis longue tenue.',
+  CILS: 'Extensions cil à cil, volume russe et rehaussement de cils. Du naturel discret au regard bien marqué, selon ce que vous voulez.',
 }
 
 function ServiceList({ services, loading }: { services: Service[]; loading: boolean }) {

@@ -7,7 +7,7 @@ import { faqPageSchema, jsonLd } from '@/lib/seo/schema'
 const list = [
   {
     q: 'Comment prendre rendez-vous ?',
-    a: 'En ligne en quelques clics, ou en nous contactant directement.',
+    a: 'En ligne sur le site, ou par téléphone au 07 56 94 88 88.',
   },
   {
     q: 'Quels soins proposez-vous ?',
@@ -15,7 +15,7 @@ const list = [
   },
   {
     q: 'Où êtes-vous situés ?',
-    a: '16 Avenue Jean Jaurès, 94250 Gentilly.',
+    a: '12 Avenue Jean Jaurès, 94250 Gentilly.',
   },
   {
     q: 'Quels sont vos horaires ?',
@@ -23,7 +23,7 @@ const list = [
   },
   {
     q: 'Peut-on choisir son experte ?',
-    a: 'Oui, ou nous vous confions à la première disponibilité.',
+    a: 'Oui, dites-nous laquelle. Sinon, on vous confie à la première disponible.',
   },
   {
     q: 'Quels moyens de paiement acceptez-vous ?',

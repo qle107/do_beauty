@@ -10,7 +10,7 @@ export default function BrandStatement() {
         <Reveal className="flex flex-col items-center text-center">
           <span className="db-rule w-12" aria-hidden="true" />
 
-          <p className="db-eyebrow mt-8">L&apos;expérience Do Beauty</p>
+          <p className="db-eyebrow mt-8">Chez Do Beauty</p>
 
           <h2
             className="db-serif mt-8 text-balance"
@@ -31,7 +31,8 @@ export default function BrandStatement() {
             className="mt-8 mx-auto"
             style={{ color: '#DED6CA', maxWidth: '520px' }}
           >
-            Un moment pour soi, pensé dans les moindres détails.
+            Le temps d&apos;une manucure, on prend soin de vos mains. Sans se
+            presser.
           </p>
         </Reveal>
       </div>

@@ -54,7 +54,7 @@ function TrainIcon({ className }: { className?: string }) {
 
 export const metadata: Metadata = {
   title: 'À propos · Do Beauty à Gentilly',
-  description: 'Découvrez Do Beauty, institut de beauté & nail salon à Gentilly (94).',
+  description: 'Do Beauty, institut de beauté et onglerie à Gentilly (94) : manucure, vernis semi-permanent, pose de cils et épilation, sur rendez-vous.',
   alternates: { canonical: '/about' },
 }
 
@@ -72,13 +72,12 @@ export default function AboutPage() {
             </h1>
             <div className="h-px bg-coral/40 w-20 mb-8" />
             <p className="font-sans text-base text-charcoal-500 leading-relaxed mb-6">
-              Do Beauty, c&apos;est avant tout une rencontre humaine. Notre équipe vous accueille dans un écrin discret,
-              dans un espace dédié, chaleureux et entièrement pensé pour vous offrir le meilleur
-              des soins beauté.
+              Do Beauty, c&apos;est un petit institut de beauté à Gentilly. On y prend le temps :
+              chaque cliente est reçue dans un espace calme, sans la précipitation des grands salons.
             </p>
             <p className="font-sans text-base text-charcoal-500 leading-relaxed">
-              Chaque prestation est réalisée avec soin, passion et des produits de qualité
-              (Diamond & OPI) pour des résultats impeccables et durables.
+              Manucure, vernis semi-permanent, pose de cils, épilation : chaque prestation est faite
+              à la main, avec des produits pros — Diamond &amp; OPI — pour un résultat net et qui tient.
             </p>
           </div>
 
@@ -115,9 +114,9 @@ export default function AboutPage() {
               <h3 className="font-serif text-3xl font-light text-dark mb-1">Notre équipe</h3>
               <p className="font-sans text-sm text-coral tracking-wider mb-6">Fondatrice &amp; Experte Beauté</p>
               <p className="font-sans text-base text-charcoal-500 leading-relaxed">
-                Notre équipe de professionnelles dévouées se consacre à la satisfaction de chaque cliente.
-                Elle apporte son expertise et sa passion pour l&apos;industrie de la beauté, garantissant
-                que chaque client reçoit le meilleur soin possible.
+                Derrière Do Beauty, une petite équipe qui fait ce métier tous les jours : manucure, nail art,
+                cils, épilation. On prend le temps de vous conseiller selon vos ongles et vos envies,
+                sans jamais pousser à la prestation.
               </p>
               <ul className="mt-6 flex flex-col gap-2 text-sm font-sans text-charcoal-500">
                 <li className="flex items-center gap-2">
@@ -147,9 +146,9 @@ export default function AboutPage() {
         <h2 className="font-serif text-3xl md:text-4xl font-light text-dark text-center mb-10 md:mb-16">Ce qui nous anime</h2>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-12">
           {[
-            { icon: HeartIcon, title: 'Soin', body: 'Chaque geste est réalisé avec attention et délicatesse. Votre confort est notre priorité.' },
+            { icon: HeartIcon, title: 'Soin', body: 'On travaille en douceur, sans jamais vous presser. Si une étape vous gêne, on adapte.' },
             { icon: StarIcon, title: 'Excellence', body: 'Nous utilisons uniquement des produits professionnels - Diamond & OPI - pour des résultats qui durent.' },
-            { icon: HomeIcon, title: 'Proximité', body: 'Une relation de confiance, dans un cadre intime et chaleureux, loin de l\'agitation des salons.' },
+            { icon: HomeIcon, title: 'Proximité', body: 'On vous reçoit sur rendez-vous, une cliente à la fois. Ici, vous n\'êtes pas un numéro.' },
           ].map((v) => (
             <div key={v.title} className="text-center">
               <span className="mb-4 inline-flex text-coral">

@@ -7,7 +7,7 @@ import type { Service } from '@/lib/types'
 export const metadata: Metadata = {
   title: 'Nos prestations & tarifs · Do Beauty à Gentilly',
   description:
-    'Découvrez toutes nos prestations : manucure, nail art, pose d’ongles, extensions de cils, soins du visage, massages et épilation à Gentilly (94). Tarifs transparents.',
+    'Toutes nos prestations et tarifs : manucure, nail art, pose d’ongles, extensions de cils, soins du visage, massages et épilation à Gentilly (94). Ouvert 7j/7, 10h–19h30.',
   alternates: { canonical: '/menus' },
   openGraph: {
     title: 'Nos prestations & tarifs · Do Beauty à Gentilly',

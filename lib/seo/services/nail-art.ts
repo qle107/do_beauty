@@ -15,7 +15,7 @@ export const page: LandingPage = {
   breadcrumbLabel: "Nail art Gentilly",
   h1: "Nail art à Gentilly",
   lead:
-    "Au 16 avenue Jean Jaurès, l'équipe de Do Beauty dessine à la main le décor de vos ongles : un détail discret sur un seul doigt ou des dix ongles entièrement travaillés, posés sur vernis semi-permanent ou sur gel, sept jours sur sept.",
+    "Au 12 Avenue Jean Jaurès, l'équipe de Do Beauty dessine à la main le décor de vos ongles : un détail discret sur un seul doigt ou des dix ongles entièrement travaillés, posés sur vernis semi-permanent ou sur gel, sept jours sur sept.",
   ctaCategory: "NAIL_ART",
   service: {
     name: "Nail art",
@@ -62,7 +62,7 @@ export const page: LandingPage = {
         {
           kind: "paragraph",
           text:
-            "Le nail art se pose toujours sur une base, et le choix de cette base change à la fois la tenue et les possibilités. Le vernis semi-permanent convient parfaitement à un décor sur vos ongles naturels : couleur longue tenue d'environ trois semaines, fini brillant, idéal pour les motifs peints, l'effet chrome ou le cat eye. Le gel, lui, apporte de la longueur et de la solidité — c'est la base à privilégier quand vous voulez des reliefs 3D, un pavé de strass ou un décor plus chargé qui a besoin d'une surface plus robuste pour durer.",
+            "Le nail art se pose toujours sur une base, et le choix de cette base change à la fois la tenue et les possibilités. Le vernis semi-permanent convient parfaitement à un décor sur vos ongles naturels : couleur longue tenue d'environ trois semaines, fini brillant, idéal pour les motifs peints, l'effet chrome ou le cat eye. Le gel, lui, apporte de la longueur et de la solidité — c'est la base à privilégier quand vous voulez des reliefs 3D, un pavé de strass ou un décor plus chargé qui a besoin d'une surface plus résistante pour durer.",
         },
         {
           kind: "list",
@@ -81,7 +81,7 @@ export const page: LandingPage = {
         {
           kind: "paragraph",
           text:
-            "On commence par échanger sur votre idée : une photo, une couleur, une envie précise ou juste une ambiance. L'expérte prépare l'ongle — mise en forme, soin des cuticules, base semi-permanent ou pose de gel — puis réalise le décor à la main, souvent au pinceau fin, avant de sceller le tout sous une finition qui protège le motif. Pour un détail sur un ou deux ongles, comptez quelques minutes de plus sur votre rendez-vous habituel ; pour un décor complet et travaillé, prévoyez un créneau un peu plus long. Rien n'est expédié : un nail art propre demande de la patience, et c'est ce qui le fait durer aussi longtemps que la couleur.",
+            "On commence par échanger sur votre idée : une photo, une couleur, une envie précise ou juste une ambiance. L'experte prépare l'ongle — mise en forme, soin des cuticules, base semi-permanent ou pose de gel — puis réalise le décor à la main, souvent au pinceau fin, avant de sceller le tout sous une finition qui protège le motif. Pour un détail sur un ou deux ongles, comptez quelques minutes de plus sur votre rendez-vous habituel ; pour un décor complet et travaillé, prévoyez un créneau un peu plus long. Rien n'est expédié : un nail art propre demande de la patience, et c'est ce qui le fait durer aussi longtemps que la couleur.",
         },
       ],
     },
@@ -159,7 +159,7 @@ export const page: LandingPage = {
     {
       question: "Où se situe l'institut et comment y accéder ?",
       answer:
-        "Do Beauty se trouve au 16 avenue Jean Jaurès, 94250 Gentilly, aux portes de Paris. On y vient par la gare RER B « Gentilly », par le tramway T3a le long des maréchaux, ou en voiture depuis Le Kremlin-Bicêtre, Arcueil et Montrouge, à quelques minutes seulement.",
+        "Do Beauty se trouve au 12 Avenue Jean Jaurès, 94250 Gentilly, aux portes de Paris. On y vient par la gare RER B « Gentilly », par le tramway T3a le long des maréchaux, ou en voiture depuis Le Kremlin-Bicêtre, Arcueil et Montrouge, à quelques minutes seulement.",
     },
   ],
   related: [

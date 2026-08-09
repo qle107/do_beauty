@@ -38,7 +38,7 @@ const CARDS: readonly ServiceCard[] = [
   {
     category: 'NAIL_ART',
     title: 'Nail Art',
-    tagline: 'Une création unique pour vos mains.',
+    tagline: 'Des motifs dessinés à la main, selon vos envies.',
     image: '/images/dob/svc-nailart.jpg',
     alt: 'Nail art créatif chromé réalisé chez Do Beauty à Gentilly',
     duration: '+ 5 min',
@@ -51,7 +51,7 @@ const CARDS: readonly ServiceCard[] = [
   {
     category: 'CAPSULE',
     title: 'Pose de capsules',
-    tagline: 'Gel ou résine, longueur sur mesure.',
+    tagline: 'Gel ou résine, la longueur que vous voulez.',
     image: '/images/dob/g7.jpg',
     alt: 'Pose de capsules en gel avec Baby Boomer chez Do Beauty à Gentilly',
     duration: '50 min – 1h20',
@@ -87,8 +87,9 @@ export default function ServicesGrid() {
           </h2>
           <div className="h-px w-16 bg-coral/40 mx-auto mt-8" />
           <p className="font-sans text-sm text-dark/55 max-w-xl mx-auto mt-6 leading-relaxed">
-            Quatre soins phares, conçus pour révéler la beauté de vos mains et
-            de votre regard, dans un écrin intime à Gentilly.
+            Nos quatre soins les plus demandés : semi-permanent, nail art, pose
+            de capsules et extensions de cils. À Gentilly, sur rendez-vous, 7j/7
+            de 10h à 19h30.
           </p>
         </div>
 

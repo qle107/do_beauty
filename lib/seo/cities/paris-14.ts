@@ -7,7 +7,7 @@ export const cityData: City = {
   driveMinutes: 10,
   distanceKm: 3,
   publicTransport:
-    "Depuis le 14e, Do Beauty se rejoint sans détour compliqué. Le plus direct reste le RER B : à la gare « Cité Universitaire », sur le boulevard Jourdan, une seule station vers le sud vous dépose à « Gentilly », d'où l'institut se gagne à pied par l'avenue Jean Jaurès. Le tramway T3a longe les Maréchaux jusqu'à l'arrêt « Stade Charléty – Porte de Gentilly », à la lisière de la commune. Depuis Alésia ou Denfert-Rochereau, les lignes 4 et 6 du métro vous relient en quelques minutes au RER B, et la ligne 13 rejoint le tram par la Porte de Vanves.",
+    "Depuis le 14e, venir chez Do Beauty est simple. Le plus direct reste le RER B : à la gare « Cité Universitaire », sur le boulevard Jourdan, une seule station vers le sud vous dépose à « Gentilly », d'où vous rejoignez l'institut à pied par l'avenue Jean Jaurès. Le tramway T3a longe les Maréchaux jusqu'à l'arrêt « Stade Charléty – Porte de Gentilly », à la lisière de la commune. Depuis Alésia ou Denfert-Rochereau, les lignes 4 et 6 du métro vous relient en quelques minutes au RER B, et la ligne 13 rejoint le tram par la Porte de Vanves.",
   drivingHint:
     "En voiture, comptez environ 10 minutes depuis le centre du 14e, soit à peu près 3 km : descendez d'Alésia vers la Porte de Gentilly ou la Porte d'Orléans, franchissez le périphérique, puis suivez l'avenue Jean Jaurès. Le trajet est nettement plus court depuis le sud de l'arrondissement, du côté de la Cité Universitaire et du parc Montsouris. Estimation en journée, hors heures de pointe.",
   lead:
@@ -31,7 +31,7 @@ export const cityData: City = {
       h2: "Ongles, cils et regard : le soin du détail",
       paragraphs: [
         "Côté mains, notre équipe travaille la manucure classique, le vernis semi-permanent longue tenue et la pose en gel, avec un vrai souci de la forme, de la finition et de l'hygiène. Le nail art se choisit ensemble, d'une touche discrète pour le bureau à un décor plus graphique pour une occasion. Les habituées du 14e apprécient de repartir avec des mains nettes, sans avoir passé l'après-midi en salon.",
-        "Le regard n'est pas en reste : extensions de cils posées cil à cil, rehaussement et soins des sourcils mettent en valeur les yeux avec naturel. C'est le genre de prestation que l'on aime avant un événement du côté de la Cité Universitaire, un départ en vacances ou simplement pour alléger la routine du matin. La beauté des pieds complète volontiers un rendez-vous aux beaux jours, avec la même attention portée à chaque geste.",
+        "Le regard n'est pas en reste : extensions de cils posées cil à cil, rehaussement et soins des sourcils mettent en valeur les yeux avec naturel. C'est le genre de prestation que l'on aime avant un événement du côté de la Cité Universitaire, un départ en vacances ou simplement pour alléger la routine du matin. La beauté des pieds complète volontiers un rendez-vous aux beaux jours.",
       ],
     },
   ],

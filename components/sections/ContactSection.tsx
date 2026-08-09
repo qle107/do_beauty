@@ -29,7 +29,7 @@ export default function ContactSection() {
 
               <address className="mt-8 not-italic">
                 <p className="db-serif text-[color:var(--db-ink)]" style={{ fontSize: 'clamp(20px,2.4vw,26px)', lineHeight: 1.35 }}>
-                  16 Avenue Jean Jaurès
+                  12 Avenue Jean Jaurès
                   <br />
                   94250 Gentilly
                 </p>

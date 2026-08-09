@@ -9,11 +9,11 @@ const AVANTAGES = [
   },
   {
     title: 'Accueil chaleureux',
-    body: 'Un moment rien que pour vous, café offert, dans un cadre intime et soigné.',
+    body: 'Un café en arrivant et le temps de bien faire, sans vous presser.',
   },
   {
     title: 'Résultat soigné',
-    body: 'Une finition impeccable à chaque visite, pensée sur mesure pour vos mains.',
+    body: 'Cuticules nettes, pose régulière, bords propres. On vérifie tout avant que vous partiez.',
   },
 ] as const
 

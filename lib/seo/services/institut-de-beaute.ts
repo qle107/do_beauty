@@ -12,12 +12,12 @@ export const page: LandingPage = {
   meta: {
     title: "Institut de beauté à Gentilly (94) · Do Beauty",
     description:
-      "Do Beauty, institut de beauté à Gentilly : onglerie, nail art, beauté du regard et soins des mains et des pieds. Ouvert 7j/7, 16 avenue Jean Jaurès. Réservation en ligne.",
+      "Do Beauty, institut de beauté à Gentilly : onglerie, nail art, beauté du regard et soins des mains et des pieds. Ouvert 7j/7, 12 Avenue Jean Jaurès. Réservation en ligne.",
   },
   breadcrumbLabel: "Institut de beauté Gentilly",
   h1: "Institut de beauté à Gentilly",
   lead:
-    "Au 16 avenue Jean Jaurès, Do Beauty réunit sous un même toit l'onglerie, le nail art, la beauté du regard et les soins des mains et des pieds. Une équipe d'expertes, un accueil posé et la réservation en ligne, ouvert 7 jours sur 7 à Gentilly.",
+    "Au 12 Avenue Jean Jaurès, Do Beauty réunit sous un même toit l'onglerie, le nail art, la beauté du regard et les soins des mains et des pieds. Une équipe d'expertes, un accueil posé et la réservation en ligne, ouvert 7 jours sur 7 à Gentilly.",
   ctaCategory: "FORFAIT",
   service: {
     name: "Institut de beauté Do Beauty",
@@ -33,12 +33,12 @@ export const page: LandingPage = {
         {
           kind: "paragraph",
           text:
-            "Do Beauty est un institut de beauté installé au 16 avenue Jean Jaurès, à Gentilly (94250), juste au sud de Paris. On y vient pour prendre soin de ses ongles, de son regard et de ses mains dans un cadre calme, tenu avec soin, où chaque rendez-vous se déroule sans précipitation. L'institut est ouvert 7 jours sur 7 et affiche une note de 4,6 sur 5 sur près de 99 avis Google.",
+            "Do Beauty est un institut de beauté installé au 12 Avenue Jean Jaurès, à Gentilly (94250), juste au sud de Paris. On y vient pour prendre soin de ses ongles, de son regard et de ses mains dans un cadre calme, où l'on ne vous presse pas. L'institut est ouvert 7 jours sur 7 et affiche une note de 4,6 sur 5 sur près de 99 avis Google.",
         },
         {
           kind: "paragraph",
           text:
-            "Derrière le comptoir, une petite équipe d'expertes se répartit les univers : la pose d'ongles et le vernis semi-permanent, le nail art dessiné à la main, les extensions et le rehaussement de cils, la beauté des mains et des pieds. Chacune prend le temps d'écouter ce que vous recherchez avant de commencer, avec une vraie exigence sur l'hygiène et sur des produits professionnels.",
+            "Derrière le comptoir, une petite équipe se partage les spécialités : la pose d'ongles et le vernis semi-permanent, le nail art dessiné à la main, les extensions et le rehaussement de cils, la beauté des mains et des pieds. Chacune prend le temps d'écouter ce que vous cherchez avant de commencer, et reste stricte sur l'hygiène comme sur le choix des produits.",
         },
       ],
     },
@@ -129,7 +129,7 @@ export const page: LandingPage = {
     {
       question: "Comment venir à l'institut à Gentilly ?",
       answer:
-        "L'institut se trouve au 16 avenue Jean Jaurès, à Gentilly (94250). La gare RER B « Gentilly » est à quelques minutes à pied et le tramway T3a dessert la Porte de Gentilly. Depuis Paris 13e ou 14e, vous êtes tout près par la Porte d'Italie ou la Porte de Gentilly.",
+        "L'institut se trouve au 12 Avenue Jean Jaurès, à Gentilly (94250). La gare RER B « Gentilly » est à quelques minutes à pied et le tramway T3a dessert la Porte de Gentilly. Depuis Paris 13e ou 14e, vous êtes tout près par la Porte d'Italie ou la Porte de Gentilly.",
     },
     {
       question: "Quels moyens de paiement acceptez-vous ?",

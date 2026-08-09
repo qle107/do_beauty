@@ -25,7 +25,7 @@ export default function CityLandingPage({ city }: { city: City }) {
     },
     {
       question: `Comment venir depuis ${city.name} en transport en commun ?`,
-      answer: `${city.publicTransport}. L'institut Do Beauty se trouve ensuite au 16 Avenue Jean Jaurès, à Gentilly, à quelques minutes.`,
+      answer: `${city.publicTransport}. L'institut Do Beauty se trouve ensuite au 12 Avenue Jean Jaurès, à Gentilly, à quelques minutes.`,
     },
     ...city.localFaqs,
     {

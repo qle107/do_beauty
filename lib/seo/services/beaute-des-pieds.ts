@@ -15,7 +15,7 @@ export const page: LandingPage = {
   breadcrumbLabel: "Beauté des pieds Gentilly",
   h1: "Beauté des pieds à Gentilly",
   lead:
-    "Au 16 avenue Jean Jaurès, Do Beauty prend soin de vos pieds de la plante aux ongles : soin complet, ongles remis en forme et vernis classique ou semi-permanent sur les orteils, réalisés par une petite équipe d'expertes, du lundi au dimanche.",
+    "Au 12 Avenue Jean Jaurès, Do Beauty prend soin de vos pieds de la plante aux ongles : soin complet, ongles remis en forme et vernis classique ou semi-permanent sur les orteils, réalisés par une petite équipe d'expertes, du lundi au dimanche.",
   ctaCategory: "PIEDS",
   service: {
     name: "Beauté des pieds",
@@ -31,7 +31,7 @@ export const page: LandingPage = {
         {
           kind: "paragraph",
           text:
-            "La beauté des pieds va bien au-delà d'une simple couche de vernis. À Gentilly, le soin commence par un bain qui détend et assouplit la peau, puis l'experte remet les ongles en forme, nettoie le contour et repousse les cuticules avec douceur. Vient ensuite le travail sur les zones rugueuses — talons, coussinets — pour lisser les callosités, avant un gommage qui affine le grain de peau et une crème qui nourrit et hydrate. On termine, si vous le souhaitez, par la pose d'un vernis. Le résultat, ce sont des pieds nets, souples et agréables à porter dans une sandale comme dans une chaussure fermée.",
+            "Une beauté des pieds, ce n'est pas qu'une couche de vernis. À Gentilly, le soin commence par un bain qui détend et assouplit la peau, puis l'experte remet les ongles en forme, nettoie le contour et repousse les cuticules avec douceur. Vient ensuite le travail sur les zones rugueuses — talons, coussinets — pour lisser les callosités, avant un gommage qui affine le grain de peau et une crème qui nourrit et hydrate. On termine, si vous le souhaitez, par la pose d'un vernis. Le résultat, ce sont des pieds nets, souples et agréables à porter dans une sandale comme dans une chaussure fermée.",
         },
         {
           kind: "list",
@@ -178,7 +178,7 @@ export const page: LandingPage = {
     {
       question: "Où se situe l'institut et comment y accéder ?",
       answer:
-        "Do Beauty se trouve au 16 avenue Jean Jaurès, 94250 Gentilly, aux portes de Paris. On y vient par la gare RER B « Gentilly », par le tramway T3a, ou en voiture depuis Le Kremlin-Bicêtre, Arcueil et Montrouge, à quelques minutes seulement.",
+        "Do Beauty se trouve au 12 Avenue Jean Jaurès, 94250 Gentilly, aux portes de Paris. On y vient par la gare RER B « Gentilly », par le tramway T3a, ou en voiture depuis Le Kremlin-Bicêtre, Arcueil et Montrouge, à quelques minutes seulement.",
     },
   ],
   related: [

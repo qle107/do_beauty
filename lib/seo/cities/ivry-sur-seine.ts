@@ -12,9 +12,9 @@ export const cityData: City = {
   "postalCode": "94200",
   "driveMinutes": 8,
   "distanceKm": 4,
-  "publicTransport": "Depuis Ivry-sur-Seine, la ligne 7 du métro (stations « Mairie d'Ivry » et « Pierre et Marie Curie ») rejoint vite le tram T3a, que l'on prend à la Porte d'Ivry ou à la Porte d'Italie. Quelques arrêts vers l'ouest, « Stade Charléty – Porte de Gentilly » vous laisse à quelques minutes à pied du 16 avenue Jean Jaurès. Le RER C, à la gare d'Ivry-sur-Seine, dessert le reste du secteur côté Seine. En transports comme en voiture, le trajet passe par Le Kremlin-Bicêtre, la commune qui sépare Ivry de Gentilly.",
+  "publicTransport": "Depuis Ivry-sur-Seine, la ligne 7 du métro (stations « Mairie d'Ivry » et « Pierre et Marie Curie ») rejoint vite le tram T3a, que l'on prend à la Porte d'Ivry ou à la Porte d'Italie. Quelques arrêts vers l'ouest, « Stade Charléty – Porte de Gentilly » vous laisse à quelques minutes à pied du 12 avenue Jean Jaurès. Le RER C, à la gare d'Ivry-sur-Seine, dessert le reste du secteur côté Seine. En transports comme en voiture, le trajet passe par Le Kremlin-Bicêtre, la commune qui sépare Ivry de Gentilly.",
   "drivingHint": "En voiture, comptez environ 8 minutes (près de 4 km) depuis le centre d'Ivry-sur-Seine : on traverse Le Kremlin-Bicêtre, la commune voisine, avant de gagner Gentilly et l'avenue Jean Jaurès. Un temps de trajet courant en journée, hors heures de pointe ; le stationnement se trouve dans les rues autour de l'institut.",
-  "lead": "Entre les bords de Seine d'Ivry-Port et la Mairie d'Ivry, il suffit de traverser une commune voisine pour rejoindre Do Beauty. À huit minutes de chez vous, notre institut de Gentilly prend soin de vos ongles et de votre regard — manucure, vernis semi-permanent, pose gel, extensions de cils — dans un cadre clair et posé, sans avoir à monter dans Paris.",
+  "lead": "Entre les bords de Seine d'Ivry-Port et la Mairie d'Ivry, il suffit de traverser une commune voisine pour rejoindre Do Beauty. À huit minutes de chez vous, notre institut de Gentilly prend soin de vos ongles et de votre regard — manucure, vernis semi-permanent, pose gel, extensions de cils — dans un salon clair, sans avoir à monter dans Paris.",
   "neighborhoods": [
     "Mairie d'Ivry",
     "Ivry-Port",
@@ -34,7 +34,7 @@ export const cityData: City = {
     {
       "h2": "Ongles, cils et regard : le soin du détail",
       "paragraphs": [
-        "Côté mains, nos prothésistes travaillent la manucure classique, le vernis semi-permanent longue tenue et la pose en gel, avec une vraie attention portée à la forme, à la finition et à l'hygiène. Le nail art se choisit ensemble, discret pour le quotidien ou plus graphique pour une occasion, sans jamais forcer le geste.",
+        "Côté mains, nos prothésistes travaillent la manucure classique, le vernis semi-permanent longue tenue et la pose en gel, avec le souci de la forme, de la finition et de l'hygiène. Le nail art se choisit ensemble, discret pour le quotidien ou plus graphique pour une occasion, sans jamais forcer le geste.",
         "Le regard tient une place à part : extensions de cils posées cil à cil, rehaussement et soins qui ouvrent l'œil avec naturel. Avant un événement, un départ en vacances ou simplement pour alléger la routine du matin, notre équipe adapte l'intensité pour un rendu qui vous ressemble. La beauté des pieds complète volontiers la carte aux beaux jours."
       ]
     }

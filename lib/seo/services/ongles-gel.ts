@@ -15,7 +15,7 @@ export const page: LandingPage = {
   breadcrumbLabel: "Ongles en gel Gentilly",
   h1: "Pose d'ongles en gel à Gentilly",
   lead:
-    "Au 16 avenue Jean Jaurès, l'équipe de Do Beauty pose, renforce et rallonge vos ongles en gel selon la forme et la longueur qui vous vont : un résultat solide qui tient dans le temps, à quelques minutes des portes de Paris.",
+    "Au 12 Avenue Jean Jaurès, l'équipe de Do Beauty pose, renforce et rallonge vos ongles en gel selon la forme et la longueur qui vous vont : un résultat solide qui tient dans le temps, à quelques minutes des portes de Paris.",
   ctaCategory: "CAPSULE",
   service: {
     name: "Ongles en gel",
@@ -36,7 +36,7 @@ export const page: LandingPage = {
         {
           kind: "paragraph",
           text:
-            "Avant toute pose, l'expérte regarde l'état de vos ongles et vous demande votre mode de vie : un travail manuel, des ongles qui se dédoublent, une pousse capricieuse ou l'envie d'une longueur pour une occasion ne mènent pas à la même pose. Le gel s'ajuste à chaque main, c'est tout son intérêt.",
+            "Avant toute pose, l'experte regarde l'état de vos ongles et vous demande votre mode de vie : un travail manuel, des ongles qui se dédoublent, une pousse capricieuse ou l'envie d'une longueur pour une occasion ne mènent pas à la même pose. Le gel s'ajuste à chaque main, c'est tout son intérêt.",
         },
       ],
     },
@@ -64,7 +64,7 @@ export const page: LandingPage = {
         {
           kind: "paragraph",
           text:
-            "La forme change tout : le rendu, mais aussi le confort au quotidien. Une forme courte et arrondie casse moins et se vit facilement au travail ou avec des enfants ; l'amande et le carré arrondi allongent visuellement les doigts sans être fragiles ; les formes plus marquées, comme la ballerine, demandent un peu de longueur et laissent de la place au décor. En cas d'hésitation, l'expérte vous montre ce qui tiendra le mieux selon la solidité de vos ongles et vos habitudes.",
+            "La forme change tout : le rendu, mais aussi le confort au quotidien. Une forme courte et arrondie casse moins et se vit facilement au travail ou avec des enfants ; l'amande et le carré arrondi allongent visuellement les doigts sans être fragiles ; les formes plus marquées, comme la ballerine, demandent un peu de longueur et laissent de la place au décor. En cas d'hésitation, l'experte vous montre ce qui tiendra le mieux selon la solidité de vos ongles et vos habitudes.",
         },
         {
           kind: "list",
@@ -166,7 +166,7 @@ export const page: LandingPage = {
     {
       question: "Où faire poser ses ongles en gel à Gentilly ?",
       answer:
-        "Do Beauty vous accueille au 16 avenue Jean Jaurès, 94250 Gentilly, aux portes de Paris (13e et 14e). On y vient par la gare RER B « Gentilly », par le tramway T3a près de la Porte de Gentilly, ou en voiture depuis Le Kremlin-Bicêtre, Arcueil et Montrouge. Réservation en ligne 7 jours sur 7.",
+        "Do Beauty vous accueille au 12 Avenue Jean Jaurès, 94250 Gentilly, aux portes de Paris (13e et 14e). On y vient par la gare RER B « Gentilly », par le tramway T3a près de la Porte de Gentilly, ou en voiture depuis Le Kremlin-Bicêtre, Arcueil et Montrouge. Réservation en ligne 7 jours sur 7.",
     },
   ],
   related: [

@@ -8,7 +8,7 @@ export default function BookingCta() {
         <Reveal>
           <div className="mx-auto flex flex-col items-center text-center">
             <p className="db-serif italic text-[color:var(--db-champagne)] text-[clamp(15px,1.6vw,18px)]">
-              Votre prochain moment pour vous.
+              On vous garde une place.
             </p>
 
             <h2 className="db-serif text-[#FBF8F2] text-[clamp(28px,5.5vw,46px)] leading-tight mt-2">
@@ -16,7 +16,7 @@ export default function BookingCta() {
             </h2>
 
             <p className="text-[#E4DCCF] text-[15px] mt-4 max-w-[42ch] mx-auto">
-              Réservez votre moment beauté à Gentilly, 7 jours sur 7.
+              Manucure, semi-permanent ou nail art : réservez à Gentilly, 7j/7 de 10h à 19h30.
             </p>
 
             <Link href="/booking" data-cursor="reserver" className="db-btn db-btn--onDark mt-8">

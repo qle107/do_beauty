@@ -16,11 +16,11 @@ export const cityData: City = {
   driveMinutes: 8,
   distanceKm: 3.5,
   publicTransport:
-    "Depuis Villejuif, la ligne 7 du métro est votre point de départ, avec ses stations « Villejuif — Louis Aragon » (le terminus), « Paul Vaillant-Couturier » et « Léo Lagrange ». En remontant la ligne vers le nord, deux ou trois arrêts suffisent pour rejoindre Le Kremlin-Bicêtre, aux portes de Gentilly ; de là, on gagne l'institut par le tramway T3a (arrêt Porte de Gentilly) ou par la gare RER B « Gentilly », toute proche du 16 avenue Jean Jaurès. Plusieurs lignes de bus relient aussi directement le centre de Villejuif au secteur de Gentilly, une bonne option aux heures creuses.",
+    "Depuis Villejuif, la ligne 7 du métro est votre point de départ, avec ses stations « Villejuif — Louis Aragon » (le terminus), « Paul Vaillant-Couturier » et « Léo Lagrange ». En remontant la ligne vers le nord, deux ou trois arrêts suffisent pour rejoindre Le Kremlin-Bicêtre, aux portes de Gentilly ; de là, on gagne l'institut par le tramway T3a (arrêt Porte de Gentilly) ou par la gare RER B « Gentilly », toute proche du 12 Avenue Jean Jaurès. Plusieurs lignes de bus relient aussi directement le centre de Villejuif au secteur de Gentilly, une bonne option aux heures creuses.",
   drivingHint:
     "En voiture, comptez environ 8 minutes depuis le centre de Villejuif, soit à peu près 3,5 km : remontez vers le nord par l'avenue de Paris puis l'avenue de Fontainebleau (RD7), traversez Le Kremlin-Bicêtre et rejoignez l'avenue Jean Jaurès à Gentilly. Un temps de trajet typique en journée, à majorer un peu aux heures de pointe.",
   lead:
-    "À quelques minutes au nord de Villejuif, Do Beauty accueille les Villejuifoises dans un institut de beauté et nail salon calme et soigné, à Gentilly. Entre le centre-ville, le quartier de Gustave Roussy et les abords de la ligne 7, beaucoup viennent y retrouver notre équipe pour une manucure, un vernis semi-permanent, une pose gel ou des extensions de cils, sans avoir à monter jusqu'à Paris. Le temps d'un rendez-vous précis et sans précipitation, tout près de chez vous.",
+    "À quelques minutes au nord de Villejuif, Do Beauty accueille les Villejuifoises dans un institut de beauté et nail salon calme et soigné, à Gentilly. Entre le centre-ville, le quartier de Gustave Roussy et les abords de la ligne 7, beaucoup viennent y retrouver notre équipe pour une manucure, un vernis semi-permanent, une pose gel ou des extensions de cils, sans avoir à monter jusqu'à Paris. Un rendez-vous sans se presser, à quelques minutes de chez vous.",
   neighborhoods: [
     "Centre-ville / Mairie de Villejuif",
     "Institut Gustave Roussy",
@@ -39,8 +39,8 @@ export const cityData: City = {
     {
       h2: "Ongles, cils et regard : le soin du détail",
       paragraphs: [
-        "Côté ongles, nos prothésistes travaillent la manucure classique, le vernis semi-permanent longue tenue, la pose en gel et le nail art, du plus discret au plus graphique. Chaque prestation est réalisée avec des gestes précis et un vrai souci d'hygiène, pour un résultat net qui dure. Les habituées de Villejuif apprécient de repartir avec des mains impeccables sans avoir à traverser tout Paris.",
-        "Le regard n'est pas en reste : extensions de cils posées cil à cil, rehaussement et soins mettent en valeur vos yeux avec naturel, pour un rendu que l'on porte au quotidien comme pour une occasion. La beauté des pieds complète volontiers la carte aux beaux jours. Ouvert 7 jours sur 7, environ de 10h à 19h30, l'institut affiche une note de 4,6 sur 5 pour près de 99 avis Google, reflet d'un travail soigné et d'un accueil attentif.",
+        "Côté ongles, nos prothésistes travaillent la manucure classique, le vernis semi-permanent longue tenue, la pose en gel et le nail art, du plus discret au plus graphique. Chaque prestation est réalisée avec des gestes précis et une hygiène rigoureuse, pour un résultat net qui dure. Les habituées de Villejuif apprécient de repartir avec des mains impeccables sans avoir à traverser tout Paris.",
+        "Le regard n'est pas en reste : extensions de cils posées cil à cil, rehaussement de cils et soins, pour un rendu naturel qui tient au quotidien comme pour une occasion. La beauté des pieds complète volontiers la carte aux beaux jours. Ouvert 7 jours sur 7, environ de 10h à 19h30, l'institut affiche une note de 4,6 sur 5 pour près de 99 avis Google.",
       ],
     },
   ],

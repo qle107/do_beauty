@@ -15,7 +15,7 @@ export const page: LandingPage = {
   breadcrumbLabel: "Vernis semi-permanent Gentilly",
   h1: "Vernis semi-permanent à Gentilly",
   lead:
-    "Une couleur nette qui tient environ trois semaines, sans s'écailler au bout de deux jours : au 16 avenue Jean Jaurès, l'équipe de Do Beauty pose votre semi-permanent à la main, séché sous lampe LED, et le retire en douceur quand il est temps.",
+    "Une couleur nette qui tient environ trois semaines, sans s'écailler au bout de deux jours : au 12 Avenue Jean Jaurès, l'équipe de Do Beauty pose votre semi-permanent à la main, séché sous lampe LED, et le retire en douceur quand il est temps.",
   ctaCategory: "MAINS",
   service: {
     name: "Vernis semi-permanent",
@@ -66,7 +66,7 @@ export const page: LandingPage = {
         {
           kind: "paragraph",
           text:
-            "Tout commence par la préparation de l'ongle : mise en forme à la lime, repousse des cuticules et léger dépolissage de la surface pour que la couleur accroche. L'expérte applique ensuite une base, puis une à deux couches de couleur, et enfin un top coat qui donne la brillance. Chaque couche passe quelques secondes sous la lampe LED pour se fixer immédiatement : c'est ce qui remplace le séchage à l'air et garantit la solidité de l'ensemble.",
+            "Tout commence par la préparation de l'ongle : mise en forme à la lime, repousse des cuticules et léger dépolissage de la surface pour que la couleur accroche. L'experte applique ensuite une base, puis une à deux couches de couleur, et enfin un top coat qui donne la brillance. Chaque couche passe quelques secondes sous la lampe LED pour se fixer immédiatement : c'est ce qui remplace le séchage à l'air et garantit la solidité de l'ensemble.",
         },
         {
           kind: "paragraph",
@@ -169,7 +169,7 @@ export const page: LandingPage = {
     {
       question: "Où se situe l'institut et comment y accéder ?",
       answer:
-        "Do Beauty se trouve au 16 avenue Jean Jaurès, 94250 Gentilly, aux portes de Paris. On y vient par la gare RER B « Gentilly », par le tramway T3a, ou en voiture depuis Le Kremlin-Bicêtre, Arcueil et Montrouge, à quelques minutes seulement. Réservation en ligne 7 jours sur 7.",
+        "Do Beauty se trouve au 12 Avenue Jean Jaurès, 94250 Gentilly, aux portes de Paris. On y vient par la gare RER B « Gentilly », par le tramway T3a, ou en voiture depuis Le Kremlin-Bicêtre, Arcueil et Montrouge, à quelques minutes seulement. Réservation en ligne 7 jours sur 7.",
     },
   ],
   related: [

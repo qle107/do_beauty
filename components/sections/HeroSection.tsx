@@ -32,7 +32,7 @@ function HeroCopy() {
       </Reveal>
       <Reveal delay={160}>
         <p className="mt-6 max-w-[27rem] text-[17px] leading-[1.6] text-[color:var(--db-ink-soft)]">
-          Manucure, Nail Art, beauté du regard et soins dans un écrin discret.
+          Manucure, nail art, vernis semi-permanent, beauté du regard et soins du visage. Ouvert 7j/7 à Gentilly.
         </p>
       </Reveal>
       <Reveal delay={220}>

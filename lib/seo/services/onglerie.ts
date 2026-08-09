@@ -15,7 +15,7 @@ export const page: LandingPage = {
   breadcrumbLabel: "Onglerie Gentilly",
   h1: "Onglerie & bar à ongles à Gentilly",
   lead:
-    "Au 16 avenue Jean Jaurès, Do Beauty réunit tout le soin des ongles au même endroit : manucure, vernis semi-permanent, pose en gel et nail art, réalisés à la main par une petite équipe d'expertes, du lundi au dimanche.",
+    "Au 12 Avenue Jean Jaurès, Do Beauty s'occupe de tout ce qui touche aux ongles : manucure, vernis semi-permanent, pose en gel et nail art, réalisés à la main par une petite équipe, du lundi au dimanche.",
   ctaCategory: "MAINS",
   service: {
     name: "Onglerie",
@@ -31,7 +31,7 @@ export const page: LandingPage = {
         {
           kind: "paragraph",
           text:
-            "Un bar à ongles, c'est l'idée d'un lieu où l'on trouve tout ce qui concerne les mains et les ongles, du geste le plus simple au plus travaillé. À Gentilly, Do Beauty couvre l'ensemble de la carte : la manucure pour des ongles nets et une peau soignée, le vernis semi-permanent pour une couleur qui tient environ trois semaines, la pose en gel quand on souhaite de la longueur ou de la solidité, et le nail art pour personnaliser le résultat. Chaque cliente n'a pas les mêmes ongles ni les mêmes envies, alors l'équipe conseille la technique la plus adaptée avant de commencer.",
+            "Un bar à ongles, c'est un lieu où l'on trouve tout ce qui concerne les mains et les ongles, du geste le plus simple au plus travaillé. À Gentilly, Do Beauty couvre l'ensemble de la carte : la manucure pour des ongles nets et une peau soignée, le vernis semi-permanent pour une couleur qui tient environ trois semaines, la pose en gel quand on souhaite de la longueur ou de la solidité, et le nail art pour personnaliser le résultat. Chaque cliente n'a pas les mêmes ongles ni les mêmes envies, alors l'équipe conseille la technique la plus adaptée avant de commencer.",
         },
         {
           kind: "list",
@@ -52,7 +52,7 @@ export const page: LandingPage = {
         {
           kind: "paragraph",
           text:
-            "On commence par regarder l'état de vos ongles et par échanger sur ce que vous cherchez : une couleur discrète pour le quotidien, une pose qui tienne un voyage, un décor pour une occasion. L'expérte prépare ensuite l'ongle — mise en forme, repousse des cuticules, ponçage léger si nécessaire — puis applique la technique choisie. Le semi-permanent et le gel passent sous lampe LED entre chaque couche pour fixer la matière.",
+            "On commence par regarder l'état de vos ongles et par échanger sur ce que vous cherchez : une couleur discrète pour le quotidien, une pose qui tienne un voyage, un décor pour une occasion. L'experte prépare ensuite l'ongle — mise en forme, repousse des cuticules, ponçage léger si nécessaire — puis applique la technique choisie. Le semi-permanent et le gel passent sous lampe LED entre chaque couche pour fixer la matière.",
         },
         {
           kind: "paragraph",
@@ -115,7 +115,7 @@ export const page: LandingPage = {
         {
           kind: "paragraph",
           text:
-            "Tarifs indicatifs, confirmés lors de la réservation. Le prix final dépend de la longueur, de la finition et du décor souhaités. N'hésitez pas à nous préciser votre projet au moment de réserver pour une estimation juste.",
+            "Tarifs indicatifs, confirmés lors de la réservation. Le prix final dépend de la longueur, de la finition et du décor souhaités. Précisez-nous votre projet au moment de réserver pour une estimation juste.",
         },
       ],
     },
@@ -144,7 +144,7 @@ export const page: LandingPage = {
     {
       question: "Quelle est la différence entre une onglerie et un bar à ongles ?",
       answer:
-        "Les deux désignent le même type de lieu : un endroit dédié au soin et à la mise en beauté des ongles. Chez Do Beauty à Gentilly, vous trouvez toute la carte au même endroit — manucure, vernis semi-permanent, pose en gel et nail art — réalisée à la main par notre équipe.",
+        "Les deux désignent le même type de lieu : un endroit dédié au soin et à la mise en beauté des ongles. Chez Do Beauty à Gentilly, vous trouvez toute la carte — manucure, vernis semi-permanent, pose en gel et nail art — réalisée à la main par notre équipe.",
     },
     {
       question: "Faut-il prendre rendez-vous ou puis-je venir sans réserver ?",
@@ -169,7 +169,7 @@ export const page: LandingPage = {
     {
       question: "Où se situe l'onglerie et comment y accéder ?",
       answer:
-        "L'institut se trouve au 16 avenue Jean Jaurès, 94250 Gentilly, aux portes de Paris. On y vient par la gare RER B « Gentilly », par le tramway T3a, ou en voiture depuis Le Kremlin-Bicêtre, Arcueil et Montrouge, à quelques minutes seulement.",
+        "L'institut se trouve au 12 Avenue Jean Jaurès, 94250 Gentilly, aux portes de Paris. On y vient par la gare RER B « Gentilly », par le tramway T3a, ou en voiture depuis Le Kremlin-Bicêtre, Arcueil et Montrouge, à quelques minutes seulement.",
     },
     {
       question: "Vos tarifs affichés sont-ils définitifs ?",

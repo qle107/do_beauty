@@ -35,7 +35,7 @@ export const homepageFaqs: readonly FaqEntry[] = [
   {
     question: 'Où vous situez-vous exactement à Gentilly ?',
     answer:
-      "L'institut se trouve au 16 Avenue Jean Jaurès, 94250 Gentilly. Nous sommes à proximité de la gare RER B Gentilly et du tram T3a (Porte de Gentilly), aux portes de Paris (13e et 14e).",
+      "L'institut se trouve au 12 Avenue Jean Jaurès, 94250 Gentilly. Nous sommes à proximité de la gare RER B Gentilly et du tram T3a (Porte de Gentilly), aux portes de Paris (13e et 14e).",
   },
   {
     question: 'Y a-t-il un parking à proximité ?',
@@ -65,7 +65,7 @@ export const homepageFaqs: readonly FaqEntry[] = [
   {
     question: 'Faites-vous des prestations pour les mariées ?',
     answer:
-      "Oui, nous accompagnons régulièrement les futures mariées de Gentilly et des environs : manucure, nail art, pose d'extensions de cils, essai préalable et pose le jour J. Contactez-nous pour un accompagnement personnalisé.",
+      "Oui, nous préparons régulièrement les futures mariées de Gentilly et des environs : manucure, nail art, pose d'extensions de cils, un essai en amont et la pose le jour J. Appelez-nous au 07 56 94 88 88 pour caler l'essai et la date.",
   },
   {
     question: 'Proposez-vous des soins du visage et des massages ?',
