@@ -1,5 +1,6 @@
 import { getPool, ensureSchema, dbConfigured } from '@/lib/db'
 import { readJson, writeJson } from '@/lib/json-store'
+import { sheetsConfigured, SheetTable } from '@/lib/sheets'
 import type { RowDataPacket } from 'mysql2'
 
 const JSON_FILE = 'contacts.json'
@@ -37,6 +38,19 @@ export interface NewContactInput {
   clientIp?: string
 }
 
+// Google Sheets backend (Messages tab). Active when SHEETS_SPREADSHEET_ID is set.
+const sheet = new SheetTable<ContactMessage>('Messages', [
+  { header: 'ID', key: 'id' },
+  { header: 'Reçu le', key: 'createdAt' },
+  { header: 'Nom', key: 'name' },
+  { header: 'Email', key: 'email' },
+  { header: 'Sujet', key: 'subject' },
+  { header: 'Message', key: 'message' },
+  { header: 'Statut', key: 'status' },
+  { header: 'IP', key: 'clientIp' },
+  { header: 'Réponses', key: 'replies', kind: 'json' },
+])
+
 // ─── Row mapping / persistence ─────────────────────────────────────────────
 
 interface ContactRow extends RowDataPacket {
@@ -66,6 +80,13 @@ function rowToMessage(r: ContactRow): ContactMessage {
 }
 
 async function readAll(): Promise<ContactMessage[]> {
+  if (sheetsConfigured()) {
+    try {
+      return (await sheet.readAll()).map((c) => ({ ...c, replies: c.replies ?? [] }))
+    } catch (err) {
+      console.error('[contacts] Sheets read failed, using next store:', (err as Error)?.message)
+    }
+  }
   if (dbConfigured()) {
     try {
       await ensureSchema()
@@ -80,6 +101,18 @@ async function readAll(): Promise<ContactMessage[]> {
 }
 
 async function upsert(msg: ContactMessage): Promise<void> {
+  if (sheetsConfigured()) {
+    try {
+      const all = await sheet.readAll()
+      const idx = all.findIndex((c) => c.id === msg.id)
+      if (idx === -1) all.push(msg)
+      else all[idx] = msg
+      await sheet.writeAll(all)
+      return
+    } catch (err) {
+      console.error('[contacts] Sheets write failed, using next store:', (err as Error)?.message)
+    }
+  }
   if (dbConfigured()) {
     try {
       await getPool().query(
@@ -105,6 +138,15 @@ async function upsert(msg: ContactMessage): Promise<void> {
 }
 
 async function removeById(id: string): Promise<void> {
+  if (sheetsConfigured()) {
+    try {
+      const all = (await sheet.readAll()).filter((c) => c.id !== id)
+      await sheet.writeAll(all)
+      return
+    } catch (err) {
+      console.error('[contacts] Sheets delete failed, using next store:', (err as Error)?.message)
+    }
+  }
   if (dbConfigured()) {
     try {
       await getPool().query('DELETE FROM contacts WHERE id = ?', [id])

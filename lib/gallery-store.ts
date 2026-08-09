@@ -1,11 +1,35 @@
 import { getPool, ensureSchema, dbConfigured } from '@/lib/db'
 import { readJson, writeJson } from '@/lib/json-store'
+import { sheetsConfigured, SheetTable } from '@/lib/sheets'
 import { getGalleryStorage } from '@/lib/gallery-storage'
 import type { GalleryImage, GalleryImagePublic, GalleryCategory, CatalogStatus } from '@/lib/types'
 import type { GalleryBulkInput } from '@/lib/validations'
 import type { RowDataPacket, ResultSetHeader } from 'mysql2'
 
 const JSON_FILE = 'gallery.json'
+
+// Google Sheets backend (Galerie tab). Active when SHEETS_SPREADSHEET_ID is set.
+const sheet = new SheetTable<GalleryImage>('Galerie', [
+  { header: 'ID', key: 'id' },
+  { header: 'Titre', key: 'title' },
+  { header: 'Alt', key: 'alt' },
+  { header: 'Catégorie', key: 'category' },
+  { header: 'Tags', key: 'tags', kind: 'json' },
+  { header: 'Publié', key: 'published', kind: 'boolean' },
+  { header: 'Mise en avant', key: 'featured', kind: 'boolean' },
+  { header: 'Stockage', key: 'storage' },
+  { header: 'Src', key: 'src' },
+  { header: 'Fichier', key: 'fileName' },
+  { header: 'Drive ID', key: 'driveFileId' },
+  { header: 'Largeur', key: 'width', kind: 'number' },
+  { header: 'Hauteur', key: 'height', kind: 'number' },
+  { header: 'Statut catalogue', key: 'catalogStatus' },
+  { header: 'Catégorie suggérée', key: 'suggestedCategory' },
+  { header: 'Tags suggérés', key: 'suggestedTags', kind: 'json' },
+  { header: 'Uploadé le', key: 'uploadedAt' },
+  { header: 'Créé le', key: 'createdAt' },
+  { header: 'Modifié le', key: 'updatedAt' },
+], 60_000)
 
 // ─── Row mapping ───────────────────────────────────────────────────────────
 
@@ -77,6 +101,16 @@ async function selectRows(sql: string, params?: unknown[]): Promise<GalleryRow[]
 // gallery offline over a DB hiccup.
 
 async function readAll(): Promise<GalleryImage[]> {
+  if (sheetsConfigured()) {
+    try {
+      let rows = await sheet.readAll()
+      if (rows.length === 0) {
+        const seed = readJson<GalleryImage[]>(JSON_FILE, [])
+        if (seed.length) { await sheet.writeAll(seed); rows = seed }
+      }
+      return rows.slice().sort(byNewest)
+    } catch (err) { console.error('[gallery-store] Sheets read failed, using next store:', (err as Error)?.message) }
+  }
   if (dbConfigured()) {
     try {
       const rows = await selectRows('SELECT * FROM gallery')
@@ -109,6 +143,10 @@ export async function getImageById(id: string): Promise<GalleryImage | undefined
 }
 
 export async function createImage(img: GalleryImage): Promise<GalleryImage> {
+  if (sheetsConfigured()) {
+    try { const all = await sheet.readAll(); all.push(img); await sheet.writeAll(all); return img }
+    catch (err) { console.error('[gallery-store] Sheets create failed, using next store:', (err as Error)?.message) }
+  }
   if (!dbConfigured()) {
     const all = readJson<GalleryImage[]>(JSON_FILE, [])
     all.push(img)
@@ -143,6 +181,10 @@ export async function updateImage(
   if (data.catalogStatus === 'approved') {
     updated.suggestedCategory = undefined
     updated.suggestedTags = undefined
+  }
+  if (sheetsConfigured()) {
+    try { const all = await sheet.readAll(); const idx = all.findIndex((g) => g.id === id); if (idx === -1) return null; all[idx] = updated; await sheet.writeAll(all); return updated }
+    catch (err) { console.error('[gallery-store] Sheets update failed, using next store:', (err as Error)?.message) }
   }
   if (!dbConfigured()) {
     const all = readJson<GalleryImage[]>(JSON_FILE, [])
@@ -208,6 +250,10 @@ export async function setSuggestion(
     suggestedTags: suggestion.tags ?? existing.suggestedTags,
     updatedAt: new Date().toISOString(),
   }
+  if (sheetsConfigured()) {
+    try { const all = await sheet.readAll(); const idx = all.findIndex((g) => g.id === id); if (idx === -1) return null; all[idx] = updated; await sheet.writeAll(all); return updated }
+    catch (err) { console.error('[gallery-store] Sheets suggestion failed, using next store:', (err as Error)?.message) }
+  }
   if (!dbConfigured()) {
     const list = readJson<GalleryImage[]>(JSON_FILE, [])
     const idx = list.findIndex((g) => g.id === id)
@@ -238,6 +284,10 @@ export async function deleteImage(id: string): Promise<GalleryImage | null> {
       (err as NodeJS.ErrnoException)?.code ?? (err as Error)?.message)
   }
 
+  if (sheetsConfigured()) {
+    try { const all = await sheet.readAll(); const filtered = all.filter((g) => g.id !== id); await sheet.writeAll(filtered); return existing }
+    catch (err) { console.error('[gallery-store] Sheets delete failed, using next store:', (err as Error)?.message) }
+  }
   if (!dbConfigured()) {
     const all = readJson<GalleryImage[]>(JSON_FILE, [])
     const filtered = all.filter((g) => g.id !== id)

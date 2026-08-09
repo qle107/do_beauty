@@ -9,6 +9,7 @@ import { createPlanityBooking } from '@/lib/planity/booking'
 import { getServiceById, getAllServicesAdmin } from '@/lib/services-store'
 import { sendBookingAlert } from '@/lib/mail'
 import { sendWhatsAppAlert } from '@/lib/whatsapp'
+import { syncBookingToSheet } from '@/lib/booking-sheet'
 import { decodeImages, saveImages, deleteImages, listImages, existingImageDirs } from '@/lib/appointment-images'
 import { formatDate, timeToMinutes } from '@/lib/utils'
 import { isBlocked } from '@/lib/blocklist'
@@ -298,6 +299,22 @@ export async function POST(request: NextRequest): Promise<NextResponse> {
 
     void sendBookingAlert(alertData, attachments).catch((err) => console.error('Failed to send email alert:', err))
     void sendWhatsAppAlert(alertData).catch((err) => console.error('Failed to send WhatsApp alert:', err))
+
+    // Mirror the booking into the management sheet (Rendez-vous + Clients). Fire-
+    // and-forget: a Sheets error must never fail the booking.
+    void syncBookingToSheet({
+      id: eventId,
+      date,
+      timeSlot,
+      clientName,
+      clientPhone,
+      serviceNames: services.map((s) => s.name),
+      totalDuration,
+      totalPrice,
+      notes,
+      clientIp,
+      deviceId,
+    }).catch((err) => console.error('Failed to sync booking to sheet:', err))
 
     return NextResponse.json(
       { id: eventId, message: 'Rendez-vous créé avec succès.' },
