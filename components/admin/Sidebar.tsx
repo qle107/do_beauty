@@ -13,6 +13,11 @@ const CalendarIcon = () => (
     <rect x="3" y="4" width="18" height="18" rx="2" /><path d="M16 2v4M8 2v4M3 10h18" />
   </svg>
 )
+const ColumnsIcon = () => (
+  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+    <rect x="3" y="3" width="18" height="18" rx="1" /><path d="M9 3v18M15 3v18" />
+  </svg>
+)
 const GridIcon = () => (
   <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
     <rect x="3" y="3" width="7" height="7" /><rect x="14" y="3" width="7" height="7" />
@@ -66,6 +71,7 @@ const CloseIcon = () => (
 const NAV_ITEMS: NavItem[] = [
   { href: '/admin/dashboard',    label: 'Tableau de bord', icon: <GridIcon /> },
   { href: '/admin/appointments', label: 'Rendez-vous',     icon: <CalendarIcon /> },
+  { href: '/admin/calendar',     label: 'Planning',        icon: <ColumnsIcon /> },
   { href: '/admin/services',     label: 'Prestations',     icon: <ScissorsIcon /> },
   { href: '/admin/gallery',      label: 'Galerie',         icon: <ImageIcon /> },
   { href: '/admin/messages',     label: 'Messages',        icon: <MailIcon /> },
