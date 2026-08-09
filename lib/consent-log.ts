@@ -1,5 +1,6 @@
 import { getPool, ensureSchema, dbConfigured } from '@/lib/db'
 import { readJson, writeJson } from '@/lib/json-store'
+import { sheetsConfigured, SheetTable } from '@/lib/sheets'
 import type { RowDataPacket } from 'mysql2'
 
 const JSON_FILE = 'consent-log.json'
@@ -40,6 +41,15 @@ export function anonymiseIp(ip: string): string {
   return ip
 }
 
+// Google Sheets backend (Consentements tab). Active when SHEETS_SPREADSHEET_ID is set.
+const sheet = new SheetTable<ConsentLog>('Consentements', [
+  { header: 'ID', key: 'id' },
+  { header: 'Choix', key: 'choice' },
+  { header: 'IP (anonymisée)', key: 'ip' },
+  { header: 'User-Agent', key: 'userAgent' },
+  { header: 'Date', key: 'createdAt' },
+])
+
 export async function logConsent(input: {
   choice: ConsentChoice
   ip: string
@@ -53,6 +63,10 @@ export async function logConsent(input: {
     createdAt: new Date().toISOString(),
   }
 
+  if (sheetsConfigured()) {
+    try { await sheet.append(record); return }
+    catch (err) { console.error('[consent-log] Sheets write failed, using next store:', (err as Error)?.message) }
+  }
   if (dbConfigured()) {
     try {
       await ensureSchema()
@@ -78,6 +92,10 @@ export async function logConsent(input: {
 
 /** All consent records, newest first (for admin / CNIL retrieval). */
 export async function listConsentLogs(): Promise<ConsentLog[]> {
+  if (sheetsConfigured()) {
+    try { return (await sheet.readAll()).sort((a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime()) }
+    catch (err) { console.error('[consent-log] Sheets read failed, using next store:', (err as Error)?.message) }
+  }
   if (dbConfigured()) {
     try {
       await ensureSchema()

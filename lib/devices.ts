@@ -1,5 +1,6 @@
 import { getPool, ensureSchema, dbConfigured } from '@/lib/db'
 import { readJson, writeJson } from '@/lib/json-store'
+import { sheetsConfigured, SheetTable } from '@/lib/sheets'
 import { normalisePhone } from './blocklist'
 import type { RowDataPacket, ResultSetHeader } from 'mysql2'
 
@@ -49,6 +50,21 @@ function effectiveKey(deviceId: string, fingerprint?: string): string | null {
   return null
 }
 
+// Google Sheets backend (Appareils tab). Active when SHEETS_SPREADSHEET_ID is set.
+const sheet = new SheetTable<DeviceEntry>('Appareils', [
+  { header: 'Device ID', key: 'deviceId' },
+  { header: 'Téléphones', key: 'phones', kind: 'json' },
+  { header: 'Fingerprints', key: 'fingerprints', kind: 'json' },
+  { header: 'Nom', key: 'clientName' },
+  { header: 'Réservations', key: 'bookingCount', kind: 'number' },
+  { header: 'Absences', key: 'noShowCount', kind: 'number' },
+  { header: 'Bloqué', key: 'blocked', kind: 'boolean' },
+  { header: 'Bloqué le', key: 'blockedAt' },
+  { header: 'Raison', key: 'reason' },
+  { header: 'Première visite', key: 'firstSeen' },
+  { header: 'Modifié le', key: 'updatedAt' },
+])
+
 // ─── Row mapping / persistence ─────────────────────────────────────────────
 
 interface DeviceRow extends RowDataPacket {
@@ -82,6 +98,10 @@ function rowToEntry(r: DeviceRow): DeviceEntry {
 }
 
 async function readAll(): Promise<DeviceEntry[]> {
+  if (sheetsConfigured()) {
+    try { return (await sheet.readAll()).map((e) => ({ ...e, phones: e.phones ?? [], fingerprints: e.fingerprints ?? [] })) }
+    catch (err) { console.error('[devices] Sheets read failed, using next store:', (err as Error)?.message) }
+  }
   if (dbConfigured()) {
     try {
       await ensureSchema()
@@ -101,6 +121,14 @@ async function findById(deviceId: string): Promise<DeviceEntry | null> {
 }
 
 async function upsert(entry: DeviceEntry): Promise<void> {
+  if (sheetsConfigured()) {
+    try {
+      const all = await sheet.readAll()
+      const idx = all.findIndex((d) => d.deviceId === entry.deviceId)
+      if (idx === -1) all.push(entry); else all[idx] = entry
+      await sheet.writeAll(all); return
+    } catch (err) { console.error('[devices] Sheets write failed, using next store:', (err as Error)?.message) }
+  }
   if (dbConfigured()) {
     try {
       await getPool().query(
@@ -305,6 +333,14 @@ export async function updateDevice(
  * which keeps the record. Returns false when the device isn't found.
  */
 export async function deleteDevice(deviceId: string): Promise<boolean> {
+  if (sheetsConfigured()) {
+    try {
+      const all = await sheet.readAll()
+      const filtered = all.filter((d) => d.deviceId !== deviceId)
+      if (filtered.length === all.length) return false
+      await sheet.writeAll(filtered); return true
+    } catch (err) { console.error('[devices] Sheets delete failed, using next store:', (err as Error)?.message) }
+  }
   if (dbConfigured()) {
     try {
       await ensureSchema()

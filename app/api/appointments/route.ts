@@ -6,9 +6,10 @@ import { freeInPool, freeCount } from '@/lib/booking/capacity'
 import { getPlanityDayFree } from '@/lib/planity/public-availability'
 import { artistById, artistsForCategories } from '@/lib/staff'
 import { createPlanityBooking } from '@/lib/planity/booking'
-import { getServiceById, getAllServicesAdmin } from '@/lib/services-store'
+import { getAllServicesAdmin } from '@/lib/services-store'
 import { sendBookingAlert } from '@/lib/mail'
 import { sendWhatsAppAlert } from '@/lib/whatsapp'
+import { syncBookingToSheet } from '@/lib/booking-sheet'
 import { decodeImages, saveImages, deleteImages, listImages, existingImageDirs } from '@/lib/appointment-images'
 import { formatDate, timeToMinutes } from '@/lib/utils'
 import { isBlocked } from '@/lib/blocklist'
@@ -148,10 +149,14 @@ export async function POST(request: NextRequest): Promise<NextResponse> {
     // secret), so the replaced RDV is surfaced in the owner alert: a malicious
     // replace is never silent and can always be restored from the calendar.
 
-    // Verify every service exists and is active
+    // Verify every service exists and is active. Fetch the catalogue ONCE (a single
+    // backend read) and look up by id, rather than one store call per cart item —
+    // so a slow/failing store can't be retried N× on the booking's critical path.
+    const catalogue = await getAllServicesAdmin()
+    const serviceById = new Map(catalogue.map((s) => [s.id, s]))
     const services: Service[] = []
     for (const id of serviceIds) {
-      const svc = await getServiceById(id)
+      const svc = serviceById.get(id)
       if (!svc || !svc.isActive) {
         return NextResponse.json(
           { error: `Prestation introuvable : ${id}` },
@@ -298,6 +303,22 @@ export async function POST(request: NextRequest): Promise<NextResponse> {
 
     void sendBookingAlert(alertData, attachments).catch((err) => console.error('Failed to send email alert:', err))
     void sendWhatsAppAlert(alertData).catch((err) => console.error('Failed to send WhatsApp alert:', err))
+
+    // Mirror the booking into the management sheet (Rendez-vous + Clients). Fire-
+    // and-forget: a Sheets error must never fail the booking.
+    void syncBookingToSheet({
+      id: eventId,
+      date,
+      timeSlot,
+      clientName,
+      clientPhone,
+      serviceNames: services.map((s) => s.name),
+      totalDuration,
+      totalPrice,
+      notes,
+      clientIp,
+      deviceId,
+    }).catch((err) => console.error('Failed to sync booking to sheet:', (err as Error)?.message ?? 'unknown error'))
 
     return NextResponse.json(
       { id: eventId, message: 'Rendez-vous créé avec succès.' },

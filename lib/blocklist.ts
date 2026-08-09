@@ -1,5 +1,6 @@
 import { getPool, ensureSchema, dbConfigured } from '@/lib/db'
 import { readJson, writeJson } from '@/lib/json-store'
+import { sheetsConfigured, SheetTable } from '@/lib/sheets'
 import type { RowDataPacket, ResultSetHeader } from 'mysql2'
 
 const JSON_FILE = 'blocklist.json'
@@ -36,6 +37,18 @@ function isRealIp(ip: string | undefined): ip is string {
   return !!ip && ip !== UNKNOWN_IP
 }
 
+// Google Sheets backend (Blocklist tab). Active when SHEETS_SPREADSHEET_ID is set.
+const sheet = new SheetTable<BlocklistEntry>('Blocklist', [
+  { header: 'Téléphone', key: 'phone' },
+  { header: 'Nom', key: 'clientName' },
+  { header: 'Absences', key: 'noShowCount', kind: 'number' },
+  { header: 'Bloqué', key: 'blocked', kind: 'boolean' },
+  { header: 'Bloqué le', key: 'blockedAt' },
+  { header: 'Raison', key: 'reason' },
+  { header: 'Modifié le', key: 'updatedAt' },
+  { header: 'IPs', key: 'ips', kind: 'json' },
+])
+
 // ─── Row mapping / persistence ─────────────────────────────────────────────
 
 interface BlockRow extends RowDataPacket {
@@ -65,6 +78,10 @@ function rowToEntry(r: BlockRow): BlocklistEntry {
 // The table is tiny (blocked / ghosting clients), so loading every row to reuse
 // the exact phone-OR-ip matching logic in JS is cheaper than clever SQL.
 async function readEntries(): Promise<BlocklistEntry[]> {
+  if (sheetsConfigured()) {
+    try { return (await sheet.readAll()).map((e) => ({ ...e, ips: e.ips ?? [] })) }
+    catch (err) { console.error('[blocklist] Sheets read failed, using next store:', (err as Error)?.message) }
+  }
   if (dbConfigured()) {
     try {
       await ensureSchema()
@@ -80,6 +97,15 @@ async function readEntries(): Promise<BlocklistEntry[]> {
 }
 
 async function upsert(entry: BlocklistEntry): Promise<void> {
+  if (sheetsConfigured()) {
+    try {
+      const all = await sheet.readAll()
+      const norm = normalisePhone(entry.phone)
+      const idx = all.findIndex((e) => normalisePhone(e.phone) === norm)
+      if (idx === -1) all.push(entry); else all[idx] = entry
+      await sheet.writeAll(all); return
+    } catch (err) { console.error('[blocklist] Sheets write failed, using next store:', (err as Error)?.message) }
+  }
   if (dbConfigured()) {
     try {
       await getPool().query(
@@ -247,6 +273,14 @@ export async function updateEntry(
  */
 export async function deleteEntry(phone: string): Promise<boolean> {
   const norm = normalisePhone(phone)
+  if (sheetsConfigured()) {
+    try {
+      const all = await sheet.readAll()
+      const filtered = all.filter((e) => normalisePhone(e.phone) !== norm)
+      if (filtered.length === all.length) return false
+      await sheet.writeAll(filtered); return true
+    } catch (err) { console.error('[blocklist] Sheets delete failed, using next store:', (err as Error)?.message) }
+  }
   if (dbConfigured()) {
     try {
       await ensureSchema()
