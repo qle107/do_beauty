@@ -27,10 +27,10 @@ export default function BlockDeviceForm({ onSuccess, onCancel }: BlockDeviceForm
         body: JSON.stringify({ deviceId: deviceId.trim(), reason }),
       })
       if (!res.ok) throw new Error()
-      toast.success('Appareil bloqué')
+      toast.success('Đã chặn thiết bị')
       onSuccess()
     } catch {
-      toast.error('Impossible de bloquer cet appareil')
+      toast.error('Không thể chặn thiết bị này')
     } finally {
       setSaving(false)
     }
@@ -39,22 +39,22 @@ export default function BlockDeviceForm({ onSuccess, onCancel }: BlockDeviceForm
   return (
     <form onSubmit={submit} className="flex flex-col gap-6">
       <Input
-        label="Identifiant de l'appareil"
+        label="Mã thiết bị"
         id="deviceId"
-        placeholder="ex : 3f2a…"
+        placeholder="vd: 3f2a…"
         value={deviceId}
         onChange={(e) => setDeviceId(e.target.value)}
       />
       <Input
-        label="Motif (optionnel)"
+        label="Lý do (tùy chọn)"
         id="deviceReason"
-        placeholder="Ex : comportement abusif"
+        placeholder="Vd: hành vi lạm dụng"
         value={reason}
         onChange={(e) => setReason(e.target.value)}
       />
       <div className="flex gap-3 pt-2">
-        <Button variant="outline" type="button" onClick={onCancel}>Annuler</Button>
-        <Button type="submit" isLoading={saving} disabled={deviceId.trim().length < 4}>Bloquer l&apos;appareil</Button>
+        <Button variant="outline" type="button" onClick={onCancel}>Hủy</Button>
+        <Button type="submit" isLoading={saving} disabled={deviceId.trim().length < 4}>Chặn thiết bị</Button>
       </div>
     </form>
   )

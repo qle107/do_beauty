@@ -35,7 +35,7 @@ export default function DevicesPage() {
       const data = await res.json() as DeviceEntry[]
       setEntries(data)
     } catch {
-      toast.error('Impossible de charger la liste')
+      toast.error('Không tải được danh sách')
     } finally {
       setLoading(false)
     }
@@ -51,22 +51,22 @@ export default function DevicesPage() {
   useEffect(() => { void load() }, [load])
 
   const unblock = async (deviceId: string) => {
-    if (!confirm('Débloquer cet appareil et réinitialiser ses absences ?')) return
+    if (!confirm('Bỏ chặn thiết bị này và đặt lại số lần vắng mặt?')) return
     setUnlocking(deviceId)
     try {
       const res = await fetch(`/api/devices?deviceId=${encodeURIComponent(deviceId)}`, { method: 'DELETE' })
       if (!res.ok) throw new Error()
-      toast.success('Appareil débloqué')
+      toast.success('Đã bỏ chặn thiết bị')
       await refresh()
     } catch {
-      toast.error('Impossible de débloquer cet appareil')
+      toast.error('Không bỏ chặn được thiết bị này')
     } finally {
       setUnlocking(null)
     }
   }
 
   const block = async (deviceId: string) => {
-    if (!confirm('Bloquer cet appareil maintenant ?')) return
+    if (!confirm('Chặn thiết bị này ngay?')) return
     setUnlocking(deviceId)
     try {
       const res = await fetch('/api/devices', {
@@ -75,25 +75,25 @@ export default function DevicesPage() {
         body: JSON.stringify({ deviceId }),
       })
       if (!res.ok) throw new Error()
-      toast.success('Appareil bloqué')
+      toast.success('Đã chặn thiết bị')
       await refresh()
     } catch {
-      toast.error('Impossible de bloquer cet appareil')
+      toast.error('Không chặn được thiết bị này')
     } finally {
       setUnlocking(null)
     }
   }
 
   const remove = async (deviceId: string) => {
-    if (!confirm('Supprimer définitivement cet appareil ? Cette action est irréversible.')) return
+    if (!confirm('Xóa vĩnh viễn thiết bị này? Hành động này không thể hoàn tác.')) return
     setUnlocking(deviceId)
     try {
       const res = await fetch(`/api/devices?deviceId=${encodeURIComponent(deviceId)}&action=remove`, { method: 'DELETE' })
       if (!res.ok) throw new Error()
-      toast.success('Appareil supprimé')
+      toast.success('Đã xóa thiết bị')
       await refresh()
     } catch {
-      toast.error('Suppression impossible')
+      toast.error('Không xóa được')
     } finally {
       setUnlocking(null)
     }
@@ -108,11 +108,11 @@ export default function DevicesPage() {
         body: JSON.stringify({ deviceId: editEntry.deviceId, clientName: fields.clientName, reason: fields.reason }),
       })
       if (!res.ok) throw new Error()
-      toast.success('Appareil modifié')
+      toast.success('Đã sửa thiết bị')
       setEditEntry(null)
       await refresh()
     } catch {
-      toast.error('Modification impossible')
+      toast.error('Không sửa được')
     }
   }
 
@@ -135,21 +135,21 @@ export default function DevicesPage() {
     <div>
       <div className="flex flex-col gap-4 sm:flex-row sm:justify-between sm:items-start mb-10">
         <div>
-          <h1 className="font-serif text-4xl font-light text-dark">Appareils</h1>
+          <h1 className="font-serif text-4xl font-light text-dark">Thiết bị</h1>
           <p className="font-sans text-sm text-dark/40 mt-1">
-            Appareils bloqués après 2 absences · Repère un client qui réserve sous plusieurs numéros
-            depuis le même navigateur.
+            Thiết bị bị chặn sau 2 lần vắng mặt · Phát hiện khách đặt lịch bằng nhiều số điện thoại
+            từ cùng một trình duyệt.
           </p>
         </div>
         <button onClick={() => setBlockOpen(true)} className="shrink-0 bg-dark text-cream text-sm px-6 py-3 font-sans tracking-wider hover:bg-coral-dark transition-colors">
-          + Bloquer un appareil
+          + Chặn thiết bị
         </button>
       </div>
 
       {/* ── Bloqués ────────────────────────────────────────────────────── */}
       <section className="mb-12">
         <h2 className="font-sans text-xs tracking-[0.2em] uppercase text-dark/40 mb-4">
-          Appareils bloqués ({blockedEntries.length})
+          Thiết bị bị chặn ({blockedEntries.length})
         </h2>
         <div className="bg-cream border border-dark/10 p-6">
           {loading ? (
@@ -157,13 +157,13 @@ export default function DevicesPage() {
               {[1, 2].map((i) => <div key={i} className="h-12 bg-dark/5 animate-pulse" />)}
             </div>
           ) : blockedEntries.length === 0 ? (
-            <p className="text-sm font-sans text-dark/30 italic">Aucun appareil bloqué.</p>
+            <p className="text-sm font-sans text-dark/30 italic">Không có thiết bị bị chặn.</p>
           ) : (
             <div className="overflow-x-auto">
             <table className="w-full min-w-[640px] text-sm font-sans">
               <thead>
                 <tr className="border-b border-dark/10">
-                  {['Appareil', 'Nom', 'Téléphones', 'Absences', 'Bloqué le', 'Action'].map((h) => (
+                  {['Thiết bị', 'Tên', 'SĐT', 'Vắng mặt', 'Ngày chặn', 'Thao tác'].map((h) => (
                     <th key={h} className="text-left py-3 px-4 text-xs tracking-[0.2em] uppercase text-dark/30 font-normal">
                       {h}
                     </th>
@@ -182,7 +182,7 @@ export default function DevicesPage() {
                       </span>
                     </td>
                     <td className="py-4 px-4 text-dark/40 text-xs">
-                      {entry.blockedAt ? new Date(entry.blockedAt).toLocaleDateString('fr-FR') : '-'}
+                      {entry.blockedAt ? new Date(entry.blockedAt).toLocaleDateString('vi-VN') : '-'}
                     </td>
                     <td className="py-4 px-4">
                       <div className="flex justify-end gap-2 flex-wrap">
@@ -191,20 +191,20 @@ export default function DevicesPage() {
                           disabled={unlocking === entry.deviceId}
                           className="text-xs text-emerald-600 hover:text-emerald-800 border border-emerald-200 hover:border-emerald-400 px-3 py-1.5 transition-colors disabled:opacity-40"
                         >
-                          Débloquer
+                          Bỏ chặn
                         </button>
                         <button
                           onClick={() => setEditEntry(entry)}
                           className="text-xs text-charcoal-500 hover:text-dark border border-dark/20 hover:border-dark px-3 py-1.5 transition-colors"
                         >
-                          Modifier
+                          Sửa
                         </button>
                         <button
                           onClick={() => void remove(entry.deviceId)}
                           disabled={unlocking === entry.deviceId}
                           className="text-xs text-red-600 hover:text-red-800 border border-red-200 hover:border-red-400 px-3 py-1.5 transition-colors disabled:opacity-40"
                         >
-                          Supprimer
+                          Xóa
                         </button>
                       </div>
                     </td>
@@ -220,19 +220,19 @@ export default function DevicesPage() {
       {/* ── Surveillés (absences < seuil) ──────────────────────────────── */}
       <section>
         <h2 className="font-sans text-xs tracking-[0.2em] uppercase text-dark/40 mb-4">
-          Sous surveillance ({trackedEntries.length})
+          Đang theo dõi ({trackedEntries.length})
         </h2>
         <div className="bg-cream border border-dark/10 p-6">
           {loading ? (
             <div className="h-10 bg-dark/5 animate-pulse" />
           ) : trackedEntries.length === 0 ? (
-            <p className="text-sm font-sans text-dark/30 italic">Aucun appareil sous surveillance.</p>
+            <p className="text-sm font-sans text-dark/30 italic">Không có thiết bị nào đang theo dõi.</p>
           ) : (
             <div className="overflow-x-auto">
             <table className="w-full min-w-[640px] text-sm font-sans">
               <thead>
                 <tr className="border-b border-dark/10">
-                  {['Appareil', 'Nom', 'Téléphones', 'Absences', 'Dernière mise à jour', 'Action'].map((h) => (
+                  {['Thiết bị', 'Tên', 'SĐT', 'Vắng mặt', 'Cập nhật lần cuối', 'Thao tác'].map((h) => (
                     <th key={h} className="text-left py-3 px-4 text-xs tracking-[0.2em] uppercase text-dark/30 font-normal">
                       {h}
                     </th>
@@ -251,7 +251,7 @@ export default function DevicesPage() {
                       </span>
                     </td>
                     <td className="py-4 px-4 text-dark/40 text-xs">
-                      {new Date(entry.updatedAt).toLocaleDateString('fr-FR')}
+                      {new Date(entry.updatedAt).toLocaleDateString('vi-VN')}
                     </td>
                     <td className="py-4 px-4">
                       <div className="flex justify-end gap-2 flex-wrap">
@@ -260,27 +260,27 @@ export default function DevicesPage() {
                           disabled={unlocking === entry.deviceId}
                           className="text-xs text-orange-700 hover:text-orange-900 border border-orange-200 hover:border-orange-400 px-3 py-1.5 transition-colors disabled:opacity-40"
                         >
-                          Bloquer
+                          Chặn
                         </button>
                         <button
                           onClick={() => void unblock(entry.deviceId)}
                           disabled={unlocking === entry.deviceId}
                           className="text-xs text-dark/40 hover:text-dark border border-dark/20 hover:border-dark px-3 py-1.5 transition-colors disabled:opacity-40"
                         >
-                          Réinitialiser
+                          Đặt lại
                         </button>
                         <button
                           onClick={() => setEditEntry(entry)}
                           className="text-xs text-charcoal-500 hover:text-dark border border-dark/20 hover:border-dark px-3 py-1.5 transition-colors"
                         >
-                          Modifier
+                          Sửa
                         </button>
                         <button
                           onClick={() => void remove(entry.deviceId)}
                           disabled={unlocking === entry.deviceId}
                           className="text-xs text-red-600 hover:text-red-800 border border-red-200 hover:border-red-400 px-3 py-1.5 transition-colors disabled:opacity-40"
                         >
-                          Supprimer
+                          Xóa
                         </button>
                       </div>
                     </td>
@@ -294,7 +294,7 @@ export default function DevicesPage() {
       </section>
 
       <Modal open={editEntry !== null} onOpenChange={(o) => { if (!o) setEditEntry(null) }}
-        title="Modifier l'appareil"
+        title="Sửa thiết bị"
         description={editEntry?.deviceId}>
         {editEntry && (
           <EditEntryForm
@@ -307,8 +307,8 @@ export default function DevicesPage() {
       </Modal>
 
       <Modal open={blockOpen} onOpenChange={setBlockOpen}
-        title="Bloquer un appareil"
-        description="Bloque immédiatement un appareil par son identifiant (visible dans l'e-mail d'alerte de réservation).">
+        title="Chặn thiết bị"
+        description="Chặn ngay một thiết bị bằng mã định danh (hiển thị trong email cảnh báo đặt lịch).">
         <BlockDeviceForm onSuccess={() => { setBlockOpen(false); void refresh() }} onCancel={() => setBlockOpen(false)} />
       </Modal>
     </div>

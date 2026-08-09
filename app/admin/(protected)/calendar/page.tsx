@@ -1,7 +1,7 @@
 import CalendarBoard from '@/components/admin/CalendarBoard'
 import type { Metadata } from 'next'
 
-export const metadata: Metadata = { title: 'Planning' }
+export const metadata: Metadata = { title: 'Lịch làm việc' }
 
 export default function CalendarPage() {
   // Initial date = today in Europe/Paris (fr-CA gives YYYY-MM-DD).

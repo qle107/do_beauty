@@ -30,7 +30,7 @@ function addDays(iso: string, n: number): string {
 }
 
 const prettyDate = (iso: string): string =>
-  new Date(iso + 'T12:00:00').toLocaleDateString('fr-FR', {
+  new Date(iso + 'T12:00:00').toLocaleDateString('vi-VN', {
     weekday: 'long', day: 'numeric', month: 'long',
   })
 
@@ -52,7 +52,7 @@ export default function CalendarBoard({ initialDate }: { initialDate: string }) 
       if (!res.ok) throw new Error(String(res.status))
       setData(await res.json())
     } catch {
-      toast.error('Impossible de charger le planning.')
+      toast.error('Không tải được lịch làm việc.')
       setData(null)
     } finally {
       setLoading(false)
@@ -98,19 +98,19 @@ export default function CalendarBoard({ initialDate }: { initialDate: string }) 
   }
 
   const columns: { key: string; label: string; kind: 'web' | 'staff' | 'cabine' }[] = [
-    { key: 'web', label: 'Web (sans préf.)', kind: 'web' },
+    { key: 'web', label: 'Web (không chọn NV)', kind: 'web' },
     ...(data?.employees ?? []).map((e) => ({ key: e.id, label: e.name, kind: e.kind })),
   ]
 
   return (
     <div>
       <header className="flex items-center justify-between mb-6 gap-4 flex-wrap">
-        <h1 className="font-serif text-2xl text-dark">Planning</h1>
+        <h1 className="font-serif text-2xl text-dark">Lịch làm việc</h1>
         <div className="flex items-center gap-2 font-sans text-sm">
           <button onClick={() => setDate((d) => addDays(d, -1))}
             className="px-3 py-1.5 bg-white hover:bg-blush border border-dark/10">‹</button>
           <button onClick={() => setDate(initialDate)}
-            className="px-3 py-1.5 bg-white hover:bg-blush border border-dark/10">Aujourd’hui</button>
+            className="px-3 py-1.5 bg-white hover:bg-blush border border-dark/10">Hôm nay</button>
           <button onClick={() => setDate((d) => addDays(d, 1))}
             className="px-3 py-1.5 bg-white hover:bg-blush border border-dark/10">›</button>
           <span className="ml-2 capitalize text-dark/70">{prettyDate(date)}</span>
@@ -119,11 +119,11 @@ export default function CalendarBoard({ initialDate }: { initialDate: string }) 
 
       {data && !data.planityKnown && (
         <p className="mb-3 text-xs text-dark/50 font-sans">
-          Planity indisponible pour cette date — seuls les rendez-vous du site sont affichés.
+          Planity không khả dụng cho ngày này — chỉ hiển thị các lịch hẹn từ website.
         </p>
       )}
 
-      {loading && <p className="text-dark/40 font-sans text-sm">Chargement…</p>}
+      {loading && <p className="text-dark/40 font-sans text-sm">Đang tải…</p>}
 
       {data && !loading && (
         <div className="overflow-x-auto border border-dark/10 bg-white">
@@ -155,7 +155,7 @@ export default function CalendarBoard({ initialDate }: { initialDate: string }) 
                   {col.kind !== 'web' && (data.planityBusy[col.key] ?? []).map((iv, i) => (
                     <div key={`p${i}`} className="absolute left-0.5 right-0.5 bg-dark/10 rounded-sm"
                       style={{ top: top(iv.startMin), height: height(iv.startMin, iv.endMin) }}
-                      title="Indisponible (Planity)" />
+                      title="Bận (Planity)" />
                   ))}
                   {/* Website bookings */}
                   {(webByCol[col.key] ?? []).map((b) => (
@@ -185,7 +185,7 @@ export default function CalendarBoard({ initialDate }: { initialDate: string }) 
       )}
 
       {data && !loading && data.website.length === 0 && (
-        <p className="mt-4 text-dark/40 font-sans text-sm">Aucun rendez-vous du site ce jour.</p>
+        <p className="mt-4 text-dark/40 font-sans text-sm">Không có lịch hẹn từ website hôm nay.</p>
       )}
     </div>
   )

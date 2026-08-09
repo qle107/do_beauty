@@ -6,8 +6,8 @@ import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
   title: {
-    default: 'Admin | Do Beauty',
-    template: '%s | Admin Do Beauty',
+    default: 'Quản trị | Do Beauty',
+    template: '%s | Quản trị Do Beauty',
   },
 }
 

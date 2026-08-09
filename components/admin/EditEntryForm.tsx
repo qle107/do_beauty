@@ -30,11 +30,11 @@ export default function EditEntryForm({ initialName, initialReason, onSubmit, on
 
   return (
     <form onSubmit={handle} className="flex flex-col gap-6">
-      <Input label="Nom du client" id="editName" value={clientName} onChange={(e) => setClientName(e.target.value)} />
-      <Input label="Motif" id="editReason" placeholder="Laisser vide pour effacer" value={reason} onChange={(e) => setReason(e.target.value)} />
+      <Input label="Tên khách hàng" id="editName" value={clientName} onChange={(e) => setClientName(e.target.value)} />
+      <Input label="Lý do" id="editReason" placeholder="Để trống để xóa" value={reason} onChange={(e) => setReason(e.target.value)} />
       <div className="flex gap-3 pt-2">
-        <Button variant="outline" type="button" onClick={onCancel}>Annuler</Button>
-        <Button type="submit" isLoading={saving} disabled={clientName.trim().length < 2}>Enregistrer</Button>
+        <Button variant="outline" type="button" onClick={onCancel}>Hủy</Button>
+        <Button type="submit" isLoading={saving} disabled={clientName.trim().length < 2}>Lưu</Button>
       </div>
     </form>
   )

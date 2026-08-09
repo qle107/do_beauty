@@ -32,7 +32,7 @@ export default function BlocklistPage() {
       const data = await res.json() as BlocklistEntry[]
       setEntries(data)
     } catch {
-      toast.error('Impossible de charger la liste')
+      toast.error('Không thể tải danh sách')
     } finally {
       setLoading(false)
     }
@@ -48,30 +48,30 @@ export default function BlocklistPage() {
   useEffect(() => { void load() }, [load])
 
   const unblock = async (phone: string) => {
-    if (!confirm(`Débloquer le numéro ${phone} et réinitialiser ses absences ?`)) return
+    if (!confirm(`Bỏ chặn số ${phone} và đặt lại số lần vắng mặt?`)) return
     setUnlocking(phone)
     try {
       const res = await fetch(`/api/blocklist?phone=${encodeURIComponent(phone)}`, { method: 'DELETE' })
       if (!res.ok) throw new Error()
-      toast.success('Numéro débloqué')
+      toast.success('Đã bỏ chặn số')
       await refresh()
     } catch {
-      toast.error('Impossible de débloquer ce numéro')
+      toast.error('Không thể bỏ chặn số này')
     } finally {
       setUnlocking(null)
     }
   }
 
   const remove = async (phone: string) => {
-    if (!confirm(`Supprimer définitivement l'entrée ${phone} ? Cette action est irréversible.`)) return
+    if (!confirm(`Xóa vĩnh viễn mục ${phone}? Hành động này không thể hoàn tác.`)) return
     setUnlocking(phone)
     try {
       const res = await fetch(`/api/blocklist?phone=${encodeURIComponent(phone)}&action=remove`, { method: 'DELETE' })
       if (!res.ok) throw new Error()
-      toast.success('Entrée supprimée')
+      toast.success('Đã xóa mục')
       await refresh()
     } catch {
-      toast.error('Suppression impossible')
+      toast.error('Không thể xóa')
     } finally {
       setUnlocking(null)
     }
@@ -86,11 +86,11 @@ export default function BlocklistPage() {
         body: JSON.stringify({ phone: editEntry.phone, clientName: fields.clientName, reason: fields.reason }),
       })
       if (!res.ok) throw new Error()
-      toast.success('Entrée modifiée')
+      toast.success('Đã sửa mục')
       setEditEntry(null)
       await refresh()
     } catch {
-      toast.error('Modification impossible')
+      toast.error('Không thể sửa')
     }
   }
 
@@ -104,17 +104,17 @@ export default function BlocklistPage() {
     <div>
       <div className="flex flex-col gap-4 sm:flex-row sm:justify-between sm:items-start mb-10">
         <div>
-          <h1 className="font-serif text-4xl font-light text-dark">Liste noire</h1>
+          <h1 className="font-serif text-4xl font-light text-dark">Danh sách chặn</h1>
           <p className="font-sans text-sm text-dark/40 mt-1">
-            Numéros bloqués après 2 absences · Débloquez manuellement si nécessaire.
+            Số bị chặn sau 2 lần vắng mặt · Bỏ chặn thủ công nếu cần.
           </p>
         </div>
         <div className="flex flex-wrap gap-3 shrink-0">
           <button onClick={() => setBlockOpen(true)} className="bg-dark text-cream text-sm px-6 py-3 font-sans tracking-wider hover:bg-coral-dark transition-colors">
-            + Bloquer un numéro
+            + Chặn một số
           </button>
           <button onClick={() => setFormOpen(true)} className="border border-dark/30 text-dark text-sm px-6 py-3 font-sans tracking-wider hover:border-dark transition-colors">
-            + Signaler un no-show
+            + Báo vắng mặt (không đến)
           </button>
         </div>
       </div>
@@ -122,7 +122,7 @@ export default function BlocklistPage() {
       {/* ── Bloqués ────────────────────────────────────────────────────── */}
       <section className="mb-12">
         <h2 className="font-sans text-xs tracking-[0.2em] uppercase text-dark/40 mb-4">
-          Numéros bloqués ({blockedEntries.length})
+          Số bị chặn ({blockedEntries.length})
         </h2>
         <div className="bg-cream border border-dark/10 p-6">
           {loading ? (
@@ -130,13 +130,13 @@ export default function BlocklistPage() {
               {[1, 2].map((i) => <div key={i} className="h-12 bg-dark/5 animate-pulse" />)}
             </div>
           ) : blockedEntries.length === 0 ? (
-            <p className="text-sm font-sans text-dark/30 italic">Aucun numéro bloqué.</p>
+            <p className="text-sm font-sans text-dark/30 italic">Không có số nào bị chặn.</p>
           ) : (
             <div className="overflow-x-auto">
             <table className="w-full min-w-[720px] text-sm font-sans">
               <thead>
                 <tr className="border-b border-dark/10">
-                  {['Téléphone', 'Nom', 'IP', 'Absences', 'Motif', 'Bloqué le', 'Action'].map((h) => (
+                  {['Số điện thoại', 'Tên', 'IP', 'Vắng mặt', 'Lý do', 'Ngày chặn', 'Thao tác'].map((h) => (
                     <th key={h} className="text-left py-3 px-4 text-xs tracking-[0.2em] uppercase text-dark/30 font-normal">
                       {h}
                     </th>
@@ -156,7 +156,7 @@ export default function BlocklistPage() {
                     </td>
                     <td className="py-4 px-4 text-charcoal-500 text-xs">{entry.reason ?? '-'}</td>
                     <td className="py-4 px-4 text-dark/40 text-xs">
-                      {entry.blockedAt ? new Date(entry.blockedAt).toLocaleDateString('fr-FR') : '-'}
+                      {entry.blockedAt ? new Date(entry.blockedAt).toLocaleDateString('vi-VN') : '-'}
                     </td>
                     <td className="py-4 px-4">
                       <div className="flex justify-end gap-2 flex-wrap">
@@ -165,20 +165,20 @@ export default function BlocklistPage() {
                           disabled={unlocking === entry.phone}
                           className="text-xs text-emerald-600 hover:text-emerald-800 border border-emerald-200 hover:border-emerald-400 px-3 py-1.5 transition-colors disabled:opacity-40"
                         >
-                          Débloquer
+                          Bỏ chặn
                         </button>
                         <button
                           onClick={() => setEditEntry(entry)}
                           className="text-xs text-charcoal-500 hover:text-dark border border-dark/20 hover:border-dark px-3 py-1.5 transition-colors"
                         >
-                          Modifier
+                          Sửa
                         </button>
                         <button
                           onClick={() => void remove(entry.phone)}
                           disabled={unlocking === entry.phone}
                           className="text-xs text-red-600 hover:text-red-800 border border-red-200 hover:border-red-400 px-3 py-1.5 transition-colors disabled:opacity-40"
                         >
-                          Supprimer
+                          Xóa
                         </button>
                       </div>
                     </td>
@@ -194,19 +194,19 @@ export default function BlocklistPage() {
       {/* ── Surveillés (absences < seuil) ──────────────────────────────── */}
       <section>
         <h2 className="font-sans text-xs tracking-[0.2em] uppercase text-dark/40 mb-4">
-          Sous surveillance ({trackedEntries.length})
+          Đang theo dõi ({trackedEntries.length})
         </h2>
         <div className="bg-cream border border-dark/10 p-6">
           {loading ? (
             <div className="h-10 bg-dark/5 animate-pulse" />
           ) : trackedEntries.length === 0 ? (
-            <p className="text-sm font-sans text-dark/30 italic">Aucun numéro sous surveillance.</p>
+            <p className="text-sm font-sans text-dark/30 italic">Không có số nào đang theo dõi.</p>
           ) : (
             <div className="overflow-x-auto">
             <table className="w-full min-w-[720px] text-sm font-sans">
               <thead>
                 <tr className="border-b border-dark/10">
-                  {['Téléphone', 'Nom', 'IP', 'Absences', 'Dernière mise à jour', 'Action'].map((h) => (
+                  {['Số điện thoại', 'Tên', 'IP', 'Vắng mặt', 'Cập nhật gần nhất', 'Thao tác'].map((h) => (
                     <th key={h} className="text-left py-3 px-4 text-xs tracking-[0.2em] uppercase text-dark/30 font-normal">
                       {h}
                     </th>
@@ -225,7 +225,7 @@ export default function BlocklistPage() {
                       </span>
                     </td>
                     <td className="py-4 px-4 text-dark/40 text-xs">
-                      {new Date(entry.updatedAt).toLocaleDateString('fr-FR')}
+                      {new Date(entry.updatedAt).toLocaleDateString('vi-VN')}
                     </td>
                     <td className="py-4 px-4">
                       <div className="flex justify-end gap-2 flex-wrap">
@@ -234,20 +234,20 @@ export default function BlocklistPage() {
                           disabled={unlocking === entry.phone}
                           className="text-xs text-dark/40 hover:text-dark border border-dark/20 hover:border-dark px-3 py-1.5 transition-colors disabled:opacity-40"
                         >
-                          Réinitialiser
+                          Đặt lại
                         </button>
                         <button
                           onClick={() => setEditEntry(entry)}
                           className="text-xs text-charcoal-500 hover:text-dark border border-dark/20 hover:border-dark px-3 py-1.5 transition-colors"
                         >
-                          Modifier
+                          Sửa
                         </button>
                         <button
                           onClick={() => void remove(entry.phone)}
                           disabled={unlocking === entry.phone}
                           className="text-xs text-red-600 hover:text-red-800 border border-red-200 hover:border-red-400 px-3 py-1.5 transition-colors disabled:opacity-40"
                         >
-                          Supprimer
+                          Xóa
                         </button>
                       </div>
                     </td>
@@ -261,19 +261,19 @@ export default function BlocklistPage() {
       </section>
 
       <Modal open={formOpen} onOpenChange={setFormOpen}
-        title="Signaler un no-show"
-        description="Enregistre une absence pour ce client. Après 2 absences (même numéro ou même IP), il sera automatiquement bloqué.">
+        title="Báo vắng mặt (không đến)"
+        description="Ghi nhận một lần vắng mặt cho khách này. Sau 2 lần vắng mặt (cùng số hoặc cùng IP), số sẽ tự động bị chặn.">
         <ReportGhostForm onSuccess={handleReportSuccess} onCancel={() => setFormOpen(false)} />
       </Modal>
 
       <Modal open={blockOpen} onOpenChange={setBlockOpen}
-        title="Bloquer un numéro"
-        description="Bloque immédiatement ce numéro pour les réservations en ligne.">
+        title="Chặn một số"
+        description="Chặn ngay số này khỏi việc đặt lịch online.">
         <BlockPhoneForm onSuccess={handleBlockSuccess} onCancel={() => setBlockOpen(false)} />
       </Modal>
 
       <Modal open={editEntry !== null} onOpenChange={(o) => { if (!o) setEditEntry(null) }}
-        title="Modifier l'entrée"
+        title="Sửa mục"
         description={editEntry?.phone}>
         {editEntry && (
           <EditEntryForm

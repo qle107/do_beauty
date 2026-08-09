@@ -8,15 +8,15 @@ import toast from 'react-hot-toast'
 import type { Service } from '@/lib/types'
 
 const CATEGORY_LABELS: Record<string, string> = {
-  FORFAIT:   'Forfaits spa',
-  MAINS:     'Mains & manucure',
-  PIEDS:     'Beauté des pieds',
-  CAPSULE:   'Pose & extensions',
-  NAIL_ART:  'Nail art & finitions',
-  CILS:      'Cils & regard',
-  VISAGE:    'Soins du visage',
-  CORPS:     'Massages & corps',
-  EPILATION: 'Épilation',
+  FORFAIT:   'Gói spa',
+  MAINS:     'Tay & Manucure',
+  PIEDS:     'Làm đẹp chân',
+  CAPSULE:   'Đắp & nối móng',
+  NAIL_ART:  'Nail art & hoàn thiện',
+  CILS:      'Mi & ánh mắt',
+  VISAGE:    'Chăm sóc da mặt',
+  CORPS:     'Massage & cơ thể',
+  EPILATION: 'Tẩy lông',
 }
 
 export default function ServicesPage() {
@@ -58,28 +58,28 @@ export default function ServicesPage() {
         body: JSON.stringify({ isActive: !service.isActive }),
       })
       void refresh()
-      toast.success(service.isActive ? 'Prestation masquée' : 'Prestation activée')
-    } catch { toast.error('Impossible de mettre à jour') }
+      toast.success(service.isActive ? 'Đã ẩn dịch vụ' : 'Đã bật dịch vụ')
+    } catch { toast.error('Không thể cập nhật') }
   }
 
   const deleteService = async (id: string) => {
-    if (!confirm('Supprimer cette prestation ? Cette action est irréversible.')) return
+    if (!confirm('Xóa dịch vụ này? Hành động này không thể hoàn tác.')) return
     try {
       await fetch(`/api/services/${id}`, { method: 'DELETE' })
       void refresh()
-      toast.success('Prestation supprimée')
-    } catch { toast.error('Impossible de supprimer') }
+      toast.success('Đã xóa dịch vụ')
+    } catch { toast.error('Không thể xóa') }
   }
 
   return (
     <div>
       <div className="flex justify-between items-start mb-10">
         <div>
-          <h1 className="font-serif text-4xl font-light text-dark">Prestations</h1>
-          <p className="font-sans text-sm text-dark/40 mt-1">Gérez votre menu de prestations.</p>
+          <h1 className="font-serif text-4xl font-light text-dark">Dịch vụ</h1>
+          <p className="font-sans text-sm text-dark/40 mt-1">Quản lý menu dịch vụ của bạn.</p>
         </div>
         <button onClick={openCreate} className="bg-dark text-cream text-sm px-6 py-3 font-sans tracking-wider hover:bg-coral-dark transition-colors">
-          + Ajouter une prestation
+          + Thêm dịch vụ
         </button>
       </div>
 
@@ -90,15 +90,15 @@ export default function ServicesPage() {
           </div>
         ) : services.length === 0 ? (
           <div className="p-12 text-center">
-            <p className="text-sm font-sans text-dark/30 italic mb-4">Aucune prestation pour le moment.</p>
-            <button onClick={openCreate} className="text-sm font-sans text-coral underline">Créer votre première prestation</button>
+            <p className="text-sm font-sans text-dark/30 italic mb-4">Chưa có dịch vụ nào.</p>
+            <button onClick={openCreate} className="text-sm font-sans text-coral underline">Tạo dịch vụ đầu tiên</button>
           </div>
         ) : (
           <div className="overflow-x-auto">
           <table className="w-full min-w-[720px] text-sm font-sans">
             <thead>
               <tr className="border-b border-dark/10">
-                {['Nom', 'Catégorie', 'Durée', 'Prix', 'Actif', 'Actions'].map(h => (
+                {['Tên', 'Danh mục', 'Thời lượng', 'Giá', 'Đang hoạt động', 'Thao tác'].map(h => (
                   <th key={h} className="text-left py-3 px-6 text-xs tracking-[0.2em] uppercase text-dark/30 font-normal">{h}</th>
                 ))}
               </tr>
@@ -111,7 +111,7 @@ export default function ServicesPage() {
                     <p className="text-dark/40 text-xs mt-0.5 max-w-xs truncate">{service.description}</p>
                   </td>
                   <td className="py-4 px-6 text-charcoal-500">{CATEGORY_LABELS[service.category] ?? service.category}</td>
-                  <td className="py-4 px-6 text-charcoal-500">{service.duration} min</td>
+                  <td className="py-4 px-6 text-charcoal-500">{service.duration} phút</td>
                   <td className="py-4 px-6 font-serif text-coral">{formatCurrency(service.price)}</td>
                   <td className="py-4 px-6">
                     <button onClick={() => void toggleActive(service)}
@@ -121,8 +121,8 @@ export default function ServicesPage() {
                   </td>
                   <td className="py-4 px-6">
                     <div className="flex items-center gap-3">
-                      <button onClick={() => openEdit(service)} className="text-xs text-charcoal-500 hover:text-dark border border-dark/20 hover:border-dark px-3 py-1.5 transition-colors">Modifier</button>
-                      <button onClick={() => void deleteService(service.id)} className="text-xs text-red-400 hover:text-red-600 transition-colors">Supprimer</button>
+                      <button onClick={() => openEdit(service)} className="text-xs text-charcoal-500 hover:text-dark border border-dark/20 hover:border-dark px-3 py-1.5 transition-colors">Sửa</button>
+                      <button onClick={() => void deleteService(service.id)} className="text-xs text-red-400 hover:text-red-600 transition-colors">Xóa</button>
                     </div>
                   </td>
                 </tr>
@@ -134,8 +134,8 @@ export default function ServicesPage() {
       </div>
 
       <Modal open={modalOpen} onOpenChange={setModalOpen}
-        title={editingService ? 'Modifier la prestation' : 'Nouvelle prestation'}
-        description={editingService ? 'Mettez à jour les informations de cette prestation.' : 'Remplissez les détails pour ajouter une prestation.'}>
+        title={editingService ? 'Sửa dịch vụ' : 'Dịch vụ mới'}
+        description={editingService ? 'Cập nhật thông tin dịch vụ này.' : 'Điền chi tiết để thêm dịch vụ.'}>
         <ServiceForm service={editingService} onSuccess={handleSuccess} onCancel={() => setModalOpen(false)} />
       </Modal>
     </div>
