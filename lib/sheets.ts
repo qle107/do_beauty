@@ -139,22 +139,25 @@ export class SheetTable<T extends object> {
     return /^[=+\-@\t\r]/.test(s) ? `'${s}` : s
   }
 
-  private fromCell(raw: string | undefined, c: Column<T>): unknown {
-    const s = raw ?? ''
+  private fromCell(raw: unknown, c: Column<T>): unknown {
+    // With UNFORMATTED_VALUE, numeric/boolean cells arrive as native number/boolean;
+    // text cells arrive as strings. Handle both.
+    if (raw === undefined || raw === null || raw === '') {
+      return (c.kind ?? 'string') === 'string' ? '' : undefined
+    }
     switch (c.kind) {
       case 'number':
-        return s === '' ? undefined : Number(s)
+        return typeof raw === 'number' ? raw : Number(String(raw))
       case 'boolean':
-        return s === '' ? undefined : /^(true|1|oui|vrai)$/i.test(s)
+        return typeof raw === 'boolean' ? raw : /^(true|1|oui|vrai)$/i.test(String(raw))
       case 'json':
-        if (s === '') return undefined
         try {
-          return JSON.parse(s)
+          return JSON.parse(String(raw))
         } catch {
           return undefined
         }
       default:
-        return s
+        return typeof raw === 'string' ? raw : String(raw)
     }
   }
 
@@ -179,13 +182,16 @@ export class SheetTable<T extends object> {
     const res = await client().spreadsheets.values.get({
       spreadsheetId: spreadsheetId(),
       range: a1(this.tab, 'A2:ZZ'),
+      // Return native numbers/booleans (not the locale-formatted display, which in
+      // a FR sheet would give "12,5" → NaN). Text cells still come back as strings.
+      valueRenderOption: 'UNFORMATTED_VALUE',
     })
     const rows = (res.data.values ?? [])
       .filter((r) => r[0] !== undefined && r[0] !== '') // require a key in column A
       .map((r) => {
         const obj = {} as Record<keyof T, unknown>
         this.columns.forEach((c, i) => {
-          obj[c.key] = this.fromCell(r[i] as string | undefined, c)
+          obj[c.key] = this.fromCell(r[i], c)
         })
         return obj as T
       })
