@@ -42,6 +42,7 @@ export async function GET(request: NextRequest): Promise<NextResponse> {
         id: e.id,
         employeeId,
         clientName: e.clientName,
+        phone: e.clientPhone,
         services: e.services.map((s) => s.name).join(' + '),
         startMin,
         endMin: startMin + e.totalDuration,

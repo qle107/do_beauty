@@ -6,7 +6,7 @@ import toast from 'react-hot-toast'
 interface Employee { id: string; name: string; kind: 'staff' | 'cabine' }
 interface WebBooking {
   id: string; employeeId: string | null; clientName: string
-  services: string; startMin: number; endMin: number
+  phone: string; services: string; startMin: number; endMin: number
 }
 interface Interval { startMin: number; endMin: number }
 interface CalendarData {
@@ -33,6 +33,12 @@ const prettyDate = (iso: string): string =>
   new Date(iso + 'T12:00:00').toLocaleDateString('fr-FR', {
     weekday: 'long', day: 'numeric', month: 'long',
   })
+
+const CopyIcon = () => (
+  <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+    <rect x="9" y="9" width="13" height="13" rx="2" /><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1" />
+  </svg>
+)
 
 export default function CalendarBoard({ initialDate }: { initialDate: string }) {
   const [date, setDate] = useState(initialDate)
@@ -71,6 +77,25 @@ export default function CalendarBoard({ initialDate }: { initialDate: string }) 
 
   const top = (startMin: number) => (startMin - data!.openMinutes) * PX_PER_MIN
   const height = (s: number, e: number) => Math.max(18, (e - s) * PX_PER_MIN)
+
+  // Copy a website booking as a ready-to-read block for entering it into Planity.
+  // Labels are in Vietnamese for the salon owner; the values are the raw details.
+  async function copyForPlanity(b: WebBooking, employeeLabel: string) {
+    const block = [
+      `Tên: ${b.clientName}`,
+      `SĐT: ${b.phone || '—'}`,
+      `Dịch vụ: ${b.services}`,
+      `Ngày: ${data!.date}`,
+      `Giờ: ${fmt(b.startMin)}–${fmt(b.endMin)}`,
+      `Nhân viên: ${employeeLabel}`,
+    ].join('\n')
+    try {
+      await navigator.clipboard.writeText(block)
+      toast.success('Đã sao chép ✓ — dán vào Planity')
+    } catch {
+      toast.error('Không sao chép được. Hãy thử lại.')
+    }
+  }
 
   const columns: { key: string; label: string; kind: 'web' | 'staff' | 'cabine' }[] = [
     { key: 'web', label: 'Web (sans préf.)', kind: 'web' },
@@ -137,8 +162,16 @@ export default function CalendarBoard({ initialDate }: { initialDate: string }) 
                     <div key={b.id}
                       className="absolute left-0.5 right-0.5 bg-coral text-cream rounded-sm p-1 overflow-hidden"
                       style={{ top: top(b.startMin), height: height(b.startMin, b.endMin) }}
-                      title={`${b.clientName} — ${b.services}`}>
-                      <div className="text-[10px] font-medium leading-tight">
+                      title={`${b.clientName} — ${b.phone} — ${b.services}`}>
+                      <button
+                        onClick={(e) => { e.stopPropagation(); void copyForPlanity(b, col.label) }}
+                        title="Sao chép cho Planity"
+                        aria-label="Sao chép cho Planity"
+                        className="absolute top-0 right-0 px-1 py-0.5 bg-dark/25 hover:bg-dark/50 rounded-bl-sm leading-none"
+                      >
+                        <CopyIcon />
+                      </button>
+                      <div className="text-[10px] font-medium leading-tight pr-4">
                         {fmt(b.startMin)} {b.clientName}
                       </div>
                       <div className="text-[9px] leading-tight opacity-90 truncate">{b.services}</div>
