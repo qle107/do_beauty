@@ -28,6 +28,21 @@ export interface Service {
   featured?: boolean      // affiché en vitrine sur la homepage
   createdAt: string       // ISO string
   updatedAt: string       // ISO string
+
+  // ── Carte / catalogue display (mirrors the live Planity menu) ───────────
+  // `category` above stays the coarse pool key (availability logic). `section`
+  // is the finer display group shown on the menu — many sections map to one
+  // pool category (e.g. Offres spéciales + Spa VIPP both → FORFAIT). See lib/catalogue.ts.
+  /** Display section id, one of the 15 SECTIONS in lib/catalogue.ts. */
+  section?: string
+  /** Optional sub-heading inside a section (only "Extension de cils": Poses / Remplissages / Déposes & suppléments). */
+  subgroup?: string
+  /** How the price is shown when it isn't a plain number. */
+  priceType?: 'fixed' | 'from' | 'quote' | 'free' | 'range'
+  /** Verbatim price text from the menu when priceType ≠ 'fixed' (e.g. "à partir de 55 €", "GRATUIT DÉPOSE", "Sur devis"). */
+  priceLabel?: string
+  /** Small grey subtitle under the name (e.g. "sur devis" on Réparation d'un ongle). */
+  note?: string
 }
 
 // ─── Gallery image (metadata in data/gallery.json; bytes on disk/Drive) ────

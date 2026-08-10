@@ -1,7 +1,14 @@
 'use client'
 
 import { useEffect, useRef, useState } from 'react'
-import { formatCurrency, formatDuration, CATEGORY_ORDER, categoryConfig, type ServiceCategory } from '@/lib/utils'
+import type { ServiceCategory } from '@/lib/utils'
+import {
+  SECTIONS,
+  sectionIdOf,
+  formatServicePrice,
+  formatServiceDuration,
+  type CatalogueSection,
+} from '@/lib/catalogue'
 import type { SelectedService } from './BookingForm'
 
 interface Service {
@@ -11,6 +18,11 @@ interface Service {
   price: number
   duration: number
   category: ServiceCategory
+  section?: string
+  subgroup?: string
+  priceType?: 'fixed' | 'from' | 'quote' | 'free' | 'range'
+  priceLabel?: string
+  note?: string
 }
 
 interface ServicePickerProps {
@@ -21,17 +33,85 @@ interface ServicePickerProps {
   onConfirm: (services: SelectedService[]) => void
 }
 
-// ─── Accordion panel ──────────────────────────────────────────────────────
+// ─── One selectable prestation row ─────────────────────────────────────────
 
-function CategoryPanel({
-  category,
+function ServiceRow({
+  service,
+  active,
+  onToggle,
+  idx,
+  open,
+}: {
+  service: Service
+  active: boolean
+  onToggle: (s: Service) => void
+  idx: number
+  open: boolean
+}) {
+  const quote = service.priceType === 'quote'
+  return (
+    <button
+      type="button"
+      role="checkbox"
+      aria-checked={active}
+      onClick={() => onToggle(service)}
+      style={{ transitionDelay: open ? `${idx * 25}ms` : '0ms' }}
+      className={`w-full flex items-start justify-between gap-4 px-6 py-4 text-left transition-all duration-200 ${
+        active ? 'bg-coral/5' : 'bg-cream hover:bg-blush/60'
+      }`}
+    >
+      {/* Checkbox + texte */}
+      <div className="flex items-start gap-3 flex-1 min-w-0">
+        <span
+          className={`mt-0.5 w-5 h-5 rounded border-2 flex items-center justify-center shrink-0 transition-all duration-200 ${
+            active ? 'bg-coral border-coral scale-110' : 'border-dark/25 hover:border-coral/60'
+          }`}
+        >
+          {active && (
+            <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="3.5">
+              <path d="M20 6L9 17l-5-5" strokeLinecap="round" strokeLinejoin="round" />
+            </svg>
+          )}
+        </span>
+
+        <div className="min-w-0">
+          <p className={`font-sans text-sm leading-snug ${active ? 'text-coral font-medium' : 'text-dark'}`}>
+            {service.name}
+          </p>
+          {service.note && (
+            <p className="font-sans text-xs text-dark/35 italic mt-0.5">{service.note}</p>
+          )}
+          <span className="inline-block mt-1.5 font-sans text-xs text-dark/30 tracking-wider uppercase bg-dark/4 px-2 py-0.5 rounded-sm">
+            {formatServiceDuration(service.duration)}
+          </span>
+        </div>
+      </div>
+
+      {/* Prix */}
+      <p
+        className={`shrink-0 pt-0.5 transition-colors ${
+          quote
+            ? 'font-serif text-base italic text-dark/45'
+            : `font-serif text-xl ${active ? 'text-coral' : 'text-dark/80'}`
+        }`}
+      >
+        {formatServicePrice(service)}
+      </p>
+    </button>
+  )
+}
+
+// ─── Accordion panel (one display section) ─────────────────────────────────
+
+function SectionPanel({
+  section,
   services,
   cart,
   onToggle,
   defaultOpen = false,
   panelRef,
 }: {
-  category: ServiceCategory
+  section: CatalogueSection
   services: Service[]
   cart: SelectedService[]
   onToggle: (service: Service) => void
@@ -39,12 +119,8 @@ function CategoryPanel({
   panelRef?: React.Ref<HTMLDivElement>
 }) {
   const [open, setOpen] = useState(defaultOpen)
-  const cfg = categoryConfig[category]
-
-  const selectedInCat = cart.filter((s) => s.category === category)
-  const isInCart = (id: string) => cart.some((s) => s.id === id)
-
-  const minPrice = Math.min(...services.map((s) => s.price))
+  const inCart = (id: string) => cart.some((s) => s.id === id)
+  const selectedInSection = services.filter((s) => inCart(s.id)).length
 
   return (
     <div
@@ -53,46 +129,39 @@ function CategoryPanel({
         open ? 'border-coral/40 shadow-sm' : 'border-dark/10 hover:border-dark/25'
       }`}
     >
-      {/* ── Header (toujours visible) ── */}
+      {/* ── Header ── */}
       <button
         type="button"
         onClick={() => setOpen((o) => !o)}
         aria-expanded={open}
-        aria-controls={`svcpanel-${category}`}
+        aria-controls={`svcpanel-${section.id}`}
         className="w-full flex items-center justify-between px-6 py-5 text-left group"
       >
         <div className="flex items-center gap-4">
-          {/* Icône catégorie */}
           <span
             className={`w-10 h-10 rounded-full flex items-center justify-center text-lg transition-colors duration-300 ${
               open ? 'bg-coral/10' : 'bg-dark/5 group-hover:bg-dark/8'
             }`}
           >
-            {cfg.emoji}
+            {section.emoji}
           </span>
-
           <div>
             <p className={`font-sans text-sm font-medium transition-colors ${open ? 'text-coral' : 'text-dark'}`}>
-              {cfg.label}
+              {section.title}
             </p>
             <p className="font-sans text-xs text-dark/40 mt-0.5">
-              {services.length} prestation{services.length > 1 ? 's' : ''} · à partir de {minPrice} €
+              {services.length} prestation{services.length > 1 ? 's' : ''}
             </p>
           </div>
         </div>
 
         <div className="flex items-center gap-3 shrink-0">
-          {/* Badge sélections */}
-          {selectedInCat.length > 0 && (
+          {selectedInSection > 0 && (
             <span className="bg-coral-dark text-cream text-xs font-sans px-2.5 py-0.5 rounded-full font-medium">
-              {selectedInCat.length} choisie{selectedInCat.length > 1 ? 's' : ''}
+              {selectedInSection} choisie{selectedInSection > 1 ? 's' : ''}
             </span>
           )}
-
-          {/* Chevron animé */}
-          <span
-            className={`transition-transform duration-300 text-dark/30 ${open ? 'rotate-180' : ''}`}
-          >
+          <span className={`transition-transform duration-300 text-dark/30 ${open ? 'rotate-180' : ''}`}>
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
               <path d="M6 9l6 6 6-6" strokeLinecap="round" strokeLinejoin="round" />
             </svg>
@@ -100,9 +169,9 @@ function CategoryPanel({
         </div>
       </button>
 
-      {/* ── Corps dépliable (grid-rows animation, no layout measurement) ── */}
+      {/* ── Corps dépliable ── */}
       <div
-        id={`svcpanel-${category}`}
+        id={`svcpanel-${section.id}`}
         aria-hidden={!open}
         inert={!open}
         style={{
@@ -113,61 +182,36 @@ function CategoryPanel({
         }}
       >
         <div style={{ overflow: 'hidden', minHeight: 0 }}>
-          <div className="border-t border-dark/8 divide-y divide-dark/5">
-          {services.map((service, idx) => {
-            const active = isInCart(service.id)
-            return (
-              <button
-                key={service.id}
-                type="button"
-                role="checkbox"
-                aria-checked={active}
-                onClick={() => onToggle(service)}
-                style={{
-                  transitionDelay: open ? `${idx * 30}ms` : '0ms',
-                }}
-                className={`w-full flex items-start justify-between gap-4 px-6 py-4 text-left transition-all duration-200 ${
-                  active ? 'bg-coral/5' : 'bg-cream hover:bg-blush/60'
-                }`}
-              >
-                {/* Checkbox + texte */}
-                <div className="flex items-start gap-3 flex-1 min-w-0">
-                  <span
-                    className={`mt-0.5 w-5 h-5 rounded border-2 flex items-center justify-center shrink-0 transition-all duration-200 ${
-                      active
-                        ? 'bg-coral border-coral scale-110'
-                        : 'border-dark/25 hover:border-coral/60'
-                    }`}
-                  >
-                    {active && (
-                      <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="3.5">
-                        <path d="M20 6L9 17l-5-5" strokeLinecap="round" strokeLinejoin="round" />
-                      </svg>
-                    )}
-                  </span>
+          <div className="border-t border-dark/8">
+            {section.description && (
+              <p className="px-6 pt-4 font-sans text-xs text-dark/45 leading-relaxed">{section.description}</p>
+            )}
 
-                  <div className="min-w-0">
-                    <p className={`font-sans text-sm leading-snug ${active ? 'text-coral font-medium' : 'text-dark'}`}>
-                      {service.name}
+            {section.subgroups ? (
+              // Sub-grouped section (Extension de cils): Poses / Remplissages / Déposes.
+              section.subgroups.map((sub) => {
+                const subList = services.filter((s) => s.subgroup === sub)
+                if (subList.length === 0) return null
+                return (
+                  <div key={sub}>
+                    <p className="px-6 pt-4 pb-1 font-sans text-[11px] font-semibold uppercase tracking-widest text-coral/70">
+                      {sub}
                     </p>
-                    {service.description && (
-                      <p className="font-sans text-xs text-dark/40 mt-0.5 leading-relaxed line-clamp-2">
-                        {service.description}
-                      </p>
-                    )}
-                    <span className="inline-block mt-1.5 font-sans text-xs text-dark/30 tracking-wider uppercase bg-dark/4 px-2 py-0.5 rounded-sm">
-                      {formatDuration(service.duration)}
-                    </span>
+                    <div className="divide-y divide-dark/5">
+                      {subList.map((s, i) => (
+                        <ServiceRow key={s.id} service={s} active={inCart(s.id)} onToggle={onToggle} idx={i} open={open} />
+                      ))}
+                    </div>
                   </div>
-                </div>
-
-                {/* Prix */}
-                <p className={`font-serif text-xl shrink-0 pt-0.5 transition-colors ${active ? 'text-coral' : 'text-dark/80'}`}>
-                  {formatCurrency(service.price)}
-                </p>
-              </button>
-            )
-          })}
+                )
+              })
+            ) : (
+              <div className="divide-y divide-dark/5">
+                {services.map((s, i) => (
+                  <ServiceRow key={s.id} service={s} active={inCart(s.id)} onToggle={onToggle} idx={i} open={open} />
+                ))}
+              </div>
+            )}
           </div>
         </div>
       </div>
@@ -185,15 +229,12 @@ export default function ServicePicker({
 }: ServicePickerProps) {
   const [services, setServices] = useState<Service[]>(initialServices ?? [])
   const [cart, setCart] = useState<SelectedService[]>(selected)
-  // If services were SSR'd, we render immediately - no skeleton, no network.
   const [loading, setLoading] = useState(!initialServices?.length)
   const [error, setError] = useState<string | null>(null)
   const initialPanelRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
-    // Skip the client fetch when the server already passed us the services.
     if (initialServices?.length) return
-
     void fetch('/api/services')
       .then((r) => {
         if (!r.ok) throw new Error('Impossible de charger les prestations')
@@ -203,16 +244,19 @@ export default function ServicePicker({
       .catch((err: Error) => { setError(err.message); setLoading(false) })
   }, [initialServices])
 
-  // Scroll the deep-linked category into view once services have loaded.
+  // Deep-linked category (?category=MAINS) → open the first section of that pool.
+  const initialSectionId = initialCategory
+    ? SECTIONS.find((sec) => sec.category === initialCategory)?.id
+    : undefined
+
   useEffect(() => {
-    if (!loading && initialCategory && initialPanelRef.current) {
-      // Small delay so the panel mount + open animation finish first.
+    if (!loading && initialSectionId && initialPanelRef.current) {
       const id = window.setTimeout(() => {
         initialPanelRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' })
       }, 120)
       return () => window.clearTimeout(id)
     }
-  }, [loading, initialCategory])
+  }, [loading, initialSectionId])
 
   const toggle = (service: Service) => {
     setCart((prev) =>
@@ -243,9 +287,15 @@ export default function ServicePicker({
     )
   }
 
-  const categoriesWithServices = CATEGORY_ORDER.filter(
-    (cat) => services.some((s) => s.category === cat)
-  )
+  // Group services by display section, then render sections in their fixed order.
+  const bySection = new Map<string, Service[]>()
+  for (const s of services) {
+    const id = sectionIdOf(s)
+    const list = bySection.get(id) ?? []
+    list.push(s)
+    bySection.set(id, list)
+  }
+  const visibleSections = SECTIONS.filter((sec) => (bySection.get(sec.id)?.length ?? 0) > 0)
 
   return (
     <div className="pb-36 md:pb-0">
@@ -256,13 +306,13 @@ export default function ServicePicker({
 
       {/* ── Accordéon ── */}
       <div className="flex flex-col gap-2">
-        {categoriesWithServices.map((cat) => {
-          const isInitial = cat === initialCategory
+        {visibleSections.map((section) => {
+          const isInitial = section.id === initialSectionId
           return (
-            <CategoryPanel
-              key={cat}
-              category={cat}
-              services={services.filter((s) => s.category === cat)}
+            <SectionPanel
+              key={section.id}
+              section={section}
+              services={bySection.get(section.id) ?? []}
               cart={cart}
               onToggle={toggle}
               defaultOpen={isInitial}
@@ -306,9 +356,8 @@ export default function ServicePicker({
                       {cart.length} prestation{cart.length > 1 ? 's' : ''}
                     </span>
                     <span className="text-dark/20">·</span>
-                    <span className="font-sans text-xs text-dark/40">{formatDuration(totalDuration)}</span>
+                    <span className="font-sans text-xs text-dark/40">{formatServiceDuration(totalDuration)}</span>
                   </div>
-                  {/* Noms condensés */}
                   <p className="font-sans text-sm text-dark font-medium truncate">
                     {cart.map((s) => s.name).join(' + ')}
                   </p>
@@ -319,7 +368,7 @@ export default function ServicePicker({
             {/* Total + CTA */}
             <div className="flex items-center gap-4 shrink-0">
               {cart.length > 0 && (
-                <p className="font-serif text-2xl text-coral">{formatCurrency(totalPrice)}</p>
+                <p className="font-serif text-2xl text-coral">{totalPrice} €</p>
               )}
               <button
                 type="button"

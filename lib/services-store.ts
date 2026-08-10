@@ -7,6 +7,9 @@ import type { RowDataPacket, ResultSetHeader } from 'mysql2'
 const JSON_FILE = 'services.json'
 
 // Google Sheets backend (Prestations tab). Active when SHEETS_SPREADSHEET_ID is set.
+// New catalogue columns (Section … Note) are appended AFTER the original 10 so
+// existing rows keep their positions; a tab still on the old 10-column layout
+// just reads these back as undefined (→ menu falls back to a default section).
 const sheet = new SheetTable<Service>('Prestations', [
   { header: 'ID', key: 'id' },
   { header: 'Nom', key: 'name' },
@@ -18,6 +21,11 @@ const sheet = new SheetTable<Service>('Prestations', [
   { header: 'Mise en avant', key: 'featured', kind: 'boolean' },
   { header: 'Créé le', key: 'createdAt' },
   { header: 'Modifié le', key: 'updatedAt' },
+  { header: 'Section', key: 'section' },
+  { header: 'Sous-groupe', key: 'subgroup' },
+  { header: 'Type de prix', key: 'priceType' },
+  { header: 'Libellé prix', key: 'priceLabel' },
+  { header: 'Note', key: 'note' },
 ], 60_000)
 
 // ─── Row mapping ───────────────────────────────────────────────────────────
