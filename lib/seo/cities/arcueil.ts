@@ -1,7 +1,7 @@
 import type { City } from "@/lib/seo/types"
 
 /**
- * Arcueil (94110) — commune limitrophe sud de Gentilly.
+ * Arcueil (94110) - commune limitrophe sud de Gentilly.
  * Contenu écrit à la main, ancré localement (RER B : deux gares à Arcueil,
  * Laplace à une station de Gentilly ; quartiers Vache Noire / Chaperon-Vert
  * frontaliers de Gentilly ; aqueduc d'Arcueil). Temps et distances approximatifs.

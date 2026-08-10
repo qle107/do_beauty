@@ -1,7 +1,7 @@
 import type { LandingPage } from "@/lib/seo/types"
 
 /**
- * Service landing page — Beauté du regard à Gentilly.
+ * Service landing page - Beauté du regard à Gentilly.
  * Rehaussement de cils, teinture, extensions (cil à cil et volume russe).
  * Hand-written, locally grounded copy. Prices are indicative only.
  */
@@ -9,7 +9,7 @@ import type { LandingPage } from "@/lib/seo/types"
 export const page: LandingPage = {
   slug: "beaute-du-regard-gentilly",
   meta: {
-    title: "Beauté du regard à Gentilly (94) · Do Beauty — cils & sourcils",
+    title: "Beauté du regard à Gentilly (94) · Do Beauty - cils & sourcils",
     description:
       "Do Beauty, beauté du regard à Gentilly (94250) : rehaussement de cils, teinture, extensions cil à cil et volume russe. Ouvert du lundi au samedi, 4,6★ sur 99 avis Google. Réservation en ligne.",
   },
@@ -37,7 +37,7 @@ export const page: LandingPage = {
         {
           kind: "paragraph",
           text:
-            "Chaque prestation commence par un temps d'échange, cils au repos, pour regarder leur longueur, leur densité et leur implantation. On définit ensemble un rendu — discret pour le quotidien, plus dessiné pour une occasion — avant d'installer les patchs sous l'œil et de commencer. La pose se fait allongée, les yeux fermés, dans le calme, avec des produits professionnels et une hygiène suivie de près.",
+            "Chaque prestation commence par un temps d'échange, cils au repos, pour regarder leur longueur, leur densité et leur implantation. On définit ensemble un rendu - discret pour le quotidien, plus dessiné pour une occasion - avant d'installer les patchs sous l'œil et de commencer. La pose se fait allongée, les yeux fermés, dans le calme, avec des produits professionnels et une hygiène suivie de près.",
         },
       ],
     },

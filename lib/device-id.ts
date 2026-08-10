@@ -4,7 +4,7 @@
 // changes, so a no-show can't simply rebook under a new phone number.
 //
 // Note: this is a browser-scoped id, NOT a person. It resets if the visitor
-// clears site data or uses a different browser/device. That's acceptable — it
+// clears site data or uses a different browser/device. That's acceptable - it
 // only needs to raise the cost of evading the phone blocklist, not be perfect.
 
 const STORAGE_KEY = 'dobeauty_device_id'

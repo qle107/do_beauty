@@ -5,7 +5,7 @@ import { prefersReducedMotion } from '@/lib/motion'
 import styles from './CustomCursor.module.css'
 
 /**
- * Luxury "VIEW" cursor — an ENHANCEMENT, never a dependency.
+ * Luxury "VIEW" cursor - an ENHANCEMENT, never a dependency.
  *
  * Safety rules (per spec):
  *  - Native cursor stays visible everywhere by default.

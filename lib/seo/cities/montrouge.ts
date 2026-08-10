@@ -1,7 +1,7 @@
 import type { City } from "@/lib/seo/types"
 
 /**
- * Montrouge (92120, Hauts-de-Seine) — ville limitrophe de Gentilly à l'ouest.
+ * Montrouge (92120, Hauts-de-Seine) - ville limitrophe de Gentilly à l'ouest.
  * Contenu rédigé à la main, ancré localement (métro 4 « Mairie de Montrouge »,
  * relais tram T3a vers la Porte de Gentilly, gare RER B « Gentilly »).
  * Temps et distances indicatifs, en conditions normales de circulation.
@@ -30,7 +30,7 @@ export const cityData: City = {
       h2: "De Montrouge à Gentilly, presque sans quitter le quartier",
       paragraphs: [
         "Montrouge borde Gentilly à l'est : les deux communes se touchent, quelque part entre la Porte de Châtillon et la Porte de Gentilly. Depuis la Mairie, l'avenue de la République ou les abords du Beffroi, il ne faut qu'une poignée de minutes en voiture, ou un court trajet en métro ligne 4 relayé par le tram T3a, pour arriver au 12 Avenue Jean Jaurès. Cette proximité a fait de Do Beauty une adresse de quartier pour bon nombre de Montrougiennes, sans les contraintes de stationnement de Paris intra-muros.",
-        "Sur place, on prend le temps. Nos prothésistes commencent par écouter ce que vous cherchez — une manucure nette pour la semaine, un semi-permanent qui tienne jusqu'au prochain rendez-vous, une couleur pour une occasion — avant de conseiller la forme et la finition. L'institut est ouvert du lundi au samedi, ce qui laisse le choix d'un créneau après le travail comme d'une pause le samedi, et la réservation se fait en ligne en quelques instants.",
+        "Sur place, on prend le temps. Nos prothésistes commencent par écouter ce que vous cherchez - une manucure nette pour la semaine, un semi-permanent qui tienne jusqu'au prochain rendez-vous, une couleur pour une occasion - avant de conseiller la forme et la finition. L'institut est ouvert du lundi au samedi, ce qui laisse le choix d'un créneau après le travail comme d'une pause le samedi, et la réservation se fait en ligne en quelques instants.",
       ],
     },
     {

@@ -1,14 +1,14 @@
 import type { LandingPage } from "@/lib/seo/types"
 
 /**
- * Service landing page — Onglerie / bar à ongles à Gentilly.
+ * Service landing page - Onglerie / bar à ongles à Gentilly.
  * Hand-written, locally grounded copy. Prices are indicative only.
  */
 
 export const page: LandingPage = {
   slug: "onglerie-gentilly",
   meta: {
-    title: "Onglerie à Gentilly (94) · Do Beauty — bar à ongles du lundi au samedi",
+    title: "Onglerie à Gentilly (94) · Do Beauty - bar à ongles du lundi au samedi",
     description:
       "Do Beauty, votre onglerie et bar à ongles à Gentilly (94250) : manucure, vernis semi-permanent, pose gel et nail art. Ouvert du lundi au samedi, 4,6★ sur 99 avis Google. Réservation en ligne.",
   },
@@ -52,7 +52,7 @@ export const page: LandingPage = {
         {
           kind: "paragraph",
           text:
-            "On commence par regarder l'état de vos ongles et par échanger sur ce que vous cherchez : une couleur discrète pour le quotidien, une pose qui tienne un voyage, un décor pour une occasion. L'experte prépare ensuite l'ongle — mise en forme, repousse des cuticules, ponçage léger si nécessaire — puis applique la technique choisie. Le semi-permanent et le gel passent sous lampe LED entre chaque couche pour fixer la matière.",
+            "On commence par regarder l'état de vos ongles et par échanger sur ce que vous cherchez : une couleur discrète pour le quotidien, une pose qui tienne un voyage, un décor pour une occasion. L'experte prépare ensuite l'ongle - mise en forme, repousse des cuticules, ponçage léger si nécessaire - puis applique la technique choisie. Le semi-permanent et le gel passent sous lampe LED entre chaque couche pour fixer la matière.",
         },
         {
           kind: "paragraph",
@@ -144,7 +144,7 @@ export const page: LandingPage = {
     {
       question: "Quelle est la différence entre une onglerie et un bar à ongles ?",
       answer:
-        "Les deux désignent le même type de lieu : un endroit dédié au soin et à la mise en beauté des ongles. Chez Do Beauty à Gentilly, vous trouvez toute la carte — manucure, vernis semi-permanent, pose en gel et nail art — réalisée à la main par notre équipe.",
+        "Les deux désignent le même type de lieu : un endroit dédié au soin et à la mise en beauté des ongles. Chez Do Beauty à Gentilly, vous trouvez toute la carte - manucure, vernis semi-permanent, pose en gel et nail art - réalisée à la main par notre équipe.",
     },
     {
       question: "Faut-il prendre rendez-vous ou puis-je venir sans réserver ?",

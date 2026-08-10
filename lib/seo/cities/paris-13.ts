@@ -1,7 +1,7 @@
 import type { City } from "@/lib/seo/types"
 
 /**
- * Paris 13e (75013) — arrondissement limitrophe de Gentilly au nord,
+ * Paris 13e (75013) - arrondissement limitrophe de Gentilly au nord,
  * du côté de la Porte de Gentilly et de la Porte d'Italie.
  * Transit et repères vérifiés : tram T3a (Porte de Gentilly / Poterne des
  * Peupliers), métro 7 (Porte d'Italie), RER B (Cité Universitaire, puis Gentilly).

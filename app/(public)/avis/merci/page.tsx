@@ -20,7 +20,7 @@ export default function AvisMerciPage() {
         </h1>
         <p className="font-sans text-base text-charcoal-700 leading-relaxed max-w-md">
           Votre avis compte énormément pour un salon indépendant comme le nôtre. Merci
-          d&apos;avoir pris le temps — à très vite chez Do Beauty !
+          d&apos;avoir pris le temps - à très vite chez Do Beauty !
         </p>
         <div className="flex flex-col sm:flex-row gap-3 mt-2">
           <Link

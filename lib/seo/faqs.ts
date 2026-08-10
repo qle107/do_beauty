@@ -25,7 +25,7 @@ export const homepageFaqs: readonly FaqEntry[] = [
   {
     question: 'Comment prendre rendez-vous ?',
     answer:
-      "Réservez en ligne directement sur notre site, 24h/24, depuis votre mobile ou votre ordinateur — c'est le moyen le plus rapide. Vous pouvez aussi nous contacter pendant nos heures d'ouverture (environ 10h–19h30, du lundi au samedi).",
+      "Réservez en ligne directement sur notre site, 24h/24, depuis votre mobile ou votre ordinateur - c'est le moyen le plus rapide. Vous pouvez aussi nous contacter pendant nos heures d'ouverture (environ 10h–19h30, du lundi au samedi).",
   },
   {
     question: 'Quels moyens de paiement acceptez-vous ?',

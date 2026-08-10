@@ -3,11 +3,11 @@ import { ARTISTS } from '@/lib/staff'
 import { busyIntervalsFromFree, type Interval } from './busy'
 
 /**
- * Planity PUBLIC availability — the officially-served, tokenless data source.
+ * Planity PUBLIC availability - the officially-served, tokenless data source.
  * --------------------------------------------------------------------------
  * Planity's consumer booking site (planity.com) reads each salon's availability
  * from a public Firebase Realtime Database, anonymously. We read the exact same
- * data via the RTDB REST API — no auth, no token, no scraping of the pro backend.
+ * data via the RTDB REST API - no auth, no token, no scraping of the pro backend.
  *
  *   https://<db-host>/<businessId>.json                (shallow: the record keys)
  *   https://<db-host>/<businessId>/<key>.json          (one gzip-compressed record)
@@ -27,7 +27,7 @@ const DB_HOST =
 // Track every pickable agenda (practitioners + cabines) so the picker knows which
 // artists are free; the capacity math still counts practitioners only (see capacity.ts).
 const ARTIST_IDS = new Set(ARTISTS.map((a) => a.planityCalendarId))
-const TTL_MS = 180_000 // 3 min — one fetch (~0.3 MB) covers all ~30 published days
+const TTL_MS = 180_000 // 3 min - one fetch (~0.3 MB) covers all ~30 published days
 
 export interface PlanityAvailability {
   ok: boolean // did the last fetch succeed?
@@ -107,7 +107,7 @@ export async function getPlanityAvailability(): Promise<PlanityAvailability> {
 /**
  * Free practitioners per 15-min slot for a date, or `null` when we have no
  * authoritative Planity data for that date (fetch failed, or the date is beyond
- * Planity's published horizon). `null` tells the caller to FAIL OPEN — never
+ * Planity's published horizon). `null` tells the caller to FAIL OPEN - never
  * hide real availability because the external read is unavailable.
  * A returned (possibly empty) map means Planity IS authoritative for that day
  * (empty ⇒ closed / fully booked).

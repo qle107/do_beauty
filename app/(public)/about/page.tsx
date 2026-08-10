@@ -77,7 +77,7 @@ export default function AboutPage() {
             </p>
             <p className="font-sans text-base text-charcoal-500 leading-relaxed">
               Manucure, vernis semi-permanent, pose de cils, épilation : chaque prestation est faite
-              à la main, avec des produits pros — Diamond &amp; OPI — pour un résultat net et qui tient.
+              à la main, avec des produits pros - Diamond &amp; OPI - pour un résultat net et qui tient.
             </p>
           </div>
 
@@ -177,7 +177,7 @@ export default function AboutPage() {
               <p className="text-charcoal-500">94250 Gentilly</p>
               <p className="text-dark/40 text-xs mt-1 flex items-center justify-center gap-1.5">
                 <TrainIcon className="h-3.5 w-3.5 shrink-0" />
-                RER B — Gentilly
+                RER B - Gentilly
               </p>
             </div>
             <div>

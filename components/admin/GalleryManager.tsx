@@ -228,7 +228,7 @@ export default function GalleryManager() {
     }
   }
 
-  // AI-catalog review — the owner stays in control; suggestions never auto-apply.
+  // AI-catalog review - the owner stays in control; suggestions never auto-apply.
   async function approveSuggestion(img: AdminImage) {
     const mergedTags = Array.from(new Set([...img.tags, ...(img.suggestedTags ?? [])]))
     const category = img.suggestedCategory ?? img.category
@@ -757,7 +757,7 @@ export default function GalleryManager() {
                     onChange={(e) => setBulk((b) => ({ ...b, category: e.target.value as '' | GalleryCategory }))}
                     className={bulkInputCls}
                   >
-                    <option value="">Danh mục —</option>
+                    <option value="">Danh mục -</option>
                     {CATEGORIES.map((c) => (
                       <option key={c.value} value={c.value}>{c.label}</option>
                     ))}
@@ -779,7 +779,7 @@ export default function GalleryManager() {
                     onChange={(e) => setBulk((b) => ({ ...b, published: e.target.value as Tri }))}
                     className={bulkInputCls}
                   >
-                    <option value="">Hiển thị —</option>
+                    <option value="">Hiển thị -</option>
                     <option value="yes">Đăng</option>
                     <option value="no">Ẩn</option>
                   </select>
@@ -791,7 +791,7 @@ export default function GalleryManager() {
                     onChange={(e) => setBulk((b) => ({ ...b, featured: e.target.value as Tri }))}
                     className={bulkInputCls}
                   >
-                    <option value="">Nổi bật —</option>
+                    <option value="">Nổi bật -</option>
                     <option value="yes">Đưa lên nổi bật</option>
                     <option value="no">Bỏ nổi bật</option>
                   </select>

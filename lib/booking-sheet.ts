@@ -6,7 +6,7 @@ import { anonymiseIp } from '@/lib/consent-log'
  * Booking → management-sheet auto-sync. On each successful booking we append a
  * row to the "Rendez-vous" tab (incl. the anti-fraud IP + device) and upsert the
  * client into the "Clients" tab (keyed on phone, matching how the app identifies
- * clients). Fire-and-forget, guarded by sheetsConfigured() — a Sheets hiccup must
+ * clients). Fire-and-forget, guarded by sheetsConfigured() - a Sheets hiccup must
  * never fail the booking itself.
  */
 

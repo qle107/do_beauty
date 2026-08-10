@@ -1,5 +1,5 @@
 /**
- * Index of city landing pages — Gentilly's neighbouring towns.
+ * Index of city landing pages - Gentilly's neighbouring towns.
  * Each town's content lives in its own module under lib/seo/cities/.
  */
 import type { City } from '@/lib/seo/types'

@@ -6,7 +6,7 @@ import styles from './CustomCursor.module.css'
 type Mode = 'default' | 'link' | 'image' | 'reserver' | 'text'
 
 /**
- * DO BEAUTY custom cursor — a pure enhancement that can NEVER break the native
+ * DO BEAUTY custom cursor - a pure enhancement that can NEVER break the native
  * cursor (spec §23).
  *
  * Safety contract:
@@ -15,7 +15,7 @@ type Mode = 'default' | 'link' | 'image' | 'reserver' | 'text'
  *    added, and the native cursor is left completely untouched.
  *  · The native cursor is hidden ONLY while `html.has-db-cursor` is present, and
  *    that class is stripped the instant the pointer leaves the viewport, the tab
- *    is hidden, or the window loses focus — so a stuck or hidden dot can never
+ *    is hidden, or the window loses focus - so a stuck or hidden dot can never
  *    leave the user with no cursor. There is NO static `cursor:none` on
  *    body/html/*; if this JS ever fails, the class is never added → native
  *    cursor stays. That is the guaranteed fallback.

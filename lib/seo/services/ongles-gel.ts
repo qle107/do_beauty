@@ -1,14 +1,14 @@
 import type { LandingPage } from "@/lib/seo/types"
 
 /**
- * Service landing page — Ongles en gel à Gentilly.
+ * Service landing page - Ongles en gel à Gentilly.
  * Hand-written, locally grounded copy. Prices are indicative only.
  */
 
 export const page: LandingPage = {
   slug: "ongles-gel-gentilly",
   meta: {
-    title: "Ongles en gel à Gentilly (94) · Do Beauty — pose & remplissage",
+    title: "Ongles en gel à Gentilly (94) · Do Beauty - pose & remplissage",
     description:
       "Pose d'ongles en gel à Gentilly (94250) chez Do Beauty : renforcement, rallongement, choix de la forme, remplissage toutes les 3 à 4 semaines et dépose en douceur. Ouvert du lundi au samedi, 4,6★ sur 99 avis Google. Réservation en ligne.",
   },
@@ -51,7 +51,7 @@ export const page: LandingPage = {
         {
           kind: "list",
           items: [
-            "Renforcement sur ongle naturel : une fine couche de gel appliquée directement sur votre ongle, sans longueur ajoutée, pour le solidifier et l'accompagner pendant sa pousse — idéal pour les ongles mous ou cassants.",
+            "Renforcement sur ongle naturel : une fine couche de gel appliquée directement sur votre ongle, sans longueur ajoutée, pour le solidifier et l'accompagner pendant sa pousse - idéal pour les ongles mous ou cassants.",
             "Rallongement sur capsule ou chablon : on ajoute de la longueur avec une capsule collée puis sculptée, ou à main levée sur un chablon, pour gagner quelques millimètres tout en gardant un rendu naturel.",
             "Pose complète avec couleur ou french : une construction de gel bien lisse, prête à recevoir une teinte, une french ou un nail art, avec une tenue d'environ quatre semaines.",
           ],
@@ -84,7 +84,7 @@ export const page: LandingPage = {
         {
           kind: "paragraph",
           text:
-            "Gel et résine (acrylique) mènent toutes deux à des ongles renforcés ou rallongés, mais leur toucher et leur entretien diffèrent. Le gel offre un rendu brillant et naturel, une pose sans odeur forte et un confort très souple ; c'est ce que la plupart des clientes préfèrent. La résine, plus rigide, encaisse bien les longueurs importantes et les ongles très sollicités. L'équipe vous conseille selon la solidité recherchée, l'état de vos ongles et le résultat que vous imaginez — il n'y a pas de « meilleure » matière dans l'absolu, seulement celle qui convient à votre main.",
+            "Gel et résine (acrylique) mènent toutes deux à des ongles renforcés ou rallongés, mais leur toucher et leur entretien diffèrent. Le gel offre un rendu brillant et naturel, une pose sans odeur forte et un confort très souple ; c'est ce que la plupart des clientes préfèrent. La résine, plus rigide, encaisse bien les longueurs importantes et les ongles très sollicités. L'équipe vous conseille selon la solidité recherchée, l'état de vos ongles et le résultat que vous imaginez - il n'y a pas de « meilleure » matière dans l'absolu, seulement celle qui convient à votre main.",
         },
         {
           kind: "list",

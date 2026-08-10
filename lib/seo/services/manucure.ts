@@ -1,14 +1,14 @@
 import type { LandingPage } from "@/lib/seo/types"
 
 /**
- * Service landing page — Manucure à Gentilly.
+ * Service landing page - Manucure à Gentilly.
  * Hand-written, locally grounded copy. Prices are indicative only.
  */
 
 export const page: LandingPage = {
   slug: "manucure-gentilly",
   meta: {
-    title: "Manucure à Gentilly (94) · Do Beauty — institut du lundi au samedi",
+    title: "Manucure à Gentilly (94) · Do Beauty - institut du lundi au samedi",
     description:
       "Manucure à Gentilly (94250) chez Do Beauty : manucure classique, française, russe, baby-boomer et semi-permanent, par une équipe d'expertes. Ouvert du lundi au samedi, 4,6★ sur 99 avis Google. Réservation en ligne.",
   },
@@ -21,7 +21,7 @@ export const page: LandingPage = {
     name: "Manucure",
     serviceType: "Soin et mise en beauté des mains",
     description:
-      "Manucure à Gentilly : soin des ongles et des cuticules, mise en forme et finition — classique, française, russe, baby-boomer ou semi-permanent — dans un institut ouvert du lundi au samedi.",
+      "Manucure à Gentilly : soin des ongles et des cuticules, mise en forme et finition - classique, française, russe, baby-boomer ou semi-permanent - dans un institut ouvert du lundi au samedi.",
     fromPrice: 15,
   },
   sections: [
@@ -51,7 +51,7 @@ export const page: LandingPage = {
         {
           kind: "paragraph",
           text:
-            "On commence par un échange rapide sur ce que vous cherchez et par un coup d'œil à l'état de vos ongles. L'experte lime ensuite pour donner la forme voulue — carré, arrondi, amande — puis s'occupe des cuticules, repoussées et nettoyées avec douceur pour dégager la surface de l'ongle. Vient le temps du soin de la peau des mains, avant la finition choisie : vernis classique, french ou pose de semi-permanent fixée sous lampe LED.",
+            "On commence par un échange rapide sur ce que vous cherchez et par un coup d'œil à l'état de vos ongles. L'experte lime ensuite pour donner la forme voulue - carré, arrondi, amande - puis s'occupe des cuticules, repoussées et nettoyées avec douceur pour dégager la surface de l'ongle. Vient le temps du soin de la peau des mains, avant la finition choisie : vernis classique, french ou pose de semi-permanent fixée sous lampe LED.",
         },
         {
           kind: "paragraph",

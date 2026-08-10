@@ -1,14 +1,14 @@
 import type { LandingPage } from "@/lib/seo/types"
 
 /**
- * Service landing page — Vernis semi-permanent à Gentilly.
+ * Service landing page - Vernis semi-permanent à Gentilly.
  * Hand-written, locally grounded copy. Prices are indicative only.
  */
 
 export const page: LandingPage = {
   slug: "semi-permanent-gentilly",
   meta: {
-    title: "Vernis semi-permanent à Gentilly (94) · Do Beauty — tenue ~3 semaines",
+    title: "Vernis semi-permanent à Gentilly (94) · Do Beauty - tenue ~3 semaines",
     description:
       "Do Beauty pose votre vernis semi-permanent à Gentilly (94250) : couleur longue tenue d'environ 3 semaines, séchage LED, dépose en douceur. Ouvert du lundi au samedi, 4,6★ sur 99 avis Google. Réservation en ligne.",
   },

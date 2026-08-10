@@ -75,7 +75,7 @@ function ServiceCard({
         </div>
       )}
 
-      {/* Legibility scrim — heavier at the base where the text sits */}
+      {/* Legibility scrim - heavier at the base where the text sits */}
       <span
         aria-hidden="true"
         className="absolute inset-0 bg-gradient-to-t from-black/62 via-black/12 to-transparent opacity-90"

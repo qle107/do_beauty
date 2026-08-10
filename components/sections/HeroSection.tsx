@@ -4,14 +4,14 @@ import Reveal from '@/components/ui/Reveal'
 import { heroImage } from '@/lib/media'
 
 /**
- * DO BEAUTY hero — one wide architectural photograph of the institut (branded
+ * DO BEAUTY hero - one wide architectural photograph of the institut (branded
  * reception + arche + espace de soin). institut-accueil.png is ≈1.88:1.
  *
  * Desktop (lg+): the photo runs full-bleed and the editorial type is set hard
  * into the calm left wall, over a whisper of warm ivory that stays subtle.
  *
  * Mobile / tablet: a wide interior can't be cropped to a portrait slice without
- * burying the type in the busiest part of the room, so we stack instead — the
+ * burying the type in the busiest part of the room, so we stack instead - the
  * photograph on top (featuring the Do Beauty reception), the copy below on calm
  * ivory. Fully legible, no scrim gymnastics, and the image is never hidden.
  */
@@ -57,14 +57,14 @@ export default function HeroSection() {
   return (
     <section
       className="relative w-full overflow-hidden bg-[color:var(--db-bg)]"
-      aria-label="Do Beauty — institut de beauté à Gentilly"
+      aria-label="Do Beauty - institut de beauté à Gentilly"
     >
-      {/* MOBILE / TABLET — photograph on top, copy on calm ivory below. */}
+      {/* MOBILE / TABLET - photograph on top, copy on calm ivory below. */}
       <div className="lg:hidden">
         <div className="relative h-[48svh] min-h-[320px] w-full">
           <Image
             src={heroImage}
-            alt="Accueil de l'institut Do Beauty à Gentilly — réception et mur signé Do Beauty"
+            alt="Accueil de l'institut Do Beauty à Gentilly - réception et mur signé Do Beauty"
             fill
             priority
             sizes="100vw"
@@ -82,11 +82,11 @@ export default function HeroSection() {
         </div>
       </div>
 
-      {/* DESKTOP — full-bleed interior with editorial type in the left wall. */}
+      {/* DESKTOP - full-bleed interior with editorial type in the left wall. */}
       <div className="relative hidden min-h-[max(760px,100svh)] lg:block">
         <Image
           src={heroImage}
-          alt="Intérieur de l'institut Do Beauty à Gentilly — mur d'accueil, arche cannelée, espace de soin et réception"
+          alt="Intérieur de l'institut Do Beauty à Gentilly - mur d'accueil, arche cannelée, espace de soin et réception"
           fill
           priority
           sizes="100vw"

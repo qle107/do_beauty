@@ -48,7 +48,7 @@ export default function GalleryBrowser({ images, defaultCategory = 'all', defaul
   const [sort, setSort] = useState<SortKey>('newest')
   const [visible, setVisible] = useState(INITIAL)
 
-  // Tags available across the whole published set (data-driven — no hardcoding).
+  // Tags available across the whole published set (data-driven - no hardcoding).
   const allTags = useMemo(() => {
     const set = new Set<string>()
     for (const img of images) for (const t of img.tags) set.add(t)
@@ -77,7 +77,7 @@ export default function GalleryBrowser({ images, defaultCategory = 'all', defaul
     )
 
   // Keep the URL shareable (?category=&tag=) without a full navigation.
-  // Multiple tags travel as a comma list (?tag=a,b) — robust to re-parse.
+  // Multiple tags travel as a comma list (?tag=a,b) - robust to re-parse.
   useEffect(() => {
     const params = new URLSearchParams()
     if (category !== 'all') params.set('category', category)
@@ -116,7 +116,7 @@ export default function GalleryBrowser({ images, defaultCategory = 'all', defaul
         })}
       </div>
 
-      {/* Tag filter — multi-select, AND logic */}
+      {/* Tag filter - multi-select, AND logic */}
       {allTags.length > 0 && (
         <div className="mt-5 flex flex-wrap items-center justify-center gap-2" role="group" aria-label="Filtrer par tag">
           {tags.length > 0 && (
@@ -201,7 +201,7 @@ export default function GalleryBrowser({ images, defaultCategory = 'all', defaul
                 loading="lazy"
                 className="object-cover transition-transform duration-700 ease-out group-hover:scale-[1.04]"
               />
-              {/* Hover overlay — subtle, editorial */}
+              {/* Hover overlay - subtle, editorial */}
               <div className="pointer-events-none absolute inset-0 flex flex-col justify-end bg-gradient-to-t from-black/55 via-black/0 to-black/0 opacity-0 transition-opacity duration-300 group-hover:opacity-100">
                 <div className="p-3 md:p-4">
                   {img.title && (

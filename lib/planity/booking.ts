@@ -1,11 +1,11 @@
 /**
- * Planity write-back — ISOLATED integration seam.
+ * Planity write-back - ISOLATED integration seam.
  * --------------------------------------------------------------------------
  * Planity exposes NO official public API to CREATE/UPDATE/CANCEL an appointment.
  * So a website booking cannot be pushed into Planity automatically today.
  *
  * This module is the SINGLE place where an official Planity booking API would
- * plug in later — WITHOUT touching the booking UI or the Google Calendar flow.
+ * plug in later - WITHOUT touching the booking UI or the Google Calendar flow.
  * Until then `createPlanityBooking()` returns `{ status: 'unsupported' }` and the
  * booking relies on the staff notification (email + WhatsApp) fired by the POST
  * route: the front desk enters it in Planity. That entry then shows up in
@@ -49,7 +49,7 @@ export async function createPlanityBooking(
   // Map `input` to Planity's payload and POST to the OFFICIAL endpoint using
   // PLANITY_API_URL + PLANITY_API_TOKEN, then translate the response to
   // { status: 'created', reference } | { status: 'failed', error }.
-  // Do NOT invent endpoints — wire this only when Planity grants official access.
+  // Do NOT invent endpoints - wire this only when Planity grants official access.
   void input
   return { status: 'failed', error: 'Planity write integration not implemented.' }
 }

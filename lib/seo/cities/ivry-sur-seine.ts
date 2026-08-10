@@ -1,7 +1,7 @@
 import type { City } from "@/lib/seo/types"
 
 /**
- * Ivry-sur-Seine (94200) — page ville pour Do Beauty, institut de beauté à Gentilly.
+ * Ivry-sur-Seine (94200) - page ville pour Do Beauty, institut de beauté à Gentilly.
  * Contenu rédigé à la main, ancré localement : Ivry est séparée de Gentilly par
  * Le Kremlin-Bicêtre. Distances et temps de trajet approximatifs et honnêtes ;
  * transports (métro 7, RER C, tram T3a) et repères factuels.
@@ -14,7 +14,7 @@ export const cityData: City = {
   "distanceKm": 4,
   "publicTransport": "Depuis Ivry-sur-Seine, la ligne 7 du métro (stations « Mairie d'Ivry » et « Pierre et Marie Curie ») rejoint vite le tram T3a, que l'on prend à la Porte d'Ivry ou à la Porte d'Italie. Quelques arrêts vers l'ouest, « Stade Charléty – Porte de Gentilly » vous laisse à quelques minutes à pied du 12 avenue Jean Jaurès. Le RER C, à la gare d'Ivry-sur-Seine, dessert le reste du secteur côté Seine. En transports comme en voiture, le trajet passe par Le Kremlin-Bicêtre, la commune qui sépare Ivry de Gentilly.",
   "drivingHint": "En voiture, comptez environ 8 minutes (près de 4 km) depuis le centre d'Ivry-sur-Seine : on traverse Le Kremlin-Bicêtre, la commune voisine, avant de gagner Gentilly et l'avenue Jean Jaurès. Un temps de trajet courant en journée, hors heures de pointe ; le stationnement se trouve dans les rues autour de l'institut.",
-  "lead": "Entre les bords de Seine d'Ivry-Port et la Mairie d'Ivry, il suffit de traverser une commune voisine pour rejoindre Do Beauty. À huit minutes de chez vous, notre institut de Gentilly prend soin de vos ongles et de votre regard — manucure, vernis semi-permanent, pose gel, extensions de cils — dans un salon clair, sans avoir à monter dans Paris.",
+  "lead": "Entre les bords de Seine d'Ivry-Port et la Mairie d'Ivry, il suffit de traverser une commune voisine pour rejoindre Do Beauty. À huit minutes de chez vous, notre institut de Gentilly prend soin de vos ongles et de votre regard - manucure, vernis semi-permanent, pose gel, extensions de cils - dans un salon clair, sans avoir à monter dans Paris.",
   "neighborhoods": [
     "Mairie d'Ivry",
     "Ivry-Port",

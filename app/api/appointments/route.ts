@@ -144,13 +144,13 @@ export async function POST(request: NextRequest): Promise<NextResponse> {
       return NextResponse.json({ error: 'existing_appointment' }, { status: 409 })
     }
     // When confirmReplace is set, DEFER deleting `existing` until the new event is
-    // safely created (below) — so a failed create can never leave the customer with
+    // safely created (below) - so a failed create can never leave the customer with
     // no booking at all. Authorisation here is phone-only (a phone number is not a
     // secret), so the replaced RDV is surfaced in the owner alert: a malicious
     // replace is never silent and can always be restored from the calendar.
 
     // Verify every service exists and is active. Fetch the catalogue ONCE (a single
-    // backend read) and look up by id, rather than one store call per cart item —
+    // backend read) and look up by id, rather than one store call per cart item -
     // so a slow/failing store can't be retried N× on the booking's critical path.
     const catalogue = await getAllServicesAdmin()
     const serviceById = new Map(catalogue.map((s) => [s.id, s]))
@@ -243,7 +243,7 @@ export async function POST(request: NextRequest): Promise<NextResponse> {
       )
     }
 
-    // New event is safely in the calendar — only NOW remove the replaced booking
+    // New event is safely in the calendar - only NOW remove the replaced booking
     // (deferred from the confirmReplace check above so a failed create can never
     // destroy the customer's existing RDV and leave them with nothing).
     if (existing && confirmReplace) {
@@ -274,7 +274,7 @@ export async function POST(request: NextRequest): Promise<NextResponse> {
     const totalPrice    = services.reduce((sum, s) => sum + s.price, 0)
     const totalDuration = services.reduce((sum, s) => sum + s.duration, 0)
 
-    // Isolated Planity write seam — 'unsupported' today (Planity has no official
+    // Isolated Planity write seam - 'unsupported' today (Planity has no official
     // write API); the staff email + WhatsApp below are the path into Planity.
     void createPlanityBooking({
       clientName,

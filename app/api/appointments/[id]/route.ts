@@ -54,7 +54,7 @@ export async function PATCH(request: NextRequest, { params }: RouteContext): Pro
     }
 
     // Once the appointment is done (completed, cancelled or no-show), the
-    // reference photos are no longer needed — drop the server copy. The owner
+    // reference photos are no longer needed - drop the server copy. The owner
     // still has them in the alert email.
     if (['COMPLETED', 'CANCELLED', 'NO_SHOW'].includes(parsed.data.status)) {
       void deleteImages(id)

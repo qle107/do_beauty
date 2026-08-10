@@ -120,7 +120,7 @@ export default function DevicesPage() {
   const trackedEntries = entries.filter((e) => !e.blocked && e.noShowCount > 0)
 
   // Render the phone list, highlighting when a single device has booked under
-  // several numbers — the signal that someone is dodging the phone blocklist.
+  // several numbers - the signal that someone is dodging the phone blocklist.
   const renderPhones = (phones: string[]) => (
     <div className="flex flex-col gap-0.5">
       {phones.length === 0 ? (

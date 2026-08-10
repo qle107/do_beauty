@@ -8,7 +8,7 @@ import { site } from '@/lib/site'
 import { timeToMinutes } from '@/lib/utils'
 import type { Service } from '@/lib/types'
 
-// GET /api/admin/calendar?date=YYYY-MM-DD  — admin only. Assembles one day:
+// GET /api/admin/calendar?date=YYYY-MM-DD  - admin only. Assembles one day:
 // website bookings (Calendar A, full detail) + Planity anonymous busy blocks.
 export async function GET(request: NextRequest): Promise<NextResponse> {
   try {

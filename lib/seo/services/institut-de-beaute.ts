@@ -1,7 +1,7 @@
 import type { LandingPage } from "@/lib/seo/types"
 
 /**
- * Pillar service page — "Institut de beauté à Gentilly".
+ * Pillar service page - "Institut de beauté à Gentilly".
  * Presents the whole Do Beauty institute (onglerie, nail art, beauté du regard,
  * soins des mains & des pieds) with local access, booking and practical FAQs.
  * Transit and landmarks are factual (RER B Gentilly, tram T3a Porte de Gentilly,

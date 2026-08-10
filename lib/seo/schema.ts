@@ -44,7 +44,7 @@ export function localBusinessSchema() {
     },
     areaServed: site.areaServed.map((name) => ({ '@type': 'City', name })),
     // openingHoursSpecification intentionally omitted: only "opens 11 AM, 7 days"
-    // is confirmed — closing time is unknown, so we don't assert full hours.
+    // is confirmed - closing time is unknown, so we don't assert full hours.
     sameAs: [site.social.instagram, site.social.tiktok, site.social.planity].filter(Boolean),
     hasMap: site.social.googleBusiness,
     // aggregateRating intentionally omitted (self-serving review markup is

@@ -38,13 +38,13 @@ const config: Config = {
         // are re-mapped from pink/lavender to warm ivory / champagne / near-black.
         // Mirrors the --db-* tokens in app/globals.css.
         coral: {
-          DEFAULT: '#9E7A38',  // champagne-gold accent (text/links/borders) — AA on ivory
-          dark: '#2A2521',     // warm near-black — CTA hover bg keeps cream/ivory text readable
-          light: '#D8C39A',    // light champagne — accent text on dark sections
+          DEFAULT: '#9E7A38',  // champagne-gold accent (text/links/borders) - AA on ivory
+          dark: '#2A2521',     // warm near-black - CTA hover bg keeps cream/ivory text readable
+          light: '#D8C39A',    // light champagne - accent text on dark sections
         },
         blush: '#F0EBE2',      // soft warm-beige section bg (was pink #FCE7F3)
-        cream: '#F5F1EA',      // page bg — db-bg (was pink #FDF2F8)
-        dark: '#171614',       // near-black foreground — db-ink (was magenta #831843)
+        cream: '#F5F1EA',      // page bg - db-bg (was pink #FDF2F8)
+        dark: '#171614',       // near-black foreground - db-ink (was magenta #831843)
         sage: '#8A9A72',       // unchanged (legacy, rarely used)
         slate: '#A8B0B8',      // unchanged (legacy, rarely used)
 
@@ -65,7 +65,7 @@ const config: Config = {
           300: '#DED6CA',      // dividers / border (db-stone)
         },
         charcoal: {
-          500: '#6F675C',      // muted body text — AA on ivory
+          500: '#6F675C',      // muted body text - AA on ivory
           700: '#48433C',      // secondary text (db-ink-soft)
           900: '#171614',      // near-black (db-ink)
         },

@@ -132,7 +132,7 @@ export async function deleteImages(eventId: string): Promise<void> {
 }
 
 // The set of appointment ids that currently have an image folder. Lets the admin
-// listing avoid a per-appointment directory probe — read the root once instead.
+// listing avoid a per-appointment directory probe - read the root once instead.
 export async function existingImageDirs(): Promise<Set<string>> {
   const set = new Set<string>()
   for (const root of [getDataDir(), getSeedDir()].map((d) => path.join(d, SUBDIR))) {

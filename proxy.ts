@@ -6,7 +6,7 @@ import { site } from '@/lib/site'
 const ADMIN_EMAIL = process.env.ADMIN_EMAIL ?? ''
 
 // Behind Hostinger's reverse proxy the request's own URL resolves to the internal
-// localhost:3000 — so redirects built from req.url would send admins there. In
+// localhost:3000 - so redirects built from req.url would send admins there. In
 // production redirect against the canonical site URL; in dev use the request origin.
 function baseUrl(req: NextRequest): string {
   return process.env.NODE_ENV === 'production' ? site.url : req.nextUrl.origin

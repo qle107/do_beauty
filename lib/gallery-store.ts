@@ -96,7 +96,7 @@ async function selectRows(sql: string, params?: unknown[]): Promise<GalleryRow[]
 }
 
 // ─── Read (MySQL when reachable, else committed data/gallery.json) ──────────
-// Always sorted newest-uploaded first — the spec's default ordering — regardless
+// Always sorted newest-uploaded first - the spec's default ordering - regardless
 // of backend. Falls back to JSON on a *failed* query, never taking the public
 // gallery offline over a DB hiccup.
 
@@ -104,7 +104,7 @@ async function readAll(): Promise<GalleryImage[]> {
   if (sheetsConfigured()) {
     try {
       let rows = await sheet.readAll()
-      // Seed from committed JSON ONLY on a freshly-created tab — never re-seed a
+      // Seed from committed JSON ONLY on a freshly-created tab - never re-seed a
       // tab the owner intentionally emptied (that would resurrect deleted images).
       if (rows.length === 0 && sheet.consumeFreshlyCreated()) {
         const seed = readJson<GalleryImage[]>(JSON_FILE, [])
@@ -238,7 +238,7 @@ export async function bulkUpdateImages(input: GalleryBulkInput): Promise<number>
 // ─── AI-catalog suggestion (never auto-applied) ───────────────────────────
 // A classification agent records a suggestion; the owner reviews and approves
 // (which promotes it into category/tags) or ignores it. Category/tags are left
-// untouched here — this only stages the proposal.
+// untouched here - this only stages the proposal.
 export async function setSuggestion(
   id: string,
   suggestion: { category?: GalleryCategory; tags?: string[] },

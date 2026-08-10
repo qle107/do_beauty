@@ -60,7 +60,7 @@ export interface CalendarEventData {
   deviceId?: string                 // persistent browser id, for no-show tracking
   fingerprint?: string              // browser fingerprint, fallback no-show identifier
   employeeName?: string             // optional preferred staff (client's choice, a hint)
-  pool?: string                     // resource-pool key (poolKey) — for same-pool capacity math
+  pool?: string                     // resource-pool key (poolKey) - for same-pool capacity math
 }
 
 // ─── Helpers ──────────────────────────────────────────────────────────────
@@ -135,7 +135,7 @@ function eventToAppointment(
   // Resolve services from the catalog for full detail, but fall back to the
   // service names stored on the event when an id can't be resolved (a service
   // was deleted/renamed, or data/services.json was reset on redeploy). The
-  // appointment must still appear in admin either way — dropping it silently
+  // appointment must still appear in admin either way - dropping it silently
   // hid real, calendar-blocking bookings and could empty the whole list.
   const storedNames = (p['serviceNames'] ?? '').split(' + ').map((s) => s.trim())
   const services: Service[] = serviceIds.map((id, i) =>

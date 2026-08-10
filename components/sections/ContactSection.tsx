@@ -13,7 +13,7 @@ export default function ContactSection() {
           className="grid items-center lg:grid-cols-2"
           style={{ gap: 'clamp(32px,5vw,72px)' }}
         >
-          {/* LEFT — identity + address */}
+          {/* LEFT - identity + address */}
           <Reveal>
             <div>
               <p
@@ -55,12 +55,12 @@ export default function ContactSection() {
             </div>
           </Reveal>
 
-          {/* RIGHT — stylized map */}
+          {/* RIGHT - stylized map */}
           <Reveal delay={90}>
             <figure className="overflow-hidden rounded-tl-[80px] border border-[color:var(--db-champ-line)] bg-[color:var(--db-stone)]">
               <iframe
                 src={site.mapsEmbed}
-                title="Carte — Do Beauty, Gentilly"
+                title="Carte - Do Beauty, Gentilly"
                 loading="lazy"
                 allowFullScreen
                 referrerPolicy="no-referrer-when-downgrade"

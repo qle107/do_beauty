@@ -1,8 +1,8 @@
-// ─── Carte des soins — 15 display sections (mirrors the live Planity menu) ──
+// ─── Carte des soins - 15 display sections (mirrors the live Planity menu) ──
 //
 // The public menu and the booking picker both render these 15 sections, in
 // this exact order, with these exact titles (kept verbatim from the salon's
-// live Planity menu — including its typos, reported to the owner separately).
+// live Planity menu - including its typos, reported to the owner separately).
 //
 // `category` on a Service stays the coarse *pool* key that drives availability
 // (see lib/staff.ts): several sections share one pool category, e.g. both
@@ -15,7 +15,7 @@ import type { Service } from '@/lib/types'
 
 export interface CatalogueSection {
   id: string
-  n: string                 // "01".."15" — display index
+  n: string                 // "01".."15" - display index
   title: string             // verbatim menu wording
   emoji: string
   category: ServiceCategory  // pool key every service in this section carries
@@ -56,7 +56,7 @@ export const SECTION_BY_ID: Record<string, CatalogueSection> = Object.fromEntrie
 )
 
 // Fallback for a service that has no `section` (e.g. one created later via the
-// admin form, which only sets a pool category) — put it in the first section
+// admin form, which only sets a pool category) - put it in the first section
 // of its pool so it still shows up somewhere sensible on the menu.
 const DEFAULT_SECTION_FOR_CATEGORY: Record<ServiceCategory, string> = {
   FORFAIT: 'offres-speciales',

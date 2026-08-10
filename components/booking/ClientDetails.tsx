@@ -148,7 +148,7 @@ export default function ClientDetails({ booking, onBack, onConfirmed }: ClientDe
     setConfirmed(true)
     onConfirmed?.()
     toast.success('Rendez-vous enregistré !')
-    // Conversion — fires once here (the 409 conflict path returns earlier, so it
+    // Conversion - fires once here (the 409 conflict path returns earlier, so it
     // never fires on the reschedule prompt). Value only, never PII.
     track('booking_confirmed', {
       value: totalPrice,
@@ -322,7 +322,7 @@ export default function ClientDetails({ booking, onBack, onConfirmed }: ClientDe
           </div>
         )}
 
-        {/* Politique de garantie — à accepter avant de confirmer */}
+        {/* Politique de garantie - à accepter avant de confirmer */}
         <div className="bg-blush border border-dark/10 p-5">
           <div className="flex items-baseline justify-between gap-3 mb-3">
             <p className="font-sans text-xs tracking-[0.2em] uppercase text-dark/40">Politique de garantie</p>

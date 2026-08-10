@@ -6,7 +6,7 @@ import JsonLd from '@/components/seo/JsonLd'
 import CookieConsent from '@/components/layout/CookieConsent'
 import './globals.css'
 
-// Editorial display serif + quiet geometric sans — the DO BEAUTY type system.
+// Editorial display serif + quiet geometric sans - the DO BEAUTY type system.
 const cormorant = Cormorant_Garamond({
   subsets: ['latin'],
   weight: ['400', '500', '600'],
@@ -34,7 +34,7 @@ export const viewport: Viewport = {
 
 export const metadata: Metadata = {
   metadataBase: new URL(site.url),
-  title: 'Do Beauty — Institut de beauté à Gentilly',
+  title: 'Do Beauty - Institut de beauté à Gentilly',
   description:
     'Institut de beauté et onglerie à Gentilly (94250) : manucure, vernis semi-permanent, pose gel, nail art et beauté du regard. Ouvert du lundi au samedi, 4,6★ sur 99 avis Google. Réservation en ligne.',
   keywords: [
@@ -49,7 +49,7 @@ export const metadata: Metadata = {
   ],
   alternates: { canonical: '/' },
   openGraph: {
-    title: 'Do Beauty — Institut de beauté à Gentilly',
+    title: 'Do Beauty - Institut de beauté à Gentilly',
     description:
       'Institut de beauté et onglerie à Gentilly. Manucure, semi-permanent, gel, nail art et beauté du regard. Ouvert du lundi au samedi, réservation en ligne.',
     url: site.url,
@@ -67,7 +67,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Do Beauty — Institut de beauté à Gentilly',
+    title: 'Do Beauty - Institut de beauté à Gentilly',
     description: 'Manucure, nail art, beauté du regard et soins à Gentilly.',
   },
   robots: {

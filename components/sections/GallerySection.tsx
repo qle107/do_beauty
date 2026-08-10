@@ -2,7 +2,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 import Reveal from '@/components/ui/Reveal'
 
-// Curated set — the composition below is intentional (a large lead image, two
+// Curated set - the composition below is intentional (a large lead image, two
 // stacked beside it, then a calmer three-up row), not a mechanical grid.
 const IMAGES: { src: string; alt: string }[] = [
   { src: '/images/dob/g1.jpg', alt: 'Nail art floral réalisé chez Do Beauty' },
@@ -51,7 +51,7 @@ export default function GallerySection() {
             ))}
           </div>
 
-          {/* Desktop: editorial asymmetric — large lead + two stacked */}
+          {/* Desktop: editorial asymmetric - large lead + two stacked */}
           <div className="mt-12 hidden grid-cols-3 grid-rows-2 gap-3 md:grid md:h-[540px] lg:h-[620px]">
             <figure data-cursor="image" className={`${FIG} col-span-2 row-span-2`}>
               <Image src={lead.src} alt={lead.alt} fill sizes="55vw" className={IMG} />

@@ -7,7 +7,7 @@ export const publicNavLinks = [
   { href: '/contact', label: 'Nous contacter' },
 ] as const
 
-/** DO BEAUTY homepage — in-page anchor navigation (header + mobile menu). */
+/** DO BEAUTY homepage - in-page anchor navigation (header + mobile menu). */
 export const homeNavLinks = [
   { href: '/#prestations', label: 'Prestations' },
   { href: '/#realisations', label: 'Réalisations' },
@@ -27,7 +27,7 @@ export const servicePageLinks = [
   { href: '/beaute-des-pieds-gentilly', label: 'Beauté des pieds' },
 ] as const
 
-// SEO city landing pages — Gentilly's neighbouring towns (Val-de-Marne / Paris).
+// SEO city landing pages - Gentilly's neighbouring towns (Val-de-Marne / Paris).
 export const cityPageLinks = [
   { href: '/onglerie-le-kremlin-bicetre', label: 'Le Kremlin-Bicêtre' },
   { href: '/onglerie-arcueil', label: 'Arcueil' },

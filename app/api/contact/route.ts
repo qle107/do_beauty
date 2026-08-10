@@ -12,7 +12,7 @@ export async function POST(request: NextRequest): Promise<NextResponse> {
   try {
     const clientIp = getClientIp(request)
 
-    // Reject oversized bodies before request.json() allocates them — contact
+    // Reject oversized bodies before request.json() allocates them - contact
     // payloads are tiny (name / email / subject / message).
     if (Number(request.headers.get('content-length') ?? 0) > 32 * 1024) {
       return NextResponse.json({ error: 'Payload too large.' }, { status: 413 })
@@ -51,7 +51,7 @@ export async function POST(request: NextRequest): Promise<NextResponse> {
     await sendContactNotification({ senderName: name, senderEmail: email, subject, message })
 
     // Store for the admin inbox. A storage hiccup must not fail the customer's
-    // submission — the email already went out — so log and continue.
+    // submission - the email already went out - so log and continue.
     try {
       await addContact({ name, email, subject, message, clientIp })
     } catch (err) {

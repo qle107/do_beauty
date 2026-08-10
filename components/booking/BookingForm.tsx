@@ -43,7 +43,7 @@ export default function BookingForm({
   const goNext = () => setStep((s) => Math.min(s + 1, 3))
   const goBack = () => setStep((s) => Math.max(s - 1, 1))
 
-  // Funnel entry — fires once when the booking widget mounts (consent-gated).
+  // Funnel entry - fires once when the booking widget mounts (consent-gated).
   useEffect(() => {
     track('booking_view')
   }, [])

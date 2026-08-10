@@ -1,7 +1,7 @@
 import type { City } from "@/lib/seo/types"
 
 /**
- * Cachan (94230) — city landing page data for Do Beauty, Gentilly.
+ * Cachan (94230) - city landing page data for Do Beauty, Gentilly.
  * Locally grounded: RER B via Arcueil-Cachan, avenue Aristide Briand (RD920),
  * vallée de la Bièvre, les arches de l'aqueduc, Parc Raspail. Drive time and
  * distance are approximate, off-peak estimates.

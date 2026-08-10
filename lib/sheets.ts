@@ -1,7 +1,7 @@
 import { google } from 'googleapis'
 
 /**
- * Google Sheets as a durable, owner-visible data store — a third backend behind
+ * Google Sheets as a durable, owner-visible data store - a third backend behind
  * the app's stores (alongside MySQL and the JSON fallback). Chosen because it's
  * free, survives Hostinger redeploys, and the owner can read/edit rows directly.
  *
@@ -10,7 +10,7 @@ import { google } from 'googleapis'
  * the service-account email. Otherwise stores keep their existing MySQL/JSON
  * behaviour, so this is fully non-breaking until configured.
  *
- * NOTE: Sheets holds DATA only — image bytes stay as files (gallery storage);
+ * NOTE: Sheets holds DATA only - image bytes stay as files (gallery storage);
  * the Galerie tab carries metadata + a link. Volume at a salon is tiny, so the
  * whole-tab read/write model below is more than fast enough (with the caches the
  * public-read stores add on top).
@@ -126,7 +126,7 @@ export class SheetTable<T extends object> {
     if ((c.kind ?? 'string') === 'json') return JSON.stringify(v)
     // Store numbers/booleans as NATIVE cell types under RAW so in-sheet SUM/filters
     // work; strings stay strings (RAW never re-parses them, so leading-zero phones
-    // and ids are preserved verbatim — USER_ENTERED would mangle them).
+    // and ids are preserved verbatim - USER_ENTERED would mangle them).
     if (c.kind === 'boolean') return v === true || /^(true|1|oui|vrai)$/i.test(String(v))
     if (c.kind === 'number') {
       const n = Number(v)
@@ -162,7 +162,7 @@ export class SheetTable<T extends object> {
   }
 
   /**
-   * True exactly once, right after readAll() first created the tab this process —
+   * True exactly once, right after readAll() first created the tab this process -
    * lets a store seed a brand-new tab from JSON without ever resurrecting rows the
    * owner intentionally deleted from an existing tab. Consuming clears the flag.
    */
@@ -213,7 +213,7 @@ export class SheetTable<T extends object> {
     })
     // Clear any leftover rows below the new data (e.g. after a delete). If this
     // fails, the tab may keep ghost rows, so invalidate the cache rather than
-    // caching the (now-inaccurate) shorter array — the next read re-fetches truth.
+    // caching the (now-inaccurate) shorter array - the next read re-fetches truth.
     let cleared = true
     try {
       await client().spreadsheets.values.clear({
@@ -226,7 +226,7 @@ export class SheetTable<T extends object> {
     if (this.cacheTtlMs > 0) this.cache = cleared ? { at: Date.now(), rows: items.slice() } : null
   }
 
-  /** Append a single row without rewriting the tab — for append-only logs. */
+  /** Append a single row without rewriting the tab - for append-only logs. */
   async append(item: T): Promise<void> {
     await ensureTab(this.tab, this.headers())
     await client().spreadsheets.values.append({

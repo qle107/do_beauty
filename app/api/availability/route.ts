@@ -46,7 +46,7 @@ export async function GET(request: NextRequest): Promise<NextResponse> {
 
     const { date, duration } = parsed.data
 
-    // Closed on Sunday — no availability that day. (T12:00:00Z keeps the weekday
+    // Closed on Sunday - no availability that day. (T12:00:00Z keeps the weekday
     // stable regardless of server timezone / DST.)
     if (new Date(`${date}T12:00:00Z`).getUTCDay() === site.hours.closedWeekday) {
       return NextResponse.json({ date, totalDuration: duration, available: [], booked: [], staffBySlot: {} })

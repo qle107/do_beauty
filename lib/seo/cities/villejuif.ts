@@ -1,7 +1,7 @@
 import type { City } from "@/lib/seo/types"
 
 /**
- * Villejuif (94800) — city landing page data.
+ * Villejuif (94800) - city landing page data.
  *
  * Drive time, distance and transit are typical, honest approximations;
  * landmarks (Gustave Roussy, Paul Brousse, parc des Hautes-Bruyères,
@@ -16,7 +16,7 @@ export const cityData: City = {
   driveMinutes: 8,
   distanceKm: 3.5,
   publicTransport:
-    "Depuis Villejuif, la ligne 7 du métro est votre point de départ, avec ses stations « Villejuif — Louis Aragon » (le terminus), « Paul Vaillant-Couturier » et « Léo Lagrange ». En remontant la ligne vers le nord, deux ou trois arrêts suffisent pour rejoindre Le Kremlin-Bicêtre, aux portes de Gentilly ; de là, on gagne l'institut par le tramway T3a (arrêt Porte de Gentilly) ou par la gare RER B « Gentilly », toute proche du 12 Avenue Jean Jaurès. Plusieurs lignes de bus relient aussi directement le centre de Villejuif au secteur de Gentilly, une bonne option aux heures creuses.",
+    "Depuis Villejuif, la ligne 7 du métro est votre point de départ, avec ses stations « Villejuif - Louis Aragon » (le terminus), « Paul Vaillant-Couturier » et « Léo Lagrange ». En remontant la ligne vers le nord, deux ou trois arrêts suffisent pour rejoindre Le Kremlin-Bicêtre, aux portes de Gentilly ; de là, on gagne l'institut par le tramway T3a (arrêt Porte de Gentilly) ou par la gare RER B « Gentilly », toute proche du 12 Avenue Jean Jaurès. Plusieurs lignes de bus relient aussi directement le centre de Villejuif au secteur de Gentilly, une bonne option aux heures creuses.",
   drivingHint:
     "En voiture, comptez environ 8 minutes depuis le centre de Villejuif, soit à peu près 3,5 km : remontez vers le nord par l'avenue de Paris puis l'avenue de Fontainebleau (RD7), traversez Le Kremlin-Bicêtre et rejoignez l'avenue Jean Jaurès à Gentilly. Un temps de trajet typique en journée, à majorer un peu aux heures de pointe.",
   lead:
@@ -26,7 +26,7 @@ export const cityData: City = {
     "Institut Gustave Roussy",
     "Hôpital Paul Brousse",
     "Parc des Hautes-Bruyères",
-    "Villejuif — Louis Aragon",
+    "Villejuif - Louis Aragon",
   ],
   localBlocks: [
     {

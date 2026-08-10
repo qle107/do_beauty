@@ -12,7 +12,7 @@ import type { GalleryImage, GalleryStorageKind } from '@/lib/types'
 //   · drive  → Google Drive (not wired yet; the stub documents exactly how)
 //
 // Chosen by getGalleryStorage(): Local today. When Drive credentials are added,
-// flip the factory to DriveGalleryStorage — nothing else in the app changes.
+// flip the factory to DriveGalleryStorage - nothing else in the app changes.
 
 const SUBDIR = 'gallery'
 
@@ -85,7 +85,7 @@ class LocalGalleryStorage implements GalleryStorage {
   }
 
   async read(img: GalleryImage): Promise<ReadResult | null> {
-    // Static images are served by Next straight from /public — the proxy route
+    // Static images are served by Next straight from /public - the proxy route
     // shouldn't be asked for them, but support it defensively.
     if (img.storage === 'static' && img.src) {
       try {
@@ -129,7 +129,7 @@ class LocalGalleryStorage implements GalleryStorage {
   }
 }
 
-// ─── Google Drive (stub — wire later) ────────────────────────────────────────
+// ─── Google Drive (stub - wire later) ────────────────────────────────────────
 // To enable: create lib/google-drive.ts reusing the service-account/OAuth2 auth
 // pattern from lib/google-calendar.ts (add scope https://www.googleapis.com/auth/
 // drive.file, reuse the Hostinger backslash-cleaning), then implement these four

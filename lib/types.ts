@@ -23,7 +23,7 @@ export interface Service {
   duration: number        // minutes
   category: ServiceCategory
   isActive: boolean
-  /** Optional Planity service id — for future official write-back mapping. */
+  /** Optional Planity service id - for future official write-back mapping. */
   planityId?: string
   featured?: boolean      // affiché en vitrine sur la homepage
   createdAt: string       // ISO string
@@ -31,7 +31,7 @@ export interface Service {
 
   // ── Carte / catalogue display (mirrors the live Planity menu) ───────────
   // `category` above stays the coarse pool key (availability logic). `section`
-  // is the finer display group shown on the menu — many sections map to one
+  // is the finer display group shown on the menu - many sections map to one
   // pool category (e.g. Offres spéciales + Spa VIPP both → FORFAIT). See lib/catalogue.ts.
   /** Display section id, one of the 15 SECTIONS in lib/catalogue.ts. */
   section?: string
@@ -51,7 +51,7 @@ export interface Service {
 
 export type GalleryCategory = 'nails' | 'eyes' | 'pedicure' | 'studio' | 'other'
 
-// AI-catalog assistant state: a suggestion is never applied automatically — the
+// AI-catalog assistant state: a suggestion is never applied automatically - the
 // owner reviews and approves it. 'approved' (or undefined) = owner-controlled.
 export type CatalogStatus = 'suggested' | 'approved'
 
@@ -80,7 +80,7 @@ export interface GalleryImage {
   catalogStatus?: CatalogStatus
   suggestedCategory?: GalleryCategory
   suggestedTags?: string[]
-  uploadedAt: string        // ISO — the sort key (newest first)
+  uploadedAt: string        // ISO - the sort key (newest first)
   createdAt: string         // ISO
   updatedAt: string         // ISO
 }

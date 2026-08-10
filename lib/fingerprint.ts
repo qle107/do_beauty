@@ -4,8 +4,8 @@
 // switching browser profile / private mode, so a flagged device that wipes its
 // device id is still recognised by its fingerprint.
 //
-// It is NOT unique — different visitors on the same phone model + browser can
-// collide — so it is only ever a SECONDARY signal, checked behind the phone and
+// It is NOT unique - different visitors on the same phone model + browser can
+// collide - so it is only ever a SECONDARY signal, checked behind the phone and
 // device-id blocks, never on its own. A rare false match is covered by the same
 // "contactez-nous directement" escape hatch as the other blocks.
 

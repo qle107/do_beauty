@@ -1,14 +1,14 @@
 import type { LandingPage } from "@/lib/seo/types"
 
 /**
- * Service landing page — Beauté des pieds à Gentilly.
+ * Service landing page - Beauté des pieds à Gentilly.
  * Hand-written, locally grounded copy. Prices are indicative only.
  */
 
 export const page: LandingPage = {
   slug: "beaute-des-pieds-gentilly",
   meta: {
-    title: "Beauté des pieds à Gentilly (94) · Do Beauty — soin & vernis du lundi au samedi",
+    title: "Beauté des pieds à Gentilly (94) · Do Beauty - soin & vernis du lundi au samedi",
     description:
       "Beauté des pieds à Gentilly (94250) chez Do Beauty : soin complet des pieds, vernis classique ou semi-permanent sur les orteils. Institut ouvert du lundi au samedi, 4,6★ sur 99 avis Google. Réservation en ligne.",
   },
@@ -31,7 +31,7 @@ export const page: LandingPage = {
         {
           kind: "paragraph",
           text:
-            "Une beauté des pieds, ce n'est pas qu'une couche de vernis. À Gentilly, le soin commence par un bain qui détend et assouplit la peau, puis l'experte remet les ongles en forme, nettoie le contour et repousse les cuticules avec douceur. Vient ensuite le travail sur les zones rugueuses — talons, coussinets — pour lisser les callosités, avant un gommage qui affine le grain de peau et une crème qui nourrit et hydrate. On termine, si vous le souhaitez, par la pose d'un vernis. Le résultat, ce sont des pieds nets, souples et agréables à porter dans une sandale comme dans une chaussure fermée.",
+            "Une beauté des pieds, ce n'est pas qu'une couche de vernis. À Gentilly, le soin commence par un bain qui détend et assouplit la peau, puis l'experte remet les ongles en forme, nettoie le contour et repousse les cuticules avec douceur. Vient ensuite le travail sur les zones rugueuses - talons, coussinets - pour lisser les callosités, avant un gommage qui affine le grain de peau et une crème qui nourrit et hydrate. On termine, si vous le souhaitez, par la pose d'un vernis. Le résultat, ce sont des pieds nets, souples et agréables à porter dans une sandale comme dans une chaussure fermée.",
         },
         {
           kind: "list",
@@ -52,7 +52,7 @@ export const page: LandingPage = {
         {
           kind: "paragraph",
           text:
-            "Une fois les pieds soignés, la couleur se choisit selon l'occasion et la tenue recherchée. Le vernis classique convient très bien à une envie ponctuelle : il sèche vite et se retire facilement. Le semi-permanent, lui, est passé sous lampe LED et tient plusieurs semaines sans s'écailler — un vrai atout pour la saison des sandales ou avant un départ en vacances, quand on veut des orteils impeccables sans avoir à y penser. Sur les pieds, sa tenue est souvent plus longue que sur les mains, car les ongles des orteils poussent lentement et sont moins sollicités.",
+            "Une fois les pieds soignés, la couleur se choisit selon l'occasion et la tenue recherchée. Le vernis classique convient très bien à une envie ponctuelle : il sèche vite et se retire facilement. Le semi-permanent, lui, est passé sous lampe LED et tient plusieurs semaines sans s'écailler - un vrai atout pour la saison des sandales ou avant un départ en vacances, quand on veut des orteils impeccables sans avoir à y penser. Sur les pieds, sa tenue est souvent plus longue que sur les mains, car les ongles des orteils poussent lentement et sont moins sollicités.",
         },
         {
           kind: "list",

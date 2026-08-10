@@ -18,7 +18,7 @@ export const galleryImages: {
   { src: '/images/dob/g2.jpg', orientation: 'portrait',  alt: 'Manucure nude nacrée aux finitions soignées' },
   { src: '/images/dob/g4.jpg', orientation: 'square',    alt: 'Création nail art personnalisée en gros plan' },
   { src: '/images/dob/g6.jpg', orientation: 'portrait',  alt: 'Manucure semi-permanente élégante' },
-  { src: '/images/dob/g3.jpg', orientation: 'portrait',  alt: 'Beauté du regard — cils rehaussés' },
+  { src: '/images/dob/g3.jpg', orientation: 'portrait',  alt: 'Beauté du regard - cils rehaussés' },
   { src: '/images/dob/g7.jpg', orientation: 'portrait',  alt: 'Nail art bridal blanc et détails dorés' },
   { src: '/images/dob/g8.jpg', orientation: 'portrait',  alt: 'Manucure chrome perlée, teinte neutre' },
   { src: '/images/dob/g9.jpg', orientation: 'portrait',  alt: 'Pose de vernis soignée, mains manucurées' },

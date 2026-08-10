@@ -1,7 +1,7 @@
 import type { ServiceCategory } from '@/lib/types'
 
 /**
- * Do Beauty team — the selectable "artists", each scoped to the service categories
+ * Do Beauty team - the selectable "artists", each scoped to the service categories
  * they perform. This is what makes cabines catalog-specific:
  *
  *  · The 6 practitioners do the general nail/beauty services (mains, pieds, capsule,
@@ -16,7 +16,7 @@ import type { ServiceCategory } from '@/lib/types'
  *
  * ⚠️ Confirm/adjust the category→artist mapping below with the owner (esp. whether
  *    practitioners also do cils/esthetics, and where EPILATION belongs). Cabine
- *    display names are placeholders — rename to real artist names if applicable.
+ *    display names are placeholders - rename to real artist names if applicable.
  */
 
 /** Service categories the general practitioners handle. */
@@ -27,7 +27,7 @@ export interface Artist {
   id: string
   /** client-facing display name (shown in the artist picker) */
   name: string
-  /** Planity agenda id — as it appears in Planity's public availability data */
+  /** Planity agenda id - as it appears in Planity's public availability data */
   planityCalendarId: string
   /** 'staff' = a practitioner; 'cabine' = a station (cils / esthetics) */
   kind: 'staff' | 'cabine'
@@ -48,7 +48,7 @@ export const ARTISTS: Artist[] = [
   { id: 'esthetique', name: 'Esthétique', planityCalendarId: '-OTWuzeS4q2W7X-7mH7n', kind: 'cabine', categories: ['VISAGE', 'CORPS', 'EPILATION'], order: 9 },
 ]
 
-/** Practitioners only — the default pool when a cart has no categories. */
+/** Practitioners only - the default pool when a cart has no categories. */
 export const STAFF: Artist[] = ARTISTS.filter((a) => a.kind === 'staff')
 
 const BY_ID = new Map(ARTISTS.map((a) => [a.id, a]))
@@ -74,5 +74,5 @@ export function poolKey(cats: ServiceCategory[]): string {
   return artistsForCategories(cats).map((a) => a.id).sort().join(',')
 }
 
-/** The practitioners' pool key — legacy/untagged bookings default to this. */
+/** The practitioners' pool key - legacy/untagged bookings default to this. */
 export const GENERAL_POOL_KEY = poolKey([])

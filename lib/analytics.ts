@@ -2,7 +2,7 @@
 // Pushes events onto the GTM dataLayer, but ONLY when:
 //   1. we're in the browser,
 //   2. the visitor has explicitly accepted trackers (CNIL prior consent), and
-//   3. the dataLayer already exists — i.e. GTM has been injected by
+//   3. the dataLayer already exists - i.e. GTM has been injected by
 //      CookieConsent, which only happens post-consent.
 // It never pushes PII (name / phone / notes). On the server, before consent, or
 // before GTM has loaded, track() is a silent no-op.

@@ -48,7 +48,7 @@ export default function PourquoiNousChoisirSection() {
 
   return (
     <section ref={sectionRef} className="grid grid-cols-1 md:grid-cols-2 md:min-h-[600px]">
-      {/* Image pleine hauteur — Vy au travail (full-bleed, pour varier du hero) */}
+      {/* Image pleine hauteur - Vy au travail (full-bleed, pour varier du hero) */}
       <div className="photo-tint relative order-1 md:order-2 min-h-[360px] md:min-h-0 overflow-hidden">
         <Image
           src="/images/dob/g9.jpg"

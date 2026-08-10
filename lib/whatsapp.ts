@@ -58,7 +58,7 @@ export async function sendWhatsAppAlert(data: WhatsAppAlertData): Promise<void> 
   // Abort a hung CallMeBot request so this fire-and-forget call can't pile up.
   const response = await fetch(url, { signal: AbortSignal.timeout(8_000) })
   if (!response.ok) {
-    // Log status only — never the raw third-party response body (may echo account
+    // Log status only - never the raw third-party response body (may echo account
     // or diagnostic details into our logs).
     console.error(`[whatsapp] CallMeBot error ${response.status}`)
   }

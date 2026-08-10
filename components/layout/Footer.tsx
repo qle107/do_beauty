@@ -56,7 +56,7 @@ export default function Footer() {
           </a>
         </address>
 
-        {/* SEO internal links — quiet, for discoverability */}
+        {/* SEO internal links - quiet, for discoverability */}
         <div className="mt-14 grid grid-cols-1 gap-8 border-t border-white/10 pt-10 sm:grid-cols-2">
           <div>
             <h3 className="text-[10px] uppercase tracking-[0.24em] text-[color:var(--db-champagne)]/80">
@@ -96,7 +96,7 @@ export default function Footer() {
 
         {/* Legal row */}
         <div className="mt-16 flex flex-col items-center gap-4 border-t border-white/10 pt-8 text-[11px] tracking-[0.14em] text-[#DED6CA]/40 md:flex-row md:justify-between">
-          <p>© {new Date().getFullYear()} DO BEAUTY — Tous droits réservés.</p>
+          <p>© {new Date().getFullYear()} DO BEAUTY - Tous droits réservés.</p>
           <div className="flex flex-wrap items-center justify-center gap-6">
             <Link href="/terms" className="transition-colors hover:text-[color:var(--db-champagne)]">
               Mentions légales

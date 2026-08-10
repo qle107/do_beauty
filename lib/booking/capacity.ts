@@ -6,7 +6,7 @@ import { GENERAL_POOL_KEY } from '@/lib/staff'
  * availability (see lib/planity/public-availability). Unit: Paris minutes-of-day.
  *
  * The caller passes the `pool` of artists that can perform the cart (see
- * `artistsForCategories` in lib/staff) — practitioners for nail services, the
+ * `artistsForCategories` in lib/staff) - practitioners for nail services, the
  * relevant cabine for cils/esthetics. An artist is free for a service window [s,e)
  * only if Planity lists it free at every 15-min instant in that window
  * (conservative). `dayFree === null` → FAIL OPEN (treat the pool as fully free) so

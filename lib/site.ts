@@ -1,9 +1,9 @@
-/** Centralized business info — single source of truth for public pages.
+/** Centralized business info - single source of truth for public pages.
  *  Brand: DO BEAUTY · Institut de beauté à Gentilly (94).
  *
  *  ⚠️ PLACEHOLDERS to confirm with the owner before go-live:
  *   - url (final domain)   - email        - social.planity (exact Planity URL)
- *   - geo (approx.)        - legal.*       (SIREN/SIRET/director — required for
+ *   - geo (approx.)        - legal.*       (SIREN/SIRET/director - required for
  *                                           mentions légales)
  *  Phone is the number Google lists (+84 … looks like a data error on the GBP;
  *  confirm the correct French number).
@@ -14,7 +14,7 @@ export const site = {
   legalName: 'DODO & BEAUTE',
   tagline: 'Institut de beauté · Gentilly',
   description:
-    'Institut de beauté à Gentilly — manucure, nail art, beauté du regard et soins, dans un écrin discret.',
+    'Institut de beauté à Gentilly - manucure, nail art, beauté du regard et soins, dans un écrin discret.',
   url: process.env.NEXT_PUBLIC_SITE_URL ?? 'https://dobeauty.fr',
   address: {
     street: '12 Avenue Jean Jaurès',
@@ -26,7 +26,7 @@ export const site = {
     transit: 'Val-de-Marne · Grand Paris',
   },
   geo: {
-    // ⚠️ approximate (Gentilly, near 12 Av. Jean Jaurès) — geocode precisely later
+    // ⚠️ approximate (Gentilly, near 12 Av. Jean Jaurès) - geocode precisely later
     latitude: 48.8149,
     longitude: 2.343,
   },
@@ -43,7 +43,7 @@ export const site = {
     cilsNote: 'Extensions de cils sur rendez-vous uniquement',
     openMinutes: 10 * 60, // 10:00 → 600
     closeMinutes: 19 * 60 + 30, // 19:30 → 1170
-    closedWeekday: 0, // Sunday (JS getUTCDay: 0) — no availability / bookings
+    closedWeekday: 0, // Sunday (JS getUTCDay: 0) - no availability / bookings
   },
   phone: {
     display: '07 56 94 88 88', // from the Do Beauty & Nails Planity listing
@@ -57,7 +57,7 @@ export const site = {
     legalForm: 'Société par actions simplifiée (SAS)',
     siren: '948 622 360',
     siret: '948 622 360 00048',
-    ape: '9602B — Soins de beauté',
+    ape: '9602B - Soins de beauté',
     registration: 'RCS Créteil 948 622 360',
     vat: 'FR00948622360',
     publicationDirector: 'Huu NGUYEN',

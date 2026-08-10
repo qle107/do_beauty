@@ -249,7 +249,7 @@ export async function recordDeviceNoShow(
 
   // Only a record anchored by a real deviceId auto-blocks. A fingerprint-only
   // record (fp: key, no deviceId) accrues the count so the admin sees the
-  // history, but never auto-blocks — matching isDeviceBlocked, which reads by
+  // history, but never auto-blocks - matching isDeviceBlocked, which reads by
   // deviceId only.
   const anchoredByDeviceId = !entry.deviceId.startsWith('fp:')
   if (anchoredByDeviceId && entry.noShowCount >= AUTO_BLOCK_THRESHOLD && !entry.blocked) {

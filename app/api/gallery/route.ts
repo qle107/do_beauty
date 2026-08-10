@@ -21,7 +21,7 @@ function adminView(img: GalleryImage) {
 
 // ─── GET /api/gallery ────────────────────────────────────────────────────
 // Public: published images only, optional ?category= and ?tag=. auth() is NOT
-// called on the public path (matches /api/services — avoids hanging without a
+// called on the public path (matches /api/services - avoids hanging without a
 // configured secret). ?admin=true returns the full list incl. unpublished.
 
 export async function GET(request: NextRequest): Promise<NextResponse> {

@@ -83,7 +83,7 @@ export default function CalendarBoard({ initialDate }: { initialDate: string }) 
   async function copyForPlanity(b: WebBooking, employeeLabel: string) {
     const block = [
       `Tên: ${b.clientName}`,
-      `SĐT: ${b.phone || '—'}`,
+      `SĐT: ${b.phone || '-'}`,
       `Dịch vụ: ${b.services}`,
       `Ngày: ${data!.date}`,
       `Giờ: ${fmt(b.startMin)}–${fmt(b.endMin)}`,
@@ -91,7 +91,7 @@ export default function CalendarBoard({ initialDate }: { initialDate: string }) 
     ].join('\n')
     try {
       await navigator.clipboard.writeText(block)
-      toast.success('Đã sao chép ✓ — dán vào Planity')
+      toast.success('Đã sao chép ✓ - dán vào Planity')
     } catch {
       toast.error('Không sao chép được. Hãy thử lại.')
     }
@@ -119,7 +119,7 @@ export default function CalendarBoard({ initialDate }: { initialDate: string }) 
 
       {data && !data.planityKnown && (
         <p className="mb-3 text-xs text-dark/50 font-sans">
-          Planity không khả dụng cho ngày này — chỉ hiển thị các lịch hẹn từ website.
+          Planity không khả dụng cho ngày này - chỉ hiển thị các lịch hẹn từ website.
         </p>
       )}
 
@@ -162,7 +162,7 @@ export default function CalendarBoard({ initialDate }: { initialDate: string }) 
                     <div key={b.id}
                       className="absolute left-0.5 right-0.5 bg-coral text-cream rounded-sm p-1 overflow-hidden"
                       style={{ top: top(b.startMin), height: height(b.startMin, b.endMin) }}
-                      title={`${b.clientName} — ${b.phone} — ${b.services}`}>
+                      title={`${b.clientName} - ${b.phone} - ${b.services}`}>
                       <button
                         onClick={(e) => { e.stopPropagation(); void copyForPlanity(b, col.label) }}
                         title="Sao chép cho Planity"

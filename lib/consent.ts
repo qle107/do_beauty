@@ -16,7 +16,7 @@ export const CONSENT_EVENT = 'dobeauty:consent'
 export type ConsentValue = 'granted' | 'denied'
 
 // CNIL recommends re-asking for consent periodically. We expire the stored
-// choice after ~6 months so the banner reappears — matching the "6 mois"
+// choice after ~6 months so the banner reappears - matching the "6 mois"
 // duration stated in the privacy policy.
 const MAX_AGE_MS = 1000 * 60 * 60 * 24 * 182
 

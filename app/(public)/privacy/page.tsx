@@ -189,7 +189,7 @@ export default function PrivacyPage() {
               </tr>
               <tr>
                 <td className="py-2 pr-4">Google Analytics (_ga)</td>
-                <td className="py-2 pr-4">Mesure d&apos;audience — déposé uniquement avec votre consentement</td>
+                <td className="py-2 pr-4">Mesure d&apos;audience - déposé uniquement avec votre consentement</td>
                 <td className="py-2">Jusqu&apos;à 13 mois</td>
               </tr>
             </tbody>

@@ -42,7 +42,7 @@ export default function DateTimePicker({
   const totalPrice    = services.reduce((sum, s) => sum + s.price, 0)
 
   // Which artists can perform this cart (practitioners for nail services, the
-  // matching cabine for cils/esthetics) — drives the picker + the availability query.
+  // matching cabine for cils/esthetics) - drives the picker + the availability query.
   const cartCats = [...new Set(services.map((s) => s.category))] as ServiceCategory[]
   const poolArtists = artistsForCategories(cartCats)
 
@@ -122,11 +122,11 @@ export default function DateTimePicker({
         </div>
       </div>
 
-      {/* Praticienne (optionnel) — filtre les créneaux ci-dessous */}
+      {/* Praticienne (optionnel) - filtre les créneaux ci-dessous */}
       <div className="mb-8">
         <p className="text-xs tracking-[0.3em] uppercase text-dark/40 font-sans mb-1">Praticienne</p>
         <p className="font-sans text-xs text-dark/40 mb-3">
-          Optionnel — « Sans préférence » vous attribue une praticienne disponible.
+          Optionnel - « Sans préférence » vous attribue une praticienne disponible.
         </p>
         <div className="flex flex-wrap gap-2">
           {[{ id: '', name: 'Sans préférence' }, ...poolArtists.map((a) => ({ id: a.id, name: a.name }))].map((a) => {

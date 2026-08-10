@@ -5,7 +5,7 @@ import { useEffect, useState } from 'react'
 import { homeNavLinks } from '@/lib/navigation'
 
 /**
- * DO BEAUTY header — one <header>, rendered once by the public layout.
+ * DO BEAUTY header - one <header>, rendered once by the public layout.
  * Ivory, hairline border, no shadow. Compacts on scroll. Mobile → full-screen
  * editorial menu.
  */

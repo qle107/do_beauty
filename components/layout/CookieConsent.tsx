@@ -26,7 +26,7 @@ export default function CookieConsent() {
       setGranted(c === 'granted')
       setDecided(c !== null)
     }
-    // Initial read of the stored choice — a deliberate one-time, client-only sync.
+    // Initial read of the stored choice - a deliberate one-time, client-only sync.
     // localStorage is unavailable during SSR, so the banner state can only be known
     // after mount; this is not the cascading-render pattern the rule targets.
     const c = getConsent()

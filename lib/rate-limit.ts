@@ -63,7 +63,7 @@ export function getClientIp(request: Request): string {
   // Production sits behind Cloudflare, which ALWAYS sets cf-connecting-ip and
   // overwrites any client value. If it's missing here, the request reached the
   // origin directly (bypassing Cloudflare) and x-forwarded-for / x-real-ip are
-  // attacker-controllable — trusting them would let an attacker mint unlimited
+  // attacker-controllable - trusting them would let an attacker mint unlimited
   // fresh rate-limit buckets and forge IPs into the RGPD consent-proof log. So
   // collapse all direct-origin requests into one shared, throttled bucket.
   if (process.env.NODE_ENV === 'production') return 'direct-origin'

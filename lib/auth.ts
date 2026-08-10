@@ -39,7 +39,7 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
       return token
     },
 
-    // Forward email + isAdmin to the session object — and re-verify the token's
+    // Forward email + isAdmin to the session object - and re-verify the token's
     // email is STILL the admin. If ADMIN_EMAIL was rotated (owner changed, or the
     // admin's Google account was compromised and locked out), any pre-rotation JWT
     // is invalidated here: the identity is stripped so every auth()-gated API route
@@ -76,7 +76,7 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
 
 /**
  * Server-side admin gate for route handlers. Returns the session only for the
- * authenticated admin (email === ADMIN_EMAIL), else null — mirroring the page
+ * authenticated admin (email === ADMIN_EMAIL), else null - mirroring the page
  * guard in app/admin/(protected)/layout.tsx. Existing routes also benefit from
  * the session() callback above, which already strips a non-admin/stale identity.
  */

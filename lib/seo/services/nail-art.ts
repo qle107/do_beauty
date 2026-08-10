@@ -1,14 +1,14 @@
 import type { LandingPage } from "@/lib/seo/types"
 
 /**
- * Service landing page — Nail art à Gentilly.
+ * Service landing page - Nail art à Gentilly.
  * Hand-written, locally grounded copy. Prices are indicative only.
  */
 
 export const page: LandingPage = {
   slug: "nail-art-gentilly",
   meta: {
-    title: "Nail art à Gentilly (94) · Do Beauty — décors ongles du lundi au samedi",
+    title: "Nail art à Gentilly (94) · Do Beauty - décors ongles du lundi au samedi",
     description:
       "Nail art à Gentilly chez Do Beauty (94250) : effet chrome, cat eye velours, reliefs 3D, strass, french colorée et dégradé aura, sur semi-permanent ou sur gel. Ouvert du lundi au samedi, 4,6★ sur 99 avis Google. Réservation en ligne.",
   },
@@ -31,7 +31,7 @@ export const page: LandingPage = {
         {
           kind: "paragraph",
           text:
-            "Le nail art, c'est tout ce qui vient habiller l'ongle une fois la couleur posée : un liseré, un motif peint, une matière qui accroche la lumière, une pierre. On peut le vouloir minimaliste — un point doré, un trait fin sur l'annulaire — ou aller jusqu'au décor complet sur les dix ongles pour un mariage ou une soirée. Chez Do Beauty, tout se fait à la main, ongle par ongle, en partant de ce que vous aimez plutôt que d'un catalogue figé. On regarde ensemble votre longueur, la teinte de base et l'occasion, puis on ajuste le décor pour qu'il tienne aussi bien qu'il vous ressemble.",
+            "Le nail art, c'est tout ce qui vient habiller l'ongle une fois la couleur posée : un liseré, un motif peint, une matière qui accroche la lumière, une pierre. On peut le vouloir minimaliste - un point doré, un trait fin sur l'annulaire - ou aller jusqu'au décor complet sur les dix ongles pour un mariage ou une soirée. Chez Do Beauty, tout se fait à la main, ongle par ongle, en partant de ce que vous aimez plutôt que d'un catalogue figé. On regarde ensemble votre longueur, la teinte de base et l'occasion, puis on ajuste le décor pour qu'il tienne aussi bien qu'il vous ressemble.",
         },
       ],
     },
@@ -62,7 +62,7 @@ export const page: LandingPage = {
         {
           kind: "paragraph",
           text:
-            "Le nail art se pose toujours sur une base, et le choix de cette base change à la fois la tenue et les possibilités. Le vernis semi-permanent convient parfaitement à un décor sur vos ongles naturels : couleur longue tenue d'environ trois semaines, fini brillant, idéal pour les motifs peints, l'effet chrome ou le cat eye. Le gel, lui, apporte de la longueur et de la solidité — c'est la base à privilégier quand vous voulez des reliefs 3D, un pavé de strass ou un décor plus chargé qui a besoin d'une surface plus résistante pour durer.",
+            "Le nail art se pose toujours sur une base, et le choix de cette base change à la fois la tenue et les possibilités. Le vernis semi-permanent convient parfaitement à un décor sur vos ongles naturels : couleur longue tenue d'environ trois semaines, fini brillant, idéal pour les motifs peints, l'effet chrome ou le cat eye. Le gel, lui, apporte de la longueur et de la solidité - c'est la base à privilégier quand vous voulez des reliefs 3D, un pavé de strass ou un décor plus chargé qui a besoin d'une surface plus résistante pour durer.",
         },
         {
           kind: "list",
@@ -81,7 +81,7 @@ export const page: LandingPage = {
         {
           kind: "paragraph",
           text:
-            "On commence par échanger sur votre idée : une photo, une couleur, une envie précise ou juste une ambiance. L'experte prépare l'ongle — mise en forme, soin des cuticules, base semi-permanent ou pose de gel — puis réalise le décor à la main, souvent au pinceau fin, avant de sceller le tout sous une finition qui protège le motif. Pour un détail sur un ou deux ongles, comptez quelques minutes de plus sur votre rendez-vous habituel ; pour un décor complet et travaillé, prévoyez un créneau un peu plus long. Rien n'est expédié : un nail art propre demande de la patience, et c'est ce qui le fait durer aussi longtemps que la couleur.",
+            "On commence par échanger sur votre idée : une photo, une couleur, une envie précise ou juste une ambiance. L'experte prépare l'ongle - mise en forme, soin des cuticules, base semi-permanent ou pose de gel - puis réalise le décor à la main, souvent au pinceau fin, avant de sceller le tout sous une finition qui protège le motif. Pour un détail sur un ou deux ongles, comptez quelques minutes de plus sur votre rendez-vous habituel ; pour un décor complet et travaillé, prévoyez un créneau un peu plus long. Rien n'est expédié : un nail art propre demande de la patience, et c'est ce qui le fait durer aussi longtemps que la couleur.",
         },
       ],
     },
@@ -120,7 +120,7 @@ export const page: LandingPage = {
         {
           kind: "paragraph",
           text:
-            "Tarifs indicatifs, confirmés lors de la réservation. Le nail art s'ajoute au prix de la base (semi-permanent ou gel) et se facture le plus souvent à l'ongle ou selon le décor. Le tarif final dépend de la complexité du motif et du nombre d'ongles concernés — précisez votre projet au moment de réserver pour une estimation juste.",
+            "Tarifs indicatifs, confirmés lors de la réservation. Le nail art s'ajoute au prix de la base (semi-permanent ou gel) et se facture le plus souvent à l'ongle ou selon le décor. Le tarif final dépend de la complexité du motif et du nombre d'ongles concernés - précisez votre projet au moment de réserver pour une estimation juste.",
         },
       ],
     },

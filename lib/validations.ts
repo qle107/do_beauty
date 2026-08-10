@@ -117,15 +117,15 @@ export const appointmentSchema = z.object({
   deviceId: z.string().max(64).optional(),
   // Browser fingerprint (hash) generated client-side. Fallback identifier that
   // survives clearing the deviceId; matched behind phone/deviceId. Shape-locked
-  // to getFingerprint()'s output — exactly 16 lowercase hex chars, or empty when
-  // the browser blocked the APIs — so a caller can't submit an arbitrary or
+  // to getFingerprint()'s output - exactly 16 lowercase hex chars, or empty when
+  // the browser blocked the APIs - so a caller can't submit an arbitrary or
   // oversized chosen value.
   fingerprint: z.string().regex(/^([0-9a-f]{16})?$/).optional(),
   turnstileToken: z.string().optional(),
   // If true, cancel the caller's existing active appointment (matched server-side
   // by phone) before creating the new one. The client never handles the event id.
   confirmReplace: z.boolean().optional(),
-  // Optional preferred practitioner (client's choice at the end — a hint). The
+  // Optional preferred practitioner (client's choice at the end - a hint). The
   // server resolves the id to a name/agenda; an unknown id is simply ignored.
   preferredEmployeeId: z.string().max(40).optional(),
 })

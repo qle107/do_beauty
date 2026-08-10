@@ -14,13 +14,13 @@ export default function TermsPage() {
       <section>
         <h2 className="font-serif text-xl text-dark mb-2">Éditeur du site</h2>
         <p>
-          {legal.editorName} — {legal.legalForm}, {legal.entrepreneur}
+          {legal.editorName} - {legal.legalForm}, {legal.entrepreneur}
           <br />
           {site.address.street}, {site.address.city}
           <br />
-          Téléphone : {site.phone.display} — Email : {site.email}
+          Téléphone : {site.phone.display} - Email : {site.email}
           <br />
-          SIREN : {legal.siren} — SIRET : {legal.siret}
+          SIREN : {legal.siren} - SIRET : {legal.siret}
           <br />
           {legal.registration}
           <br />
