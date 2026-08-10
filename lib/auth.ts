@@ -4,6 +4,9 @@ import Google from 'next-auth/providers/google'
 const ADMIN_EMAIL = process.env.ADMIN_EMAIL ?? ''
 
 export const { handlers, auth, signIn, signOut } = NextAuth({
+  // Self-hosted behind Cloudflare/Hostinger: trust the forwarded host so auth URLs
+  // (OAuth callback, redirects) use the real domain, not the internal localhost:3000.
+  trustHost: true,
   session: { strategy: 'jwt' },
   pages: {
     signIn: '/admin/login',

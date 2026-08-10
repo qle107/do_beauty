@@ -31,15 +31,19 @@ export const site = {
     longitude: 2.343,
   },
   hours: {
-    // Do Beauty is open 7 days a week, ~10:00–19:30. openMinutes/closeMinutes are
-    // the single source of truth for the booking engine (availability + closing
-    // gate). `display` is the public label (kept vague per the owner's choice).
-    label: 'Ouvert 7j/7',
+    // Do Beauty is open Monday–Saturday, ~10:00–19:30 (closed Sunday).
+    // openMinutes/closeMinutes are the single source of truth for the booking
+    // engine (availability + closing gate); closedWeekday shuts Sunday bookings.
+    label: 'Du lundi au samedi',
+    days: 'Lundi – Samedi',
     open: '10h00',
     close: '19h30',
-    display: 'Ouvert 7 jours sur 7',
+    display: 'Ouvert du lundi au samedi, 10h–19h30',
+    appointment: 'Avec ou sans rendez-vous',
+    cilsNote: 'Extensions de cils sur rendez-vous uniquement',
     openMinutes: 10 * 60, // 10:00 → 600
     closeMinutes: 19 * 60 + 30, // 19:30 → 1170
+    closedWeekday: 0, // Sunday (JS getUTCDay: 0) — no availability / bookings
   },
   phone: {
     display: '07 56 94 88 88', // from the Do Beauty & Nails Planity listing

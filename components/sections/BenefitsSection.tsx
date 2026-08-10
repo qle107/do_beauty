@@ -1,7 +1,7 @@
 const AVANTAGES = [
   {
     title: 'Réservation en ligne',
-    body: 'Un créneau en moins d\'une minute, 7 jours sur 7, directement depuis votre mobile.',
+    body: 'Un créneau en moins d\'une minute, du lundi au samedi, directement depuis votre mobile.',
   },
   {
     title: 'Tenue longue durée',

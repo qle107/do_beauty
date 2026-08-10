@@ -4,7 +4,7 @@ import { getCityBySlug } from '@/lib/seo/cities'
 
 const city = getCityBySlug('le-kremlin-bicetre')!
 const title = `Onglerie & manucure à ${city.name} · Do Beauty Gentilly`
-const description = `Onglerie à ${city.driveMinutes} min de ${city.name}, à Gentilly : manucure, semi-permanent, gel, nail art & beauté du regard. Ouvert 7j/7, 4,6★ sur Google.`
+const description = `Onglerie à ${city.driveMinutes} min de ${city.name}, à Gentilly : manucure, semi-permanent, gel, nail art & beauté du regard. Ouvert du lundi au samedi, 4,6★ sur Google.`
 
 export const metadata: Metadata = {
   title,

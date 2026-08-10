@@ -25,7 +25,7 @@ export const homepageFaqs: readonly FaqEntry[] = [
   {
     question: 'Comment prendre rendez-vous ?',
     answer:
-      "Réservez en ligne directement sur notre site, 24h/24, depuis votre mobile ou votre ordinateur — c'est le moyen le plus rapide. Vous pouvez aussi nous contacter pendant nos heures d'ouverture (environ 10h–19h30, 7j/7).",
+      "Réservez en ligne directement sur notre site, 24h/24, depuis votre mobile ou votre ordinateur — c'est le moyen le plus rapide. Vous pouvez aussi nous contacter pendant nos heures d'ouverture (environ 10h–19h30, du lundi au samedi).",
   },
   {
     question: 'Quels moyens de paiement acceptez-vous ?',
@@ -45,7 +45,7 @@ export const homepageFaqs: readonly FaqEntry[] = [
   {
     question: 'Êtes-vous ouverts le dimanche ?',
     answer:
-      "Oui, Do Beauty est ouvert 7j/7, dimanche compris, d'environ 10h à 19h30. Nous proposons des créneaux le week-end et en soirée, pratiques pour un rendez-vous après le travail.",
+      "Non, Do Beauty est fermé le dimanche. Nous sommes ouverts du lundi au samedi, d'environ 10h à 19h30, avec des créneaux en soirée et le samedi, pratiques pour un rendez-vous après le travail.",
   },
   {
     question: 'Combien coûte une manucure complète ?',

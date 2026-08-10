@@ -9,7 +9,7 @@ const STEPS = [
   {
     n: '02',
     title: 'Réserver',
-    body: 'Choisissez votre date et l\'horaire qui vous convient, 7j/7, en moins d\'une minute.',
+    body: 'Choisissez votre date et l\'horaire qui vous convient, du lundi au samedi, en moins d\'une minute.',
   },
   {
     n: '03',

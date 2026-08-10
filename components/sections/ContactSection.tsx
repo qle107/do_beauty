@@ -41,7 +41,7 @@ export default function ContactSection() {
                   {site.phone.display}
                 </a>
 
-                <p className="mt-1 text-[color:var(--db-taupe)]">Ouvert 7 jours sur 7</p>
+                <p className="mt-1 text-[color:var(--db-taupe)]">Ouvert du lundi au samedi</p>
               </address>
 
               <a

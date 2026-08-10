@@ -30,7 +30,7 @@ export const cityData: City = {
       h2: "De Montrouge à Gentilly, presque sans quitter le quartier",
       paragraphs: [
         "Montrouge borde Gentilly à l'est : les deux communes se touchent, quelque part entre la Porte de Châtillon et la Porte de Gentilly. Depuis la Mairie, l'avenue de la République ou les abords du Beffroi, il ne faut qu'une poignée de minutes en voiture, ou un court trajet en métro ligne 4 relayé par le tram T3a, pour arriver au 12 Avenue Jean Jaurès. Cette proximité a fait de Do Beauty une adresse de quartier pour bon nombre de Montrougiennes, sans les contraintes de stationnement de Paris intra-muros.",
-        "Sur place, on prend le temps. Nos prothésistes commencent par écouter ce que vous cherchez — une manucure nette pour la semaine, un semi-permanent qui tienne jusqu'au prochain rendez-vous, une couleur pour une occasion — avant de conseiller la forme et la finition. L'institut est ouvert 7 jours sur 7, ce qui laisse le choix d'un créneau après le travail comme d'une pause le samedi, et la réservation se fait en ligne en quelques instants.",
+        "Sur place, on prend le temps. Nos prothésistes commencent par écouter ce que vous cherchez — une manucure nette pour la semaine, un semi-permanent qui tienne jusqu'au prochain rendez-vous, une couleur pour une occasion — avant de conseiller la forme et la finition. L'institut est ouvert du lundi au samedi, ce qui laisse le choix d'un créneau après le travail comme d'une pause le samedi, et la réservation se fait en ligne en quelques instants.",
       ],
     },
     {
@@ -45,7 +45,7 @@ export const cityData: City = {
     "À l'ouest de Gentilly et directement limitrophe : environ 7 minutes en voiture, soit près de 3 km depuis le centre de Montrouge.",
     "Accessible sans voiture : métro ligne 4 « Mairie de Montrouge », relais tram T3a vers la Porte de Gentilly, ou gare RER B « Gentilly » toute proche.",
     "Une carte complète sous un même toit : manucure, vernis semi-permanent, pose en gel, nail art, extensions de cils et beauté des pieds.",
-    "Ouvert 7 jours sur 7, avec des créneaux en soirée et une réservation en ligne rapide.",
+    "Ouvert du lundi au samedi, avec des créneaux en soirée et une réservation en ligne rapide.",
     "Une note de 4,6★ sur près de 99 avis Google, signe d'un travail précis et d'un accueil attentif.",
   ],
   localFaqs: [

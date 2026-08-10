@@ -88,8 +88,8 @@ export default function ServicesGrid() {
           <div className="h-px w-16 bg-coral/40 mx-auto mt-8" />
           <p className="font-sans text-sm text-dark/55 max-w-xl mx-auto mt-6 leading-relaxed">
             Nos quatre soins les plus demandés : semi-permanent, nail art, pose
-            de capsules et extensions de cils. À Gentilly, sur rendez-vous, 7j/7
-            de 10h à 19h30.
+            de capsules et extensions de cils. À Gentilly, du lundi au samedi
+            de 10h à 19h30. Extensions de cils sur rendez-vous uniquement.
           </p>
         </div>
 

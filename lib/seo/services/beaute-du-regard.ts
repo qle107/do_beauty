@@ -11,18 +11,18 @@ export const page: LandingPage = {
   meta: {
     title: "Beauté du regard à Gentilly (94) · Do Beauty — cils & sourcils",
     description:
-      "Do Beauty, beauté du regard à Gentilly (94250) : rehaussement de cils, teinture, extensions cil à cil et volume russe. Ouvert 7j/7, 4,6★ sur 99 avis Google. Réservation en ligne.",
+      "Do Beauty, beauté du regard à Gentilly (94250) : rehaussement de cils, teinture, extensions cil à cil et volume russe. Ouvert du lundi au samedi, 4,6★ sur 99 avis Google. Réservation en ligne.",
   },
   breadcrumbLabel: "Beauté du regard Gentilly",
   h1: "Beauté du regard à Gentilly",
   lead:
-    "Rehaussement de cils, teinture et extensions cil à cil ou volume russe : au 12 Avenue Jean Jaurès, l'équipe de Do Beauty ouvre et intensifie votre regard, du plus naturel au plus marqué, du lundi au dimanche.",
+    "Rehaussement de cils, teinture et extensions cil à cil ou volume russe : au 12 Avenue Jean Jaurès, l'équipe de Do Beauty ouvre et intensifie votre regard, du plus naturel au plus marqué, du lundi au samedi.",
   ctaCategory: "CILS",
   service: {
     name: "Beauté du regard",
     serviceType: "Rehaussement et extensions de cils",
     description:
-      "Beauté du regard à Gentilly (94250) : rehaussement de cils, teinture, extensions de cils cil à cil et volume russe, du rendu naturel au plus intense. Institut ouvert 7 jours sur 7, réservation en ligne.",
+      "Beauté du regard à Gentilly (94250) : rehaussement de cils, teinture, extensions de cils cil à cil et volume russe, du rendu naturel au plus intense. Institut ouvert du lundi au samedi, réservation en ligne.",
     fromPrice: 45,
   },
   sections: [
@@ -177,7 +177,7 @@ export const page: LandingPage = {
     {
       question: "Où faire sa beauté du regard et comment venir ?",
       answer:
-        "L'institut se trouve au 12 Avenue Jean Jaurès, 94250 Gentilly, aux portes de Paris. On y vient par la gare RER B « Gentilly », par le tramway T3a à la Porte de Gentilly, ou en voiture depuis Le Kremlin-Bicêtre, Arcueil et Montrouge, à quelques minutes seulement. Ouvert 7 jours sur 7, réservation en ligne.",
+        "L'institut se trouve au 12 Avenue Jean Jaurès, 94250 Gentilly, aux portes de Paris. On y vient par la gare RER B « Gentilly », par le tramway T3a à la Porte de Gentilly, ou en voiture depuis Le Kremlin-Bicêtre, Arcueil et Montrouge, à quelques minutes seulement. Ouvert du lundi au samedi, réservation en ligne.",
     },
   ],
   related: [

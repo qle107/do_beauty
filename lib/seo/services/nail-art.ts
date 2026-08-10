@@ -8,14 +8,14 @@ import type { LandingPage } from "@/lib/seo/types"
 export const page: LandingPage = {
   slug: "nail-art-gentilly",
   meta: {
-    title: "Nail art à Gentilly (94) · Do Beauty — décors ongles 7j/7",
+    title: "Nail art à Gentilly (94) · Do Beauty — décors ongles du lundi au samedi",
     description:
-      "Nail art à Gentilly chez Do Beauty (94250) : effet chrome, cat eye velours, reliefs 3D, strass, french colorée et dégradé aura, sur semi-permanent ou sur gel. Ouvert 7j/7, 4,6★ sur 99 avis Google. Réservation en ligne.",
+      "Nail art à Gentilly chez Do Beauty (94250) : effet chrome, cat eye velours, reliefs 3D, strass, french colorée et dégradé aura, sur semi-permanent ou sur gel. Ouvert du lundi au samedi, 4,6★ sur 99 avis Google. Réservation en ligne.",
   },
   breadcrumbLabel: "Nail art Gentilly",
   h1: "Nail art à Gentilly",
   lead:
-    "Au 12 Avenue Jean Jaurès, l'équipe de Do Beauty dessine à la main le décor de vos ongles : un détail discret sur un seul doigt ou des dix ongles entièrement travaillés, posés sur vernis semi-permanent ou sur gel, sept jours sur sept.",
+    "Au 12 Avenue Jean Jaurès, l'équipe de Do Beauty dessine à la main le décor de vos ongles : un détail discret sur un seul doigt ou des dix ongles entièrement travaillés, posés sur vernis semi-permanent ou sur gel, du lundi au samedi.",
   ctaCategory: "NAIL_ART",
   service: {
     name: "Nail art",

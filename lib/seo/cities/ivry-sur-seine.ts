@@ -28,7 +28,7 @@ export const cityData: City = {
       "h2": "D'Ivry-sur-Seine à Gentilly, un trajet plus court qu'on ne croit",
       "paragraphs": [
         "Ivry et Gentilly ne sont séparées que par Le Kremlin-Bicêtre : d'un centre-ville à l'autre, il n'y a qu'une commune à traverser. En voiture, comptez à peine huit minutes ; en transports, la ligne 7 vous emmène jusqu'au tram T3a, qui longe les boulevards des Maréchaux de la Porte d'Ivry jusqu'à la Porte de Gentilly, à deux pas de l'institut. Beaucoup de nos clientes d'Ivry apprécient de trouver, si près de chez elles, un salon plus calme qu'en plein Paris.",
-        "Que vous veniez d'Ivry-Port et de ses quais réaménagés, du centre autour de la Mairie ou du Petit-Ivry, le rendez-vous se cale facilement dans la journée : une pause déjeuner, une fin d'après-midi après le marché, un créneau du week-end. L'institut est ouvert 7 jours sur 7 et la réservation se fait en ligne en quelques instants, pour choisir l'horaire qui vous arrange."
+        "Que vous veniez d'Ivry-Port et de ses quais réaménagés, du centre autour de la Mairie ou du Petit-Ivry, le rendez-vous se cale facilement dans la journée : une pause déjeuner, une fin d'après-midi après le marché, un créneau du week-end. L'institut est ouvert du lundi au samedi et la réservation se fait en ligne en quelques instants, pour choisir l'horaire qui vous arrange."
       ]
     },
     {
@@ -42,7 +42,7 @@ export const cityData: City = {
   "reasons": [
     "À environ 8 minutes et près de 4 km du centre d'Ivry-sur-Seine, en passant par Le Kremlin-Bicêtre.",
     "Accessible sans voiture : métro 7 (« Mairie d'Ivry », « Pierre et Marie Curie ») relié au tram T3a jusqu'à la Porte de Gentilly, et RER C à la gare d'Ivry-sur-Seine.",
-    "Ouvert 7 jours sur 7, avec des créneaux en soirée et une réservation en ligne simple et rapide.",
+    "Ouvert du lundi au samedi, avec des créneaux en soirée et une réservation en ligne simple et rapide.",
     "Une carte complète : manucure, vernis semi-permanent, pose en gel, nail art, extensions de cils et beauté des pieds.",
     "Une note de 4,6★ sur près de 99 avis Google, reflet d'un travail soigné et d'un accueil attentif."
   ],
@@ -53,7 +53,7 @@ export const cityData: City = {
     },
     {
       "question": "Peut-on réserver une manucure ou des extensions de cils le week-end depuis Ivry ?",
-      "answer": "Oui. L'institut est ouvert 7 jours sur 7, week-end compris, généralement de 10h à 19h30. Vous réservez en ligne votre manucure, votre vernis semi-permanent ou une pose d'extensions de cils et choisissez le créneau qui vous convient, y compris en fin de journée après le travail."
+      "answer": "Oui. L'institut est ouvert du lundi au samedi, généralement de 10h à 19h30, et fermé le dimanche. Vous réservez en ligne votre manucure, votre vernis semi-permanent ou une pose d'extensions de cils et choisissez le créneau qui vous convient, y compris le samedi ou en fin de journée après le travail."
     }
   ]
 }

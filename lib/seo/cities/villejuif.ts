@@ -40,7 +40,7 @@ export const cityData: City = {
       h2: "Ongles, cils et regard : le soin du détail",
       paragraphs: [
         "Côté ongles, nos prothésistes travaillent la manucure classique, le vernis semi-permanent longue tenue, la pose en gel et le nail art, du plus discret au plus graphique. Chaque prestation est réalisée avec des gestes précis et une hygiène rigoureuse, pour un résultat net qui dure. Les habituées de Villejuif apprécient de repartir avec des mains impeccables sans avoir à traverser tout Paris.",
-        "Le regard n'est pas en reste : extensions de cils posées cil à cil, rehaussement de cils et soins, pour un rendu naturel qui tient au quotidien comme pour une occasion. La beauté des pieds complète volontiers la carte aux beaux jours. Ouvert 7 jours sur 7, environ de 10h à 19h30, l'institut affiche une note de 4,6 sur 5 pour près de 99 avis Google.",
+        "Le regard n'est pas en reste : extensions de cils posées cil à cil, rehaussement de cils et soins, pour un rendu naturel qui tient au quotidien comme pour une occasion. La beauté des pieds complète volontiers la carte aux beaux jours. Ouvert du lundi au samedi, environ de 10h à 19h30, l'institut affiche une note de 4,6 sur 5 pour près de 99 avis Google.",
       ],
     },
   ],
@@ -49,7 +49,7 @@ export const cityData: City = {
     "Accessible en transports : ligne 7 du métro (Louis Aragon, Paul Vaillant-Couturier, Léo Lagrange), puis tram T3a ou RER B « Gentilly ».",
     "Pratique pour qui travaille du côté de Gustave Roussy ou de l'hôpital Paul Brousse.",
     "Une carte complète : manucure, vernis semi-permanent, pose en gel, nail art, extensions de cils et beauté des pieds.",
-    "Ouvert 7j/7 (environ 10h–19h30), réservation en ligne simple et note de 4,6★ sur près de 99 avis Google.",
+    "Ouvert du lundi au samedi (environ 10h–19h30), réservation en ligne simple et note de 4,6★ sur près de 99 avis Google.",
   ],
   localFaqs: [
     {
@@ -60,7 +60,7 @@ export const cityData: City = {
     {
       question: "Peut-on réserver une manucure ou des extensions de cils le week-end ?",
       answer:
-        "Oui. L'institut est ouvert 7 jours sur 7, week-end compris, généralement de 10h à 19h30. Vous pouvez réserver en ligne votre manucure, votre vernis semi-permanent, une pose gel ou des extensions de cils et choisir le créneau qui vous convient, même en fin de journée.",
+        "Oui. L'institut est ouvert du lundi au samedi, généralement de 10h à 19h30, et fermé le dimanche. Vous pouvez réserver en ligne votre manucure, votre vernis semi-permanent, une pose gel ou des extensions de cils et choisir le créneau qui vous convient, y compris le samedi ou en fin de journée.",
     },
   ],
 }

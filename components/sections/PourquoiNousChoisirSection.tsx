@@ -17,7 +17,7 @@ const POINTS: Point[] = [
   { text: 'Prothésistes ongulaires expérimentées', href: linkFor('Prothésiste ongulaire') },
   { text: 'Formules douces, ongles sans HEMA sur demande', href: linkFor('Ongles sans HEMA') },
   { text: 'À proximité du RER B (Gentilly)' },
-  { text: 'Ouvert 7j/7, dimanche compris, de 10h à 20h', href: linkFor('Ouvert le dimanche') },
+  { text: 'Ouvert du lundi au samedi, de 10h à 19h30' },
 ]
 
 export default function PourquoiNousChoisirSection() {

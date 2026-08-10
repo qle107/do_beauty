@@ -168,8 +168,8 @@ export default function AboutPage() {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-sm font-sans">
             <div>
               <p className="text-dark/40 tracking-wider uppercase text-xs mb-2">Horaires</p>
-              <p className="text-dark font-medium">Lun – Dim</p>
-              <p className="text-charcoal-500">10h00 – 20h00</p>
+              <p className="text-dark font-medium">Lun – Sam</p>
+              <p className="text-charcoal-500">10h00 – 19h30</p>
             </div>
             <div>
               <p className="text-dark/40 tracking-wider uppercase text-xs mb-2">Adresse</p>

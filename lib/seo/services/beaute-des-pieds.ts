@@ -8,20 +8,20 @@ import type { LandingPage } from "@/lib/seo/types"
 export const page: LandingPage = {
   slug: "beaute-des-pieds-gentilly",
   meta: {
-    title: "Beauté des pieds à Gentilly (94) · Do Beauty — soin & vernis 7j/7",
+    title: "Beauté des pieds à Gentilly (94) · Do Beauty — soin & vernis du lundi au samedi",
     description:
-      "Beauté des pieds à Gentilly (94250) chez Do Beauty : soin complet des pieds, vernis classique ou semi-permanent sur les orteils. Institut ouvert 7 jours sur 7, 4,6★ sur 99 avis Google. Réservation en ligne.",
+      "Beauté des pieds à Gentilly (94250) chez Do Beauty : soin complet des pieds, vernis classique ou semi-permanent sur les orteils. Institut ouvert du lundi au samedi, 4,6★ sur 99 avis Google. Réservation en ligne.",
   },
   breadcrumbLabel: "Beauté des pieds Gentilly",
   h1: "Beauté des pieds à Gentilly",
   lead:
-    "Au 12 Avenue Jean Jaurès, Do Beauty prend soin de vos pieds de la plante aux ongles : soin complet, ongles remis en forme et vernis classique ou semi-permanent sur les orteils, réalisés par une petite équipe d'expertes, du lundi au dimanche.",
+    "Au 12 Avenue Jean Jaurès, Do Beauty prend soin de vos pieds de la plante aux ongles : soin complet, ongles remis en forme et vernis classique ou semi-permanent sur les orteils, réalisés par une petite équipe d'expertes, du lundi au samedi.",
   ctaCategory: "PIEDS",
   service: {
     name: "Beauté des pieds",
     serviceType: "Soin des pieds et pose de vernis",
     description:
-      "Beauté des pieds à Gentilly : soin complet des pieds, mise en forme des ongles, adoucissement des talons et pose de vernis classique ou semi-permanent, dans un institut ouvert 7 jours sur 7.",
+      "Beauté des pieds à Gentilly : soin complet des pieds, mise en forme des ongles, adoucissement des talons et pose de vernis classique ou semi-permanent, dans un institut ouvert du lundi au samedi.",
     fromPrice: 25,
   },
   sections: [
@@ -137,7 +137,7 @@ export const page: LandingPage = {
             "Aux portes de Paris (13e et 14e), près de la Porte de Gentilly et de la Porte d'Italie",
             "Accessible en RER B (gare « Gentilly ») et en tramway T3a",
             "Facile depuis Le Kremlin-Bicêtre, Arcueil, Montrouge, Villejuif et Ivry-sur-Seine",
-            "Ouvert 7 jours sur 7, créneaux en soirée, réservation en ligne",
+            "Ouvert du lundi au samedi, créneaux en soirée, réservation en ligne",
             "Une note de 4,6★ sur près de 99 avis Google",
           ],
         },

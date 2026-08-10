@@ -5,7 +5,7 @@ const METRICS = [
   { value: site.rating.count.toString(), label: 'Avis vérifiés', sub: 'Clientes Google' },
   { value: '+1 200', label: 'Clientes', sub: 'Depuis 2016' },
   { value: '9 ans', label: 'D\'expertise', sub: 'À Gentilly' },
-  { value: '7j/7', label: 'Ouverture', sub: '10h – 20h' },
+  { value: 'Lun–Sam', label: 'Ouverture', sub: '10h – 19h30' },
 ] as const
 
 function Metric({ m }: { m: (typeof METRICS)[number] }) {

@@ -35,7 +35,7 @@ export const cityData: City = {
       "h2": "Ongles, cils et regard sous le même toit",
       "paragraphs": [
         "Côté ongles, la carte va de la manucure la plus sobre au nail art plus graphique, en passant par le semi-permanent et la pose en gel. Les couleurs et les décors se choisissent ensemble, selon l'envie du jour : un nude discret pour le bureau, une teinte plus affirmée pour une soirée dans le quartier. L'exigence d'hygiène et la précision du geste restent les mêmes sur chaque prestation, pour un résultat qui dure.",
-        "Le regard tient aussi une bonne place : extensions de cils posées cil à cil pour un rendu naturel ou plus dense, rehaussement et soins des sourcils pour ouvrir l'œil en douceur. C'est le genre de soin que les habitantes du 13e réservent avant un événement, un départ en vacances ou simplement pour alléger la routine du matin. La beauté des pieds complète volontiers un rendez-vous aux beaux jours. Ouvert 7 jours sur 7, l'institut se réserve en ligne en quelques secondes, y compris pour un créneau de fin de journée."
+        "Le regard tient aussi une bonne place : extensions de cils posées cil à cil pour un rendu naturel ou plus dense, rehaussement et soins des sourcils pour ouvrir l'œil en douceur. C'est le genre de soin que les habitantes du 13e réservent avant un événement, un départ en vacances ou simplement pour alléger la routine du matin. La beauté des pieds complète volontiers un rendez-vous aux beaux jours. Ouvert du lundi au samedi, l'institut se réserve en ligne en quelques secondes, y compris pour un créneau de fin de journée."
       ]
     }
   ],
@@ -43,7 +43,7 @@ export const cityData: City = {
     "À moins de 2 km du 13e : environ 8 minutes en voiture depuis la Porte d'Italie ou la Porte de Gentilly, l'arrondissement étant limitrophe de Gentilly.",
     "Accès direct en transports : tram T3a « Porte de Gentilly » et « Poterne des Peupliers », métro 7 « Porte d'Italie », RER B « Cité Universitaire » et gare « Gentilly ».",
     "Ongles et regard réunis : manucure, vernis semi-permanent, pose gel, nail art, extensions de cils et beauté des pieds.",
-    "Ouvert 7 jours sur 7, avec des créneaux en soirée et une réservation en ligne simple et rapide.",
+    "Ouvert du lundi au samedi, avec des créneaux en soirée et une réservation en ligne simple et rapide.",
     "Une note de 4,6★ sur 99 avis Google, reflet d'un travail précis et d'un accueil attentif."
   ],
   "localFaqs": [
@@ -53,7 +53,7 @@ export const cityData: City = {
     },
     {
       "question": "Peut-on réserver un vernis semi-permanent ou une pose de cils en semaine après le travail ?",
-      "answer": "Oui. Do Beauty est ouvert 7 jours sur 7 et la réservation se fait en ligne, en quelques secondes. Vous pouvez donc caler une manucure, un semi-permanent, une pose gel ou des extensions de cils sur un créneau de fin de journée, en venant depuis les Olympiades, la Butte-aux-Cailles ou la Porte d'Italie, sans avoir à téléphoner."
+      "answer": "Oui. Do Beauty est ouvert du lundi au samedi et la réservation se fait en ligne, en quelques secondes. Vous pouvez donc caler une manucure, un semi-permanent, une pose gel ou des extensions de cils sur un créneau de fin de journée, en venant depuis les Olympiades, la Butte-aux-Cailles ou la Porte d'Italie, sans avoir à téléphoner."
     }
   ]
 }

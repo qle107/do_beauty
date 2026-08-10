@@ -24,7 +24,7 @@ export const cityData: City = {
       h2: "Du 14e à Gentilly, une station de RER B",
       paragraphs: [
         "Le 14e et Gentilly ne sont séparés que par le boulevard périphérique, à hauteur de la Porte de Gentilly. Depuis la gare Cité Universitaire, sur le boulevard Jourdan, une seule station de RER B vers le sud vous dépose à Gentilly ; l'institut se rejoint ensuite à pied, avenue Jean Jaurès. Pour les habitantes d'Alésia, de Denfert-Rochereau ou des abords du parc Montsouris, c'est souvent plus rapide que de traverser Paris pour un rendez-vous ongles.",
-        "Cette proximité change la façon dont on prend soin de soi : on cale une manucure en sortant du travail, une pose de vernis semi-permanent le samedi matin, sans le stress du stationnement de Montparnasse. Ouvert 7 jours sur 7, environ de 10h à 19h30, Do Beauty privilégie les rendez-vous sans précipitation, et la réservation en ligne permet de choisir son créneau en quelques instants, y compris en fin de journée.",
+        "Cette proximité change la façon dont on prend soin de soi : on cale une manucure en sortant du travail, une pose de vernis semi-permanent le samedi matin, sans le stress du stationnement de Montparnasse. Ouvert du lundi au samedi, environ de 10h à 19h30, Do Beauty privilégie les rendez-vous sans précipitation, et la réservation en ligne permet de choisir son créneau en quelques instants, y compris en fin de journée.",
       ],
     },
     {
@@ -40,7 +40,7 @@ export const cityData: City = {
     "Une seule station de RER B entre la gare Cité Universitaire (boulevard Jourdan) et Gentilly, tram T3a à « Stade Charléty – Porte de Gentilly » tout proche.",
     "Accès simple depuis Alésia et Denfert-Rochereau par les lignes 4 et 6 du métro, correspondance directe vers le RER B.",
     "Une carte complète : manucure, vernis semi-permanent, pose en gel, nail art, extensions de cils et beauté des pieds sous un même toit.",
-    "Ouvert 7 jours sur 7, avec réservation en ligne simple et une note de 4,6★ sur près de 99 avis Google.",
+    "Ouvert du lundi au samedi, avec réservation en ligne simple et une note de 4,6★ sur près de 99 avis Google.",
   ],
   localFaqs: [
     {

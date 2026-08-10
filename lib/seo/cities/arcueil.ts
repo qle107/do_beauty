@@ -30,7 +30,7 @@ export const cityData: City = {
       h2: "D'Arcueil à Gentilly, presque la même rue",
       paragraphs: [
         "Peu de villes sont aussi proches de notre institut qu'Arcueil. Au nord de la commune, le quartier de la Vache Noire et le Chaperon-Vert se prolongent directement dans Gentilly : d'un trottoir à l'autre, on a déjà changé de ville. Depuis le centre-ville, l'avenue Laplace ou les hauteurs qui dominent l'aqueduc, il suffit de quelques minutes pour rejoindre le 12 Avenue Jean Jaurès, en voiture comme à pied.",
-        "Le RER B rend le trajet encore plus simple : la gare Laplace, en plein Arcueil, n'est qu'à une seule station de Gentilly. Beaucoup de nos clientes arcueillaises passent ainsi en sortant du travail ou après un tour au centre commercial, sans avoir à remonter dans Paris. L'institut est ouvert sept jours sur sept et la réservation se fait en ligne, pour caler un créneau en semaine, en soirée ou le week-end.",
+        "Le RER B rend le trajet encore plus simple : la gare Laplace, en plein Arcueil, n'est qu'à une seule station de Gentilly. Beaucoup de nos clientes arcueillaises passent ainsi en sortant du travail ou après un tour au centre commercial, sans avoir à remonter dans Paris. L'institut est ouvert du lundi au samedi et la réservation se fait en ligne, pour caler un créneau en semaine, en soirée ou le week-end.",
       ],
     },
     {
@@ -44,7 +44,7 @@ export const cityData: City = {
   reasons: [
     "À environ 4 minutes et 1,6 km : le nord d'Arcueil (Vache Noire, Chaperon-Vert) touche directement Gentilly.",
     "Deux gares RER B à Arcueil même : depuis Laplace, Gentilly n'est qu'à une seule station.",
-    "Ouvert 7j/7, avec des créneaux en soirée et le week-end, pratique après le travail ou le RER.",
+    "Ouvert du lundi au samedi, avec des créneaux en soirée et le samedi, pratique après le travail ou le RER.",
     "Une carte complète : manucure, vernis semi-permanent, pose en gel, nail art, extensions de cils et beauté des pieds.",
     "Une note de 4,6★ sur près de 99 avis Google et une réservation en ligne simple et rapide.",
   ],

@@ -23,7 +23,7 @@ const VALID_CATS = new Set<string>([
 ])
 
 // GET /api/availability?date=YYYY-MM-DD&duration=<totalMinutes>
-// Horaires : 10h00 – 19h30, ouvert 7j/7 (source : site.hours)
+// Horaires : 10h00 – 19h30, du lundi au samedi (source : site.hours)
 export async function GET(request: NextRequest): Promise<NextResponse> {
   try {
     // Light per-IP rate limit: this endpoint is public and hits Google on a miss.
@@ -45,6 +45,13 @@ export async function GET(request: NextRequest): Promise<NextResponse> {
     }
 
     const { date, duration } = parsed.data
+
+    // Closed on Sunday — no availability that day. (T12:00:00Z keeps the weekday
+    // stable regardless of server timezone / DST.)
+    if (new Date(`${date}T12:00:00Z`).getUTCDay() === site.hours.closedWeekday) {
+      return NextResponse.json({ date, totalDuration: duration, available: [], booked: [], staffBySlot: {} })
+    }
+
     // Cart categories → the pool of artists that can perform it (practitioners for
     // nail services, the matching cabine for cils/esthetics). No cats → practitioners.
     const cats = (searchParams.get('cats') ?? '').split(',').map((c) => c.trim()).filter((c) => VALID_CATS.has(c)) as ServiceCategory[]

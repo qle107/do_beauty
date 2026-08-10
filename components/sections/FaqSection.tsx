@@ -19,7 +19,7 @@ const list = [
   },
   {
     q: 'Quels sont vos horaires ?',
-    a: 'Ouvert 7 jours sur 7, à partir de 11h.',
+    a: 'Ouvert du lundi au samedi, de 10h à 19h30 (fermé le dimanche). Vous êtes les bienvenus avec ou sans rendez-vous ; les extensions de cils se font uniquement sur rendez-vous.',
   },
   {
     q: 'Peut-on choisir son experte ?',

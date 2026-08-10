@@ -10,7 +10,7 @@ export const page: LandingPage = {
   meta: {
     title: "Ongles en gel à Gentilly (94) · Do Beauty — pose & remplissage",
     description:
-      "Pose d'ongles en gel à Gentilly (94250) chez Do Beauty : renforcement, rallongement, choix de la forme, remplissage toutes les 3 à 4 semaines et dépose en douceur. Ouvert 7j/7, 4,6★ sur 99 avis Google. Réservation en ligne.",
+      "Pose d'ongles en gel à Gentilly (94250) chez Do Beauty : renforcement, rallongement, choix de la forme, remplissage toutes les 3 à 4 semaines et dépose en douceur. Ouvert du lundi au samedi, 4,6★ sur 99 avis Google. Réservation en ligne.",
   },
   breadcrumbLabel: "Ongles en gel Gentilly",
   h1: "Pose d'ongles en gel à Gentilly",
@@ -21,7 +21,7 @@ export const page: LandingPage = {
     name: "Ongles en gel",
     serviceType: "Pose et renforcement d'ongles en gel",
     description:
-      "Pose d'ongles en gel à Gentilly : renforcement de l'ongle naturel, rallongement sur capsule ou chablon, remplissage régulier et dépose maîtrisée, dans un institut ouvert 7 jours sur 7.",
+      "Pose d'ongles en gel à Gentilly : renforcement de l'ongle naturel, rallongement sur capsule ou chablon, remplissage régulier et dépose maîtrisée, dans un institut ouvert du lundi au samedi.",
     fromPrice: 35,
   },
   sections: [
@@ -166,7 +166,7 @@ export const page: LandingPage = {
     {
       question: "Où faire poser ses ongles en gel à Gentilly ?",
       answer:
-        "Do Beauty vous accueille au 12 Avenue Jean Jaurès, 94250 Gentilly, aux portes de Paris (13e et 14e). On y vient par la gare RER B « Gentilly », par le tramway T3a près de la Porte de Gentilly, ou en voiture depuis Le Kremlin-Bicêtre, Arcueil et Montrouge. Réservation en ligne 7 jours sur 7.",
+        "Do Beauty vous accueille au 12 Avenue Jean Jaurès, 94250 Gentilly, aux portes de Paris (13e et 14e). On y vient par la gare RER B « Gentilly », par le tramway T3a près de la Porte de Gentilly, ou en voiture depuis Le Kremlin-Bicêtre, Arcueil et Montrouge. Réservation en ligne, ouvert du lundi au samedi.",
     },
   ],
   related: [

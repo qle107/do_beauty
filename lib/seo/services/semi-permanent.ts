@@ -10,7 +10,7 @@ export const page: LandingPage = {
   meta: {
     title: "Vernis semi-permanent à Gentilly (94) · Do Beauty — tenue ~3 semaines",
     description:
-      "Do Beauty pose votre vernis semi-permanent à Gentilly (94250) : couleur longue tenue d'environ 3 semaines, séchage LED, dépose en douceur. Ouvert 7 jours sur 7, 4,6★ sur 99 avis Google. Réservation en ligne.",
+      "Do Beauty pose votre vernis semi-permanent à Gentilly (94250) : couleur longue tenue d'environ 3 semaines, séchage LED, dépose en douceur. Ouvert du lundi au samedi, 4,6★ sur 99 avis Google. Réservation en ligne.",
   },
   breadcrumbLabel: "Vernis semi-permanent Gentilly",
   h1: "Vernis semi-permanent à Gentilly",
@@ -21,7 +21,7 @@ export const page: LandingPage = {
     name: "Vernis semi-permanent",
     serviceType: "Pose de vernis semi-permanent",
     description:
-      "Pose de vernis semi-permanent à Gentilly : couleur longue tenue d'environ trois semaines sur ongle naturel, séchage LED et dépose en douceur, dans un institut ouvert 7 jours sur 7.",
+      "Pose de vernis semi-permanent à Gentilly : couleur longue tenue d'environ trois semaines sur ongle naturel, séchage LED et dépose en douceur, dans un institut ouvert du lundi au samedi.",
     fromPrice: 25,
   },
   sections: [
@@ -169,7 +169,7 @@ export const page: LandingPage = {
     {
       question: "Où se situe l'institut et comment y accéder ?",
       answer:
-        "Do Beauty se trouve au 12 Avenue Jean Jaurès, 94250 Gentilly, aux portes de Paris. On y vient par la gare RER B « Gentilly », par le tramway T3a, ou en voiture depuis Le Kremlin-Bicêtre, Arcueil et Montrouge, à quelques minutes seulement. Réservation en ligne 7 jours sur 7.",
+        "Do Beauty se trouve au 12 Avenue Jean Jaurès, 94250 Gentilly, aux portes de Paris. On y vient par la gare RER B « Gentilly », par le tramway T3a, ou en voiture depuis Le Kremlin-Bicêtre, Arcueil et Montrouge, à quelques minutes seulement. Réservation en ligne, ouvert du lundi au samedi.",
     },
   ],
   related: [

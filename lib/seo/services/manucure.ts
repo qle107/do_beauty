@@ -8,20 +8,20 @@ import type { LandingPage } from "@/lib/seo/types"
 export const page: LandingPage = {
   slug: "manucure-gentilly",
   meta: {
-    title: "Manucure à Gentilly (94) · Do Beauty — institut 7j/7",
+    title: "Manucure à Gentilly (94) · Do Beauty — institut du lundi au samedi",
     description:
-      "Manucure à Gentilly (94250) chez Do Beauty : manucure classique, française, russe, baby-boomer et semi-permanent, par une équipe d'expertes. Ouvert 7 jours sur 7, 4,6★ sur 99 avis Google. Réservation en ligne.",
+      "Manucure à Gentilly (94250) chez Do Beauty : manucure classique, française, russe, baby-boomer et semi-permanent, par une équipe d'expertes. Ouvert du lundi au samedi, 4,6★ sur 99 avis Google. Réservation en ligne.",
   },
   breadcrumbLabel: "Manucure Gentilly",
   h1: "Manucure à Gentilly",
   lead:
-    "Au 12 Avenue Jean Jaurès, Do Beauty prend soin de vos mains 7 jours sur 7 : mise en forme des ongles, soin des cuticules et finition au choix, du plus naturel au plus travaillé. Une petite équipe qui ne bâcle rien.",
+    "Au 12 Avenue Jean Jaurès, Do Beauty prend soin de vos mains du lundi au samedi : mise en forme des ongles, soin des cuticules et finition au choix, du plus naturel au plus travaillé. Une petite équipe qui ne bâcle rien.",
   ctaCategory: "MAINS",
   service: {
     name: "Manucure",
     serviceType: "Soin et mise en beauté des mains",
     description:
-      "Manucure à Gentilly : soin des ongles et des cuticules, mise en forme et finition — classique, française, russe, baby-boomer ou semi-permanent — dans un institut ouvert 7 jours sur 7.",
+      "Manucure à Gentilly : soin des ongles et des cuticules, mise en forme et finition — classique, française, russe, baby-boomer ou semi-permanent — dans un institut ouvert du lundi au samedi.",
     fromPrice: 15,
   },
   sections: [
@@ -133,7 +133,7 @@ export const page: LandingPage = {
             "Aux portes de Paris (13e et 14e), près de la Porte de Gentilly et de la Porte d'Italie",
             "Accessible en RER B (gare « Gentilly ») et en tramway T3a",
             "Facile depuis Le Kremlin-Bicêtre, Arcueil, Cachan, Montrouge, Villejuif et Ivry-sur-Seine",
-            "Ouvert 7 jours sur 7, créneaux en soirée, réservation en ligne",
+            "Ouvert du lundi au samedi, créneaux en soirée, réservation en ligne",
             "Une note de 4,6★ sur près de 99 avis Google",
           ],
         },
@@ -159,7 +159,7 @@ export const page: LandingPage = {
     {
       question: "Faut-il prendre rendez-vous pour une manucure ?",
       answer:
-        "Nous vous conseillons de réserver en ligne pour être certaine d'avoir un créneau, surtout le week-end et en soirée. La réservation se fait en quelques instants depuis votre mobile, 7 jours sur 7. Le passage sans rendez-vous reste possible selon les disponibilités du moment.",
+        "Nous vous conseillons de réserver en ligne pour être certaine d'avoir un créneau, surtout le week-end et en soirée. La réservation se fait en quelques instants depuis votre mobile, du lundi au samedi. Le passage sans rendez-vous reste possible selon les disponibilités du moment.",
     },
     {
       question: "Combien de temps tient une manucure ?",

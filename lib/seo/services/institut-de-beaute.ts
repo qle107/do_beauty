@@ -12,18 +12,18 @@ export const page: LandingPage = {
   meta: {
     title: "Institut de beauté à Gentilly (94) · Do Beauty",
     description:
-      "Do Beauty, institut de beauté à Gentilly : onglerie, nail art, beauté du regard et soins des mains et des pieds. Ouvert 7j/7, 12 Avenue Jean Jaurès. Réservation en ligne.",
+      "Do Beauty, institut de beauté à Gentilly : onglerie, nail art, beauté du regard et soins des mains et des pieds. Ouvert du lundi au samedi, 12 Avenue Jean Jaurès. Réservation en ligne.",
   },
   breadcrumbLabel: "Institut de beauté Gentilly",
   h1: "Institut de beauté à Gentilly",
   lead:
-    "Au 12 Avenue Jean Jaurès, Do Beauty réunit sous un même toit l'onglerie, le nail art, la beauté du regard et les soins des mains et des pieds. Une équipe d'expertes, un accueil posé et la réservation en ligne, ouvert 7 jours sur 7 à Gentilly.",
+    "Au 12 Avenue Jean Jaurès, Do Beauty réunit sous un même toit l'onglerie, le nail art, la beauté du regard et les soins des mains et des pieds. Une équipe d'expertes, un accueil posé et la réservation en ligne, ouvert du lundi au samedi à Gentilly.",
   ctaCategory: "FORFAIT",
   service: {
     name: "Institut de beauté Do Beauty",
     serviceType: "Institut de beauté et onglerie",
     description:
-      "Institut de beauté à Gentilly (94250) : onglerie, vernis semi-permanent, pose gel, nail art, beauté du regard, beauté des mains et des pieds. Ouvert 7j/7, réservation en ligne.",
+      "Institut de beauté à Gentilly (94250) : onglerie, vernis semi-permanent, pose gel, nail art, beauté du regard, beauté des mains et des pieds. Ouvert du lundi au samedi, réservation en ligne.",
     fromPrice: 15,
   },
   sections: [
@@ -33,7 +33,7 @@ export const page: LandingPage = {
         {
           kind: "paragraph",
           text:
-            "Do Beauty est un institut de beauté installé au 12 Avenue Jean Jaurès, à Gentilly (94250), juste au sud de Paris. On y vient pour prendre soin de ses ongles, de son regard et de ses mains dans un cadre calme, où l'on ne vous presse pas. L'institut est ouvert 7 jours sur 7 et affiche une note de 4,6 sur 5 sur près de 99 avis Google.",
+            "Do Beauty est un institut de beauté installé au 12 Avenue Jean Jaurès, à Gentilly (94250), juste au sud de Paris. On y vient pour prendre soin de ses ongles, de son regard et de ses mains dans un cadre calme, où l'on ne vous presse pas. L'institut est ouvert du lundi au samedi et affiche une note de 4,6 sur 5 sur près de 99 avis Google.",
         },
         {
           kind: "paragraph",
@@ -105,7 +105,7 @@ export const page: LandingPage = {
         {
           kind: "paragraph",
           text:
-            "La réservation en ligne est ouverte 24h/24 : choisissez la prestation, le jour et l'heure qui vous conviennent, y compris en soirée ou le week-end. Vous recevez la confirmation de votre créneau, et l'équipe vous attend à l'heure dite. C'est le moyen le plus simple d'être certaine d'avoir votre place, surtout le samedi et le dimanche.",
+            "La réservation en ligne est ouverte 24h/24 : choisissez la prestation, le jour et l'heure qui vous conviennent, y compris en soirée ou le week-end. Vous recevez la confirmation de votre créneau, et l'équipe vous attend à l'heure dite. C'est le moyen le plus simple d'être certaine d'avoir votre place, surtout le samedi.",
         },
         {
           kind: "paragraph",
@@ -124,7 +124,7 @@ export const page: LandingPage = {
     {
       question: "Quels sont les horaires de l'institut ?",
       answer:
-        "Do Beauty est ouvert 7 jours sur 7, week-end compris, généralement de 10h à 19h30. Les créneaux de fin de journée et du week-end partent vite : réserver en ligne à l'avance reste le plus sûr.",
+        "Do Beauty est ouvert du lundi au samedi, généralement de 10h à 19h30, et fermé le dimanche. Les créneaux de fin de journée et du samedi partent vite : réserver en ligne à l'avance reste le plus sûr.",
     },
     {
       question: "Comment venir à l'institut à Gentilly ?",

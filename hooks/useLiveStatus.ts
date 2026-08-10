@@ -5,7 +5,7 @@ import { site } from '@/lib/site'
 
 export type LiveStatus = {
   isOpen: boolean
-  /** Display label, e.g. "Ouvert · ferme à 20h" or "Ouvre demain à 10h" */
+  /** Display label, e.g. "Ouvert · ferme à 19h30" or "Ouvre demain à 10h" */
   label: string
 }
 

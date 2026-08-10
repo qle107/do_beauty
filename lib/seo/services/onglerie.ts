@@ -8,20 +8,20 @@ import type { LandingPage } from "@/lib/seo/types"
 export const page: LandingPage = {
   slug: "onglerie-gentilly",
   meta: {
-    title: "Onglerie à Gentilly (94) · Do Beauty — bar à ongles 7j/7",
+    title: "Onglerie à Gentilly (94) · Do Beauty — bar à ongles du lundi au samedi",
     description:
-      "Do Beauty, votre onglerie et bar à ongles à Gentilly (94250) : manucure, vernis semi-permanent, pose gel et nail art. Ouvert 7 jours sur 7, 4,6★ sur 99 avis Google. Réservation en ligne.",
+      "Do Beauty, votre onglerie et bar à ongles à Gentilly (94250) : manucure, vernis semi-permanent, pose gel et nail art. Ouvert du lundi au samedi, 4,6★ sur 99 avis Google. Réservation en ligne.",
   },
   breadcrumbLabel: "Onglerie Gentilly",
   h1: "Onglerie & bar à ongles à Gentilly",
   lead:
-    "Au 12 Avenue Jean Jaurès, Do Beauty s'occupe de tout ce qui touche aux ongles : manucure, vernis semi-permanent, pose en gel et nail art, réalisés à la main par une petite équipe, du lundi au dimanche.",
+    "Au 12 Avenue Jean Jaurès, Do Beauty s'occupe de tout ce qui touche aux ongles : manucure, vernis semi-permanent, pose en gel et nail art, réalisés à la main par une petite équipe, du lundi au samedi.",
   ctaCategory: "MAINS",
   service: {
     name: "Onglerie",
     serviceType: "Soin et pose des ongles",
     description:
-      "Onglerie complète à Gentilly : manucure, vernis semi-permanent, pose d'ongles en gel, nail art et réparation, dans un institut ouvert 7 jours sur 7.",
+      "Onglerie complète à Gentilly : manucure, vernis semi-permanent, pose d'ongles en gel, nail art et réparation, dans un institut ouvert du lundi au samedi.",
     fromPrice: 15,
   },
   sections: [
@@ -133,7 +133,7 @@ export const page: LandingPage = {
             "Aux portes de Paris (13e et 14e), près de la Porte de Gentilly et de la Porte d'Italie",
             "Accessible en RER B (gare « Gentilly ») et en tramway T3a",
             "Facile depuis Le Kremlin-Bicêtre, Arcueil, Montrouge, Villejuif et Ivry-sur-Seine",
-            "Ouvert 7 jours sur 7, créneaux en soirée, réservation en ligne",
+            "Ouvert du lundi au samedi, créneaux en soirée, réservation en ligne",
             "Une note de 4,6★ sur près de 99 avis Google",
           ],
         },
@@ -149,7 +149,7 @@ export const page: LandingPage = {
     {
       question: "Faut-il prendre rendez-vous ou puis-je venir sans réserver ?",
       answer:
-        "Nous vous conseillons de réserver en ligne pour être certaine d'avoir un créneau, surtout le week-end et en soirée. La réservation se fait en quelques instants depuis votre mobile, 7 jours sur 7. Le passage sans rendez-vous dépend des disponibilités du moment.",
+        "Nous vous conseillons de réserver en ligne pour être certaine d'avoir un créneau, surtout le week-end et en soirée. La réservation se fait en quelques instants depuis votre mobile, du lundi au samedi. Le passage sans rendez-vous dépend des disponibilités du moment.",
     },
     {
       question: "Combien de temps dure une pose d'ongles ?",

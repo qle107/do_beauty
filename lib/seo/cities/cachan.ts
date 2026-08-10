@@ -34,7 +34,7 @@ export const cityData: City = {
       "h2": "Ongles, regard et soins : une carte complète",
       "paragraphs": [
         "Côté mains, notre équipe travaille la manucure classique, le vernis semi-permanent longue tenue et la pose en gel. On soigne la forme, les finitions et l'hygiène à chaque passage. Le nail art se choisit ensemble, d'une touche discrète pour le quotidien à un décor plus affirmé pour une occasion. Beaucoup de nos clientes de Cachan viennent d'abord pour un rendu net qui tient dans le temps.",
-        "Le regard tient aussi une belle place : rehaussement de cils, extensions posées cil à cil et soins autour des yeux, pour un résultat naturel que l'on porte sans effort au réveil. La beauté des pieds complète volontiers un rendez-vous, surtout aux beaux jours. L'institut est ouvert 7 jours sur 7, avec une réservation en ligne pour choisir votre créneau, en semaine après le travail comme le week-end."
+        "Le regard tient aussi une belle place : rehaussement de cils, extensions posées cil à cil et soins autour des yeux, pour un résultat naturel que l'on porte sans effort au réveil. La beauté des pieds complète volontiers un rendez-vous, surtout aux beaux jours. L'institut est ouvert du lundi au samedi, avec une réservation en ligne pour choisir votre créneau, en semaine après le travail comme le samedi."
       ]
     }
   ],
@@ -42,7 +42,7 @@ export const cityData: City = {
     "À environ 7 minutes et 3 km du centre de Cachan, par l'avenue Aristide Briand (RD920) vers Gentilly.",
     "Sur la même ligne que nous : RER B direct depuis Arcueil-Cachan jusqu'à Gentilly, sans changement.",
     "Une carte complète sous un même toit : manucure, vernis semi-permanent, pose en gel, nail art, cils et beauté des pieds.",
-    "Ouvert 7 jours sur 7, avec des créneaux en soirée et une réservation en ligne simple et rapide.",
+    "Ouvert du lundi au samedi, avec des créneaux en soirée et une réservation en ligne simple et rapide.",
     "Une note de 4,6 sur 5 pour près de 99 avis Google, reflet d'un travail précis et d'un accueil attentif."
   ],
   "localFaqs": [

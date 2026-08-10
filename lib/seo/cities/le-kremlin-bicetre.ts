@@ -24,7 +24,7 @@ export const cityData: City = {
       h2: "Votre institut à quatre minutes du Kremlin-Bicêtre",
       paragraphs: [
         "Le Kremlin-Bicêtre est directement limitrophe de Gentilly : de l'hôpital Bicêtre au centre commercial Okabe, du quartier de la Mairie au cœur de ville, il n'y a qu'une courte distance jusqu'au 12 Avenue Jean Jaurès. En voiture, l'avenue de Fontainebleau (RD7) file droit vers Gentilly en quelques minutes. Beaucoup de nos clientes du Kremlin-Bicêtre viennent justement pour cette proximité : caler un rendez-vous ongles entre deux courses ou en sortant du travail, sans les contraintes de stationnement de Paris intra-muros.",
-        "Sans voiture, le trajet reste simple. La ligne 7 du métro, la ligne 14 à « Hôpital Bicêtre », le tramway T3a à « Porte de Gentilly » et la gare RER B « Gentilly » rapprochent tous l'institut. Do Beauty est ouvert 7 jours sur 7, avec des créneaux en soirée, et la réservation en ligne permet de choisir son horaire en quelques instants, week-end compris.",
+        "Sans voiture, le trajet reste simple. La ligne 7 du métro, la ligne 14 à « Hôpital Bicêtre », le tramway T3a à « Porte de Gentilly » et la gare RER B « Gentilly » rapprochent tous l'institut. Do Beauty est ouvert du lundi au samedi, avec des créneaux en soirée, et la réservation en ligne permet de choisir son horaire en quelques instants, le samedi compris.",
       ],
     },
     {
@@ -40,7 +40,7 @@ export const cityData: City = {
     "Accessible sans voiture : métro ligne 7 « Le Kremlin-Bicêtre », ligne 14 « Hôpital Bicêtre », puis tramway T3a ou RER B jusqu'à Gentilly.",
     "Idéal pour un rendez-vous en pause déjeuner ou en sortant de l'hôpital Bicêtre, du centre commercial Okabe ou du cœur de ville.",
     "Une carte complète : manucure, vernis semi-permanent, pose en gel, nail art, beauté du regard (cils et sourcils) et beauté des pieds.",
-    "Ouvert 7 jours sur 7, réservation en ligne simple et rapide, et une note de 4,6★ sur 99 avis Google.",
+    "Ouvert du lundi au samedi, réservation en ligne simple et rapide, et une note de 4,6★ sur 99 avis Google.",
   ],
   localFaqs: [
     {
@@ -51,7 +51,7 @@ export const cityData: City = {
     {
       question: "Peut-on réserver une manucure ou une pose de cils le week-end ou en soirée ?",
       answer:
-        "Oui. L'institut est ouvert 7 jours sur 7, généralement de 10h à 19h30, week-end compris. Vous pouvez réserver en ligne votre manucure, votre vernis semi-permanent, une pose en gel ou un rendez-vous beauté du regard sur le créneau qui vous convient, y compris en fin de journée après le travail.",
+        "Oui. L'institut est ouvert du lundi au samedi, généralement de 10h à 19h30, et fermé le dimanche. Vous pouvez réserver en ligne votre manucure, votre vernis semi-permanent, une pose en gel ou un rendez-vous beauté du regard sur le créneau qui vous convient, y compris le samedi ou en fin de journée après le travail.",
     },
   ],
 }

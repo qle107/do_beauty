@@ -14,7 +14,7 @@ export default function FinalCta() {
         <div className="h-px w-16 bg-coral-light/60 mx-auto mb-10" />
 
         <p className="font-sans text-sm md:text-base text-cream/70 mb-12 leading-relaxed max-w-xl mx-auto">
-          Réservez en moins d&apos;une minute, 7 jours sur 7, directement depuis votre mobile.
+          Réservez en moins d&apos;une minute, du lundi au samedi, directement depuis votre mobile.
         </p>
 
         <div className="flex flex-col sm:flex-row gap-4 items-stretch sm:items-center justify-center">
@@ -36,7 +36,7 @@ export default function FinalCta() {
           Réservation en 1 minute · Sans acompte · Paiement sur place
         </p>
         <p className="font-sans text-xs text-cream/60 tracking-wider mt-3">
-          Ouvert 7j/7 · 10h-20h · {site.address.cityName}
+          Ouvert du lundi au samedi · 10h–19h30 · {site.address.cityName}
         </p>
       </div>
     </section>

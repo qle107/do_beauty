@@ -16,7 +16,7 @@ export default function BookingCta() {
             </h2>
 
             <p className="text-[#E4DCCF] text-[15px] mt-4 max-w-[42ch] mx-auto">
-              Manucure, semi-permanent ou nail art : réservez à Gentilly, 7j/7 de 10h à 19h30.
+              Manucure, semi-permanent ou nail art : réservez à Gentilly, du lundi au samedi de 10h à 19h30.
             </p>
 
             <Link href="/booking" data-cursor="reserver" className="db-btn db-btn--onDark mt-8">
