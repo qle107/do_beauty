@@ -1,7 +1,21 @@
 import NextAuth from 'next-auth'
 import Google from 'next-auth/providers/google'
+import { site } from '@/lib/site'
 
 const ADMIN_EMAIL = process.env.ADMIN_EMAIL ?? ''
+
+// Self-hosted behind Hostinger/Cloudflare, the app only sees the internal host
+// (localhost:3000), and a stale NEXTAUTH_URL=http://localhost:3000 in the prod env
+// was leaking into every OAuth sign-in / callback URL — sending admins to localhost.
+// An explicit NEXTAUTH_URL overrides `trustHost`, so pin Auth.js to the canonical
+// site URL in production. Dev keeps its localhost value so local login still works.
+if (process.env.NODE_ENV === 'production') {
+  const current = process.env.NEXTAUTH_URL ?? process.env.AUTH_URL
+  if (!current || current.includes('localhost')) {
+    process.env.NEXTAUTH_URL = site.url
+    process.env.AUTH_URL = site.url
+  }
+}
 
 export const { handlers, auth, signIn, signOut } = NextAuth({
   // Self-hosted behind Cloudflare/Hostinger: trust the forwarded host so auth URLs
