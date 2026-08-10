@@ -330,10 +330,16 @@ export default function ClientDetails({ booking, onBack, onConfirmed }: ClientDe
               Lire en entier (PDF)
             </a>
           </div>
-          <ul className="font-sans text-xs text-charcoal-500 leading-relaxed space-y-1 list-disc pl-4">
-            <li>Semi-permanent garanti <strong>5 jours</strong> · extensions &amp; gainage <strong>7 jours</strong>.</li>
-            <li>Cils : nouvelle pose <strong>5 jours</strong> · remplissage <strong>3 jours</strong>.</li>
-            <li>Défaut couvert = <strong>retouche gratuite</strong> au salon dans le délai (aucun remboursement).</li>
+          <ul className="font-sans text-xs text-charcoal-500 leading-relaxed space-y-1.5 list-disc pl-4">
+            <li>
+              <strong>Un défaut ? Envoyez-nous la photo tout de suite</strong>, le jour même (pas
+              2 jours après). Sans photo immédiate, la retouche gratuite ne s&apos;applique pas.
+            </li>
+            <li>
+              Défaut couvert = <strong>retouche gratuite</strong> au salon, aucun remboursement :
+              semi-permanent, gel &amp; extensions, cils.
+            </li>
+            <li><strong>Vernis Normal / Vernis Classique : non garanti.</strong></li>
             <li>Autres prestations : vérifiez le résultat avant de partir.</li>
           </ul>
         </div>
