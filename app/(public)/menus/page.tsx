@@ -7,6 +7,8 @@ import {
   formatServicePrice,
   formatServiceDuration,
 } from '@/lib/catalogue'
+import CilsStylesGuide from '@/components/sections/CilsStylesGuide'
+import { descriptionFor } from '@/lib/service-descriptions'
 import type { Service } from '@/lib/types'
 
 export const metadata: Metadata = {
@@ -30,6 +32,7 @@ export const dynamic = 'force-dynamic'
 // One prestation row: name (+ optional grey subtitle) left, duration · price right.
 function ServiceRow({ service }: { service: Service }) {
   const quote = service.priceType === 'quote'
+  const description = descriptionFor(service)
   return (
     <div className="py-5 flex justify-between items-start gap-6">
       <div className="flex-1">
@@ -40,6 +43,11 @@ function ServiceRow({ service }: { service: Service }) {
         <p className="font-sans text-xs text-charcoal-500 mt-2 tracking-wide uppercase">
           {formatServiceDuration(service.duration)}
         </p>
+        {description && (
+          <p className="font-sans text-xs text-charcoal-500/90 mt-1.5 leading-relaxed max-w-md">
+            {description}
+          </p>
+        )}
       </div>
       <div className="text-right shrink-0">
         <p
@@ -98,6 +106,8 @@ export default async function MenusPage() {
                   {section.description}
                 </p>
               )}
+
+              {section.id === 'extension-cils' && <CilsStylesGuide />}
 
               {section.subgroups ? (
                 // Sub-grouped section (Extension de cils): Poses / Remplissages / Déposes.

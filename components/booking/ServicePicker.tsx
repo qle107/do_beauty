@@ -9,6 +9,8 @@ import {
   formatServiceDuration,
   type CatalogueSection,
 } from '@/lib/catalogue'
+import { descriptionFor } from '@/lib/service-descriptions'
+import CilsStylesGuide from '@/components/sections/CilsStylesGuide'
 import type { SelectedService } from './BookingForm'
 
 interface Service {
@@ -49,6 +51,7 @@ function ServiceRow({
   open: boolean
 }) {
   const quote = service.priceType === 'quote'
+  const description = descriptionFor(service)
   return (
     <button
       type="button"
@@ -84,6 +87,9 @@ function ServiceRow({
           <span className="inline-block mt-1.5 font-sans text-xs text-dark/30 tracking-wider uppercase bg-dark/4 px-2 py-0.5 rounded-sm">
             {formatServiceDuration(service.duration)}
           </span>
+          {description && (
+            <p className="font-sans text-xs text-dark/45 leading-relaxed mt-1.5">{description}</p>
+          )}
         </div>
       </div>
 
@@ -186,6 +192,8 @@ function SectionPanel({
             {section.description && (
               <p className="px-6 pt-4 font-sans text-xs text-dark/45 leading-relaxed">{section.description}</p>
             )}
+
+            {section.id === 'extension-cils' && <CilsStylesGuide variant="compact" />}
 
             {section.subgroups ? (
               // Sub-grouped section (Extension de cils): Poses / Remplissages / Déposes.
